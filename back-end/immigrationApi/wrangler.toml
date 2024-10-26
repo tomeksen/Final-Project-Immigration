@@ -1,0 +1,40 @@
+name = "immigrationapi"
+main = "src/index.ts"
+compatibility_date = "2024-10-23"
+compatibility_flags = [ "nodejs_compat" ]
+
+[env.dev]
+  NODE_ENV = "development"  # Set NODE_ENV to development
+#  DB_URL = "https://local-db-url.com", 
+#  API_KEY = "local_api_key",
+
+[env.production]
+  NODE_ENV = "production"
+# workers_dev = false
+# API_KEY = "your_production_api_key"
+# DB_URL = "https://your-production-db-url.com"
+
+# [vars]
+# DB_URL = "https://your-database-url.com"
+# API_KEY = "your_api_key_value"
+
+# [[kv_namespaces]]
+# binding = "MY_KV_NAMESPACE"
+# id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+# [[r2_buckets]]
+# binding = "MY_BUCKET"
+# bucket_name = "my-bucket"
+
+# [[d1_databases]]
+# binding = "DB"
+# database_name = "my-database"
+# database_id = ""
+
+# [ai]
+# binding = "AI"
+
+# [observability]
+# enabled = true
+# head_sampling_rate = 1
+
