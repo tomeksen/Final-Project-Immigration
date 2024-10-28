@@ -28,9 +28,9 @@ export default async function RootLayout({
         className={`${poppins.className} antialiased`}
       >
       <NextIntlClientProvider messages={messages}>
-        <div className="mb-[2px] flex items-center">
-            <LocaleSwitcher />
-          </div>
+        <div className="">
+          <LocaleSwitcher />
+        </div>
         {children}
       </NextIntlClientProvider>
       </body>
