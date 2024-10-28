@@ -1,0 +1,12 @@
+{
+    "HomePage": {
+      "title": "Bienvenido a la aplicación de inmigración!"
+    },
+    "LocaleSwitcher": {
+    "en": "English",
+    "es": "Spanish",
+    "pt": "Portuguese",
+    "jp": "Japanese",
+    "label": "Select Language"
+    }
+  }

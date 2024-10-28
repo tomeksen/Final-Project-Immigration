@@ -1,0 +1,12 @@
+{
+    "HomePage": {
+      "title": "Bem-vindo ao aplicativo de imigração!"
+    },
+    "LocaleSwitcher": {
+    "en": "English",
+    "es": "Spanish",
+    "pt": "Portuguese",
+    "jp": "Japanese",
+    "label": "Select Language"
+    }
+  }

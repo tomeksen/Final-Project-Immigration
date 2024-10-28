@@ -1,0 +1,12 @@
+{
+    "HomePage": {
+      "title": "Hello world!"
+    },
+    "LocaleSwitcher": {
+    "en": "English",
+    "es": "Spanish",
+    "pt": "Portuguese",
+    "jp": "Japanese",
+    "label": "Select Language"
+    }
+  }
