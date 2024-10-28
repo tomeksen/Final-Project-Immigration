@@ -1,11 +1,13 @@
 import {useTranslations} from 'next-intl';
 
 const TestPage = () => {
-    const t = useTranslations('HomePage');
-    
-    return ( <div>
-        <h1>{t('title')}</h1>
-    </div> );
+    const translations = useTranslations('HomePage');
+
+    return ( 
+    <div>
+        <h1>{translations('title')}</h1>
+    </div>
+    );
 }
  
 export default TestPage;
