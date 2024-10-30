@@ -7,7 +7,7 @@ import LocaleSwitcher from "@/components/LocaleSwitcher";
 import { ThemeProvider } from "@/components/theme-provider";
 import { DarkModeToggle } from "@/components/DarkModeToggle";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { AppSidebar } from "./playground/test1/_components/appSideBar";
+import { AppSidebar } from "@/components/AppSideBar";
 
 const poppins = Poppins({
   subsets: ["latin"],
