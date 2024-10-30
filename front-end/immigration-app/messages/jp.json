@@ -1,12 +1,28 @@
 {
-    "HomePage": {
-      "title": "ようこそ移民アプリへ！"
+  "HomePage": {
+    "title": "ようこそ移民アプリへ！"
+  },
+  "Sidebar": {
+    "Content": {
+      "dashboard": "ダッシュボード",
+      "applications": "申請",
+      "payments": "支払い",
+      "documents": "私の書類",
+      "appointment": "予約",
+      "inbox": "受信トレイ",
+      "profile": "プロフィール"
     },
-    "LocaleSwitcher": {
+    "Footer": {
+      "settings": "設定",
+      "faq": "よくある質問",
+      "logout": "ログアウト"
+    }
+  },
+  "LocaleSwitcher": {
     "en": "English",
     "es": "Spanish",
     "pt": "Portuguese",
     "jp": "Japanese",
     "label": "Select Language"
-    }
   }
+}

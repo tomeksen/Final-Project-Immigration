@@ -18,7 +18,7 @@ import {
   SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
+  // SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
@@ -29,67 +29,65 @@ import { usePathname } from "next/navigation";
 import { cn } from "../../../../../lib/utils";
 import { useTranslations } from "next-intl";
 
-// Menu items.
-const contentItems = [
-  {
-    title: "Dashboard",
-    url: "/dashboard",
-    icon: LayoutDashboard,
-  },
-  {
-    title: "Applications",
-    url: "/applications",
-    icon: FileEdit,
-  },
-  {
-    title: "Payments",
-    url: "/payments",
-    icon: DollarSign,
-  },
-  {
-    title: "My Documents",
-    url: "/documents",
-    icon: FileText,
-  },
-  {
-    title: "Appointment",
-    url: "/appointment",
-    icon: Users,
-  },
-  {
-    title: "Inbox",
-    url: "/inbox",
-    icon: MessageSquare,
-  },
-  {
-    title: "Profile",
-    url: "/profile",
-    icon: User,
-  },
-];
-
-const footerItems = [
-  {
-    title: "Settings",
-    url: "/settings",
-    icon: Settings,
-  },
-  {
-    title: "FAQ",
-    url: "/faq",
-    icon: HelpCircle,
-  },
-  {
-    title: "Logout",
-    url: "/logout",
-    icon: LogOut,
-  },
-];
-
 export function AppSidebar() {
   const pathname = usePathname();
-  const t = useTranslations("Sidebar.Content.dashboard");
-  console.log(t);
+  const t = useTranslations("Sidebar");
+
+  const contentItems = [
+    {
+      title: t("Content.dashboard"),
+      url: "/dashboard",
+      icon: LayoutDashboard,
+    },
+    {
+      title: t("Content.applications"),
+      url: "/applications",
+      icon: FileEdit,
+    },
+    {
+      title: t("Content.payments"),
+      url: "/payments",
+      icon: DollarSign,
+    },
+    {
+      title: t("Content.documents"),
+      url: "/documents",
+      icon: FileText,
+    },
+    {
+      title: t("Content.appointment"),
+      url: "/appointment",
+      icon: Users,
+    },
+    {
+      title: t("Content.inbox"),
+      url: "/inbox",
+      icon: MessageSquare,
+    },
+    {
+      title: t("Content.profile"),
+      url: "/profile",
+      icon: User,
+    },
+  ];
+
+  const footerItems = [
+    {
+      title: t("Footer.settings"),
+      url: "/settings",
+      icon: Settings,
+    },
+    {
+      title: t("Footer.faq"),
+      url: "/faq",
+      icon: HelpCircle,
+    },
+    {
+      title: t("Footer.logout"),
+      url: "/logout",
+      icon: LogOut,
+    },
+  ];
 
   return (
     <Sidebar variant="sidebar">

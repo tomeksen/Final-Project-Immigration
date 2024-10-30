@@ -1,12 +1,29 @@
 {
-    "HomePage": {
-      "title": "Hello world!"
+  "HomePage": {
+    "title": "Hello world!"
+  },
+  "Sidebar": {
+    "Content": {
+      "dashboard": "Dashboard",
+      "applications": "Applications",
+      "payments": "Payments",
+      "documents": "My Documents",
+      "appointment": "Appointment",
+      "inbox": "Inbox",
+      "profile": "Profile"
     },
-    "LocaleSwitcher": {
+    "Footer": {
+      "settings": "Settings",
+      "faq": "FAQ",
+      "logout": "Logout"
+    }
+  },
+
+  "LocaleSwitcher": {
     "en": "English",
     "es": "Spanish",
     "pt": "Portuguese",
     "jp": "Japanese",
     "label": "Select Language"
-    }
   }
+}
