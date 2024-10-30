@@ -3,11 +3,8 @@ import "./globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import { Poppins } from "next/font/google";
-import LocaleSwitcher from "@/components/LocaleSwitcher";
 import { ThemeProvider } from "@/components/theme-provider";
-import { DarkModeToggle } from "@/components/DarkModeToggle";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { AppSidebar } from "@/components/AppSideBar";
+import Header from "@/components/header/Header";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -36,20 +33,8 @@ export default async function RootLayout({
           disableTransitionOnChange
         >
           <NextIntlClientProvider messages={messages}>
-            <SidebarProvider>
-              <AppSidebar />
-              <div className="md:hidden">
-                <SidebarTrigger />
-              </div>
-
-              <div className="flex flex-col">
-                <div className="mb-[2px] flex items-start w-full mx-0">
-                  <LocaleSwitcher />
-                  <DarkModeToggle />
-                </div>
-                {children}
-              </div>
-            </SidebarProvider>
+            <Header />
+            {children}
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>
