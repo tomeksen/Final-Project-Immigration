@@ -77,12 +77,12 @@ const footerItems = [
   {
     title: "FAQ",
     url: "/faq",
-    icon: Settings,
+    icon: HelpCircle,
   },
   {
     title: "Logout",
     url: "/logout",
-    icon: Settings,
+    icon: LogOut,
   },
 ];
 
