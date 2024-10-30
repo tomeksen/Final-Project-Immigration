@@ -7,8 +7,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="relative flex-col text-center justify-center mb-2">
-        {/* Hamburger button for mobile */}
+      <nav className="relative flex-col text-center justify-center">
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="md:hidden p-2 focus:outline-none"
@@ -17,11 +16,10 @@ export default function Navbar() {
           {isOpen ? <IoCloseSharp /> : <BiMenu />}
         </button>
 
-        {/* Navigation items */}
         <ul
           className={`${
             isOpen ? "block" : "hidden"
-          } md:flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6 font-semibold`}
+          }  md:flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6 font-semibold`}
         >
           <li className="hover:text-primary-red">Immigrate</li>
           <li className="hover:text-primary-red">Work</li>

@@ -21,6 +21,8 @@ body {
     --primary-black: 0 0% 0%; /* #000000 */
     --primary-gray: 0 0% 38.8%; /* #636363 */
     --primary-white: 0 0% 90%;
+    --primary-white-2: #fffdfd;
+
     /* secondary colors */
     --secondary: 0 0% 96.1%;
     --secondary-foreground: 0 0% 9%;
