@@ -5,31 +5,37 @@ compatibility_flags = [ "nodejs_compat" ]
 
 [env.dev]
   NODE_ENV = "development"  # Set NODE_ENV to development
+  AUTH_SECRET="qL1UolQWJPgaZiC0qi0sbIXSG7X3qqOn3C6Fh7TwDp5cTGfx/r349v6mqNs="
 #  DB_URL = "https://local-db-url.com", 
 #  API_KEY = "local_api_key",
 
 [env.production]
   NODE_ENV = "production"
+  AUTH_SECRET="qL1UolQWJPgaZiC0qi0sbIXSG7X3qqOn3C6Fh7TwDp5cTGfx/r349v6mqNs="
+
 # workers_dev = false
 # API_KEY = "your_production_api_key"
 # DB_URL = "https://your-production-db-url.com"
 
-# [vars]
+[vars]
+AUTH_SECRET="qL1UolQWJPgaZiC0qi0sbIXSG7X3qqOn3C6Fh7TwDp5cTGfx/r349v6mqNs="
+AUTH_URL="http://playground.localhost:3000/api/auth"
+
 # DB_URL = "https://your-database-url.com"
 # API_KEY = "your_api_key_value"
 
-# [[kv_namespaces]]
-# binding = "MY_KV_NAMESPACE"
-# id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+[[kv_namespaces]]
+binding = "immigration-app"
+id = "0f7428ded27f46fbb862bff1b6673a9c"
 
 # [[r2_buckets]]
 # binding = "MY_BUCKET"
 # bucket_name = "my-bucket"
 
-# [[d1_databases]]
-# binding = "DB"
-# database_name = "my-database"
-# database_id = ""
+[[d1_databases]]
+binding = "DB"
+database_name = "immigration-app-db"
+database_id = "03d52fa4-bcbd-4a44-ac71-05b1582a8411"
 
 # [ai]
 # binding = "AI"
