@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
-import  {Poppins} from "next/font/google";
-import LocaleSwitcher from "@/components/LocaleSwitcher";
+import { Poppins } from "next/font/google";
+import { ThemeProvider } from "@/components/theme-provider";
+import Header from "@/components/header/Header";
 
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["400", "500","600", "700","800","900"],
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
@@ -24,15 +25,18 @@ export default async function RootLayout({
   const messages = await getMessages();
   return (
     <html lang={locale}>
-      <body
-        className={`${poppins.className} antialiased`}
-      >
-      <NextIntlClientProvider messages={messages}>
-        <div className="">
-          <LocaleSwitcher />
-        </div>
-        {children}
-      </NextIntlClientProvider>
+      <body className={`${poppins.className} antialiased`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <NextIntlClientProvider messages={messages}>
+            <Header />
+            {children}
+          </NextIntlClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
