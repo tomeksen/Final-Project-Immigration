@@ -3,9 +3,8 @@ import "./globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import { Poppins } from "next/font/google";
-import LocaleSwitcher from "@/components/LocaleSwitcher";
 import { ThemeProvider } from "@/components/theme-provider";
-import { DarkModeToggle } from "@/components/DarkModeToggle";
+import Header from "@/components/header/Header";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -34,10 +33,7 @@ export default async function RootLayout({
           disableTransitionOnChange
         >
           <NextIntlClientProvider messages={messages}>
-            <div className="mb-[2px] flex items-center">
-              <LocaleSwitcher />
-              <DarkModeToggle />
-            </div>
+            <Header />
             {children}
           </NextIntlClientProvider>
         </ThemeProvider>
