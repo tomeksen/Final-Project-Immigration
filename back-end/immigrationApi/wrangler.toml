@@ -10,26 +10,29 @@ compatibility_flags = [ "nodejs_compat" ]
 
 [env.production]
   NODE_ENV = "production"
+
 # workers_dev = false
 # API_KEY = "your_production_api_key"
 # DB_URL = "https://your-production-db-url.com"
 
-# [vars]
+[vars]
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_ZW1lcmdpbmctd2FydGhvZy0yNC5jbGVyay5hY2NvdW50cy5kZXYk
+CLERK_SECRET_KEY=sk_test_f6z0wLBN8XOBJOf07h9a951IU0sccOrXSGLWjoJLUX
 # DB_URL = "https://your-database-url.com"
 # API_KEY = "your_api_key_value"
 
-# [[kv_namespaces]]
-# binding = "MY_KV_NAMESPACE"
-# id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+[[kv_namespaces]]
+binding = "immigration-app"
+id = "0f7428ded27f46fbb862bff1b6673a9c"
 
 # [[r2_buckets]]
 # binding = "MY_BUCKET"
 # bucket_name = "my-bucket"
 
-# [[d1_databases]]
-# binding = "DB"
-# database_name = "my-database"
-# database_id = ""
+[[d1_databases]]
+binding = "DB"
+database_name = "immigration-app-db"
+database_id = "03d52fa4-bcbd-4a44-ac71-05b1582a8411"
 
 # [ai]
 # binding = "AI"

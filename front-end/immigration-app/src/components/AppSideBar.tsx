@@ -27,7 +27,7 @@ import {
 import Link from "next/link";
 
 import { usePathname } from "next/navigation";
-import { cn } from "../../lib/utils";
+import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import bg from "@/assets/logo/Up_Immigration_Logo.png";
