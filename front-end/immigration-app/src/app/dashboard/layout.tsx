@@ -7,6 +7,8 @@ import {
   SignedOut,
   UserButton
 } from '@clerk/nextjs'
+import { AppSidebar } from "@/components/AppSideBar";
+import { SidebarProvider } from "@/components/ui/sidebar";
 
 export default function DashboardLayout({
   children,
@@ -14,7 +16,9 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
+    <SidebarProvider>
     <ClerkProvider>
+      <AppSidebar />
       <SignedOut>
             <SignInButton>
               <Button
@@ -31,5 +35,8 @@ export default function DashboardLayout({
           </SignedIn>
       {children}
     </ClerkProvider>
+    </SidebarProvider>
+
   )
 }
+
