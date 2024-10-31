@@ -1,4 +1,12 @@
 'use client'
+import { Button } from '@/components/ui/button';
+import {
+  ClerkProvider,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton
+} from '@clerk/nextjs'
 
 export default function DashboardLayout({
   children,
@@ -6,8 +14,22 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div>
+    <ClerkProvider>
+      <SignedOut>
+            <SignInButton>
+              <Button
+                variant="outline"
+                size="sm"
+                className="text-black hover:bg-yellow-400"
+              >
+                Sign In / Sign Up
+              </Button>
+            </SignInButton>
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
       {children}
-    </div>
+    </ClerkProvider>
   )
 }

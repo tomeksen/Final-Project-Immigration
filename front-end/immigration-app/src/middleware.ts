@@ -1,12 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
+import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 
-export const config = {
-  matcher: [
-    "/((?!api/|_next/|_static/|_vercel|[\\w-]+\\.\\w+).*)",
-  ],
-};
+const isPublicRoute = createRouteMatcher(['/','/playground(.*)','/dashboard/auth/sign-in(.*)', '/dashboard/auth/sign-up(.*)']);
 
 export default async function middleware(req: NextRequest) {
+  
+  clerkMiddleware((auth, request) => {
+    if (!isPublicRoute(request)) {
+      auth().protect();
+    }
+  });
+
   const url = req.nextUrl;
 
   // Get hostname of request (e.g. demo.vercel.pub, demo.localhost:3000)
@@ -56,3 +60,12 @@ export default async function middleware(req: NextRequest) {
 
   return NextResponse.rewrite(new URL(`/${hostname}${path}`, req.url));
 }
+
+export const config = {
+  matcher: [
+    // Skip Next.js internals and all static files, unless found in search params
+    '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
+    // Always run for API routes
+    '/(api|trpc)(.*)',
+  ],
+};
