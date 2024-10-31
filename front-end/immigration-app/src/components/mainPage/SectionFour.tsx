@@ -17,7 +17,7 @@ export default function SectionFour() {
         <div className="bg-sky-200 flex-col justify-center m-auto items-center align-middle w-2/5 rounded-lg relative">
           <Image src={quiz} alt="Graphic Image of a girl" className="m-auto" />
           <Button className="bg-primary-red w-full absolute bottom-0 h-14 font-bold text-3xl rounded-none rounded-b-lg hover:bg-red-800">
-            Start Quiz! <MdOutlineArrowForward className="text-9xl" />
+            Start Quiz! <MdOutlineArrowForward size={50} />
           </Button>
         </div>
       </div>

@@ -5,5 +5,5 @@ interface Text {
 }
 
 export default function SectionTitle({ text }: Text) {
-  return <h1 className="text-lg font-semibold mb-4">{text}</h1>;
+  return <h1 className="text-2xl font-semibold mb-4">{text}</h1>;
 }
