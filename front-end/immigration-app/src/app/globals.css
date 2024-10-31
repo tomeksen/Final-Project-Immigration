@@ -48,12 +48,12 @@ body {
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
-    --sidebar-background: var(--light-gray);
+    --sidebar-background: var(--background);
     --sidebar-foreground: var(--foreground);
     --sidebar-primary: var(--primary-gray);
     --sidebar-primary-foreground: var(--primary-white);
-    --sidebar-accent: var(--dark-gray);
-    --sidebar-accent-foreground: var(--foreground);
+    --sidebar-accent: var(--primary-red);
+    --sidebar-accent-foreground: var(--background);
     --sidebar-border: var(--gray);
     --sidebar-ring: var(--blue);
   }
