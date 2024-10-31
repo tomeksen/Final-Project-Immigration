@@ -7,15 +7,14 @@ import Image from 'next/image'
 export default function Page() {
   const  {theme}= useTheme();
   return (
-  <div className="grid min-h-screen md:grid-cols-2">
+  <div className="grid grid-cols-2 min-h-screen md:grid-cols-2">
   <div className="relative hidden md:block">
-    <Image
-      src="/placeholder.svg?height=1080&width=1920"
+    <img
+      src="https://b991227.smushcdn.com/991227/wp-content/uploads/49428195153_ddbd3bbb45_o-2-scaled.jpg?lossy=1&strip=1&webp=1"
       alt="Mountain landscape with turquoise lake"
       className="absolute inset-0 h-full w-full object-cover"
       width={1920}
       height={1080}
-      priority
     />
   </div>
   <div className="flex items-center justify-center px-8">

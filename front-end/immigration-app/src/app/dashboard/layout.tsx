@@ -16,27 +16,9 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <SidebarProvider>
-    <ClerkProvider>
-      <AppSidebar />
-      <SignedOut>
-            <SignInButton>
-              <Button
-                variant="outline"
-                size="sm"
-                className="text-black hover:bg-yellow-400"
-              >
-                Sign In / Sign Up
-              </Button>
-            </SignInButton>
-          </SignedOut>
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
-      {children}
-    </ClerkProvider>
-    </SidebarProvider>
-
+      <ClerkProvider>
+        {children}
+      </ClerkProvider>
   )
 }
 
