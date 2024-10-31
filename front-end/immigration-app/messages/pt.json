@@ -1,12 +1,28 @@
 {
-    "HomePage": {
-      "title": "Bem-vindo ao aplicativo de imigração!"
+  "HomePage": {
+    "title": "Bem-vindo ao aplicativo de imigração!"
+  },
+  "Sidebar": {
+    "Content": {
+      "dashboard": "Painel de Controle",
+      "applications": "Aplicações",
+      "payments": "Pagamentos",
+      "documents": "Meus Documentos",
+      "appointment": "Compromisso",
+      "inbox": "Caixa de Entrada",
+      "profile": "Perfil"
     },
-    "LocaleSwitcher": {
+    "Footer": {
+      "settings": "Configurações",
+      "faq": "Perguntas Frequentes",
+      "logout": "Sair"
+    }
+  },
+  "LocaleSwitcher": {
     "en": "English",
     "es": "Spanish",
     "pt": "Portuguese",
     "jp": "Japanese",
     "label": "Select Language"
-    }
   }
+}
