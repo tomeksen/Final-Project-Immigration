@@ -18,6 +18,7 @@ import {
   SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
+  SidebarHeader,
   // SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
@@ -28,6 +29,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "../../lib/utils";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
+import bg from "@/assets/logo/Up_Immigration_Logo.png";
 
 export function AppSidebar() {
   const pathname = usePathname();
@@ -36,7 +39,7 @@ export function AppSidebar() {
   const contentItems = [
     {
       title: t("Content.dashboard"),
-      url: "/dashboard",
+      url: "/",
       icon: LayoutDashboard,
     },
     {
@@ -89,15 +92,26 @@ export function AppSidebar() {
     },
   ];
 
+  const isDashboardDomain =
+    typeof window !== "undefined" &&
+    window.location.hostname.startsWith("dashboard");
+
   return (
     <Sidebar variant="sidebar">
+      <SidebarHeader>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <Image src={bg} width={200} height={200} alt="logo" />
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
           {/* <SidebarGroupLabel>LOGO</SidebarGroupLabel>  unnecessary for now */}
           <SidebarGroupContent>
             <SidebarMenu>
               {contentItems.map((item) => {
-                const isActive = pathname === item.url;
+                const isActive = pathname.includes(item.url);
 
                 return (
                   <div key={item.title}>
@@ -135,23 +149,26 @@ export function AppSidebar() {
           <SidebarGroup>
             <SidebarGroupContent>
               <SidebarMenu>
-                {footerItems.map((item) => (
-                  <SidebarMenuItem
-                    key={item.title}
-                    className={cn(
-                      "flex items-center mx-3",
-                      pathname === item.url &&
-                        "bg-sidebar-accent text-sidebar-accent-foreground font-semibold rounded-md"
-                    )}
-                  >
-                    <SidebarMenuButton asChild>
-                      <Link href={item.url} className="px-2 py-6">
-                        <item.icon className="h-6 w-6 font-bold" />
-                        <span>{item.title}</span>
-                      </Link>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                ))}
+                {footerItems.map((item) => {
+                  const isActive = pathname.includes(item.url);
+                  return (
+                    <SidebarMenuItem
+                      key={item.title}
+                      className={cn(
+                        "flex items-center mx-3",
+                        isActive &&
+                          "bg-sidebar-accent text-sidebar-accent-foreground font-semibold rounded-md"
+                      )}
+                    >
+                      <SidebarMenuButton asChild>
+                        <Link href={item.url} className="px-2 py-6">
+                          <item.icon className={cn("h-6 w-6 font-bold")} />
+                          <span>{item.title}</span>
+                        </Link>
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                  );
+                })}
               </SidebarMenu>
             </SidebarGroupContent>
           </SidebarGroup>
