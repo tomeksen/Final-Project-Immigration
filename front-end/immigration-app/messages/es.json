@@ -1,12 +1,28 @@
 {
-    "HomePage": {
-      "title": "Bienvenido a la aplicación de inmigración!"
+  "HomePage": {
+    "title": "Bienvenido a la aplicación de inmigración!"
+  },
+  "Sidebar": {
+    "Content": {
+      "dashboard": "Tablero",
+      "applications": "Aplicaciones",
+      "payments": "Pagos",
+      "documents": "Mis Documentos",
+      "appointment": "Cita",
+      "inbox": "Bandeja de Entrada",
+      "profile": "Perfil"
     },
-    "LocaleSwitcher": {
+    "Footer": {
+      "settings": "Ajustes",
+      "faq": "Preguntas Frecuentes",
+      "logout": "Cerrar Sesión"
+    }
+  },
+  "LocaleSwitcher": {
     "en": "English",
     "es": "Spanish",
     "pt": "Portuguese",
     "jp": "Japanese",
     "label": "Select Language"
-    }
   }
+}

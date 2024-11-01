@@ -1,18 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
+import { clerkMiddleware, ClerkMiddlewareAuth, createRouteMatcher } from "@clerk/nextjs/server";
+import createMiddleware from 'next-intl/middleware'
+const isProtectedRoute = createRouteMatcher(['/dashboard(.*)', '/forum(.*)'])
 
-export const config = {
-  matcher: [
-    "/((?!api/|_next/|_static/|_vercel|[\\w-]+\\.\\w+).*)",
-  ],
-};
-
-export default async function middleware(req: NextRequest) {
-  const url = req.nextUrl;
-
-  // Get hostname of request (e.g. demo.vercel.pub, demo.localhost:3000)
+export default clerkMiddleware(async (auth: ClerkMiddlewareAuth, req: NextRequest) => {
   let hostname = req.headers
-    .get("host")!
-    .replace(".localhost:3000", `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`);
+  .get("host")!
+  .replace(".localhost:3000", `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`);
+  const url = req.nextUrl;
 
   const searchParams = req.nextUrl.searchParams.toString();
   // Get the pathname of the request (e.g. /, /about, /blog/first-post)
@@ -22,9 +17,11 @@ export default async function middleware(req: NextRequest) {
 
   // Handle dashboard subdomain
   if (hostname === `dashboard.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`) {
-    return NextResponse.rewrite(
-      new URL(`/dashboard${path === "/" ? "" : path}`, req.url),
-    );
+    const newUrl = new URL(`/dashboard${path === "/" ? "" : path}`, req.url);
+    if (isProtectedRoute(req)) {
+      await auth.protect();
+    }
+    return NextResponse.rewrite(newUrl);
   }
 
   if (hostname === `playground.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`) {
@@ -32,19 +29,7 @@ export default async function middleware(req: NextRequest) {
       new URL(`/playground${path === "/" ? "" : path}`, req.url),
     );
   }
-//   // rewrites for app pages
-//   if (hostname == `app.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`) {
-//     const session = await getToken({ req });
-//     if (!session && path !== "/login") {
-//       return NextResponse.redirect(new URL("/login", req.url));
-//     } else if (session && path == "/login") {
-//       return NextResponse.redirect(new URL("/", req.url));
-//     }
-//     return NextResponse.rewrite(
-//       new URL(`/app${path === "/" ? "" : path}`, req.url),
-//     );
-//   }
-  // Handle root domain and localhost
+
   if (
     hostname === "localhost:3000" ||
     hostname === process.env.NEXT_PUBLIC_ROOT_DOMAIN
@@ -55,4 +40,13 @@ export default async function middleware(req: NextRequest) {
   }
 
   return NextResponse.rewrite(new URL(`/${hostname}${path}`, req.url));
-}
+});
+
+export const config = {
+  matcher: [
+    // Skip Next.js internals and all static files, unless found in search params
+    '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
+    // Always run for API routes
+    '/(api|trpc)(.*)',
+  ],
+};
