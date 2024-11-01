@@ -100,8 +100,8 @@ export function AppSidebar() {
     <Sidebar variant="sidebar">
       <SidebarHeader>
         <SidebarMenu>
-          <SidebarMenuItem>
-            <Image src={bg} width={200} height={200} alt="logo" />
+          <SidebarMenuItem className="mb-5 ml-1">
+            <Image src={bg} width={150} height={100} alt="logo" />
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
@@ -119,18 +119,23 @@ export function AppSidebar() {
                       className={cn(
                         "relative flex items-center mx-3",
                         isActive &&
-                          "bg-sidebar-accent text-sidebar-accent-foreground font-semibold rounded-md"
+                          "bg-sidebar-accent hover:bg-sidebar-accent text-sidebar-accent-foreground  font-semibold rounded-md"
                       )}
                     >
                       {isActive && (
-                        <div className="absolute -left-5 top-0 bottom-0 w-2 bg-sidebar-accent rounded-r-md" />
+                        <div className="absolute -left-5 top-0 bottom-0 w-2 bg-sidebar-accent  rounded-r-md" />
                       )}
                       <SidebarMenuButton asChild>
                         <Link
                           href={item.url}
-                          className="px-2 py-6 flex items-center gap-2"
+                          className={cn(
+                            "px-2 py-6 flex items-center gap-2",
+                            isActive
+                              ? "hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+                              : "hover:bg-secondary-lightGray hover:text-primary-black hover:font-bold"
+                          )}
                         >
-                          <item.icon className="h-4 w-4" />
+                          <item.icon className="h-4 w-4 font-bold" />
                           <span>{item.title}</span>
                         </Link>
                       </SidebarMenuButton>
@@ -161,7 +166,13 @@ export function AppSidebar() {
                       )}
                     >
                       <SidebarMenuButton asChild>
-                        <Link href={item.url} className="px-2 py-6">
+                        <Link
+                          href={item.url}
+                          className={cn(
+                            "px-2 py-6",
+                            "hover:bg-secondary-lightGray hover:text-primary-black hover:font-bold"
+                          )}
+                        >
                           <item.icon className={cn("h-6 w-6 font-bold")} />
                           <span>{item.title}</span>
                         </Link>
