@@ -5,6 +5,7 @@ import { getLocale, getMessages } from "next-intl/server";
 import { Poppins } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import Header from "@/components/header/Header";
+import Footer from "@/components/footer/Footer";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -35,6 +36,7 @@ export default async function RootLayout({
           <NextIntlClientProvider messages={messages}>
             <Header />
             {children}
+            <Footer />
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>
