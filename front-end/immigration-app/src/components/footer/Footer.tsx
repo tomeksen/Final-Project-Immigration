@@ -5,27 +5,46 @@ import { FaInstagram } from "react-icons/fa";
 import { CiFacebook } from "react-icons/ci";
 import { RiLinkedinBoxLine } from "react-icons/ri";
 import { FaWhatsapp } from "react-icons/fa";
+import Services from "./Services";
+import Company from "./Company";
 
 export default function Footer() {
   return (
-    <div className="bg-primary-red">
-      <div className="flex gap-5">
-        <div>
+    <footer className="bg-primary-red py-8 px-4 md:px-16 text-white">
+      <div className="container flex flex-col mx-auto md:flex-row justify-between gap-16 md:gap-32">
+        {/* Logo */}
+        <div className="flex-shrink-0 self-start">
           <Image src={whiteLogo} alt="White logo" width={150} height={100} />
         </div>
-        <div>nav</div>
-        <div className="flex gap-2">
-          <FaInstagram className="text-white" />
-          <CiFacebook className="text-white" />
-          <RiLinkedinBoxLine className="text-white" />
-          <FaWhatsapp className="text-white" />
+
+        {/* Links Section */}
+        <div className="flex flex-col md:flex-row items-center md:items-start md:gap-16 space-y-6 md:space-y-0">
+          <div>
+            <Services />
+          </div>
+
+          <div>
+            <Company />
+          </div>
+
+          <div>
+            <h1 className="text-lg font-bold">FAQs</h1>
+          </div>
+        </div>
+
+        {/* Social Media Icons */}
+        <div className="flex gap-4">
+          <FaInstagram className="hover:text-gray-300 transition-colors duration-200" />
+          <CiFacebook className="hover:text-gray-300 transition-colors duration-200" />
+          <RiLinkedinBoxLine className="hover:text-gray-300 transition-colors duration-200" />
+          <FaWhatsapp className="hover:text-gray-300 transition-colors duration-200" />
         </div>
       </div>
-      <div className="flex justify-end">
-        <p className="text-white">
-          ©Up Immigration Consulting. All Rights Reserved
-        </p>
+
+      {/* Footer Copyright */}
+      <div className="mt-6 md:mt-8 text-center md:text-right text-sm">
+        <p>© Up Immigration Consulting. All Rights Reserved</p>
       </div>
-    </div>
+    </footer>
   );
 }
