@@ -8,7 +8,7 @@ import SectionTwo from "@/components/mainPage/SectionTwo";
 
 export default function HomePage() {
   return (
-    <div className="">
+    <div>
       <SectionOne />
       <SectionTwo />
       <SectionThree />

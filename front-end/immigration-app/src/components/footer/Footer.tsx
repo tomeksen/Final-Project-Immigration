@@ -34,10 +34,22 @@ export default function Footer() {
 
         {/* Social Media Icons */}
         <div className="flex gap-4">
-          <FaInstagram className="hover:text-gray-300 transition-colors duration-200" />
-          <CiFacebook className="hover:text-gray-300 transition-colors duration-200" />
-          <RiLinkedinBoxLine className="hover:text-gray-300 transition-colors duration-200" />
-          <FaWhatsapp className="hover:text-gray-300 transition-colors duration-200" />
+          <FaInstagram
+            className="hover:text-gray-300 transition-colors duration-200"
+            size={30}
+          />
+          <CiFacebook
+            className="hover:text-gray-300 transition-colors duration-200"
+            size={30}
+          />
+          <RiLinkedinBoxLine
+            className="hover:text-gray-300 transition-colors duration-200"
+            size={30}
+          />
+          <FaWhatsapp
+            className="hover:text-gray-300 transition-colors duration-200"
+            size={30}
+          />
         </div>
       </div>
 
