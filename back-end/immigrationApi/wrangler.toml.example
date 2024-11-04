@@ -16,14 +16,14 @@ compatibility_flags = [ "nodejs_compat" ]
 # DB_URL = "https://your-production-db-url.com"
 
 [vars]
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY="pk_test_ZW1lcmdpbmctd2FydGhvZy0yNC5jbGVyay5hY2NvdW50cy5kZXYk"
-CLERK_SECRET_KEY="sk_test_f6z0wLBN8XOBJOf07h9a951IU0sccOrXSGLWjoJLUX"
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=""
+CLERK_SECRET_KEY=""
 # DB_URL = "https://your-database-url.com"
 # API_KEY = "your_api_key_value"
 
 [[kv_namespaces]]
 binding = "immigration-app"
-id = "0f7428ded27f46fbb862bff1b6673a9c"
+id = ""
 
 # [[r2_buckets]]
 # binding = "MY_BUCKET"
@@ -32,7 +32,7 @@ id = "0f7428ded27f46fbb862bff1b6673a9c"
 [[d1_databases]]
 binding = "DB"
 database_name = "immigration-app-db"
-database_id = "03d52fa4-bcbd-4a44-ac71-05b1582a8411"
+database_id = ""
 
 # [ai]
 # binding = "AI"
