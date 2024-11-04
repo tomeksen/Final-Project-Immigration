@@ -2,6 +2,9 @@ import BgImageContainerHeader from "@/components/BgImageContainerHeader";
 import React from "react";
 import lakeBg from "@/assets//lakeCanada.png";
 import SectionOne from "@/components/immigratePage/SectionOne";
+import SectionTwo from "@/components/immigratePage/SectionTwo";
+import WhereToStart from "@/components/mainPage/WhereToStart";
+import Testimonials from "@/components/mainPage/Testimonials";
 
 export default function page() {
   return (
@@ -15,6 +18,9 @@ export default function page() {
         />
       </div>
       <SectionOne />
+      <SectionTwo />
+      <WhereToStart />
+      <Testimonials />
     </div>
   );
 }

@@ -1,10 +1,10 @@
 import SectionFive from "@/components/mainPage/SectionFive";
 import SectionFour from "@/components/mainPage/SectionFour";
 import SectionOne from "@/components/mainPage/SectionOne";
-import SectionSeven from "@/components/mainPage/SectionSeven";
-import SectionSix from "@/components/mainPage/SectionSix";
 import SectionThree from "@/components/mainPage/SectionThree";
 import SectionTwo from "@/components/mainPage/SectionTwo";
+import WhereToStart from "@/components/mainPage/WhereToStart";
+import Testimonials from "@/components/mainPage/Testimonials";
 
 export default function HomePage() {
   return (
@@ -14,8 +14,8 @@ export default function HomePage() {
       <SectionThree />
       <SectionFour />
       <SectionFive />
-      <SectionSix />
-      <SectionSeven />
+      <WhereToStart />
+      <Testimonials />
     </div>
   );
 }
