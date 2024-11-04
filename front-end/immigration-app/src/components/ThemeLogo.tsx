@@ -15,6 +15,8 @@ export function ThemeLogo() {
       <Image
         src={theme === "dark" ? LogoDark : LogoLight}
         alt="logo"
+        width={150}
+        height={100}
         className="object-cover w-28" // Maintains aspect ratio without distortion
         priority
       />
