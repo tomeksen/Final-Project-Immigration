@@ -89,15 +89,15 @@ function AppCalendar({
           return (
             <div
               className={cn(
-                "flex flex-col justify-between h-full p-2",
-                isToday && "bg-accent text-accent-foreground"
+                "flex flex-col justify-between h-full",
+                isToday && "bg-primary-red/10 text-accent-foreground"
               )}
             >
-              <span>{props.date.getDate()}</span>
+              <span className="p-2">{props.date.getDate()}</span>
               {isPlanDate && (
-                <div className="flex items-center p-1 bg-blue-100 relative">
-                  <span className="w-1 h-full bg-blue-500 mr-2"></span>
-                  <span className="text-xs font-medium text-blue-600">
+                <div className="flex items-center bg-primary-red/10 relative">
+                  <span className="w-1 h-full bg-primary-red pr-1"></span>
+                  <span className="flex items-center justify-center w-full text-xs py-2 text-primary-red">
                     {
                       bookedDays.find(
                         (day) =>
