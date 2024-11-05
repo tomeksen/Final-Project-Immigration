@@ -5,6 +5,7 @@ import SectionOne from "@/components/immigratePage/SectionOne";
 import SectionTwo from "@/components/immigratePage/SectionTwo";
 import WhereToStart from "@/components/mainPage/WhereToStart";
 import Testimonials from "@/components/mainPage/Testimonials";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export default function page() {
   return (
@@ -16,6 +17,9 @@ export default function page() {
           text="Immigrate"
           className="object-cover h-32 md:object-bottom xl:object-center"
         />
+      </div>
+      <div className="pt-4 sm:mx-10 md:mx-20 lg:mx-[124px]">
+        <Breadcrumbs />
       </div>
       <SectionOne />
       <SectionTwo />
