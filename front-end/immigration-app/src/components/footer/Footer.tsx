@@ -51,7 +51,7 @@ export default function Footer() {
       </div>
 
       {/* Footer Copyright */}
-      <div className="mt-6 md:mt-8 text-center text-sm">
+      <div className="flex justify-end mt-6 md:mt-8 text-center text-sm">
         <p>© Up Immigration Consulting. All Rights Reserved</p>
       </div>
     </footer>
