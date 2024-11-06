@@ -9,9 +9,9 @@ import Link from "next/link";
 export default function Header() {
   return (
     <header className="mb-[2px] p-2 bg-white shadow-sm">
-      <div className="container mx-auto flex flex-col items-center space-y-2 md:flex-row md:justify-between md:space-y-0 md:space-x-4 px-4">
+      <div className="container mx-auto flex flex-col items-center justify-center space-y-2 px-4 sm:mx-0 md:flex-row md:justify-between md:space-y-0 md:mx-auto">
         {/* Logo Section */}
-        <div className="flex items-center justify-between w-full md:w-auto">
+        <div className="flex items-center justify-between w-full xs:hidden md:w-auto">
           <Link href="/">
             <ThemeLogo />
           </Link>
@@ -30,10 +30,12 @@ export default function Header() {
 
         {/* Buttons and Locale/Dark Mode Toggle */}
         <div className="hidden md:flex items-center space-x-4">
-          <LocaleSwitcher />
-          <DarkModeToggle />
+          <div className="flex xs:flex-col">
+            <LocaleSwitcher />
+            <DarkModeToggle />
+          </div>
           <Link href="/consultation">
-            <button className="bg-primary-red text-white py-2 px-4 rounded-xl font-semibold">
+            <button className="bg-primary-red text-white sm:text-sm sm:p-1 md:py-2 md:px-4 rounded-xl font-semibold ">
               Book a free consultation
             </button>
           </Link>

@@ -9,8 +9,8 @@ import Company from "./Company";
 
 export default function Footer() {
   return (
-    <footer className="bg-primary-red py-8 px-4 md:px-16 text-white">
-      <div className="container mx-auto flex flex-col items-center  justify-between gap-8 md:gap-16">
+    <footer className="bg-primary-red py-8 px-4 md:px-10 text-white">
+      <div className="container mx-auto items-center flex flex-col justify-between gap-8 sm:flex-col md:flex-row">
         {/* Logo */}
         <div className="flex-shrink-0 mb-6 md:mb-0">
           <Image src={whiteLogo} alt="White logo" width={150} height={100} />

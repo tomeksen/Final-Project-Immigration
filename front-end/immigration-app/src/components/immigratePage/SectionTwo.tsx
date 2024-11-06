@@ -5,6 +5,7 @@ import SectionTitle from "../SectionTitle";
 import { immigrationOptions } from "./immigrationOptions";
 import { programCards } from "./programCards";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function SectionTwo() {
   return (
@@ -16,11 +17,11 @@ export default function SectionTwo() {
       <div className="flex flex-wrap gap-2 justify-center sm:justify-start mb-8">
         {immigrationOptions.map((option) => (
           <Button
-            key={option}
+            key={option.id}
             variant="outline"
             className="px-4 py-2 text-gray-800 bg-gray-100 hover:bg-gray-200 rounded-full text-sm"
           >
-            {option}
+            <Link href={`/immigrate/${option.link}`}>{option.title}</Link>
           </Button>
         ))}
       </div>
