@@ -8,6 +8,8 @@ import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 
 export type CalendarProps = React.ComponentProps<typeof DayPicker>;
+// TODO:
+// there is more than two events on the same day or more than one day long
 
 function AppCalendar({
   className,
@@ -15,10 +17,23 @@ function AppCalendar({
   showOutsideDays = true,
   ...props
 }: CalendarProps) {
+  // this will be props
   const bookedDays = [
-    { date: new Date(), title: "plan title1" },
-    { date: new Date(2024, 10, 13), title: "plan title2" },
-    { date: new Date(2024, 10, 25), title: "plan title3" },
+    {
+      startDate: new Date(2024, 10, 5),
+      endDate: new Date(2024, 10, 7),
+      title: "Event 1",
+    },
+    {
+      startDate: new Date(2024, 10, 6),
+      endDate: new Date(2024, 10, 8),
+      title: "Event 2",
+    },
+    {
+      startDate: new Date(2024, 10, 25),
+      endDate: new Date(2024, 10, 25),
+      title: "One-day Event",
+    },
   ];
 
   return (
@@ -30,7 +45,7 @@ function AppCalendar({
         months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",
         month: "space-y-4",
         caption: "flex justify-center pt-1 relative items-center",
-        caption_label: "text-sm font-medium",
+        caption_label: "text-lg font-medium",
         nav: "space-x-1 flex items-center",
         nav_button: cn(
           buttonVariants({ variant: "outline" }),
@@ -39,74 +54,66 @@ function AppCalendar({
         nav_button_previous: "absolute left-1",
         nav_button_next: "absolute right-1",
         table: "w-full border-collapse space-y-1",
-        head_row: "flex",
-        head_cell:
-          "text-muted-foreground rounded-md w-8 font-normal text-[0.8rem]",
-        row: "flex w-full mt-2",
+        head_row:
+          "flex bg-secondary-lightGray dark:bg-secondary-lightGray dark:text-primary-black rounded-t-md",
+        head_cell: " w-[125px] font-normal text-md text-bold p-2",
+        row: "flex w-full",
         cell: cn(
-          "relative p-0 w-[150px] h-[150px] font-bold text-right border border-secondary-lightGray text-md focus-within:relative focus-within:z-20 [&:has([aria-selected])]:bg-accent [&:has([aria-selected].day-outside)]:bg-accent/50 [&:has([aria-selected].day-range-end)]:rounded-r-md",
+          "relative p-0 w-[125px] h-[125px] font-bold text-right border border-secondary-lightGray text-md focus-within:relative focus-within:z-20 [&:has([aria-selected])]:bg-accent [&:has([aria-selected].day-outside)]:bg-accent/50 [&:has([aria-selected].day-range-end)]:rounded-r-md",
           props.mode === "range"
             ? "[&:has(>.day-range-end)]:rounded-r-md [&:has(>.day-range-start)]:rounded-l-md first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md"
             : "[&:has([aria-selected])]:rounded-md"
         ),
-        // day: cn(
-        //   buttonVariants({ variant: "ghost" }),
-        //   "h-8 w-8 p-0 font-normal aria-selected:opacity-100"
-        // ),
       }}
-      // modifiersClassNames={{
-      //   today: "bg-accent text-accent-foreground", // apply today style
-      //   selected:
-      //     "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground", // selectedの日に適用
-      //   outside: "text-muted-foreground opacity-50", // outsideの日に適用
-      //   disabled: "text-muted-foreground opacity-50", // disabledの日に適用
-      // }}
       components={{
         IconLeft: ({ ...props }) => <ChevronLeftIcon className="h-4 w-4" />,
         IconRight: ({ ...props }) => <ChevronRightIcon className="h-4 w-4" />,
         Day(props) {
-          bookedDays.forEach((day) => {
-            console.log(day);
-          });
-
-          const isPlanDate = bookedDays.some(
-            (day) =>
-              day.date.getFullYear() === props.date.getFullYear() &&
-              day.date.getMonth() === props.date.getMonth() &&
-              day.date.getDate() === props.date.getDate()
+          const eventsForDate = bookedDays.filter(
+            (event) =>
+              props.date >= event.startDate && props.date <= event.endDate
           );
 
-          const isToday =
-            new Date() &&
-            props.date.getFullYear() === new Date().getFullYear() &&
-            props.date.getMonth() === new Date().getMonth() &&
-            props.date.getDate() === new Date().getDate();
+          function isSameDate(date1: Date, date2: Date): boolean {
+            return (
+              date1.getFullYear() === date2.getFullYear() &&
+              date1.getMonth() === date2.getMonth() &&
+              date1.getDate() === date2.getDate()
+            );
+          }
 
-          // bookedDays.find((day) => {
-          //   console.log("⭐️", day.date, props.date, day.date === props.date);
-          // });
+          const isToday = isSameDate(props.date, new Date());
 
           return (
+            // cell
             <div
               className={cn(
-                "flex flex-col justify-between h-full",
-                isToday && "bg-primary-red/10 text-accent-foreground"
+                "flex flex-col justify-between h-full dark:bg-primary-gray",
+                isToday &&
+                  "bg-primary-red/10 dark:bg-primary-black text-accent-foreground"
               )}
             >
               <span className="p-2">{props.date.getDate()}</span>
-              {isPlanDate && (
-                <div className="flex items-center bg-primary-red/10 relative">
-                  <span className="w-1 h-full bg-primary-red pr-1"></span>
-                  <span className="flex items-center justify-center w-full text-xs py-2 text-primary-red">
-                    {
-                      bookedDays.find(
-                        (day) =>
-                          day.date.getFullYear() === props.date.getFullYear() &&
-                          day.date.getMonth() === props.date.getMonth() &&
-                          day.date.getDate() === props.date.getDate()
-                      )?.title
-                    }
-                  </span>
+              {eventsForDate.length > 0 && (
+                <div className={`flex flex-col-reverse gap-1 `}>
+                  {eventsForDate.map((event, index) => (
+                    // イベント
+                    <div
+                      key={index}
+                      className="flex items-center bg-primary-red/10 w-full h-6"
+                    >
+                      {/* if the event is the first day, show a line */}
+                      {isSameDate(event.startDate, props.date) && (
+                        <span className="w-1 h-full bg-primary-red"></span>
+                      )}
+
+                      <span className="text-xs py-1 text-primary-red flex-1">
+                        {isSameDate(event.startDate, props.date)
+                          ? event.title
+                          : ""}
+                      </span>
+                    </div>
+                  ))}
                 </div>
               )}
             </div>
