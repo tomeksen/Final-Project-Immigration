@@ -97,7 +97,6 @@ function AppCalendar({
               {eventsForDate.length > 0 && (
                 <div className={`flex flex-col-reverse gap-1 `}>
                   {eventsForDate.map((event, index) => (
-                    // イベント
                     <div
                       key={index}
                       className="flex items-center bg-primary-red/10 w-full h-6"
