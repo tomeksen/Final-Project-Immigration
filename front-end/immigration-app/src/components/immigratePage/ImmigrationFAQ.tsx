@@ -8,7 +8,7 @@ import {
 } from "../ui/accordion";
 import { FAQ } from "./FAQ";
 
-export default function ImmigrationFrequentQuestions() {
+export default function ImmigrationFAQ() {
   return (
     <div className="px-4 sm:px-8 lg:px-16 pb-10">
       {/* Title */}
@@ -16,10 +16,12 @@ export default function ImmigrationFrequentQuestions() {
       <Accordion type="single" collapsible className="w-full">
         {FAQ.map((question) => (
           <AccordionItem key={question.id} value={question.id}>
-            <AccordionTrigger>
+            <AccordionTrigger className="text-base sm:text-lg md:text-xl lg:text-2xl">
               {`${question.id}. ${question.title}`}
             </AccordionTrigger>
-            <AccordionContent>{question.description}</AccordionContent>
+            <AccordionContent className="text-sm sm:text-base md:text-lg">
+              {question.description}
+            </AccordionContent>
           </AccordionItem>
         ))}
       </Accordion>

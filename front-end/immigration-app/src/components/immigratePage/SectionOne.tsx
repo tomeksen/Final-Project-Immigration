@@ -4,7 +4,7 @@ import { Button } from "../ui/button";
 
 export default function SectionOne() {
   return (
-    <div className="p-16 md:mx-7 lg:mx-14">
+    <div className="px-4 sm:px-8 lg:px-16 pb-10 mt-10">
       <SectionTitle text="Do you want to immigrate to Canada?" />
       <div className="flex w-full mb-5 justify-between gap-7 text-justify">
         <p className="w-1/2">
