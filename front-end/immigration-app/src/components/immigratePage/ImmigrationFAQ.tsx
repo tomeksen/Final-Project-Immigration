@@ -10,7 +10,7 @@ import { FAQ } from "./FAQ";
 
 export default function ImmigrationFAQ() {
   return (
-    <div className="px-4 sm:px-8 lg:px-16 pb-10">
+    <div className="pt-10 px-4 sm:px-8 lg:px-16 pb-10 bg-gray-100">
       {/* Title */}
       <SectionTitle text="ImmigrationFrequentQuestions" />
       <Accordion type="single" collapsible className="w-full">
