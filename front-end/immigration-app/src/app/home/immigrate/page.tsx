@@ -6,6 +6,7 @@ import SectionTwo from "@/components/immigratePage/SectionTwo";
 import WhereToStart from "@/components/mainPage/WhereToStart";
 import Testimonials from "@/components/mainPage/Testimonials";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import ImmigrationFrequentQuestions from "@/components/immigratePage/ImmigrationFrequentQuestions";
 
 export default function page() {
   return (
@@ -25,6 +26,7 @@ export default function page() {
       <SectionTwo />
       <WhereToStart />
       <Testimonials />
+      <ImmigrationFrequentQuestions />
     </div>
   );
 }
