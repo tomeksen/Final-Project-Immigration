@@ -12,7 +12,6 @@ export default function SectionTwo() {
     <div className="px-4 sm:px-8 lg:px-16 pb-10">
       {/* Title */}
       <SectionTitle text="Discover all your options" />
-
       {/* Filter Buttons */}
       <div className="flex flex-wrap gap-2 justify-center sm:justify-start mb-8">
         {immigrationOptions.map((option) => (

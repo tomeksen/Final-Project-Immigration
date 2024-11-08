@@ -9,6 +9,13 @@ import provincial from "@/assets/all_options_pics/provincial_nominee.png";
 import provinces from "@/assets/provinces.jpeg";
 import building from "@/assets/building.jpeg";
 import { ProvincialProgram } from "./programsByProvince";
+import {
+  CostAndProcessingFAQ,
+  IncreaseChancesNominationFAQ,
+  ProvincialCategoriesFAQ,
+  ProvincialFAQ,
+} from "./provincialFAQ";
+import FreeConsultationBtn from "@/components/FreeConsultationBtn";
 
 export default function page() {
   return (
@@ -21,9 +28,7 @@ export default function page() {
           className="object-cover h-32 md:object-bottom lg:object-bottom xl:object-center"
         />
       </div>
-      <div className="pt-4 sm:mx-10 md:mx-20 lg:mx-[124px]">
-        <Breadcrumbs />
-      </div>
+      <Breadcrumbs />
       <div className="px-4 sm:px-8 lg:px-16 pb-10">
         <SectionTitle text="Overview of Provincial Nominee Programs" />
         <div>
@@ -57,6 +62,30 @@ export default function page() {
             alt="Provinces Map"
             className="rounded-xl max-w-auto md:max-w-lg  mx-auto"
           />
+          {ProvincialFAQ.map((faq) => (
+            <div key={faq.id}>
+              <SubSection title={faq.title} description={faq.description} />
+            </div>
+          ))}
+          <SectionTitle text="Cost and Processing time" />
+          {CostAndProcessingFAQ.map((faq) => (
+            <div key={faq.id}>
+              <SubSection title={faq.title} description={faq.description} />
+            </div>
+          ))}
+          <SectionTitle text="Increasing Your Chances of Receiving a Nomination" />
+          {IncreaseChancesNominationFAQ.map((faq) => (
+            <div key={faq.id}>
+              <SubSection title={faq.title} description={faq.description} />
+            </div>
+          ))}
+          <SectionTitle text="Special PNP Categories" />
+          {ProvincialCategoriesFAQ.map((faq) => (
+            <div key={faq.id}>
+              <SubSection title={faq.title} description={faq.description} />
+            </div>
+          ))}
+          <FreeConsultationBtn />
         </div>
       </div>
     </div>

@@ -10,6 +10,7 @@ import ImmigrationPrograms from "@/components/expressEntry/ImmigrationPrograms";
 import harbour from "@/assets/harbor.jpeg";
 import Link from "next/link";
 import caregiver from "@/assets/all_options_pics/caregiver_programs.jpeg";
+import FreeConsultationBtn from "@/components/FreeConsultationBtn";
 
 export default function ExpressEntry() {
   return (
@@ -22,9 +23,7 @@ export default function ExpressEntry() {
           className="object-cover h-32 md:object-bottom lg:object-bottom xl:object-center"
         />
       </div>
-      <div className="pt-4 sm:mx-10 md:mx-20 lg:mx-[124px]">
-        <Breadcrumbs />
-      </div>
+      <Breadcrumbs />
       <div className="px-4 sm:px-8 lg:px-16 pb-10">
         <SectionTitle text="Overview of Caregiver Program" />
         <div>
@@ -71,13 +70,7 @@ export default function ExpressEntry() {
             description="Eligibility for Express Entry depends on several factors including age, education, work experience, and language proficiency. Detailed criteria are available on our Express Entry Work Experience Requirements page."
           />
 
-          <div className="flex items-center justify-center">
-            <Link href="/consultation">
-              <button className="bg-primary-red text-white py-2 px-4 rounded-xl font-semibold ">
-                Book a free consultation
-              </button>
-            </Link>
-          </div>
+          <FreeConsultationBtn />
         </div>
       </div>
     </div>

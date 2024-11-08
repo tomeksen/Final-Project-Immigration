@@ -22,9 +22,7 @@ export default function ExpressEntry() {
           className="object-cover h-32 md:object-bottom lg:object-bottom xl:object-center"
         />
       </div>
-      <div className="pt-4 sm:mx-10 md:mx-20 lg:mx-[124px]">
-        <Breadcrumbs />
-      </div>
+      <Breadcrumbs />
       <div className="px-4 sm:px-8 lg:px-16 pb-10">
         <SectionTitle text="Overview of Express Entry System" />
         <div>
