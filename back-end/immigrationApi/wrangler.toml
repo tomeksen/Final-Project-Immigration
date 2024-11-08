@@ -8,13 +8,12 @@ compatibility_flags = [ "nodejs_compat" ]
 #  API_KEY = "local_api_key",
 [env.production]
   NODE_ENV = "production"
-
 # workers_dev = false
 # API_KEY = "your_production_api_key"
 # DB_URL = "https://your-production-db-url.com"
 [vars]
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_ZW1lcmdpbmctd2FydGhvZy0yNC5jbGVyay5hY2NvdW50cy5kZXYk
-CLERK_SECRET_KEY=sk_test_f6z0wLBN8XOBJOf07h9a951IU0sccOrXSGLWjoJLUX
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY="pk_test_ZW1lcmdpbmctd2FydGhvZy0yNC5jbGVyay5hY2NvdW50cy5kZXYk"
+CLERK_SECRET_KEY="sk_test_f6z0wLBN8XOBJOf07h9a951IU0sccOrXSGLWjoJLUX"
 # DB_URL = "https://your-database-url.com"
 # API_KEY = "your_api_key_value"
 [[kv_namespaces]]
