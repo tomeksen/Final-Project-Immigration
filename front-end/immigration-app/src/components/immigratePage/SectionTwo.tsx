@@ -5,32 +5,32 @@ import SectionTitle from "../SectionTitle";
 import { immigrationOptions } from "./immigrationOptions";
 import { programCards } from "./programCards";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function SectionTwo() {
   return (
-    <div className="px-16 pb-10 md:mx-7 lg:mx-14">
+    <div className="px-4 sm:px-8 lg:px-16 pb-10">
       {/* Title */}
       <SectionTitle text="Discover all your options" />
-
       {/* Filter Buttons */}
-      <div className="flex flex-wrap gap-2 mb-8">
+      <div className="flex flex-wrap gap-2 justify-center sm:justify-start mb-8">
         {immigrationOptions.map((option) => (
           <Button
-            key={option}
+            key={option.id}
             variant="outline"
             className="px-4 py-2 text-gray-800 bg-gray-100 hover:bg-gray-200 rounded-full text-sm"
           >
-            {option}
+            <Link href={`/immigrate/${option.link}`}>{option.title}</Link>
           </Button>
         ))}
       </div>
 
       {/* Program Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-baseline justify-center align-middle">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {programCards.map((program) => (
           <div
             key={program.title}
-            className="bg-white rounded-lg shadow-lg p-4 hover:shadow-xl transition-shadow w-96 mx-auto"
+            className="bg-white rounded-lg shadow-lg p-4 hover:shadow-xl transition-shadow max-w-sm mx-auto"
           >
             {/* Program Title and Dropdown Icon */}
             <div className="flex justify-between items-center mb-2">
