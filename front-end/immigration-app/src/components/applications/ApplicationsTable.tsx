@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Filters from "../Filters";
 import { AppTable } from "../AppTable";
+import { dark } from "@clerk/themes";
+import { useTheme } from "next-themes";
 
 type Application = {
   number: string;
@@ -60,6 +62,7 @@ export function ApplicationsTable() {
   const [sortBy, setSortBy] = useState("");
   const [visaType, setVisaType] = useState("");
   const [status, setStatus] = useState("");
+  const { theme } = useTheme();
 
   const resetFilters = () => {
     setSortBy("");
@@ -88,17 +91,37 @@ export function ApplicationsTable() {
   return (
     <div className="p-4 space-y-4">
       <h1 className="text-2xl font-bold">Applications</h1>
-      <Filters
-        sortBy={sortBy}
-        visaType={visaType}
-        status={status}
-        setSortBy={setSortBy}
-        setVisaType={setVisaType}
-        setStatus={setStatus}
-        resetFilters={resetFilters}
-      />
+      {theme === "dark" ? (
+        <Filters
+          sortBy={sortBy}
+          visaType={visaType}
+          status={status}
+          setSortBy={setSortBy}
+          setVisaType={setVisaType}
+          setStatus={setStatus}
+          resetFilters={resetFilters}
+          appearance={{ baseTheme: dark }}
+        />
+      ) : (
+        <Filters
+          sortBy={sortBy}
+          visaType={visaType}
+          status={status}
+          setSortBy={setSortBy}
+          setVisaType={setVisaType}
+          setStatus={setStatus}
+          resetFilters={resetFilters}
+        />
+      )}
 
-      <AppTable appProps={filteredApplications} />
+      {theme === "dark" ? (
+        <AppTable
+          appProps={filteredApplications}
+          appearance={{ baseTheme: dark }}
+        />
+      ) : (
+        <AppTable appProps={filteredApplications} />
+      )}
     </div>
   );
 }

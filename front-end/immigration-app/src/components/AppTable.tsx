@@ -21,9 +21,10 @@ type Application = {
 
 type AppTableProps = {
   appProps: Application[];
+  appearance?: { baseTheme: any };
 };
 
-export function AppTable({ appProps }: AppTableProps) {
+export function AppTable({ appProps, appearance }: AppTableProps) {
   return (
     <Table>
       <TableHeader className="bg-[#5E5E5E] text-primary-white ">
@@ -39,14 +40,16 @@ export function AppTable({ appProps }: AppTableProps) {
       <TableBody className="border">
         {appProps.map((app) => (
           <TableRow key={app.number}>
-            <TableCell className="last: rounded-bl-md">{app.number}</TableCell>
-            <TableCell>{app.name}</TableCell>
-            <TableCell>{app.date}</TableCell>
-            <TableCell>{app.type}</TableCell>
-            <TableCell>
-              <Progress value={app.progress} className="w-[100px]" />
+            <TableCell className="last: rounded-bl-md bg-white">
+              {app.number}
             </TableCell>
-            <TableCell className="last: rounded-br-md">
+            <TableCell className="bg-white">{app.name}</TableCell>
+            <TableCell className="bg-white">{app.date}</TableCell>
+            <TableCell className="bg-white">{app.type}</TableCell>
+            <TableCell className="bg-white">
+              <Progress value={app.progress} className="w-[100px] " />
+            </TableCell>
+            <TableCell className="last: rounded-br-md bg-white">
               <Badge
                 variant={
                   app.status === "Completed"
