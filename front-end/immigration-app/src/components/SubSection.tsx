@@ -1,7 +1,7 @@
 import React from "react";
 interface Text {
   title: string;
-  description: string;
+  description?: string;
 }
 export default function SubSection({ title, description }: Text) {
   return (
