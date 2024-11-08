@@ -51,14 +51,9 @@ export default function AppPaymentSwiper() {
       </p>
       <div className="flex items-center justify-center">
         <Swiper
-          // navigation={true}
-          // modules={[Navigation]}
           spaceBetween={30}
           onSlideChange={handleSlideChange}
           className="flex items-center justify-center"
-          // onSwiper={(swiper) => {
-          //   swiperRef.current = swiper;
-          // }}
         >
           {payments.map((payment, index) => {
             return (
