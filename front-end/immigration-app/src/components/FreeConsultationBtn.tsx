@@ -3,7 +3,7 @@ import React from "react";
 
 export default function FreeConsultationBtn() {
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center justify-center my-5">
       <Link href="/consultation">
         <button className="bg-primary-red text-white py-2 px-4 rounded-xl font-semibold ">
           Book a free consultation

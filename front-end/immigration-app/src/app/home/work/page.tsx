@@ -32,7 +32,7 @@ export default function page() {
           first step toward working in Canada.
         </p>
         <br />
-        <p className="mb-5">
+        <p>
           Our team at Up Immigration is here to guide you through the process,
           helping you find the program that best suits your needs for a
           successful transition to your new life in Canada. Contact us today to
