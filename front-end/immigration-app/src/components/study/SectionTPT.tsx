@@ -17,14 +17,14 @@ export default function SectionTPT({
   return (
     <div className="my-4">
       <h3 className="font-semibold text-xl">{title}</h3>
-      <div className="my-5">
+      <div className="my-5 flex justify-center sm:justify-start">
         {typeof img === "string" ? (
           <img src={img} alt={imgDescription} />
         ) : (
           <Image
             src={img}
             alt={imgDescription}
-            className="w-96 h-60 object-cover rounded-lg"
+            className="w-96 h-60 object-cover rounded-lg flex justify-center"
           />
         )}
       </div>

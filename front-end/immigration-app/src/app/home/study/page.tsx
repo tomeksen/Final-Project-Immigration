@@ -21,7 +21,7 @@ export default function page() {
           bgImage={student}
           alt="Female student holding notebooks"
           text="Study"
-          className="object-cover h-32 md:object-bottom xl:object-center"
+          className="object-cover h-32 md:object-center lg:object-top xl:object-center"
         />
       </div>
       <Breadcrumbs />
