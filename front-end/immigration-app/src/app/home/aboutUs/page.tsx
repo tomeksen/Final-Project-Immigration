@@ -6,6 +6,9 @@ import SectionTitle from "@/components/SectionTitle";
 import larissa from "@/assets/larissa_up_immigration.png";
 import Image from "next/image";
 import Team from "@/components/aboutUs/Team";
+import Strengths from "@/components/aboutUs/Strengths";
+import OurStory from "@/components/aboutUs/OurStory";
+import ReadyToStart from "@/components/aboutUs/ReadyToStart";
 
 export default function page() {
   return (
@@ -29,6 +32,9 @@ export default function page() {
           </p>
         </div>
         <Team />
+        <Strengths />
+        <OurStory />
+        <ReadyToStart />
       </div>
     </div>
   );

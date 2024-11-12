@@ -9,7 +9,7 @@ export default function Team() {
   return (
     <div className="p-4">
       {/* higher section */}
-      <div className="flex flex-col md:flex gap-4 mb-4">
+      <div className="flex flex-col md:flex lg:flex-row gap-4 mb-4">
         {/* Larissa's picture */}
         <Image
           src={larissa}
@@ -43,7 +43,7 @@ export default function Team() {
       </div>
 
       {/* lower section with the 2 other employees */}
-      <div className="flex flex-col md:flex-row gap-4 items-center">
+      <div className="flex flex-col items-center md:flex-row md:items-start gap-2 ">
         <div className="relative w-48 h-48">
           <Image
             src={member1}
