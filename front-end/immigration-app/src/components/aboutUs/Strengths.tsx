@@ -50,7 +50,7 @@ export default function Strengths() {
           ))}
         </div>
       </div>
-      <div className="flex flex-col p-4 sm:flex-row h-20 gap-5 justify-center items-center md:gap-10 md:h-24 lg:h-32 my-4">
+      <div className="flex flex-col p-4 sm:flex-row h-20 gap-5 justify-center items-center md:gap-10 md:h-24 lg:h-32 my-10">
         <Image
           src={rcic}
           alt="RCIC logo"

@@ -3,19 +3,18 @@ import SectionTitle from "../SectionTitle";
 
 export default function OurStory() {
   return (
-    <div>
+    <div className="mt-4">
       <SectionTitle text="Our Story" />
       <div className="flex justify-center items-center">
-        <video width="1000" height="600" controls preload="none">
-          <source src=".././assets/videos/ourStory.mov" type="video/mov" />
-          <track
-            src="/path/to/captions.vtt"
-            kind="subtitles"
-            srcLang="en"
-            label="English"
-          />
-          Your browser does not support the video tag.
-        </video>
+        <iframe
+          width="1000"
+          height="600"
+          src="https://www.youtube.com/embed/W3bUpEIK3Ac?si=Ykxfwhiv-MXRyGAi"
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+        ></iframe>
       </div>
     </div>
   );

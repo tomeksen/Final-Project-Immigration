@@ -1,10 +1,8 @@
 import BgImageContainerHeader from "@/components/BgImageContainerHeader";
 import React from "react";
-import handshage from "@/assets/aboutUs/handshake.jpeg";
+import handshake from "@/assets/aboutUs/handshake.jpeg";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import SectionTitle from "@/components/SectionTitle";
-import larissa from "@/assets/larissa_up_immigration.png";
-import Image from "next/image";
 import Team from "@/components/aboutUs/Team";
 import Strengths from "@/components/aboutUs/Strengths";
 import OurStory from "@/components/aboutUs/OurStory";
@@ -15,7 +13,7 @@ export default function page() {
     <div>
       <div className="h-80">
         <BgImageContainerHeader
-          bgImage={handshage}
+          bgImage={handshake}
           alt="Female student holding notebooks"
           text="Study"
           className="object-cover h-32 md:object-center lg:object-top xl:object-center"

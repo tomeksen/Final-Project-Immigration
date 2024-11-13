@@ -1,5 +1,5 @@
 import React from "react";
-import larissa from "@/assets/larissa_up_immigration.png";
+import larissa from "@/assets/LarissaCastelluber.jpeg";
 import Image from "next/image";
 import member1 from "@/assets/aboutUs/man.jpeg";
 import member2 from "@/assets/aboutUs/woman.jpeg";
@@ -9,13 +9,15 @@ export default function Team() {
   return (
     <div className="p-4">
       {/* higher section */}
-      <div className="flex flex-col md:flex lg:flex-row gap-4 mb-4">
+      <div className="flex flex-col justify-center items-center md:flex lg:flex-row gap-4 mb-4">
         {/* Larissa's picture */}
-        <Image
-          src={larissa}
-          alt="Larissa Castelluber"
-          className="w-full md:w-96 md:h-96"
-        />
+        <div className="rounded-2xl min-w-96 h-96 fill">
+          <Image
+            src={larissa}
+            alt="Larissa Castelluber"
+            className="rounded-2xl object-cover w-full h-96"
+          />
+        </div>
 
         {/* text description of Larissa */}
         <div className="w-full">
