@@ -1,12 +1,15 @@
 "use client";
 
+// This component is designed for laptop screens
+
 import * as React from "react";
 
 import { Label, Pie, PieChart, Cell } from "recharts";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ChartContainer } from "@/components/ui/chart";
+import { ChartConfig, ChartContainer } from "@/components/ui/chart";
 
+// TODO: Add the actual data from the backend
 const chartData = [
   { item: "Getting Started", progress: 50 },
   { item: "School Admission", progress: 20 },
@@ -14,7 +17,17 @@ const chartData = [
   { item: "Pre-Departure", progress: 50 },
 ];
 
-const COLORS = ["#0C9986", "#CFCFCF"];
+// Don't need to change chart colors
+const COLORS = ["#0C9986", "#F5F6FA"];
+
+const chartConfig: ChartConfig = {
+  progress: {
+    color: COLORS[0],
+  },
+  remaining: {
+    color: COLORS[1],
+  },
+};
 
 export function AppProgressChart() {
   return (
@@ -29,7 +42,7 @@ export function AppProgressChart() {
 
           return (
             <ChartContainer
-              config={{ colors: COLORS }}
+              config={chartConfig}
               className="flex flex-col items-center w-[150px] max-h-[200px]"
             >
               <PieChart width={150} height={150}>
@@ -37,8 +50,8 @@ export function AppProgressChart() {
                   key={data.item}
                   data={pieData}
                   dataKey="value"
-                  innerRadius={40}
-                  outerRadius={50}
+                  innerRadius={50}
+                  outerRadius={60}
                   startAngle={90}
                   endAngle={-270}
                   strokeWidth={5}
@@ -66,7 +79,7 @@ export function AppProgressChart() {
                             </tspan>
                             <tspan
                               x={viewBox.cx}
-                              y={(viewBox.cy || 0) + 60}
+                              y={(viewBox.cy || 0) + 80}
                               className="font-medium"
                             >
                               {data.item}
