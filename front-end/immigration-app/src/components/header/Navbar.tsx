@@ -37,7 +37,9 @@ export default function Navbar() {
           <li className="hover:text-primary-red">
             <Link href="/contact">Contact</Link>
           </li>
-          <li className="hover:text-primary-red">Blog</li>
+          <li className="hover:text-primary-red">
+            <Link href="https://www.upimmigration.ca/blog">Blog</Link>
+          </li>
         </ul>
       </nav>
     </>

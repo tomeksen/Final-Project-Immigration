@@ -22,7 +22,7 @@ export default function BgImageContainerHeader({
       <Image
         src={bgImage}
         alt={alt}
-        layout="fill"
+        fill
         sizes={sizes}
         // objectFit="cover"
         className={className}
