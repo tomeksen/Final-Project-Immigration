@@ -33,31 +33,28 @@ export default function WhereToStart() {
     },
   ];
   return (
-    <div className="p-10 items-center bg-gray-100 ml-auto">
-      <CardContent className="p-6">
+    <div className="p-6 md:p-10 items-center bg-gray-100">
+      <CardContent className="p-4 md:p-6">
         <SectionTitle text="Where to start?" />
 
-        <div className="relative">
+        <div className="relative mt-8">
           {/* Timeline line */}
-          <div className="hidden md:block absolute md:left-12 md:right-12 lg:left-20 lg:right-20 top-5 h-0.5 bg-secondary-blue" />
+          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 top-5 h-0.5 w-full md:max-w-screen-sm lg:max-w-screen-md xl:max-w-screen-lg bg-secondary-blue 2xl:max-w-screen-2xl" />
 
           {/* Steps */}
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-10 md:gap-8 text-center">
             {steps.map((step, index) => (
-              <div
-                key={index}
-                className="relative flex flex-col items-center text-center"
-              >
+              <div key={index} className="relative flex flex-col items-center">
                 {/* Number circle */}
                 <div className="w-10 h-10 rounded-full bg-secondary-blue flex items-center justify-center text-primary-foreground font-bold relative z-10">
                   {step.number}
                 </div>
 
                 {/* Content */}
-                <h3 className="font-semibold text-xl mt-4 mb-2">
+                <h3 className="font-semibold text-lg md:text-xl mt-4 mb-2">
                   {step.title}
                 </h3>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-base md:text-lg text-muted-foreground">
                   {step.description}
                 </p>
               </div>
@@ -69,7 +66,7 @@ export default function WhereToStart() {
         <div className="mt-12 text-center">
           <Button
             size="lg"
-            className="bg-primary-red hover:bg-red-800 text-white font-bold text-lg"
+            className="bg-primary-red hover:bg-red-800 text-white font-bold text-lg px-6 py-3"
           >
             Book a free consultation
           </Button>

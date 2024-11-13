@@ -5,6 +5,8 @@ import SectionOne from "@/components/immigratePage/SectionOne";
 import SectionTwo from "@/components/immigratePage/SectionTwo";
 import WhereToStart from "@/components/mainPage/WhereToStart";
 import Testimonials from "@/components/mainPage/Testimonials";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import ImmigrationFAQ from "@/components/immigratePage/ImmigrationFAQ";
 
 export default function page() {
   return (
@@ -17,10 +19,12 @@ export default function page() {
           className="object-cover h-32 md:object-bottom xl:object-center"
         />
       </div>
+      <Breadcrumbs />
       <SectionOne />
       <SectionTwo />
       <WhereToStart />
       <Testimonials />
+      <ImmigrationFAQ />
     </div>
   );
 }
