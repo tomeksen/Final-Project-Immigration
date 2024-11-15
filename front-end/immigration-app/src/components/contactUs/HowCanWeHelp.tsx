@@ -11,7 +11,7 @@ export default function HowCanWeHelp() {
         <Image
           src={larrisa}
           alt="Larissa Castelluber"
-          className="rounded-2xl min-w-auto object-cover md:min-w-96 "
+          className="min-w-auto object-cover md:min-w-96 "
         />
       </div>
       <div>
