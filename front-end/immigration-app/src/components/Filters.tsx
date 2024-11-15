@@ -11,6 +11,10 @@ import {
 } from "./ui/select";
 import { RotateCcw } from "lucide-react";
 
+type AppearanceType = {
+  baseTheme: any;
+};
+
 type FilterProps = {
   sortBy: string;
   visaType: string;
@@ -19,6 +23,7 @@ type FilterProps = {
   setVisaType: (value: string) => void;
   setStatus: (value: string) => void;
   resetFilters: () => void;
+  appearance?: AppearanceType;
 };
 
 export default function Filters({
@@ -29,6 +34,7 @@ export default function Filters({
   setVisaType,
   setStatus,
   resetFilters,
+  appearance,
 }: FilterProps) {
   return (
     <div className="flex items-center gap-1 bg-white rounded-lg p-2 max-w-4xl">
