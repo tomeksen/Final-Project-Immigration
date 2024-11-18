@@ -6,35 +6,44 @@ import { DayPicker } from "react-day-picker";
 
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
-
-export type CalendarProps = React.ComponentProps<typeof DayPicker>;
+type BookDaysType = {
+  startDate: Date;
+  endDate: Date;
+  title: string;
+}[];
+export type CalendarProps = React.ComponentProps<typeof DayPicker> & {
+  bookedDays: BookDaysType;
+};
 // TODO:
 // there is more than two events on the same day or more than one day long
 
-function AppCalendar({
+function DesktopCalendar({
   className,
   classNames,
   showOutsideDays = true,
+  bookedDays,
+
   ...props
 }: CalendarProps) {
-  // this will be props
-  const bookedDays = [
-    {
-      startDate: new Date(2024, 10, 5),
-      endDate: new Date(2024, 10, 7),
-      title: "Event 1",
-    },
-    {
-      startDate: new Date(2024, 10, 6),
-      endDate: new Date(2024, 10, 8),
-      title: "Event 2",
-    },
-    {
-      startDate: new Date(2024, 10, 25),
-      endDate: new Date(2024, 10, 25),
-      title: "One-day Event",
-    },
-  ];
+  // props example
+  // const bookedDays = [
+  //   {
+  //     startDate: new Date(2024, 10, 5),
+  //     endDate: new Date(2024, 10, 7),
+  //     title: "Event 1",
+  //   },
+  //   {
+  //     startDate: new Date(2024, 10, 6),
+  //     endDate: new Date(2024, 10, 8),
+  //     title: "Event 2",
+  //   },
+  //   {
+  //     startDate: new Date(2024, 10, 25),
+  //     endDate: new Date(2024, 10, 25),
+  //     title: "One-day Event",
+  //   },
+  // ];
+  console.log(bookedDays);
 
   return (
     <DayPicker
@@ -124,6 +133,6 @@ function AppCalendar({
   );
 }
 
-AppCalendar.displayName = "Calendar";
+DesktopCalendar.displayName = "Calendar";
 
-export { AppCalendar };
+export { DesktopCalendar };
