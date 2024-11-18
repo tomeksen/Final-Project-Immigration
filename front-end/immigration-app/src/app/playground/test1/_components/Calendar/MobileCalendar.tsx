@@ -51,7 +51,7 @@ function MobileCalendar({
   }));
 
   return (
-    // The size can be adjusted by modifying the cell and caption
+    // The size can be adjusted by modifying the cell and head-row
     <DayPicker
       mode="default"
       modifiers={{ booked: bookedMatcher }}
