@@ -35,7 +35,7 @@ export default function Breadcrumbs() {
   return (
     <div className="pt-4 sm:px-9 flex justify-start my-2 lg:ml-8">
       <nav aria-label="Breadcrumb" className="text-sm text-gray-500 mb-4">
-        <ol className="list-none p-0 sm:inline-flex ">
+        <ol className="list-none p-0 inline-flex items-center">
           {/* Home Link */}
           <li>
             <Link
