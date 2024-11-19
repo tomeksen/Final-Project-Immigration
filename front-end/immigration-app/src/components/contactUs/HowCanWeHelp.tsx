@@ -5,7 +5,7 @@ import larrisa from "@/assets/LarissaRCICLogo.png";
 
 export default function HowCanWeHelp() {
   return (
-    <div className="flex gap-4 flex-col justify-center items-center md:flex-row lg:flex-row mb-4">
+    <div className="flex gap-4 flex-col justify-center items-center md:flex-row lg:flex-row my-5">
       <div className="flex justify-center fill object-center items-center md:w-96 rounded-2xl">
         {/* image */}
         <Image
