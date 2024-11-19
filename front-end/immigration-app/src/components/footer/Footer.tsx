@@ -6,6 +6,7 @@ import { CiFacebook } from "react-icons/ci";
 import { RiLinkedinBoxLine } from "react-icons/ri";
 import Services from "./Services";
 import Company from "./Company";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -30,23 +31,34 @@ export default function Footer() {
         </div>
 
         {/* Social Media Icons */}
-        <div className="flex gap-4 mt-6 md:mt-0">
-          <FaInstagram
-            className="hover:text-gray-300 transition-colors duration-200"
-            size={30}
-          />
-          <CiFacebook
-            className="hover:text-gray-300 transition-colors duration-200"
-            size={30}
-          />
-          <RiLinkedinBoxLine
-            className="hover:text-gray-300 transition-colors duration-200"
-            size={30}
-          />
-          <FaWhatsapp
-            className="hover:text-gray-300 transition-colors duration-200"
-            size={30}
-          />
+        <div className="flex flex-wrap align-middle justify-center gap-4 mt-6 md:mt-0">
+          <Link href="http://instagram.com/upimmigration">
+            <FaInstagram
+              className="hover:text-gray-300 transition-colors duration-200"
+              size={30}
+            />
+          </Link>
+
+          <Link href="https://www.facebook.com/upimmigration/">
+            <CiFacebook
+              className="hover:text-gray-300 transition-colors duration-200"
+              size={30}
+            />
+          </Link>
+
+          <Link href="https://www.linkedin.com/company/upimmigration">
+            <RiLinkedinBoxLine
+              className="hover:text-gray-300 transition-colors duration-200"
+              size={30}
+            />
+          </Link>
+
+          <Link href="https://api.whatsapp.com/send?phone=16725881360">
+            <FaWhatsapp
+              className="hover:text-gray-300 transition-colors duration-200"
+              size={30}
+            />
+          </Link>
         </div>
       </div>
 
