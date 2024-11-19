@@ -1,5 +1,6 @@
 import { DesktopCalendar } from "./_components/Calendar/DesktopCalendar";
 import { MobileCalendar } from "./_components/Calendar/MobileCalendar";
+import SideSchedule from "./_components/Calendar/SideSchedule";
 import AppPaymentSwiper from "./_components/paymentSwiper/AppPaymentSwiper";
 import { AppProgressChart } from "./_components/progressChart/AppProgressChart";
 
@@ -29,7 +30,10 @@ const Test1Page = () => {
       </div>
       <MobileCalendar bookedDays={bookedDays} />
       <div>
-        <DesktopCalendar bookedDays={bookedDays} />
+        <div className="container mx-auto gap-2 flex items-stretch">
+          <SideSchedule />
+          <DesktopCalendar bookedDays={bookedDays} />
+        </div>
       </div>
     </div>
   );
