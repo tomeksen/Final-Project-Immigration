@@ -4,7 +4,7 @@ import {
   SignInButton,
   SignedIn,
   SignedOut,
-  UserButton
+  UserButton,
 } from '@clerk/nextjs'
 import { AppSidebar } from "@/components/AppSideBar";
 import { SidebarProvider } from '@/components/ui/sidebar';

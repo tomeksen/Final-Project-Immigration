@@ -1,7 +1,7 @@
 import { Hono } from 'hono'
 import { z } from '@hono/zod-openapi'
 import { createRoute } from '@hono/zod-openapi'
-import { ParamsByIdSchema, UserSchema } from '../../types/demoDocs'
+import { ParamsByIdSchema, UserSchema } from '../../../types/demoDocs'
 
 export const userRoutes = new Hono()
 

@@ -1,7 +1,7 @@
 // src/routes/index.ts
 import { Hono } from 'hono'
-import { userRoutes } from './api/users'
-import { postRoutes } from './api/posts'
+import { userRoutes } from './api/users/users'
+import { postRoutes } from './api/posts/posts'
 
 export const routes = new Hono()
 
