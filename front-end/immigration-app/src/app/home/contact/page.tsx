@@ -1,5 +1,6 @@
-import GetInTouch from "@/components/contactUs/GetInTouch";
-import HowCanWeHelp from "@/components/contactUs/HowCanWeHelp";
+
+import GetInTouch from "@/components/staticPage/contactUs/GetInTouch";
+import HowCanWeHelp from "@/components/staticPage/contactUs/HowCanWeHelp";
 import React from "react";
 
 export default function page() {

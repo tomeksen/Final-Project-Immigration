@@ -3,10 +3,10 @@ import React from "react";
 import handshake from "@/assets/aboutUs/handshake.jpeg";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import SectionTitle from "@/components/SectionTitle";
-import Team from "@/components/aboutUs/Team";
-import Strengths from "@/components/aboutUs/Strengths";
-import OurStory from "@/components/aboutUs/OurStory";
-import ReadyToStart from "@/components/aboutUs/ReadyToStart";
+import Team from "@/components/staticPage/aboutUs/Team";
+import Strengths from "@/components/staticPage/aboutUs/Strengths";
+import OurStory from "@/components/staticPage/aboutUs/OurStory";
+import ReadyToStart from "@/components/staticPage/aboutUs/ReadyToStart";
 
 export default function page() {
   return (

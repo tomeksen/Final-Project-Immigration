@@ -1,7 +1,7 @@
 "use client";
 
-import Footer from "@/components/footer/Footer";
-import Header from "@/components/header/Header";
+import Footer from "@/components/staticPage/footer/Footer";
+import Header from "@/components/staticPage/header/Header";
 
 export default function HomeLayout({
   children,
