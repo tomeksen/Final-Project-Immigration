@@ -1,10 +1,11 @@
-import SectionFive from "@/components/mainPage/SectionFive";
-import SectionFour from "@/components/mainPage/SectionFour";
-import SectionOne from "@/components/mainPage/SectionOne";
-import SectionThree from "@/components/mainPage/SectionThree";
-import SectionTwo from "@/components/mainPage/SectionTwo";
-import WhereToStart from "@/components/mainPage/WhereToStart";
-import Testimonials from "@/components/mainPage/Testimonials";
+import SectionOne from "@/components/staticPage/immigratePage/SectionOne";
+import SectionTwo from "@/components/staticPage/immigratePage/SectionTwo";
+import SectionFive from "@/components/staticPage/mainPage/SectionFive";
+import SectionFour from "@/components/staticPage/mainPage/SectionFour";
+import SectionThree from "@/components/staticPage/mainPage/SectionThree";
+import Testimonials from "@/components/staticPage/mainPage/Testimonials";
+import WhereToStart from "@/components/staticPage/mainPage/WhereToStart";
+
 
 export default function HomePage() {
   return (

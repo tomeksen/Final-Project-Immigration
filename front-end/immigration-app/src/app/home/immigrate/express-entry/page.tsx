@@ -6,10 +6,10 @@ import SectionTitle from "@/components/SectionTitle";
 import SubSection from "@/components/SubSection";
 import women from "@/assets/women_talking.jpeg";
 import Image from "next/image";
-import ProcessList from "@/components/expressEntry/ProcessList";
-import ImmigrationPrograms from "@/components/expressEntry/ImmigrationPrograms";
 import harbour from "@/assets/harbor.jpeg";
 import Link from "next/link";
+import ImmigrationPrograms from "@/components/staticPage/expressEntry/ImmigrationPrograms";
+import ProcessList from "@/components/staticPage/expressEntry/ProcessList";
 
 export default function ExpressEntry() {
   return (

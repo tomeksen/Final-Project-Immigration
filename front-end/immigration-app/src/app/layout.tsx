@@ -4,8 +4,6 @@ import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import { Poppins } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
-import Header from "@/components/header/Header";
-import Footer from "@/components/footer/Footer";
 
 const poppins = Poppins({
   subsets: ["latin"],
