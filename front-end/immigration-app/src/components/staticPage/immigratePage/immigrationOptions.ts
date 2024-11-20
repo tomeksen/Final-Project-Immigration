@@ -7,17 +7,17 @@ export const immigrationOptions: Options[] = [
   {
     id: 1,
     title: "Express Entry",
-    link: "express-entry",
+    link: "expressEntry",
   },
   {
     id: 2,
     title: "Provincial Nominee",
-    link: "provincial-nominee",
+    link: "provincialNominee",
   },
   {
     id: 3,
     title: "Family Sponsor",
-    link: "family-sponsor",
+    link: "familySponsor",
   },
   {
     id: 4,
@@ -27,26 +27,26 @@ export const immigrationOptions: Options[] = [
   {
     id: 5,
     title: "Start-Up Visa",
-    link: "startUp-visa",
+    link: "startUpVisa",
   },
   {
     id: 6,
     title: "Self-Employed",
-    link: "self-employed",
+    link: "selfEmployed",
   },
   {
     id: 7,
     title: "Humanitarian & Compassionate",
-    link: "humanitarian&compassionate",
+    link: "humanitarianCompassionate",
   },
   {
     id: 8,
     title: "Atlantic Immigration",
-    link: "atlantic-immigration",
+    link: "atlanticImmigration",
   },
   {
     id: 9,
     title: "Northern Immigration",
-    link: "northern-immigration",
+    link: "northernImmigration",
   },
 ];
