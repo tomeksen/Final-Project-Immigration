@@ -4,14 +4,15 @@ import student from "@/assets/study/student.jpeg";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import SectionTitle from "@/components/SectionTitle";
 import FreeConsultationBtn from "@/components/FreeConsultationBtn";
-import SectionTPT from "@/components/study/SectionTPT";
 import studentsCanada from "@/assets/study/studentsCanada.jpeg";
 import workpermit from "@/assets/study/workpermit.jpeg";
 import studentCafe from "@/assets/study/studentCafe.jpeg";
 import studentOffice from "@/assets/study/studentOffice.jpeg";
-import WhereToStart from "@/components/mainPage/WhereToStart";
-import Testimonials from "@/components/mainPage/Testimonials";
-import ImmigrationFAQ from "@/components/immigratePage/ImmigrationFAQ";
+import ImmigrationFAQ from "@/components/staticPage/immigratePage/ImmigrationFAQ";
+import Testimonials from "@/components/staticPage/mainPage/Testimonials";
+import WhereToStart from "@/components/staticPage/mainPage/WhereToStart";
+import SectionTPT from "@/components/staticPage/study/SectionTPT";
+
 
 export default function page() {
   return (

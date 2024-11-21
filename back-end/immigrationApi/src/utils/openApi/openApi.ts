@@ -1,7 +1,7 @@
 import { OpenAPIHono } from '@hono/zod-openapi'
 import { apiReference } from '@scalar/hono-api-reference'
 import { Env } from 'hono'
-import { getUserRoute, getUsersRoute } from '../../routes/api/users'
+import { getUserRoute, getUsersRoute } from '../../routes/api/users/users'
 import { getUserById, getUsers } from './docs/usersDocs'
 
 const docApp = new OpenAPIHono<{ Bindings: Env }>()

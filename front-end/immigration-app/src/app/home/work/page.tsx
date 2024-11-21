@@ -1,13 +1,13 @@
 import Breadcrumbs from "@/components/Breadcrumbs";
 import FreeConsultationBtn from "@/components/FreeConsultationBtn";
-import ImmigrationFAQ from "@/components/immigratePage/ImmigrationFAQ";
-import Testimonials from "@/components/mainPage/Testimonials";
-import WhereToStart from "@/components/mainPage/WhereToStart";
 import SectionTitle from "@/components/SectionTitle";
 import React from "react";
 import handshake from "@/assets/work/handshake.jpeg";
 import BgImageContainerHeader from "@/components/BgImageContainerHeader";
-import DiscoverOptions from "@/components/work/DiscoverOptions";
+import ImmigrationFAQ from "@/components/staticPage/immigratePage/ImmigrationFAQ";
+import Testimonials from "@/components/staticPage/mainPage/Testimonials";
+import WhereToStart from "@/components/staticPage/mainPage/WhereToStart";
+import DiscoverOptions from "@/components/staticPage/work/DiscoverOptions";
 
 export default function page() {
   return (
