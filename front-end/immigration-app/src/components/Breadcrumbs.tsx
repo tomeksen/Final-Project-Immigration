@@ -19,7 +19,6 @@ const pathNameToTitle: Record<string, string> = {
   atlanticImmigration: "Atlantic Immigration",
   study: "Study",
   work: "Work",
-  products: "Products",
 };
 
 export default function Breadcrumbs() {

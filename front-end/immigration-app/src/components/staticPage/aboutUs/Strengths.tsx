@@ -1,5 +1,7 @@
 import React from "react";
-import { FaUser, FaHeart, FaBriefcase, FaCertificate } from "react-icons/fa";
+import { FaRegUser, FaRegHeart, FaCertificate } from "react-icons/fa";
+import { TbBriefcase2 } from "react-icons/tb";
+import { IoRibbonOutline } from "react-icons/io5";
 import Image from "next/image";
 import rcic from "@/assets/rcic.png";
 import capic from "@/assets/capic.png";
@@ -8,25 +10,25 @@ import SectionTitle from "@/components/SectionTitle";
 export default function Strengths() {
   const features = [
     {
-      icon: <FaUser size={32} />,
+      icon: <FaRegUser size={32} />,
       title: "Personalized consultation",
       description:
         "Let's start from a free initial consultation to figure out what would be the best immigration pathway for you together.",
     },
     {
-      icon: <FaHeart size={32} />,
+      icon: <FaRegHeart size={32} />,
       title: "Compassion & support in every step",
       description:
         "Experience a compassionate, welcoming approach, making your immigration journey more simple and supportive.",
     },
     {
-      icon: <FaBriefcase size={32} />,
+      icon: <TbBriefcase2 size={32} />,
       title: "HR and LMIA expertise",
       description:
         "Benefit from over 5 years of experience in Human Resources and expert guidance on obtaining LMIA, ensuring a smooth work experience in Canada.",
     },
     {
-      icon: <FaCertificate size={32} />,
+      icon: <IoRibbonOutline size={32} />,
       title: "Our Credentials",
       description:
         "Proudly regulated by and in good standing with the College of Immigration and Citizenship Consultants. Larissa Castelluber.",
