@@ -1,6 +1,6 @@
 import BgImageContainerHeader from "@/components/BgImageContainerHeader";
 import React from "react";
-import lakeBg from "@/assets//lakeCanada.png";
+import lakeBg from "@/assets/lakeCanada.png";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import ImmigrationFAQ from "@/components/staticPage/immigratePage/ImmigrationFAQ";
 import SectionOne from "@/components/staticPage/immigratePage/SectionOne";
