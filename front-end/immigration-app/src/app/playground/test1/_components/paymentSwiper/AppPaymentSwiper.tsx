@@ -70,7 +70,7 @@ export default function AppPaymentSwiper({ swiperType }: PaymentSwiperProps) {
           onSlideChange={handleSlideChange}
           className={cn(
             "flex items-center justify-center",
-            swiperType === "sm" ? "" : "w-full"
+            swiperType === "sm" ? "w-full h-1/2" : "w-full"
           )}
         >
           {payments.map((payment, index) => {
