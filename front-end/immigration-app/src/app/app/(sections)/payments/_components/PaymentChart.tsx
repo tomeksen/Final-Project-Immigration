@@ -1,6 +1,6 @@
 "use client";
 
-import { TrendingUp } from "lucide-react";
+import { Calendar, TrendingUp } from "lucide-react";
 import { Label, Pie, PieChart } from "recharts";
 
 import {
@@ -26,6 +26,8 @@ export function PaymentChart() {
     amount: number;
   };
 
+  // ---------------------------------------------------------------------------
+  // will deliver them as props
   const totalCost = 1000;
   const payments: PaymentType[] = [
     {
@@ -44,13 +46,7 @@ export function PaymentChart() {
       amount: 75.0,
     },
   ];
-  // const chartData = [
-  //   { browser: "chrome", visitors: 275, fill: "var(--color-chrome)" },
-  //   { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
-  //   { browser: "firefox", visitors: 287, fill: "var(--color-firefox)" },
-  //   { browser: "edge", visitors: 173, fill: "var(--color-edge)" },
-  //   { browser: "other", visitors: 190, fill: "var(--color-other)" },
-  // ];
+  // ---------------------------------------------------------------------------
 
   // generate blue colors
   const generateColors = (num: number): string[] => {
@@ -73,7 +69,6 @@ export function PaymentChart() {
       fill: colors[index],
     }));
   }, []);
-  console.log(chartData);
 
   const chartConfig = useMemo(() => {
     const config: ChartConfig = {};
@@ -87,102 +82,91 @@ export function PaymentChart() {
     return config;
   }, [payments]);
 
-  // const chartConfig = {
-  //   visitors: {
-  //     label: "Visitors",
-  //   },
-  //   chrome: {
-  //     label: "Chrome",
-  //     color: "hsl(var(--chart-1))",
-  //   },
-  //   safari: {
-  //     label: "Safari",
-  //     color: "hsl(var(--chart-2))",
-  //   },
-  //   firefox: {
-  //     label: "Firefox",
-  //     color: "hsl(var(--chart-3))",
-  //   },
-  //   edge: {
-  //     label: "Edge",
-  //     color: "hsl(var(--chart-4))",
-  //   },
-  //   other: {
-  //     label: "Other",
-  //     color: "hsl(var(--chart-5))",
-  //   },
-  // } satisfies ChartConfig;
-
   const totalPayment = useMemo(() => {
     return chartData.reduce((acc, curr) => acc + curr.value, 0);
   }, []);
 
   return (
     <Card className="flex flex-col w-full h-full">
-      <CardHeader className="items-center pb-0">
+      <CardHeader className="items-left pb-0">
         <CardTitle>Payment Summary</CardTitle>
       </CardHeader>
-      <CardContent className="flex-1 pb-0">
-        <ChartContainer
-          config={chartConfig}
-          className="mx-auto aspect-square max-h-[250px]"
+      <CardContent className="flex items-center justify-around flex-1 pb-0">
+        <div
+          className="grid grid-cols-3 auto-rows-auto"
+          style={{ gridTemplateRows: "auto", alignItems: "stretch" }}
         >
-          <PieChart>
-            <ChartTooltip
-              cursor={false}
-              content={<ChartTooltipContent hideLabel />}
-            />
-            <Pie
-              data={chartData}
-              dataKey="value"
-              nameKey="name"
-              startAngle={90}
-              endAngle={-270}
-              innerRadius={60}
-              outerRadius={75}
-              strokeWidth={5}
-            >
-              <Label
-                content={({ viewBox }) => {
-                  if (viewBox && "cx" in viewBox && "cy" in viewBox) {
-                    return (
-                      <text
-                        x={viewBox.cx}
-                        y={viewBox.cy}
-                        textAnchor="middle"
-                        dominantBaseline="middle"
-                      >
-                        <tspan
+          <ChartContainer
+            config={chartConfig}
+            className="mx-auto aspect-square h-[170px] col-span-2"
+          >
+            <PieChart>
+              <ChartTooltip
+                cursor={false}
+                content={<ChartTooltipContent hideLabel />}
+              />
+              <Pie
+                data={chartData}
+                dataKey="value"
+                nameKey="name"
+                startAngle={90}
+                endAngle={-270}
+                innerRadius={60}
+                outerRadius={75}
+                strokeWidth={5}
+              >
+                <Label
+                  content={({ viewBox }) => {
+                    if (viewBox && "cx" in viewBox && "cy" in viewBox) {
+                      return (
+                        <text
                           x={viewBox.cx}
                           y={viewBox.cy}
-                          className="fill-foreground text-xl font-bold"
+                          textAnchor="middle"
+                          dominantBaseline="middle"
                         >
-                          {`${totalPayment / totalCost} %`}
-                        </tspan>
-                        <tspan
-                          x={viewBox.cx}
-                          y={(viewBox.cy || 0) + 24}
-                          className="fill-foreground"
-                        >
-                          {`CAD ${totalPayment}`}
-                        </tspan>
-                      </text>
-                    );
-                  }
-                }}
-              />
-            </Pie>
-          </PieChart>
-        </ChartContainer>
+                          <tspan
+                            x={viewBox.cx}
+                            y={viewBox.cy}
+                            className="fill-foreground text-xl font-bold"
+                          >
+                            {`${(totalPayment / totalCost) * 100} %`}
+                          </tspan>
+                          <tspan
+                            x={viewBox.cx}
+                            y={(viewBox.cy || 0) + 24}
+                            className="fill-foreground"
+                          >
+                            {`CAD ${totalPayment}`}
+                          </tspan>
+                        </text>
+                      );
+                    }
+                  }}
+                />
+              </Pie>
+            </PieChart>
+          </ChartContainer>
+
+          <div className="flex flex-col justify-center gap-2 text-xs">
+            {/* date */}
+            <div className="flex items-center gap-2">
+              <Calendar className="h-4 w-4" />
+              {new Date().toLocaleDateString()}
+            </div>
+            {/* colors */}
+            {payments.map((payment, index) => (
+              <div key={index} className="flex items-center gap-2">
+                <span
+                  className="h-4 w-4 rounded-full flex-shrink-0"
+                  style={{ background: colors[index] }}
+                ></span>
+                <p className="text-xs flex-wrap">{payment.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </CardContent>
-      <CardFooter className="flex-col gap-2 text-sm">
-        <div className="flex items-center gap-2 font-medium leading-none">
-          Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
-        </div>
-        <div className="leading-none text-muted-foreground">
-          Showing total visitors for the last 6 months
-        </div>
-      </CardFooter>
     </Card>
   );
 }
