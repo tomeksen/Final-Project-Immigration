@@ -18,6 +18,7 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 import { useMemo } from "react";
+import { format } from "date-fns";
 
 export function PaymentChart() {
   type PaymentType = {
@@ -92,13 +93,10 @@ export function PaymentChart() {
         <CardTitle>Payment Summary</CardTitle>
       </CardHeader>
       <CardContent className="flex items-center justify-around flex-1 pb-0">
-        <div
-          className="grid grid-cols-3 auto-rows-auto"
-          style={{ gridTemplateRows: "auto", alignItems: "stretch" }}
-        >
+        <div className="grid grid-cols-3 auto-rows-auto">
           <ChartContainer
             config={chartConfig}
-            className="mx-auto aspect-square h-[170px] col-span-2"
+            className="mx-auto aspect-square h-[170px] max-w-full col-span-2"
           >
             <PieChart>
               <ChartTooltip
@@ -152,7 +150,7 @@ export function PaymentChart() {
             {/* date */}
             <div className="flex items-center gap-2">
               <Calendar className="h-4 w-4" />
-              {new Date().toLocaleDateString()}
+              {format(new Date(), "yyyy-MM-dd")}
             </div>
             {/* colors */}
             {payments.map((payment, index) => (
