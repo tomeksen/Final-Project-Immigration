@@ -1,9 +1,9 @@
 import React from "react";
+import SectionTitle from "../SectionTitle";
+import BgImageContainer from "../BgImageContainer";
 import passport from "@/assets/bg_passport.jpeg";
 import work from "@/assets/bg_work.jpeg";
 import study from "@/assets/bg_grad_students.jpeg";
-import SectionTitle from "@/components/SectionTitle";
-import BgImageContainer from "@/components/BgImageContainer";
 
 export default function SectionThree() {
   return (
@@ -12,7 +12,7 @@ export default function SectionThree() {
         <div className="flex-col gap-4 justify-center items-center align-middle w-full">
           <SectionTitle text="Canadian Immigration Services" />
 
-          <div className="flex flex-col items-center gap-6 justify-center align-middle w-full md:flex-row">
+          <div className="items-center gap-6 justify-center align-middle w-full md:flex">
             <div className="w-60 h-60 rounded-sm">
               <BgImageContainer
                 bgImage={passport}
