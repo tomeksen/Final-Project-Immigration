@@ -7,8 +7,8 @@ import SectionTitle from "@/components/SectionTitle";
 
 export default function SectionFive() {
   return (
-    <div className="py-10">
-      <div className="ml-10">
+    <div className="p-6 md:p-10">
+      <div className="p-4 md:p-6 ">
         <SectionTitle text="Why choose us" />
       </div>
       <div className="flex flex-col w-full md:flex-row gap-20 items-center justify-center">
