@@ -2,6 +2,7 @@ import AppPaymentSwiper from "@/app/playground/test1/_components/paymentSwiper/A
 
 import { PaymentChart } from "./_components/PaymentChart";
 import PaymentSavedCard from "./_components/PaymentSavedCard";
+import PaymentRefundPolicy from "./_components/PaymentRefundPolicty";
 
 const PaymentsPage = () => {
   return (
@@ -27,7 +28,9 @@ const PaymentsPage = () => {
             <div className="rounded-xl bg-muted/50">
               <PaymentSavedCard />
             </div>
-            <div className="rounded-xl bg-muted/50">05</div>
+            <div className="rounded-xl bg-muted/50">
+              <PaymentRefundPolicy />
+            </div>
           </div>
 
           {/* Layout for md */}
@@ -48,7 +51,9 @@ const PaymentsPage = () => {
               <div className="rounded-xl bg-muted/50">
                 <PaymentSavedCard />
               </div>
-              <div className="rounded-xl bg-muted/50">05</div>
+              <div className="rounded-xl bg-muted/50">
+                <PaymentRefundPolicy />
+              </div>
             </div>
           </div>
 
@@ -64,7 +69,9 @@ const PaymentsPage = () => {
             <div className="rounded-xl bg-muted/50">
               <PaymentSavedCard />
             </div>
-            <div className="rounded-xl bg-muted/50">05</div>
+            <div className="rounded-xl bg-muted/50">
+              <PaymentRefundPolicy />
+            </div>
           </div>
         </div>
       </section>
