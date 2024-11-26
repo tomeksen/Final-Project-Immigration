@@ -47,7 +47,7 @@ export default function AppPaymentSwiper({ swiperType }: PaymentSwiperProps) {
     },
   ];
 
-  const slidesPerView = swiperType === "sm" ? 1 : 2;
+  const slidesPerView = swiperType === "sm" ? 1 : 3;
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const handleSlideChange = (swiper: SwiperType) => {
@@ -56,21 +56,21 @@ export default function AppPaymentSwiper({ swiperType }: PaymentSwiperProps) {
   };
 
   return (
-    <Card>
+    <Card className="w-full h-full">
       <CardHeader>
         <CardTitle>Awaiting Payment</CardTitle>
-        <CardDescription className="mt-3">
+        <CardDescription className="mt-3 text-foreground">
           You have <span className="text-primary-red">3 pending payments</span>.
         </CardDescription>
       </CardHeader>
-      <CardContent className="w-full max-w-md mx-auto p-4">
+      <CardContent className="w-full mx-auto p-4">
         <Swiper
-          spaceBetween={20}
+          spaceBetween={10}
           slidesPerView={slidesPerView}
           onSlideChange={handleSlideChange}
           className={cn(
             "flex items-center justify-center",
-            swiperType === "sm" ? "" : "w-[500px]"
+            swiperType === "sm" ? "w-full h-1/2" : "w-full"
           )}
         >
           {payments.map((payment, index) => {
