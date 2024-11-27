@@ -106,17 +106,23 @@ export default function Quiz({ onClose }: { onClose: () => void }) {
             <div className="text-gray-500 text-sm">
               Step {currentQuestionIndex + 1} of {quizQuestions.length}
             </div>
-            <div className="flex space-x-2 w-full justify-between p-2 items-center">
-              {quizQuestions.map((_, index) => (
-                <div
-                  key={index}
-                  className={`w-5 h-5 rounded-full text-sm flex items-center justify-center text-white ${
-                    index <= currentQuestionIndex ? "bg-red-600" : "bg-gray-300"
-                  }`}
-                >
-                  {index + 1}
-                </div>
-              ))}
+            <div className="flex items-center justify-between w-full p-2 relative">
+              {/* Timeline line */}
+              <div className="absolute top-1/2 transform -translate-y-1/2 left-4 right-4 h-0.5 bg-primary-red z-0" />
+              <div className="flex space-x-2 w-full justify-between p-2 items-center">
+                {quizQuestions.map((_, index) => (
+                  <div
+                    key={index}
+                    className={`relative z-10 w-5 h-5 rounded-full text-sm flex items-center justify-center text-white ${
+                      index <= currentQuestionIndex
+                        ? "bg-red-600"
+                        : "bg-gray-300"
+                    }`}
+                  >
+                    {index + 1}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
