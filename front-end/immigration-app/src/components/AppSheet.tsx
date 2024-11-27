@@ -1,18 +1,20 @@
+"use client";
+
 import React from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "./ui/table";
-import { Label } from "./ui/label";
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { Checkbox } from "./ui/checkbox";
-import { Progress } from "./ui/progress";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { BiCommentDots } from "react-icons/bi";
-import { GoPaperclip } from "react-icons/go";
 
 type Task = {
   id: string;
@@ -31,7 +33,7 @@ type Task = {
 type TaskProps = {
   tasks: Task[];
   appearance?: { baseTheme: any };
-  onTaskClick: (task: Task) => void;
+  onClose: () => void;
 };
 
 // const tasks: Task[] = [
@@ -104,49 +106,71 @@ type TaskProps = {
 //   },
 // ];
 
-export function TaskList({ tasks, onTaskClick }: TaskProps) {
+export function AppSheet({ tasks, onClose }: TaskProps) {
   return (
-    <div className="w-72">
-      <Table>
-        <TableHeader className="bg-[#5E5E5E] text-primary-white">
-          <TableRow className="">
-            <TableHead className="rounded-t-md">Getting start</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {/* Count is_completed === true, and divide it by tasks.length */}
-          <Progress value={tasks.length} className="w-[100px] " />
-
-          {tasks.map((task) => (
-            <TableRow key={task.id} onClick={() => onTaskClick(task)}>
-              <TableCell className="p-6">
+    <div className="grid grid-cols-2 gap-2">
+      {tasks.map((task) => (
+        <Sheet key={"task.id"}>
+          <SheetTrigger asChild>
+            <Button variant="outline">{task.title}</Button>
+          </SheetTrigger>
+          <SheetContent side={"right"}>
+            <SheetHeader>
+              <SheetTitle>
                 <div className="flex items-center leading-none space-x-2">
-                  {task.is_completed === true ? (
-                    <Checkbox checked />
-                  ) : (
-                    <Checkbox />
-                  )}
-                  <Label htmlFor="" className="text-sm leading-none">
+                  <Checkbox defaultChecked={task.is_completed} />
+                  <Label htmlFor="" className="text-right">
                     {task.title}
                   </Label>
                 </div>
-                <div className="flex items-center justify-between  leading-none space-x-2 p-4">
-                  <div className="flex items-center justify-center text-[]">
-                    <BiCommentDots className="mr-3" />
-                    <p className="mr-6">1</p>
-                    <GoPaperclip className="mr-3" />
-                    <p className="mr-6">0</p>
-                  </div>
-                  <Avatar>
-                    <AvatarImage src="https://github.com/shadcn.png" />
-                    <AvatarFallback>CN</AvatarFallback>
-                  </Avatar>
-                </div>
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+              </SheetTitle>
+              {/* <div>
+              <Label>Task Description:</Label>
+              <SheetDescription className="text-black">
+                Prepare and submit comprehensive project documentation.
+              </SheetDescription>
+            </div> */}
+            </SheetHeader>
+            <div className="grid gap-4 py-4">
+              <div>
+                <Label className="font-bold">Due Date:</Label>
+                <p className="text-sm">1 Aug 24, 16:00 PM</p>
+              </div>
+              <div>
+                <Label className="font-bold">Task Description:</Label>
+                <SheetDescription className="text-black">
+                  {task.description}
+                </SheetDescription>
+              </div>
+              <div>
+                <Label className="font-bold">Steps:</Label>
+                <ol>
+                  {task.steps.split("\n").map((step, id) => (
+                    <li className="text-sm" key={id}>
+                      {step}
+                    </li>
+                  ))}
+                </ol>
+              </div>
+              <div className="text-primary-red">
+                <Label className="font-bold">Notes:</Label>
+                <p className="text-sm">{task.notes}</p>
+              </div>
+            </div>
+            <SheetFooter>
+              {/* <SheetClose asChild>
+              <Button type="submit">Save changes</Button>
+            </SheetClose> */}
+              <div>
+                <Label className="font-bold">Attachments:</Label>
+              </div>
+              <div>
+                <Label className="font-bold">Messages:</Label>
+              </div>
+            </SheetFooter>
+          </SheetContent>
+        </Sheet>
+      ))}
     </div>
   );
 }

@@ -11,7 +11,8 @@ import { Badge } from "./ui/badge";
 import { Progress } from "./ui/progress";
 
 type Application = {
-  number: string;
+  id: number;
+  user_id: string;
   name: string;
   date: string;
   type: string;
@@ -28,6 +29,7 @@ export function AppTable({ appProps, appearance }: AppTableProps) {
   return (
     <Table>
       <TableHeader className="bg-[#5E5E5E] text-primary-white ">
+        {/* Give it Link */}
         <TableRow className="">
           <TableHead className="rounded-tl-md">Number</TableHead>
           <TableHead>Name</TableHead>
@@ -38,10 +40,10 @@ export function AppTable({ appProps, appearance }: AppTableProps) {
         </TableRow>
       </TableHeader>
       <TableBody className="border">
-        {appProps.map((app) => (
-          <TableRow key={app.number}>
+        {appProps.map((app, index) => (
+          <TableRow key={app.id}>
             <TableCell className="last: rounded-bl-md bg-white">
-              {app.number}
+              {index + 1}
             </TableCell>
             <TableCell className="bg-white">{app.name}</TableCell>
             <TableCell className="bg-white">{app.date}</TableCell>

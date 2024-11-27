@@ -7,7 +7,8 @@ import { dark } from "@clerk/themes";
 import { useTheme } from "next-themes";
 
 type Application = {
-  number: string;
+  id: number;
+  user_id: string;
   name: string;
   date: string;
   type: string;
@@ -17,7 +18,8 @@ type Application = {
 
 const applications: Application[] = [
   {
-    number: "001",
+    id: 1,
+    user_id: "001",
     name: "Maria_CICCC_181",
     date: "04 Apr 2023",
     type: "Student",
@@ -25,7 +27,8 @@ const applications: Application[] = [
     status: "Completed",
   },
   {
-    number: "002",
+    id: 2,
+    user_id: "002",
     name: "Maria_CICCC_UX/UI",
     date: "15 Nov 2023",
     type: "Student",
@@ -33,7 +36,8 @@ const applications: Application[] = [
     status: "Rejected",
   },
   {
-    number: "003",
+    id: 3,
+    user_id: "003",
     name: "Maria_CICCC_UX/UI_2",
     date: "08 Jul 2024",
     type: "Student",
@@ -41,7 +45,8 @@ const applications: Application[] = [
     status: "Processing",
   },
   {
-    number: "004",
+    id: 4,
+    user_id: "004",
     name: "Maria_Work Permit",
     date: "09 Jul 2024",
     type: "Work Permit",
@@ -49,8 +54,9 @@ const applications: Application[] = [
     status: "On Hold",
   },
   {
-    number: "005",
-    name: "Carrey_Visitor",
+    id: 5,
+    user_id: "005",
+    name: "Carry_Visitor",
     date: "09 Jul 2024",
     type: "Visitor",
     progress: 25,

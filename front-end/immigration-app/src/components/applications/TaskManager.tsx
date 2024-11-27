@@ -1,7 +1,8 @@
-import { ApplicationsTable } from "@/components/applications/ApplicationsTable";
-import { TaskManager } from "@/components/applications/TaskManager";
-import { AppSheet } from "@/components/AppSheet";
-import { TaskList } from "@/components/TaskList";
+"use client";
+
+import React, { useState } from "react";
+import { TaskList } from "../TaskList";
+import { AppSheet } from "../AppSheet";
 
 type Task = {
   id: string;
@@ -87,30 +88,20 @@ const tasks: Task[] = [
   },
 ];
 
-const TestPage = () => {
-  // const translations = useTranslations('HomePage');
-  const handleTaskClick = () => {};
-  const handleOnClose = () => {};
+export function TaskManager() {
+  const [selectedTask, setSelectedTask] = useState<Task | null>();
+
+  const handleTaskClick = (task: Task) => {
+    setSelectedTask(task);
+  };
 
   return (
-    <>
-      <div className="p-6">
-        <ApplicationsTable />
-      </div>
+    <div>
+      <TaskList onTaskClick={handleTaskClick} tasks={tasks} />
 
-      {/* <div className="p-6">
-        <TaskList appProps={tasks} onTaskClick={handleTaskClick} />
-      </div>
-
-      <div className="p-6">
-        <AppSheet appProps={tasks} onClose={handleOnClose} />
-      </div> */}
-
-      <div className="p-6">
-        <TaskManager />
-      </div>
-    </>
+      {selectedTask && (
+        <AppSheet tasks={tasks} onClose={() => setSelectedTask(null)} />
+      )}
+    </div>
   );
-};
-
-export default TestPage;
+}
