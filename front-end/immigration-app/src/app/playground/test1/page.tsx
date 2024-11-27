@@ -1,7 +1,7 @@
 import { DesktopCalendar } from "./_components/Calendar/DesktopCalendar";
 import { MobileCalendar } from "./_components/Calendar/MobileCalendar";
 import SideSchedule from "./_components/Calendar/SideSchedule";
-import AppPaymentSwiper from "./_components/paymentSwiper/AppPaymentSwiper";
+import AppPaymentSwiper from "../../app/(sections)/payments/_components/paymentSwiper/AppPaymentSwiper";
 import { AppProgressChart } from "./_components/progressChart/AppProgressChart";
 
 const Test1Page = () => {

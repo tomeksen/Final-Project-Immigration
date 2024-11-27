@@ -17,6 +17,7 @@ import "swiper/css";
 import { Badge } from "@/components/ui/badge";
 import PaymentSwiperButton from "./paymentSwiperButton";
 import { cn } from "@/lib/utils";
+import PaymentDialog from "../PaymentDialog";
 
 type PaymentSwiperProps = {
   swiperType: "sm" | "lg";
@@ -92,9 +93,7 @@ export default function AppPaymentSwiper({ swiperType }: PaymentSwiperProps) {
                     </div>
                   </div>
 
-                  <Button className="absolute bottom-0 right-0 z-50 bg-primary-red text-white p-2 w-full rounded-none rounded-b-md">
-                    Make Payment
-                  </Button>
+                  <PaymentDialog />
                 </Card>
               </SwiperSlide>
             );

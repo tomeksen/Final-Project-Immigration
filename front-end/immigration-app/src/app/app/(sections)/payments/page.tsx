@@ -1,9 +1,10 @@
-import AppPaymentSwiper from "@/app/playground/test1/_components/paymentSwiper/AppPaymentSwiper";
+import AppPaymentSwiper from "@/app/app/(sections)/payments/_components/paymentSwiper/AppPaymentSwiper";
 
 import { PaymentChart } from "./_components/PaymentChart";
 import PaymentSavedCard from "./_components/PaymentSavedCard";
 import PaymentRefundPolicy from "./_components/PaymentRefundPolicty";
 import PaymentInvoices from "./_components/PaymentInvoices";
+import PaymentDialog from "./_components/PaymentDialog";
 
 const PaymentsPage = () => {
   return (

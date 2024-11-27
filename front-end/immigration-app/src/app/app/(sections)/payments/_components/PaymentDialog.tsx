@@ -1,27 +1,23 @@
 "use client";
 
-import { File, X } from "lucide-react";
+import { File } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { DialogTrigger } from "@radix-ui/react-dialog";
-import { Separator } from "@/components/ui/separator";
 
 export default function PaymentDialog() {
   return (
-    <Dialog defaultOpen>
+    <Dialog>
       <DialogTrigger>
-        <Button />
+        <Button className="absolute bottom-0 right-0 z-50 bg-primary-red text-white p-2 w-full rounded-none rounded-b-md">
+          Make Payment
+        </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[700px]">
         <div className="grid gap-6 md:grid-cols-11">
