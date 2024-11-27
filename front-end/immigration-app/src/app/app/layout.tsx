@@ -1,4 +1,5 @@
 "use client";
+import { SidebarProvider } from "@/components/ui/sidebar";
 import { ClerkProvider } from "@clerk/nextjs";
 
 export default function DashboardLayout({
@@ -6,5 +7,9 @@ export default function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <ClerkProvider>{children}</ClerkProvider>;
+  return <ClerkProvider>
+    <SidebarProvider>
+      {children}
+    </SidebarProvider>
+    </ClerkProvider>;
 }
