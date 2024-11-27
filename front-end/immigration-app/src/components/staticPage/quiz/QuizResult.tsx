@@ -19,12 +19,12 @@ export default function QuizResult({
   return (
     <div className="flex flex-col w-auto">
       <p>Your pathway option could be ...</p>
-      <h1 className="flex justify-center text-2xl font-bold items-center pb-5">
+      <h1 className="flex justify-center text-2xl font-bold items-center py-4">
         {title}!
       </h1>
-      <h2 className="text-sm">
-        You might benefit from applying for {title}. Find out more by talking
-        with our consultant!
+      <h2 className="text-sm justify-normal pb-4">
+        You might benefit from applying for {title}. <br />
+        Find out more by talking with our consultant!
       </h2>
       <Image
         src={image}

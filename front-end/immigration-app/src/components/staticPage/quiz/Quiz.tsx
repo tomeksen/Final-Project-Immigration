@@ -7,6 +7,7 @@ import { IoMdClose } from "react-icons/io";
 import FreeConsultationBtn from "@/components/FreeConsultationBtn";
 import QuizResult from "./QuizResult";
 import passport from "@/assets/bg_passport.jpeg";
+import gradStudents from "@/assets/bg_grad_students.jpeg";
 
 export default function Quiz({ onClose }: { onClose: () => void }) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -58,25 +59,23 @@ export default function Quiz({ onClose }: { onClose: () => void }) {
 
       case answers[0] === "Study" && answers[1] === "Advanced":
         resultComponent = (
-          <div className="text-center">
-            <p>Your pathway option could be ...</p>
-            <h1>???</h1>
-            <h2 className="text-2xl font-bold text-blue-700">
-              You might benefit from applying for a student visa.
-            </h2>
-            {/* image */}
-            <FreeConsultationBtn />
+          <div>
+            <QuizResult
+              title="Post-Graduation Work Permit"
+              image={gradStudents}
+              alt="Passports"
+            />
           </div>
         );
         break;
 
       default:
         resultComponent = (
-          <div className="text-center">
-            {/* image */}
-            <h2 className="text-2xl font-bold text-gray-700">
-              Explore more about Canada's opportunities on the official website.
-            </h2>
+          <div>
+            <p className="flex justify-normal">
+              Based on your answers, we recommend you to book a free
+              consultation with our team to discuss your goals and options.
+            </p>
             <FreeConsultationBtn />
           </div>
         );
