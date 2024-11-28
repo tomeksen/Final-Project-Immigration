@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 // Mapping object to transform folder names into readable titles
 const pathNameToTitle: Record<string, string> = {
   aboutUs: "About Us",
+  consultation: "Consultation",
   contact: "Contact",
   immigrate: "Immigrate",
   expressEntry: "Express Entry",
