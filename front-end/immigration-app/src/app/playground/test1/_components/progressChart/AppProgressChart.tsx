@@ -31,7 +31,7 @@ const chartConfig: ChartConfig = {
 
 export function AppProgressChart() {
   return (
-    <Card className="flex flex-col w-full">
+    <Card className="flex flex-col w-full h-full">
       <CardHeader className="items-left pb-0">
         <CardTitle>Progress</CardTitle>
       </CardHeader>
