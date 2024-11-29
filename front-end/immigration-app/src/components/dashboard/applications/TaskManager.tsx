@@ -1,8 +1,8 @@
 "use client";
 
+import { AppSheet } from "@/components/AppSheet";
+import { TaskList } from "@/components/TaskList";
 import React, { useState } from "react";
-import { TaskList } from "../TaskList";
-import { AppSheet } from "../AppSheet";
 
 type Task = {
   id: string;
@@ -89,19 +89,21 @@ const tasks: Task[] = [
 ];
 
 export function TaskManager() {
-  const [selectedTask, setSelectedTask] = useState<Task | null>();
+  const [selectedTask, setSelectedTask] = useState<Task | null>(null);
 
   const handleTaskClick = (task: Task) => {
     setSelectedTask(task);
+  };
+
+  const handleClose = () => {
+    setSelectedTask(null);
   };
 
   return (
     <div>
       <TaskList onTaskClick={handleTaskClick} tasks={tasks} />
 
-      {selectedTask && (
-        <AppSheet tasks={tasks} onClose={() => setSelectedTask(null)} />
-      )}
+      {selectedTask && <AppSheet task={selectedTask} onClose={handleClose} />}
     </div>
   );
 }
