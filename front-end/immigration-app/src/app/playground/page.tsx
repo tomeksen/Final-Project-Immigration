@@ -1,18 +1,18 @@
-import { ApplicationsTable } from "@/components/applications/ApplicationsTable";
+import { AppSheet } from "@/components/AppSheet";
+import { ApplicationsTable } from "@/components/dashboard/applications/ApplicationsTable";
+import { TaskManager } from "@/components/dashboard/applications/TaskManager";
 import { TaskList } from "@/components/TaskList";
 
 const TestPage = () => {
-  // const translations = useTranslations('HomePage');
-
   return (
     <>
       <div className="p-6">
-        <TaskList />
+        <ApplicationsTable />
       </div>
 
-      {/* <div>
-        <ApplicationsTable />
-      </div> */}
+      <div className="p-6">
+        <TaskManager />
+      </div>
     </>
   );
 };
