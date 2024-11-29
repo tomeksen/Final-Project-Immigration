@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import bg from "@/assets/bg_bridge.jpeg";
-import { Button } from "@/components/ui/button";
+import { Button } from "../ui/button";
 
 export default function SectionOne() {
   return (
@@ -15,11 +15,11 @@ export default function SectionOne() {
       {/* overlay filter */}
       <div className="absolute inset-0 bg-sky-600 opacity-30 z-10"></div>
 
-      <div className="relative z-20 flex flex-col items-start justify-start text-start text-white p-10 sm:pl-10 pt-14 md:ml-5 lg:ml-10">
-        <h1 className="text-4xl font-bold max-w-md leading-normal">
+      <div className="relative z-20 flex flex-col items-start justify-start h-full w-full text-start text-white pl-14 pt-14">
+        <h1 className="text-3xl font-bold max-w-md leading-normal">
           Start your Journey to Canada with us
         </h1>
-        <p className="mt-4 font-semibold sm:font-normal sm:max-w-md text-sm">
+        <p className="mt-4 max-w-md text-sm">
           We bring expertise, compassion, and care to support you in navigating
           the complexities of immigration with confidence.
         </p>

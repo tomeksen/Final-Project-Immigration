@@ -4,7 +4,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, FormProvider, Form, useFormContext } from "react-hook-form";
 import { z } from "zod";
 import { formSchema } from "@/schema/index";
-import { FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
+import {
+  FormField,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
 export default function GetInTouchForm() {
@@ -31,7 +37,7 @@ export default function GetInTouchForm() {
           onSubmit={formDetails.handleSubmit(onSubmit)}
           className="space-y-6"
         >
-          <div className="space-y-2">
+          <div className="space-y-1">
             <FormField
               control={formDetails.control}
               name="name"
@@ -39,7 +45,12 @@ export default function GetInTouchForm() {
                 <FormItem>
                   <FormLabel>Name</FormLabel>
                   <FormControl>
-                    <Input {...field} placeholder="John" />
+                    <Input
+                      {...field}
+                      placeholder="John"
+                      className="bg-white"
+                      required
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -52,7 +63,12 @@ export default function GetInTouchForm() {
                 <FormItem>
                   <FormLabel>Last Name</FormLabel>
                   <FormControl>
-                    <Input {...field} placeholder="Doe" />
+                    <Input
+                      {...field}
+                      placeholder="Doe"
+                      className="bg-white"
+                      required
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -69,6 +85,8 @@ export default function GetInTouchForm() {
                       {...field}
                       type="email"
                       placeholder="JohnDoe@gmail.com"
+                      className="bg-white"
+                      required
                     />
                   </FormControl>
                   <FormMessage />
@@ -82,11 +100,27 @@ export default function GetInTouchForm() {
                 <FormItem>
                   <FormLabel>Message</FormLabel>
                   <FormControl>
-                    <Input {...field} type="text" placeholder="" />
+                    <textarea
+                      {...field}
+                      placeholder="Message"
+                      className="bg-white"
+                      required
+                      style={{
+                        width: "100%",
+                        height: "100px",
+                        borderRadius: "5px",
+                        boxShadow: "0px 0px 5px 0px rgba(0,0,0,0.1)",
+                        padding: "10px",
+                      }}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
+            />
+            <Input
+              type="submit"
+              className="hover:cursor-pointer text-white bg-primary-red p-2 rounded-md w-1/2 m-auto font-semibold"
             />
           </div>
         </form>
