@@ -1,8 +1,10 @@
-import AppPaymentSwiper from "@/app/playground/test1/_components/paymentSwiper/AppPaymentSwiper";
+import AppPaymentSwiper from "@/app/app/(sections)/payments/_components/paymentSwiper/AppPaymentSwiper";
 
 import { PaymentChart } from "./_components/PaymentChart";
 import PaymentSavedCard from "./_components/PaymentSavedCard";
 import PaymentRefundPolicy from "./_components/PaymentRefundPolicty";
+import PaymentInvoices from "./_components/PaymentInvoices";
+import PaymentDialog from "./_components/PaymentDialog";
 
 const PaymentsPage = () => {
   return (
@@ -23,7 +25,7 @@ const PaymentsPage = () => {
             </div>
             {/* Row 2 */}
             <div className="rounded-xl bg-muted/50 xl:col-span-2 xl:row-span-2">
-              03
+              <PaymentInvoices />
             </div>
             <div className="rounded-xl bg-muted/50">
               <PaymentSavedCard />
@@ -45,7 +47,10 @@ const PaymentsPage = () => {
               </div>
             </div>
             {/* Row 2 */}
-            <div className="rounded-xl bg-muted/50">03</div>
+            <div className="rounded-xl bg-muted/50">
+              {" "}
+              <PaymentInvoices />
+            </div>
             {/* Row 3 */}
             <div className="grid gap-4 md:grid-cols-2">
               <div className="rounded-xl bg-muted/50">
@@ -65,7 +70,10 @@ const PaymentsPage = () => {
             <div className="rounded-xl bg-muted/50 w-full">
               <PaymentChart />
             </div>
-            <div className="rounded-xl bg-muted/50">03</div>
+            <div className="rounded-xl bg-muted/50">
+              {" "}
+              <PaymentInvoices />
+            </div>
             <div className="rounded-xl bg-muted/50">
               <PaymentSavedCard />
             </div>
