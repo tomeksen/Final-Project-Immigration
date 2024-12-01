@@ -7,6 +7,7 @@ import SectionTitle from "@/components/SectionTitle";
 import { Button } from "@/components/ui/button";
 import Modal from "../Modal";
 import Quiz from "../quiz/Quiz";
+import { Reveal } from "@/utils/Reveal";
 
 export default function SectionFour() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -14,28 +15,34 @@ export default function SectionFour() {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
   return (
-    <div className="p-6 md:p-10 items-center bg-gray-100">
-      <div className="p-4 md:p-6">
-        <SectionTitle text="Take the Quiz to find your immigration pathway!" />
-        <p className="mb-5">
-          By taking this quiz, you will discover which immigration pathway best
-          fits your unique situation.
-        </p>
-        <div className="bg-sky-200 flex-col justify-center m-auto items-center align-middle w-full lg:w-2/5 rounded-lg relative">
-          <Image src={quiz} alt="Graphic Image of a girl" className="m-auto" />
-          <Button
-            className="bg-primary-red w-full absolute bottom-0 h-14 font-bold text-3xl rounded-none rounded-b-lg hover:bg-red-800"
-            onClick={openModal}
-          >
-            Start Quiz! <MdOutlineArrowForward size={50} />
-          </Button>
+    <Reveal>
+      <div className="p-6 md:p-10 items-center bg-gray-100">
+        <div className="p-4 md:p-6">
+          <SectionTitle text="Take the Quiz to find your immigration pathway!" />
+          <p className="mb-5">
+            By taking this quiz, you will discover which immigration pathway
+            best fits your unique situation.
+          </p>
+          <div className="bg-sky-200 flex-col justify-center m-auto items-center align-middle w-full lg:w-2/5 rounded-lg relative">
+            <Image
+              src={quiz}
+              alt="Graphic Image of a girl"
+              className="m-auto"
+            />
+            <Button
+              className="bg-primary-red w-full absolute bottom-0 h-14 font-bold text-3xl rounded-none rounded-b-lg hover:bg-red-800"
+              onClick={openModal}
+            >
+              Start Quiz! <MdOutlineArrowForward size={50} />
+            </Button>
 
-          {/* modal */}
-          <Modal isOpen={isModalOpen} onClose={closeModal}>
-            <Quiz onClose={closeModal} />
-          </Modal>
+            {/* modal */}
+            <Modal isOpen={isModalOpen} onClose={closeModal}>
+              <Quiz onClose={closeModal} />
+            </Modal>
+          </div>
         </div>
       </div>
-    </div>
+    </Reveal>
   );
 }
