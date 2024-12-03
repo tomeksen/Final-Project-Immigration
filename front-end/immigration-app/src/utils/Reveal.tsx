@@ -4,10 +4,10 @@ import { motion, useInView, useAnimation } from "framer-motion";
 
 interface Props {
   children: JSX.Element;
-  width?: "fit-content" | "100%";
+  delay?: number;
 }
 
-export const Reveal = ({ children, width = "fit-content" }: Props) => {
+export const Reveal = ({ children, delay = 0.3 }: Props) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
@@ -25,12 +25,12 @@ export const Reveal = ({ children, width = "fit-content" }: Props) => {
     >
       <motion.div
         variants={{
-          hidden: { opacity: 0, y: 75 },
-          visible: { opacity: 1, y: 0 },
+          hidden: { opacity: 0 },
+          visible: { opacity: 1 },
         }}
         initial="hidden"
         animate={mainControls}
-        transition={{ duration: 1, delay: 0.25 }}
+        transition={{ duration: 1, delay: delay }}
       >
         {children}
       </motion.div>

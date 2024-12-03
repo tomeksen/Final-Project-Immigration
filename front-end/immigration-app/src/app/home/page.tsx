@@ -5,7 +5,6 @@ import SectionFour from "@/components/staticPage/mainPage/SectionFour";
 import SectionThree from "@/components/staticPage/mainPage/SectionThree";
 import Testimonials from "@/components/staticPage/mainPage/Testimonials";
 import WhereToStart from "@/components/staticPage/mainPage/WhereToStart";
-import { Reveal } from "@/utils/Reveal";
 
 export default function HomePage() {
   return (

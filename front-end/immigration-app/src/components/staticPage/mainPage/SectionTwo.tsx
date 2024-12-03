@@ -7,10 +7,10 @@ import { Reveal } from "@/utils/Reveal";
 
 export default function SectionTwo() {
   return (
-    <div className="bg-gray-100 py-10">
-      <div className="flex justify-center gap-8 p-10 md:ml-5 lg:ml-10 items-center bg-gray-100">
-        {/* text */}
-        <Reveal>
+    <Reveal>
+      <div className="bg-gray-100 py-10">
+        <div className="flex justify-center gap-8 p-10 md:ml-5 lg:ml-10 items-center bg-gray-100">
+          {/* text */}
           <div className="flex flex-col md:flex-row gap-4">
             <div className="w-full">
               <SectionTitle text="Our consultant" />
@@ -48,8 +48,8 @@ export default function SectionTwo() {
               <Image src={larissa} alt="Consultant Larissa" />
             </div>
           </div>
-        </Reveal>
+        </div>
       </div>
-    </div>
+    </Reveal>
   );
 }

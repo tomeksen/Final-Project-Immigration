@@ -3,20 +3,21 @@ import Image from "next/image";
 import bg from "@/assets/bg_bridge.jpeg";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/utils/Reveal";
+import FreeConsultationBtn from "@/components/FreeConsultationBtn";
 
 export default function SectionOne() {
   return (
-    <div className="relative w-full">
-      <Image
-        src={bg}
-        alt="Picture of a bridge"
-        layout="fill"
-        objectFit="cover"
-      />
-      {/* overlay filter */}
-      <div className="absolute inset-0 bg-sky-600 opacity-30 z-10"></div>
+    <Reveal>
+      <div className="relative w-full">
+        <Image
+          src={bg}
+          alt="Picture of a bridge"
+          layout="fill"
+          objectFit="cover"
+        />
+        {/* overlay filter */}
+        <div className="absolute inset-0 bg-sky-600 opacity-30 z-10"></div>
 
-      <Reveal>
         <div className="relative z-20 flex flex-col items-start justify-start text-start text-white p-10 sm:pl-10 pt-14 md:ml-5 lg:ml-10">
           <h1 className="text-4xl font-bold max-w-md leading-normal">
             Start your Journey to Canada with us
@@ -34,7 +35,7 @@ export default function SectionOne() {
             Book a free consultation
           </Button>
         </div>
-      </Reveal>
-    </div>
+      </div>
+    </Reveal>
   );
 }

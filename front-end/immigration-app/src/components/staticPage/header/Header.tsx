@@ -5,6 +5,8 @@ import Link from "next/link";
 import { DarkModeToggle } from "@/components/utils/darkmode/DarkModeToggle";
 import { ThemeLogo } from "@/components/utils/darkmode/ThemeLogo";
 import LocaleSwitcher from "@/components/utils/language/LocaleSwitcher";
+import { Reveal } from "@/utils/Reveal";
+import FreeConsultationBtn from "@/components/FreeConsultationBtn";
 
 export default function Header() {
   return (
@@ -34,11 +36,7 @@ export default function Header() {
             <LocaleSwitcher />
             <DarkModeToggle />
           </div>
-          <Link href="/consultation">
-            <button className="bg-primary-red text-white sm:text-sm sm:p-1 md:py-2 md:px-4 rounded-xl font-semibold ">
-              Book a free consultation
-            </button>
-          </Link>
+          <FreeConsultationBtn />
         </div>
       </div>
     </header>
