@@ -15,7 +15,7 @@ export default function Footer() {
       <footer className="bg-primary-red py-8 px-4 md:px-10 text-white">
         <div className="container mx-auto items-center flex flex-col justify-between gap-8 sm:flex-col md:flex-row">
           {/* Logo */}
-          <Reveal delay={0.8}>
+          <Reveal>
             <div className="flex-shrink-0 mb-6 md:mb-0">
               <Image
                 src={whiteLogo}
@@ -29,19 +29,19 @@ export default function Footer() {
           {/* Links Section */}
 
           <div className="flex flex-col md:flex-row items-center text-center md:text-left md:items-start gap-6 md:gap-12">
-            <Reveal delay={1.2}>
+            <Reveal delay={0.6}>
               <div>
                 <Services />
               </div>
             </Reveal>
 
-            <Reveal delay={1.3}>
+            <Reveal delay={0.7}>
               <div>
                 <Company />
               </div>
             </Reveal>
 
-            <Reveal delay={1.4}>
+            <Reveal delay={0.8}>
               <div>
                 <h1 className="text-lg font-bold">FAQs</h1>
               </div>
@@ -51,7 +51,7 @@ export default function Footer() {
           {/* Social Media Icons */}
           <div className="flex flex-wrap align-middle justify-center gap-4 mt-6 md:mt-0">
             <Link href="http://instagram.com/upimmigration">
-              <Reveal delay={1.5}>
+              <Reveal delay={0.9}>
                 <FaInstagram
                   className="hover:text-gray-300 transition-colors duration-200"
                   size={30}
@@ -60,7 +60,7 @@ export default function Footer() {
             </Link>
 
             <Link href="https://www.facebook.com/upimmigration/">
-              <Reveal delay={1.6}>
+              <Reveal delay={1}>
                 <CiFacebook
                   className="hover:text-gray-300 transition-colors duration-200"
                   size={30}
@@ -69,7 +69,7 @@ export default function Footer() {
             </Link>
 
             <Link href="https://www.linkedin.com/company/upimmigration">
-              <Reveal delay={1.7}>
+              <Reveal delay={1.1}>
                 <RiLinkedinBoxLine
                   className="hover:text-gray-300 transition-colors duration-200"
                   size={30}
@@ -78,7 +78,7 @@ export default function Footer() {
             </Link>
 
             <Link href="https://api.whatsapp.com/send?phone=16725881360">
-              <Reveal delay={1.8}>
+              <Reveal delay={1.2}>
                 <FaWhatsapp
                   className="hover:text-gray-300 transition-colors duration-200"
                   size={30}
@@ -90,7 +90,7 @@ export default function Footer() {
 
         {/* Footer Copyright */}
         <div className="flex justify-end mt-6 md:mt-8 text-center text-sm">
-          <Reveal delay={1.9}>
+          <Reveal delay={1.3}>
             <p>© Up Immigration Consulting. All Rights Reserved</p>
           </Reveal>
         </div>
