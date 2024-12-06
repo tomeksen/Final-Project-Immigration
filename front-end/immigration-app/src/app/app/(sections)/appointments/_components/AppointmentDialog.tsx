@@ -14,7 +14,7 @@ import { DialogTrigger } from "@radix-ui/react-dialog";
 export default function AppointmentDialog() {
   return (
     <Dialog>
-      <DialogTrigger>
+      <DialogTrigger asChild>
         <Button className="bg-primary-red hover:bg-primary-red/80">
           Make Payment
         </Button>
