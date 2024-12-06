@@ -19,14 +19,7 @@ export default function BgImageContainer({
 }: BgImage) {
   return (
     <div className="relative w-full h-full">
-      <Image
-        src={bgImage}
-        alt={alt}
-        layout="fill"
-        sizes={sizes}
-        objectFit="cover"
-        className={className}
-      />
+      <Image src={bgImage} alt={alt} fill sizes={sizes} className={className} />
       {/* overlay filter */}
       {/* Maybe it will give a problem in future layout */}
       <div className="absolute inset-0 bg-sky-600 opacity-30 z-10 rounded-2xl"></div>
