@@ -20,7 +20,9 @@ export default function page() {
           className="object-cover h-32 md:object-center lg:object-top xl:object-center"
         />
       </div>
-      <Breadcrumbs />
+      <Reveal>
+        <Breadcrumbs />
+      </Reveal>
       <div className="px-4 sm:px-8 lg:px-16 pb-10 mt-10 ">
         <Reveal>
           <div className="mb-5">
