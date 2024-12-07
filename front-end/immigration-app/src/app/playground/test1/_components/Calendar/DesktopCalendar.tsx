@@ -44,10 +44,9 @@ function DesktopCalendar({
   //     title: "One-day Event",
   //   },
   // ];
-  console.log(bookedDays);
 
   return (
-    <Card className="flex-1">
+    <Card className="flex-1 w-full flex justify-center">
       <DayPicker
         today={new Date()}
         showOutsideDays={showOutsideDays}
@@ -68,10 +67,10 @@ function DesktopCalendar({
           table: "w-full border-collapse space-y-1",
           head_row:
             "flex bg-secondary-lightGray dark:bg-secondary-lightGray dark:text-primary-black rounded-t-md",
-          head_cell: " w-[175px] font-normal text-md text-bold p-2",
+          head_cell: " w-[125px] font-normal text-md text-bold p-2",
           row: "flex w-full",
           cell: cn(
-            "relative p-0 w-[175px] h-[150px] font-bold text-right border border-secondary-lightGray text-md focus-within:relative focus-within:z-20 [&:has([aria-selected])]:bg-accent [&:has([aria-selected].day-outside)]:bg-accent/50 [&:has([aria-selected].day-range-end)]:rounded-r-md",
+            "relative p-0 w-[125px] h-[125px] font-bold text-right border border-secondary-lightGray text-md focus-within:relative focus-within:z-20 [&:has([aria-selected])]:bg-accent [&:has([aria-selected].day-outside)]:bg-accent/50 [&:has([aria-selected].day-range-end)]:rounded-r-md",
             props.mode === "range"
               ? "[&:has(>.day-range-end)]:rounded-r-md [&:has(>.day-range-start)]:rounded-l-md first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md"
               : "[&:has([aria-selected])]:rounded-md"
@@ -99,7 +98,7 @@ function DesktopCalendar({
             return (
               <div
                 className={cn(
-                  "flex flex-col justify-between h-full dark:bg-primary-gray",
+                  "flex flex-col justify-between  h-full dark:bg-primary-gray",
                   isToday &&
                     "bg-primary-red/10 dark:bg-primary-black text-accent-foreground"
                 )}

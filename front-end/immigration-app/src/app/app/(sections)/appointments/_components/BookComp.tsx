@@ -181,13 +181,13 @@ const BookComp = () => {
           </Table>
 
           <div className="flex justify-between items-center mt-4">
-            <Button variant="link" className="text-muted-foreground">
-              View More Times →
-            </Button>
-            <AppointmentDialog />
+            <div className="text-muted-foreground">View More Times →</div>
           </div>
         </CardContent>
       </Card>
+      <div className="flex items-center justify-end w-full">
+        <AppointmentDialog />
+      </div>
     </div>
   );
 };

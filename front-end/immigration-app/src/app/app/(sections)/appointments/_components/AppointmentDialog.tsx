@@ -15,8 +15,8 @@ export default function AppointmentDialog() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="bg-primary-red hover:bg-primary-red/80">
-          Make Payment
+        <Button className="bg-primary-red hover:bg-primary-red/80 max-w-[200px] p-5">
+          Confirm Date & Time
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[700px]">
