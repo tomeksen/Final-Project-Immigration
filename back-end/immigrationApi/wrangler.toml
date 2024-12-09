@@ -16,8 +16,9 @@ compatibility_flags = [ "nodejs_compat" ]
 
 [vars]
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY="pk_test_ZW1lcmdpbmctd2FydGhvZy0yNC5jbGVyay5hY2NvdW50cy5kZXYk"
+CLERK_PUBLISHABLE_KEY="pk_test_ZW1lcmdpbmctd2FydGhvZy0yNC5jbGVyay5hY2NvdW50cy5kZXYk"
 CLERK_SECRET_KEY="sk_test_f6z0wLBN8XOBJOf07h9a951IU0sccOrXSGLWjoJLUX"
-CLERK_WEBHOOK_SECRET=""
+CLERK_WEBHOOK_SECRET="sk_test_f6z0wLBN8XOBJOf07h9a951IU0sccOrXSGLWjoJLUX"
 # DB_URL = "https://your-database-url.com"
 # API_KEY = "your_api_key_value"
 
