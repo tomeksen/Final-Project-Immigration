@@ -36,12 +36,15 @@ const AppointmentsPage = () => {
   return (
     <>
       <section className="h-screen max-w-screen container mx-auto flex flex-col p-3">
+        {/* Header */}
         <HeaderBreadCrumbs
           rootName="Appointment"
           breadName={
             activeTab === "appointment" ? "Book an Appointment" : "My Schedule"
           }
         />
+
+        {/* Choose buttons */}
         <div className="flex items-center gap-2 mb-4">
           <Button
             variant="outline"
@@ -65,9 +68,13 @@ const AppointmentsPage = () => {
           </Button>
         </div>
 
+        {/* Book a Appointment */}
         {activeTab === "appointment" && <BookComp />}
+
+        {/* My Schedule */}
         {activeTab === "schedule" && (
           <div className="flex flex-col">
+            {/* for xl */}
             <div className="hidden xl:grid xl:grid-cols-4">
               <div className="col-span-1">
                 <SideSchedule />
@@ -76,12 +83,15 @@ const AppointmentsPage = () => {
                 <DesktopCalendar bookedDays={bookedDays} />
               </div>
             </div>
-            <div className="hidden xl:hidden sm:grid sm:grid-rows-[auto, auto] h-full">
-              <DesktopCalendar bookedDays={bookedDays} />
 
+            {/* for lg */}
+            <div className="hidden xl:hidden lg:grid lg:grid-rows-[auto, auto] h-full">
+              <DesktopCalendar bookedDays={bookedDays} />
               <MobileSideSchedule />
             </div>
-            <div className="xl:hidden sm:hidden grid-rows-[auto,auto] h-full">
+
+            {/* for smaller than lg */}
+            <div className="xl:hidden lg:hidden grid-rows-[auto,auto] h-full">
               <div className="flex items-center justify-center">
                 <MobileCalendar bookedDays={bookedDays} />
               </div>
