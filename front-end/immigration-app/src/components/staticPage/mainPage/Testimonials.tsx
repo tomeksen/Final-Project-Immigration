@@ -1,5 +1,6 @@
-import React from "react";
+"use client";
 
+import React from "react";
 import Lauta from "@/assets/lauta.jpeg";
 import Maria from "@/assets/maria.jpeg";
 import Juan from "@/assets/juan.jpeg";
@@ -7,6 +8,8 @@ import Image, { StaticImageData } from "next/image";
 import google from "@/assets/google_reviews.png";
 import SectionTitle from "@/components/SectionTitle";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import { Reveal } from "@/utils/Reveal";
 
 type TestimonialType = {
   name: string;
@@ -44,36 +47,63 @@ export default function Testimonials() {
     },
   ];
 
-  return (
-    <div className="p-4 sm:p-10 flex flex-col items-star md:mx-7">
-      <SectionTitle text="Testimonials" />
+  const fadeInVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: i * 0.3, duration: 0.9, ease: "easeOut" },
+    }),
+  };
 
-      <div className="flex flex-wrap gap-6 justify-center mt-4">
+  return (
+    <motion.div
+      className="p-4 sm:p-10 flex flex-col items-start md:mx-7"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+    >
+      {/* Section Title */}
+      <Reveal delay={0.1}>
+        <SectionTitle text="Testimonials" />
+      </Reveal>
+
+      {/* Testimonial Cards */}
+      <motion.div className="flex flex-wrap gap-6 justify-center items-center mx-auto mt-4">
         {testimonials.map((testimonial, index) => (
-          <div
+          <motion.div
             key={index}
-            className="bg-white shadow-md w-full sm:w-72 flex flex-col items-center"
+            className="bg-white shadow-md w-full sm:w-72 flex flex-col items-center rounded-lg overflow-hidden"
+            variants={fadeInVariants}
+            custom={index}
           >
             <Image
               src={testimonial.img as StaticImageData}
               alt={testimonial.name}
-              className="w-full h-36 border-gray-300 shadow-lg mb-4 object-cover object-top"
+              className="w-full h-36 object-cover object-top"
             />
-            <div className="p-4 text-center sm:text-left">
-              <div className="flex justify-between items-center">
+            <div className="p-4 text-center">
+              <div className="flex justify-between items-center mb-2">
                 <div>
                   <p className="font-bold text-lg">{testimonial.name}</p>
                   <p className="text-sm text-gray-500">{testimonial.visa}</p>
                 </div>
                 <div className="text-2xl">{testimonial.flag}</div>
               </div>
-              <p className="mt-2 text-gray-700">{testimonial.description}</p>
+              <p className="text-gray-700">{testimonial.description}</p>
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
 
-      <div className="flex flex-col items-center mt-8 text-center">
+      {/* Google Reviews Section */}
+      <motion.div
+        className="flex flex-col items-center mx-auto mt-8 text-center"
+        initial={{ opacity: 0, scale: 0.9 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        viewport={{ once: true }}
+      >
         <div className="flex justify-center mb-2">
           <Image
             src={google}
@@ -94,7 +124,7 @@ export default function Testimonials() {
         >
           Read more
         </Button>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }

@@ -1,32 +1,35 @@
-import {useLocale, useTranslations} from 'next-intl';
-import LocaleSwitcherSelect from './LocaleSwitcherSelect';
+import { useLocale, useTranslations } from "next-intl";
+import LocaleSwitcherSelect from "./LocaleSwitcherSelect";
+import { Reveal } from "@/utils/Reveal";
 
 export default function LocaleSwitcher() {
-  const t = useTranslations('LocaleSwitcher');
+  const t = useTranslations("LocaleSwitcher");
   const locale = useLocale();
 
   return (
-    <LocaleSwitcherSelect
-      defaultValue={locale}
-      items={[
-        {
-          value: 'en',
-          label: t('en')
-        },
-        {
-          value: 'es',
-          label: t('es')
-        },
-        {
-            value: 'pt',
-            label: t('pt')
+    <Reveal>
+      <LocaleSwitcherSelect
+        defaultValue={locale}
+        items={[
+          {
+            value: "en",
+            label: t("en"),
           },
-        {
-            value: 'jp',
-            label: t('jp')
+          {
+            value: "es",
+            label: t("es"),
           },
-      ]}
-      label={t('label')}
-    />
+          {
+            value: "pt",
+            label: t("pt"),
+          },
+          {
+            value: "jp",
+            label: t("jp"),
+          },
+        ]}
+        label={t("label")}
+      />
+    </Reveal>
   );
 }
