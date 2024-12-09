@@ -59,7 +59,7 @@ function MobileCalendar({
         booked: "w-8 h-8 rounded-full border border-primary-red",
       }}
       showOutsideDays={showOutsideDays}
-      className={cn("p-3", className)}
+      className={cn("p-3 flex items-center", className)}
       classNames={{
         months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",
         month: "space-y-4 bg-primary-gray rounded-t-lg rounded-b-lg",
