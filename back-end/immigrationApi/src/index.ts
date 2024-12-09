@@ -3,10 +3,11 @@ import { routes } from './routes/routes'
 import { Env } from './env'
 import docApp from './utils/openApi/openApi'
 import { clerkMiddleware, getAuth } from '@hono/clerk-auth'
+import { cors } from 'hono/cors'
 
 const app = new Hono<{ Bindings: Env }>()
 app.use('*', clerkMiddleware())
-
+app.use('*', cors())
 // Use the OpenAPI app
 if (process.env.NODE_ENV === 'development') {
   app.route('/reference', docApp)
