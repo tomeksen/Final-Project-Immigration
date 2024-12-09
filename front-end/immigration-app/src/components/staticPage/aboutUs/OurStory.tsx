@@ -17,7 +17,12 @@ export default function OurStory() {
   return (
     <div className="mt-4">
       {/* Animated Section Title */}
-      <motion.div initial="hidden" animate="visible" variants={fadeIn}>
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={fadeIn}
+        custom={0}
+      >
         <SectionTitle text="Our Story" />
       </motion.div>
 
@@ -27,7 +32,8 @@ export default function OurStory() {
         initial="hidden"
         animate="visible"
         variants={fadeIn}
-        transition={{ delay: 0.5 }}
+        custom={1}
+        transition={{ delay: 0.8 }}
       >
         <iframe
           width="1000"

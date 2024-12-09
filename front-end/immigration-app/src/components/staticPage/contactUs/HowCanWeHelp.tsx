@@ -6,17 +6,8 @@ import SectionTitle from "@/components/SectionTitle";
 import { motion } from "framer-motion";
 
 export default function HowCanWeHelp() {
-  const fadeInLeft = {
-    hidden: { opacity: 0, x: -50 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.8, ease: "easeInOut" },
-    },
-  };
-
   const fadeInVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 20 },
     visible: (i: number) => ({
       opacity: 1,
       y: 0,
@@ -43,7 +34,8 @@ export default function HowCanWeHelp() {
     >
       <motion.div
         className="flex justify-center fill object-center items-center md:w-96 rounded-2xl"
-        variants={fadeInLeft}
+        variants={fadeInVariants}
+        custom={1}
       >
         {/* image */}
         <Image
@@ -52,7 +44,7 @@ export default function HowCanWeHelp() {
           className="min-w-auto object-cover md:min-w-96 "
         />
       </motion.div>
-      <motion.div variants={fadeInVariants}>
+      <motion.div variants={fadeInVariants} custom={2}>
         {/* text */}
         <SectionTitle text="How Can We Help You Today?" />
         <h3 className="font-semibold text-primary-red mb-5">

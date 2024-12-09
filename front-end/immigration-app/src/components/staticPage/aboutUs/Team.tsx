@@ -13,14 +13,14 @@ export default function Team() {
     visible: (i: number) => ({
       opacity: 1,
       y: 0,
-      transition: { delay: i * 0.2, duration: 0.6, ease: "easeOut" },
+      transition: { delay: i * 0.4, duration: 0.8, ease: "easeOut" },
     }),
   };
 
-  const staggerContainer = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.3 } },
-  };
+  // const staggerContainer = {
+  //   hidden: { opacity: 0 },
+  //   visible: { opacity: 1, transition: { staggerChildren: 0.6 } },
+  // };
   return (
     <div className="p-4">
       {/* higher section */}
@@ -29,7 +29,8 @@ export default function Team() {
         initial="hidden"
         animate="visible"
         viewport={{ once: true }}
-        variants={staggerContainer}
+        variants={fadeIn}
+        custom={1.5}
       >
         {/* Larissa's picture */}
         <motion.div
@@ -74,9 +75,9 @@ export default function Team() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        variants={staggerContainer}
+        variants={fadeIn}
       >
-        <motion.div className="relative w-48 h-48" variants={fadeIn}>
+        <motion.div className="relative w-48 h-48" variants={fadeIn} custom={0}>
           <Image
             src={member1}
             alt="Member 1"
@@ -88,7 +89,7 @@ export default function Team() {
           </div>
         </motion.div>
 
-        <motion.div className="relative w-48 h-48" variants={fadeIn}>
+        <motion.div className="relative w-48 h-48" variants={fadeIn} custom={1}>
           <Image
             src={member2}
             alt="Member 2"
@@ -101,7 +102,7 @@ export default function Team() {
         </motion.div>
 
         {/* Consultation button */}
-        <motion.div className="mt-4 md:mt-0" variants={fadeIn}>
+        <motion.div className="mt-4 md:mt-0" variants={fadeIn} custom={2}>
           <Link href="/consultation">
             <button className="bg-primary-red text-white py-2 px-9 rounded-xl font-semibold">
               Book a consultation

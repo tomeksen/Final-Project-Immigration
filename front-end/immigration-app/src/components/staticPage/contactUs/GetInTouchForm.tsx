@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, FormProvider, Form, useFormContext } from "react-hook-form";
@@ -122,7 +121,7 @@ export default function GetInTouchForm() {
             <motion.div
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              className="flex items-center align-middle justify-center p-1"
+              className="flex items-center align-middle justify-center"
             >
               <Input
                 type="submit"
