@@ -67,10 +67,10 @@ function DesktopCalendar({
           table: "w-full border-collapse space-y-1",
           head_row:
             "flex bg-secondary-lightGray dark:bg-secondary-lightGray dark:text-primary-black rounded-t-md",
-          head_cell: " w-[125px] font-normal text-md text-bold p-2",
+          head_cell: " w-[120px] font-normal text-md text-bold p-2",
           row: "flex w-full",
           cell: cn(
-            "relative p-0 w-[125px] h-[125px] font-bold text-right border border-secondary-lightGray text-md focus-within:relative focus-within:z-20 [&:has([aria-selected])]:bg-accent [&:has([aria-selected].day-outside)]:bg-accent/50 [&:has([aria-selected].day-range-end)]:rounded-r-md",
+            "relative p-0 w-[120px] h-[120px] font-bold text-right border border-secondary-lightGray text-md focus-within:relative focus-within:z-20 [&:has([aria-selected])]:bg-accent [&:has([aria-selected].day-outside)]:bg-accent/50 [&:has([aria-selected].day-range-end)]:rounded-r-md",
             props.mode === "range"
               ? "[&:has(>.day-range-end)]:rounded-r-md [&:has(>.day-range-start)]:rounded-l-md first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md"
               : "[&:has([aria-selected])]:rounded-md"

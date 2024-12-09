@@ -5,11 +5,12 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { DesktopCalendar } from "@/app/playground/test1/_components/Calendar/DesktopCalendar";
-import SideSchedule from "@/app/playground/test1/_components/Calendar/SideSchedule";
-import MobileSideSchedule from "@/app/playground/test1/_components/Calendar/MobileSideSchedule";
-import { MobileCalendar } from "@/app/playground/test1/_components/Calendar/MobileCalendar";
+
+import { MobileCalendar } from "@/components/common/Calendar/MobileCalendar";
 import HeaderBreadCrumbs from "@/components/common/HeaderBreadCrumbs";
+import { DesktopCalendar } from "@/components/common/Calendar/DesktopCalendar";
+import SideSchedule from "@/components/common/Calendar/SideSchedule";
+import MobileSideSchedule from "@/components/common/Calendar/MobileSideSchedule";
 
 type ActiveTabType = "appointment" | "schedule";
 const AppointmentsPage = () => {
