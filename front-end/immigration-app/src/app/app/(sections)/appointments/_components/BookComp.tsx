@@ -185,7 +185,7 @@ const BookComp = () => {
           </div>
         </CardContent>
       </Card>
-      <div className="flex items-center justify-end w-full">
+      <div className="flex items-center justify-end w-full mb-4">
         <AppointmentDialog />
       </div>
     </div>
