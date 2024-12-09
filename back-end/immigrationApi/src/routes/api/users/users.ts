@@ -53,48 +53,51 @@ userRoutes.delete('/:id', async (c) => {
   }
 })
 //#region invitations
-userRoutes.delete('/invitations/:id', async (c) => {
-  const clerkClient = c.get('clerk')
-  const id = c.req.param('id')
-  try {
-    const invitation = await clerkClient.invitations.revokeInvitation(id)
-    return c.json({
-      invitation,
-    })
-  } catch (e) {
+// userRoutes.delete('/invitations/:id', async (c) => {
+//   const clerkClient = c.get('clerk')
+//   const id = c.req.param('id')
+//   try {
+//     const invitation = await clerkClient.invitations.revokeInvitation(id)
+//     return c.json({
+//       invitation,
+//     })
+//   } catch (e) {
     
-  }
-})
-userRoutes.get('/invitations', async (c) => {
-  const clerkClient = c.get('clerk')
-  try {
-    const invitation = await clerkClient.invitations.getInvitationList()
-    return c.json({
-      invitation,
-    })
-  } catch (e) {
+//   }
+// })
+
+// userRoutes.get('/invitations', async (c) => {
+//   const clerkClient = c.get('clerk')
+
+//   try {
+//     const invitation = await clerkClient.invitations.getInvitationList()
+//     return c.json({
+//       invitation
+//     })
+//   } catch (e) {
     
-  }
-})
-userRoutes.post('/invitations', async (c) => {
-  const clerkClient = c.get('clerk')
-  const email = await c.req.param('email')
-  try {
-    if (!email) {
-      return c.json({
-        message: 'Invalid email.'
-      }, 400)
-    }
-    const invitation = await clerkClient.invitations.createInvitation({emailAddress: email})
-    return c.json({
-      invitation,
-    })
-  } catch (e) {
+//   }
+// })
+
+// userRoutes.post('/invitations', async (c) => {
+//   const clerkClient = c.get('clerk')
+//   const email = await c.req.param('email')
+//   try {
+//     if (!email) {
+//       return c.json({
+//         message: 'Invalid email.'
+//       }, 400)
+//     }
+//     const invitation = await clerkClient.invitations.createInvitation({emailAddress: email})
+//     return c.json({
+//       invitation,
+//     })
+//   } catch (e) {
 
     
-  }
+//   }
   
-})
+// })
 userRoutes.post('/', async (c) => {
   const body = await c.req.json()
   
