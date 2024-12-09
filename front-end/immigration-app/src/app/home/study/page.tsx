@@ -14,6 +14,7 @@ import Testimonials from "@/components/staticPage/mainPage/Testimonials";
 import WhereToStart from "@/components/staticPage/mainPage/WhereToStart";
 import SectionTPT from "@/components/staticPage/study/SectionTPT";
 import { motion } from "framer-motion";
+import { Reveal } from "@/utils/Reveal";
 
 export default function page() {
   const fadeInUp = {
@@ -44,7 +45,9 @@ export default function page() {
           className="object-cover h-32 md:object-center lg:object-top xl:object-center"
         />
       </motion.div>
-      <Breadcrumbs />
+      <Reveal>
+        <Breadcrumbs />
+      </Reveal>
       <motion.div
         className="px-4 sm:px-8 lg:px-16 pb-10 mt-10 "
         initial="hidden"
