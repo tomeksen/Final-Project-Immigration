@@ -14,20 +14,19 @@ if (process.env.NODE_ENV === 'development') {
 
 app.route('/api', routes)
 
-app.get('/', async (c) => {
-  const clerkClient = c.get('clerk')
+app.get('/', (c) => {
+  const auth = getAuth(c)
 
-  try {
-    const user = await clerkClient.users.getUser('user_id_....')
-
+  if (!auth?.userId) {
     return c.json({
-      user,
+      message: 'You are not logged in.'
     })
-  } catch (e) {
-    return c.json({
-      message: 'User not found.'
-    }, 404)
   }
+
+  return c.json({
+    message: 'You are logged in!',
+    userId: auth.userId
+  })
 })
 
 export default app

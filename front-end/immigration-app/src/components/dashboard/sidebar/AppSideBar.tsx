@@ -39,7 +39,7 @@ export function AppSidebar() {
   const contentItems = [
     {
       title: t("Content.dashboard"),
-      url: "/",
+      url: "/home",
       icon: LayoutDashboard,
     },
     {
