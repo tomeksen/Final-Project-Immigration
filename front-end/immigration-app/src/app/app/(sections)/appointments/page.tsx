@@ -9,6 +9,7 @@ import { DesktopCalendar } from "@/app/playground/test1/_components/Calendar/Des
 import SideSchedule from "@/app/playground/test1/_components/Calendar/SideSchedule";
 import MobileSideSchedule from "@/app/playground/test1/_components/Calendar/MobileSideSchedule";
 import { MobileCalendar } from "@/app/playground/test1/_components/Calendar/MobileCalendar";
+import HeaderBreadCrumbs from "@/components/common/HeaderBreadCrumbs";
 
 type ActiveTabType = "appointment" | "schedule";
 const AppointmentsPage = () => {
@@ -34,7 +35,12 @@ const AppointmentsPage = () => {
   return (
     <>
       <section className="h-screen max-w-screen container mx-auto flex flex-col p-3">
-        <h1>Appointments Layout</h1>
+        <HeaderBreadCrumbs
+          rootName="Appointment"
+          breadName={
+            activeTab === "appointment" ? "Book an Appointment" : "My Schedule"
+          }
+        />
         <div className="flex items-center gap-2 mb-4">
           <Button
             variant="outline"
