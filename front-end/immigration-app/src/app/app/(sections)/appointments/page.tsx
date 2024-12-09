@@ -5,7 +5,6 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-
 import { MobileCalendar } from "@/components/common/Calendar/MobileCalendar";
 import HeaderBreadCrumbs from "@/components/common/HeaderBreadCrumbs";
 import { DesktopCalendar } from "@/components/common/Calendar/DesktopCalendar";
@@ -14,6 +13,7 @@ import MobileSideSchedule from "@/components/common/Calendar/MobileSideSchedule"
 
 type ActiveTabType = "appointment" | "schedule";
 const AppointmentsPage = () => {
+
   const path = usePathname();
   const [activeTab, setActiveTab] = useState<ActiveTabType>("appointment");
   const bookedDays = [
