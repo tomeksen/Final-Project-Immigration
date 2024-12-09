@@ -7,6 +7,7 @@ import SectionOne from "@/components/staticPage/immigratePage/SectionOne";
 import SectionTwo from "@/components/staticPage/immigratePage/SectionTwo";
 import Testimonials from "@/components/staticPage/mainPage/Testimonials";
 import WhereToStart from "@/components/staticPage/mainPage/WhereToStart";
+import { Reveal } from "@/utils/Reveal";
 
 export default function page() {
   return (
@@ -19,7 +20,9 @@ export default function page() {
           className="object-cover h-32 md:object-bottom xl:object-center"
         />
       </div>
-      <Breadcrumbs />
+      <Reveal>
+        <Breadcrumbs />
+      </Reveal>
       <SectionOne />
       <SectionTwo />
       <WhereToStart />

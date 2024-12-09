@@ -1,6 +1,6 @@
-import { DesktopCalendar } from "./_components/Calendar/DesktopCalendar";
-import { MobileCalendar } from "./_components/Calendar/MobileCalendar";
-import SideSchedule from "./_components/Calendar/SideSchedule";
+import { DesktopCalendar } from "../../../components/common/Calendar/DesktopCalendar";
+import { MobileCalendar } from "../../../components/common/Calendar/MobileCalendar";
+import SideSchedule from "../../../components/common/Calendar/SideSchedule";
 import AppPaymentSwiper from "../../app/(sections)/payments/_components/paymentSwiper/AppPaymentSwiper";
 import { AppProgressChart } from "./_components/progressChart/AppProgressChart";
 
