@@ -6,11 +6,17 @@ import { FilteredInvitation, InvitationList } from "@/type/Invitation.type";
 import { FilteredUser, User, UserList } from "@/type/Users.type";
 import { filteredInvitations, filteredUsers } from "@/utils/users";
 import { Invitation } from "@clerk/nextjs/server";
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 
 // the users data has to be reflected when a user push delete or add button
 // In this case, should be used Client component
 const UsersPage = () => {
+  const [isUsersLoading, setIsUsersLoading] = useState<boolean>(false);
+  const [isInvitationLoading, setIsInvitationLoading] =
+    useState<boolean>(false);
+
+  const [usersError, setUsersError] = useState<string | null>(null);
+  const [invitationsError, setInvitationsError] = useState<string | null>(null);
   const [users, setUsers] = useState<FilteredUser[] | null>(null);
   const [invitations, setInvitations] = useState<FilteredInvitation[] | null>(
     null
@@ -34,9 +40,9 @@ const UsersPage = () => {
       );
     } catch (error) {
       if (error instanceof Error) {
-        console.error(error.message);
+        setInvitationsError(error.message);
       } else {
-        console.error("An unexpected error happened");
+        setInvitationsError("An unexpected error happened");
       }
     }
   };
@@ -45,6 +51,7 @@ const UsersPage = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
+        setIsUsersLoading(true);
         const response = await fetch(`${BASEURL}/users`, {
           method: "GET",
         });
@@ -57,10 +64,12 @@ const UsersPage = () => {
         setUsers(filteredUser);
       } catch (error) {
         if (error instanceof Error) {
-          console.error(error.message);
+          setUsersError(error.message);
         } else {
-          console.error("An unexpected error happened");
+          setUsersError("An unexpected error happened");
         }
+      } finally {
+        setIsUsersLoading(false);
       }
     };
     fetchUsers();
@@ -70,6 +79,7 @@ const UsersPage = () => {
   useEffect(() => {
     const fetchInvitations = async () => {
       try {
+        setIsInvitationLoading(true);
         const response = await fetch(`${BASEURL}/invitations`, {
           method: "GET",
         });
@@ -82,10 +92,12 @@ const UsersPage = () => {
         setInvitations(filteredInvitation);
       } catch (error) {
         if (error instanceof Error) {
-          console.error(error.message);
+          setInvitationsError(error.message);
         } else {
-          console.error("An unexpected error happened");
+          setInvitationsError("An unexpected error happened");
         }
+      } finally {
+        setIsInvitationLoading(false);
       }
     };
     fetchInvitations();
@@ -107,42 +119,63 @@ const UsersPage = () => {
     { header: "ACTION", accessorKey: "actions" },
   ];
 
-  if (!users)
-    return (
-      <div className="flex items-center justify-center w-full h-full">
-        Not found users
-      </div>
-    );
-  if (!invitations)
-    return (
-      <div className="flex items-center justify-center w-full h-full">
-        Not found users
-      </div>
-    );
-
   return (
     <>
       <section className="h-screen max-w-screen flex flex-1 flex-col bg-slate-100">
         <div className="container mx-auto p-4 w-full h-full">
           <div className="h-full grid grid-rows-2">
-            {/* Users table */}
-            <div className="flex flex-col justify-center">
-              <h2 className="text-2xl font-bold mb-4">Users</h2>
-              {/* filter */}
+            {/* User Table section */}
 
-              {/* UserTable */}
-              <UserTableTemplate columns={userColumns} data={users} />
-            </div>
+            {/* Loading state */}
+            {isUsersLoading && (
+              <div className="flex items-center justify-center">
+                <p>Loading users...</p>
+              </div>
+            )}
+
+            {/* Error state */}
+            {usersError && (
+              <div className="flex items-center justify-center text-red-500">
+                <p>Error: {usersError}</p>
+              </div>
+            )}
+
+            {!isUsersLoading && !usersError && users && (
+              <div className="flex flex-col justify-center">
+                <h2 className="text-2xl font-bold mb-4">Users</h2>
+                {/* filter */}
+
+                {/* UserTable */}
+                <UserTableTemplate columns={userColumns} data={users} />
+              </div>
+            )}
 
             {/* Invitation table */}
-            <div className="flex flex-col justify-center">
-              <h2 className="text-2xl font-bold mb-4">Invitations</h2>
-              <UserTableTemplate
-                columns={invitationColumns}
-                data={invitations}
-                onDelete={handleDelete}
-              />
-            </div>
+            {/* Loading state */}
+            {isInvitationLoading && (
+              <div className="flex items-center justify-center">
+                <p>Loading users...</p>
+              </div>
+            )}
+
+            {/* Error state */}
+            {invitationsError && (
+              <div className="flex items-center justify-center text-red-500">
+                <p>Error: {usersError}</p>
+              </div>
+            )}
+
+            {/* Invitations table */}
+            {!isInvitationLoading && !invitationsError && invitations && (
+              <div className="flex flex-col justify-center">
+                <h2 className="text-2xl font-bold mb-4">Invitations</h2>
+                <UserTableTemplate
+                  columns={invitationColumns}
+                  data={invitations}
+                  onDelete={handleDelete}
+                />
+              </div>
+            )}
           </div>
         </div>
       </section>
