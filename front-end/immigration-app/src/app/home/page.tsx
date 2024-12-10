@@ -10,7 +10,9 @@ export default function HomePage() {
   return (
     <div>
       <SectionOne />
+
       <SectionTwo />
+
       <SectionThree />
       <SectionFour />
       <SectionFive />

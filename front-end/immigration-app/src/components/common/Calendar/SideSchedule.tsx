@@ -29,13 +29,13 @@ const events = [
 
 export default function SideSchedule() {
   return (
-    <Card className="flex flex-col items-center overflow-y-scroll: w-[300px] flex-1">
+    <Card className="flex flex-col items-center overflow-y-scroll max-w-[300px] flex-1">
       <CardHeader>
         <CardTitle>Upcoming Applications</CardTitle>
       </CardHeader>
-      <Separator className="mx-auto w-[250px] mb-2" />
-      <CardContent className="grid gap-4">
-        <div className="grid gap-6">
+      <Separator className="mx-auto max-w-[250px] mb-2" />
+      <CardContent className="grid gap-4 p-3">
+        <div className="grid gap-6 ">
           {events.map((event, index) => (
             <div key={index} className="grid gap-2">
               {/* we can change text color dynamically */}
