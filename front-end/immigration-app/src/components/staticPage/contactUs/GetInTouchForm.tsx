@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, FormProvider, Form, useFormContext } from "react-hook-form";
@@ -12,6 +11,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { motion } from "framer-motion";
 
 export default function GetInTouchForm() {
   // 1. Define your form.
@@ -118,10 +118,16 @@ export default function GetInTouchForm() {
                 </FormItem>
               )}
             />
-            <Input
-              type="submit"
-              className="hover:cursor-pointer text-white bg-primary-red p-2 rounded-md w-1/2 m-auto font-semibold"
-            />
+            <motion.div
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="flex items-center align-middle justify-center"
+            >
+              <Input
+                type="submit"
+                className="hover:cursor-pointer text-white bg-primary-red p-1 rounded-md w-1/2 m-auto font-semibold hover:bg-red-700 items-center align-middle"
+              />
+            </motion.div>
           </div>
         </form>
       </Form>

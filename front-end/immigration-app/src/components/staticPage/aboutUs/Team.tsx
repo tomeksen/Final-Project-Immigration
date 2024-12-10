@@ -1,26 +1,51 @@
+"use client";
 import React from "react";
 import larissa from "@/assets/LarissaCastelluber.jpeg";
 import Image from "next/image";
 import member1 from "@/assets/aboutUs/man.jpeg";
 import member2 from "@/assets/aboutUs/woman.jpeg";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function Team() {
+  const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: i * 0.4, duration: 0.8, ease: "easeOut" },
+    }),
+  };
+
+  // const staggerContainer = {
+  //   hidden: { opacity: 0 },
+  //   visible: { opacity: 1, transition: { staggerChildren: 0.6 } },
+  // };
   return (
     <div className="p-4">
       {/* higher section */}
-      <div className="flex flex-col justify-center items-center md:flex lg:flex-row gap-4 mb-4">
+      <motion.div
+        className="flex flex-col justify-center items-center md:flex lg:flex-row gap-4 mb-4"
+        initial="hidden"
+        animate="visible"
+        viewport={{ once: true }}
+        variants={fadeIn}
+        custom={1.5}
+      >
         {/* Larissa's picture */}
-        <div className="rounded-2xl min-w-96 h-96 fill">
+        <motion.div
+          className="rounded-2xl min-w-96 h-96 fill"
+          variants={fadeIn}
+        >
           <Image
             src={larissa}
             alt="Larissa Castelluber"
             className="rounded-2xl object-cover w-full h-96"
           />
-        </div>
+        </motion.div>
 
         {/* text description of Larissa */}
-        <div className="w-full">
+        <motion.div className="w-full" variants={fadeIn}>
           <h3 className="font-semibold text-lg md:text-xl">
             Larissa Castelluber
           </h3>
@@ -41,12 +66,18 @@ export default function Team() {
               of the Canadian immigration process.
             </p>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* lower section with the 2 other employees */}
-      <div className="flex flex-col items-center md:flex-row md:items-start gap-2 ">
-        <div className="relative w-48 h-48">
+      <motion.div
+        className="flex flex-col items-center md:flex-row md:items-start gap-2 "
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeIn}
+      >
+        <motion.div className="relative w-48 h-48" variants={fadeIn} custom={0}>
           <Image
             src={member1}
             alt="Member 1"
@@ -56,9 +87,9 @@ export default function Team() {
             <p className="font-semibold">Name</p>
             <p>Position</p>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="relative w-48 h-48">
+        <motion.div className="relative w-48 h-48" variants={fadeIn} custom={1}>
           <Image
             src={member2}
             alt="Member 2"
@@ -68,17 +99,17 @@ export default function Team() {
             <p className="font-semibold">Name</p>
             <p>Position</p>
           </div>
-        </div>
+        </motion.div>
 
         {/* Consultation button */}
-        <div className="mt-4 md:mt-0">
+        <motion.div className="mt-4 md:mt-0" variants={fadeIn} custom={2}>
           <Link href="/consultation">
             <button className="bg-primary-red text-white py-2 px-9 rounded-xl font-semibold">
               Book a consultation
             </button>
           </Link>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 }

@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { immigrationOptions } from "./immigrationOptions";
@@ -6,31 +7,71 @@ import Image from "next/image";
 import Link from "next/link";
 import SectionTitle from "@/components/SectionTitle";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 
 export default function SectionTwo() {
+  const fadeInVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: i * 0.2, duration: 0.6, ease: "easeOut" },
+    }),
+  };
+  const fadeInUpVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: i * 0.2, duration: 0.6, ease: "easeOut" },
+    }),
+  };
   return (
-    <div className="px-4 sm:px-8 lg:px-16 pb-10">
+    <motion.div
+      className="px-4 sm:px-8 lg:px-16 pb-10"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+    >
       {/* Title */}
-      <SectionTitle text="Discover all your options" />
+      <motion.div variants={fadeInVariants} custom={0} className="mb-8">
+        <SectionTitle text="Discover all your options" />
+      </motion.div>
       {/* Filter Buttons */}
-      <div className="flex flex-wrap gap-2 justify-center sm:justify-start mb-8">
-        {immigrationOptions.map((option) => (
-          <Button
+      <motion.div
+        className="flex flex-wrap gap-2 justify-center sm:justify-start mb-8"
+        initial="hidden"
+        animate="visible"
+      >
+        {immigrationOptions.map((option, index) => (
+          <motion.div
             key={option.id}
-            variant="outline"
-            className="px-4 py-2 text-gray-800 bg-gray-100 hover:bg-gray-200 rounded-full text-sm"
+            variants={fadeInUpVariants}
+            custom={index}
           >
-            <Link href={`/immigrate/${option.link}`}>{option.title}</Link>
-          </Button>
+            <Button
+              key={option.id}
+              variant="outline"
+              className="px-4 py-2 text-gray-800 bg-gray-100 hover:bg-gray-200 rounded-full text-sm"
+            >
+              <Link href={`/immigrate/${option.link}`}>{option.title}</Link>
+            </Button>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
 
       {/* Program Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {programCards.map((program) => (
-          <div
+      <motion.div
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+        initial="hidden"
+        animate="visible"
+      >
+        {programCards.map((program, index) => (
+          <motion.div
             key={program.title}
             className="bg-white rounded-lg shadow-lg p-4 hover:shadow-xl transition-shadow max-w-sm mx-auto"
+            variants={fadeInUpVariants}
+            custom={index}
           >
             {/* Program Title and Dropdown Icon */}
             <div className="flex justify-between items-center mb-2">
@@ -47,9 +88,9 @@ export default function SectionTwo() {
               alt={program.title}
               className="w-full h-48 object-cover rounded-lg"
             />
-          </div>
+          </motion.div>
         ))}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }

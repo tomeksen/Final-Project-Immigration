@@ -7,6 +7,7 @@ import Team from "@/components/staticPage/aboutUs/Team";
 import Strengths from "@/components/staticPage/aboutUs/Strengths";
 import OurStory from "@/components/staticPage/aboutUs/OurStory";
 import ReadyToStart from "@/components/staticPage/aboutUs/ReadyToStart";
+import { Reveal } from "@/utils/Reveal";
 
 export default function page() {
   return (
@@ -15,20 +16,24 @@ export default function page() {
         <BgImageContainerHeader
           bgImage={handshake}
           alt="Female student holding notebooks"
-          text="Study"
+          text="About Us"
           className="object-cover h-32 md:object-center lg:object-top xl:object-center"
         />
       </div>
-      <Breadcrumbs />
+      <Reveal>
+        <Breadcrumbs />
+      </Reveal>
       <div className="px-4 sm:px-8 lg:px-16 pb-10 mt-10 ">
-        <div className="mb-5">
-          <SectionTitle text="Who are we?" />
-          <p>
-            Here at Up Immigration, we are dedicated to making your Canadian
-            dream a reality. Our passion lies in helping individuals and
-            families navigate the complexities of immigration with confidence.
-          </p>
-        </div>
+        <Reveal>
+          <div className="mb-5">
+            <SectionTitle text="Who are we?" />
+            <p>
+              Here at Up Immigration, we are dedicated to making your Canadian
+              dream a reality. Our passion lies in helping individuals and
+              families navigate the complexities of immigration with confidence.
+            </p>
+          </div>
+        </Reveal>
         <Team />
         <Strengths />
         <OurStory />
