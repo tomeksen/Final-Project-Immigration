@@ -20,8 +20,8 @@ export default function Header() {
           {/* Hamburger menu icon for mobile */}
           <div className="md:hidden flex items-center space-x-2">
             <Nav />
-            <DarkModeToggle />
-            <LocaleSwitcher />
+            {/* <DarkModeToggle />
+            <LocaleSwitcher /> */}
           </div>
         </div>
 
@@ -34,7 +34,7 @@ export default function Header() {
         <div className="hidden md:flex items-center space-x-4">
           <div className="flex xs:flex-col">
             <LocaleSwitcher />
-            <DarkModeToggle />
+            {/* <DarkModeToggle /> */}
           </div>
           <FreeConsultationBtn />
         </div>
