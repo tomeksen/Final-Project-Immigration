@@ -68,8 +68,6 @@ const UsersPage = () => {
 
   // fetch invitations
   useEffect(() => {
-    console.log(BASEURL);
-
     const fetchInvitations = async () => {
       try {
         const response = await fetch(`${BASEURL}/invitations`, {
