@@ -11,7 +11,7 @@ const TestPage = () => {
       <SidebarProvider>
         <AppSidebar />
         <div className="p-6">
-          <TaskManager />
+          <ApplicationsTable />
         </div>
       </SidebarProvider>
     </>

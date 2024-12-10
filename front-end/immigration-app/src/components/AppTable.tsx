@@ -23,9 +23,10 @@ type Application = {
 type AppTableProps = {
   appProps: Application[];
   appearance?: { baseTheme: any };
+  onRowClick: (application: Application) => void;
 };
 
-export function AppTable({ appProps, appearance }: AppTableProps) {
+export function AppTable({ appProps, appearance, onRowClick }: AppTableProps) {
   return (
     <Table>
       <TableHeader className="bg-[#5E5E5E] text-primary-white ">
@@ -41,7 +42,11 @@ export function AppTable({ appProps, appearance }: AppTableProps) {
       </TableHeader>
       <TableBody className="border">
         {appProps.map((app, index) => (
-          <TableRow key={app.id}>
+          <TableRow
+            key={app.id}
+            onClick={() => onRowClick(app)}
+            className="cursor-pointer hover:bg-primary-gray"
+          >
             <TableCell className="last: rounded-bl-md bg-white">
               {index + 1}
             </TableCell>

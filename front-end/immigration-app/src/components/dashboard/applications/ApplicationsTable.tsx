@@ -6,8 +6,10 @@ import { dark } from "@clerk/themes";
 import { useTheme } from "next-themes";
 import Filters from "@/components/Filters";
 import { AppTable } from "@/components/AppTable";
+import HeaderBreadCrumbs from "@/components/common/HeaderBreadCrumbs";
+import { TaskManager } from "./TaskManager";
 
-type Application = {
+export type Application = {
   id: number;
   user_id: string;
   name: string;
@@ -17,6 +19,7 @@ type Application = {
   status: string;
 };
 
+// fetch data from DB
 const applications: Application[] = [
   {
     id: 1,
@@ -69,6 +72,8 @@ export function ApplicationsTable() {
   const [sortBy, setSortBy] = useState("");
   const [visaType, setVisaType] = useState("");
   const [status, setStatus] = useState("");
+  const [selectedApplication, setSelectedApplication] =
+    useState<Application | null>(null);
   const { theme } = useTheme();
 
   const resetFilters = () => {
@@ -77,6 +82,7 @@ export function ApplicationsTable() {
     setStatus("");
   };
 
+  // filter data
   const filteredApplications = applications
     .filter((app) => !visaType || app.type === visaType)
     .filter((app) => !status || app.status === status)
@@ -97,37 +103,30 @@ export function ApplicationsTable() {
 
   return (
     <div className="p-4 space-y-4">
-      <h1 className="text-2xl font-bold">Applications</h1>
-      {theme === "dark" ? (
-        <Filters
-          sortBy={sortBy}
-          visaType={visaType}
-          status={status}
-          setSortBy={setSortBy}
-          setVisaType={setVisaType}
-          setStatus={setStatus}
-          resetFilters={resetFilters}
-          appearance={{ baseTheme: dark }}
-        />
-      ) : (
-        <Filters
-          sortBy={sortBy}
-          visaType={visaType}
-          status={status}
-          setSortBy={setSortBy}
-          setVisaType={setVisaType}
-          setStatus={setStatus}
-          resetFilters={resetFilters}
-        />
-      )}
+      <HeaderBreadCrumbs rootName={"Applications"} />
 
-      {theme === "dark" ? (
-        <AppTable
-          appProps={filteredApplications}
-          appearance={{ baseTheme: dark }}
+      <Filters
+        sortBy={sortBy}
+        visaType={visaType}
+        status={status}
+        setSortBy={setSortBy}
+        setVisaType={setVisaType}
+        setStatus={setStatus}
+        resetFilters={resetFilters}
+        appearance={theme === "dark" ? { baseTheme: dark } : undefined}
+      />
+
+      <AppTable
+        appProps={filteredApplications}
+        onRowClick={setSelectedApplication}
+        appearance={theme === "dark" ? { baseTheme: dark } : undefined}
+      />
+
+      {selectedApplication && (
+        <TaskManager
+          application={selectedApplication}
+          onClose={() => setSelectedApplication(null)}
         />
-      ) : (
-        <AppTable appProps={filteredApplications} />
       )}
     </div>
   );

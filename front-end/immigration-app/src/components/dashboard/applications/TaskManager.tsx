@@ -1,8 +1,25 @@
 "use client";
 
 import { AppSheet } from "@/components/AppSheet";
+import HeaderBreadCrumbs from "@/components/common/HeaderBreadCrumbs";
 import { TaskList } from "@/components/TaskList";
 import React, { useState } from "react";
+import { Application } from "./ApplicationsTable";
+
+type Category = {
+  id: string;
+  application_id: string;
+  name: string;
+  order: number;
+};
+
+// fetch data based on application_id
+const categories: Category = {
+  id: "",
+  application_id: "",
+  name: "",
+  order: 0,
+};
 
 type Task = {
   id: string;
@@ -18,6 +35,7 @@ type Task = {
   notes: string;
 };
 
+// fetch data based on category_id
 const tasks: Task[] = [
   {
     id: "1",
@@ -88,22 +106,37 @@ const tasks: Task[] = [
   },
 ];
 
-export function TaskManager() {
+type TaskManagerProps = {
+  application: Application;
+  onClose: () => void;
+};
+
+export function TaskManager({ application, onClose }: TaskManagerProps) {
+  // fetch tasks based on application_id from application?
+  // ↓change later
+  const filteredTasks = tasks.filter(
+    (task) => task.category_id === application.id.toString()
+  );
+
   const [selectedTask, setSelectedTask] = useState<Task | null>(null);
 
   const handleTaskClick = (task: Task) => {
     setSelectedTask(task);
   };
 
-  const handleClose = () => {
-    setSelectedTask(null);
-  };
-
   return (
-    <div>
+    <div className="p-4 space-y-4">
+      {/* pass the application name to breadName? */}
+      <HeaderBreadCrumbs rootName="Applications" breadName={application.name} />
+
+      {/* delete below later */}
+      <p>delete later: jump to application's task page</p>
+
       <TaskList onTaskClick={handleTaskClick} tasks={tasks} />
 
-      {selectedTask && <AppSheet task={selectedTask} onClose={handleClose} />}
+      {selectedTask && (
+        <AppSheet task={selectedTask} onClose={() => setSelectedTask(null)} />
+      )}
     </div>
   );
 }
