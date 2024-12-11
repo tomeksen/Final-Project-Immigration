@@ -71,7 +71,7 @@ export function UserDialog({
           variant="outline"
           size="default"
           className={cn(
-            "bg-primary-red hover:bg-primary-red/80 text-white hover:text-white",
+            "bg-black hover:bg-primary-gray text-white hover:text-white",
             className
           )}
         >
