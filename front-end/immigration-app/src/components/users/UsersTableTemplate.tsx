@@ -18,9 +18,9 @@ interface Column {
 }
 
 interface TableTemplateProps {
+  className?: string;
   columns: Column[];
   data: User[] | Invitation[] | any[];
-  onAdd?: () => void;
   onDelete?: (id: string) => void;
 }
 
@@ -30,13 +30,13 @@ interface TableTemplateProps {
  */
 
 export function UserTableTemplate({
+  className,
   columns,
   data,
-  onAdd,
   onDelete,
 }: TableTemplateProps) {
   return (
-    <div className="space-y-4">
+    <div className={cn("space-y-4", className)}>
       <Table>
         <TableHeader className="bg-[#5E5E5E] text-white">
           <TableRow>
