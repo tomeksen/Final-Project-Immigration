@@ -64,8 +64,8 @@ export function UserTableTemplate({
                   key={column.accessorKey}
                   className={cn(
                     "bg-white p-4",
-                    colIndex === 0 && "rounded-bl-md", // 最初の列の左下を丸くする
-                    colIndex === columns.length - 1 && "rounded-br-md" // 最後の列の右下を丸くする
+                    colIndex === 0 && "rounded-bl-md",
+                    colIndex === columns.length - 1 && "rounded-br-md"
                   )}
                 >
                   {column.accessorKey === "actions" && onDelete ? (
