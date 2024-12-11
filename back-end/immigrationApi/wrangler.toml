@@ -2,18 +2,15 @@ name = "immigrationapi"
 main = "src/index.ts"
 compatibility_date = "2024-10-23"
 compatibility_flags = [ "nodejs_compat" ]
-
 [env.dev]
   NODE_ENV = "development"  # Set NODE_ENV to development
 #  DB_URL = "https://local-db-url.com",
 #  API_KEY = "local_api_key",
-
 [env.production]
   NODE_ENV = "production"
 # workers_dev = false
 # API_KEY = "your_production_api_key"
 # DB_URL = "https://your-production-db-url.com"
-
 [vars]
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY="pk_test_ZW1lcmdpbmctd2FydGhvZy0yNC5jbGVyay5hY2NvdW50cy5kZXYk"
 CLERK_PUBLISHABLE_KEY="pk_test_ZW1lcmdpbmctd2FydGhvZy0yNC5jbGVyay5hY2NvdW50cy5kZXYk"
@@ -21,15 +18,12 @@ CLERK_SECRET_KEY="sk_test_f6z0wLBN8XOBJOf07h9a951IU0sccOrXSGLWjoJLUX"
 CLERK_WEBHOOK_SECRET="sk_test_f6z0wLBN8XOBJOf07h9a951IU0sccOrXSGLWjoJLUX"
 # DB_URL = "https://your-database-url.com"
 # API_KEY = "your_api_key_value"
-
 [[kv_namespaces]]
 binding = "immigration-app"
 id = "0f7428ded27f46fbb862bff1b6673a9c"
-
 # [[r2_buckets]]
 # binding = "MY_BUCKET"
 # bucket_name = "my-bucket"
-
 [[d1_databases]]
 binding = "DB"
 database_name = "immigration-app-db"
