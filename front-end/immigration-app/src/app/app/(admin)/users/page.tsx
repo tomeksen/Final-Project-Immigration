@@ -1,12 +1,17 @@
 "use client";
 
+import { UserDialog } from "@/components/users/UsersDialog";
 import { UserTableTemplate } from "@/components/users/UsersTableTemplate";
 import { BASEURL } from "@/config/apiClient";
-import { FilteredInvitation, InvitationList } from "@/type/Invitation.type";
+import {
+  FilteredInvitation,
+  Invitation,
+  InvitationList,
+} from "@/type/Invitation.type";
 import { FilteredUser, User, UserList } from "@/type/Users.type";
 import { filteredInvitations, filteredUsers } from "@/utils/users";
-import { Invitation } from "@clerk/nextjs/server";
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 // the users data has to be reflected when a user push delete or add button
 // In this case, should be used Client component
@@ -17,13 +22,42 @@ const UsersPage = () => {
 
   const [usersError, setUsersError] = useState<string | null>(null);
   const [invitationsError, setInvitationsError] = useState<string | null>(null);
+  const [isFetchInvitation, setIsFetchInvitation] = useState<boolean>(false);
   const [users, setUsers] = useState<FilteredUser[] | null>(null);
   const [invitations, setInvitations] = useState<FilteredInvitation[] | null>(
     null
   );
 
   // Delete invitation handler
-  const handleDelete = async (id: string) => {
+  const handleUsersDelete = async (id: string) => {
+    try {
+      const response = await fetch(`${BASEURL}/invitations/${id}`, {
+        method: "DELETE",
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to delete the invitation.");
+      }
+
+      // Remove the deleted invitation from state
+      setInvitations(
+        (prev) => prev?.filter((invitation) => invitation.id !== id) || null
+      );
+
+      toast.success("Successfully deleted the invitation");
+    } catch (error) {
+      if (error instanceof Error) {
+        setInvitationsError(error.message);
+        toast.error(error.message);
+      } else {
+        setInvitationsError("An unexpected error happened");
+        toast.error("An unexpected error happened");
+      }
+    }
+  };
+
+  // Delete invitation handler
+  const handleInvitationDelete = async (id: string) => {
     console.log(`Delete invitation with id: ${id}`);
     try {
       const response = await fetch(`${BASEURL}/invitations/${id}`, {
@@ -38,11 +72,42 @@ const UsersPage = () => {
       setInvitations(
         (prev) => prev?.filter((invitation) => invitation.id !== id) || null
       );
+
+      toast.success("Successfully deleted the invitation");
     } catch (error) {
       if (error instanceof Error) {
         setInvitationsError(error.message);
+        toast.error(error.message);
       } else {
         setInvitationsError("An unexpected error happened");
+        toast.error("An unexpected error happened");
+      }
+    }
+  };
+
+  const handleInvitationPost = async (email: string) => {
+    try {
+      if (!email) return toast.error("Please enter a valid email");
+      const response = await fetch(
+        `${BASEURL}/invitations/${encodeURIComponent(email)}`,
+        {
+          method: "POST",
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to send the invitation.");
+      }
+
+      setIsFetchInvitation(true);
+      toast.success("Successfully send the invitation");
+    } catch (error) {
+      if (error instanceof Error) {
+        setInvitationsError(error.message);
+        toast.error(error.message);
+      } else {
+        setInvitationsError("An unexpected error happened");
+        toast.error("An unexpected error happened");
       }
     }
   };
@@ -65,8 +130,10 @@ const UsersPage = () => {
       } catch (error) {
         if (error instanceof Error) {
           setUsersError(error.message);
+          toast.error(error.message);
         } else {
           setUsersError("An unexpected error happened");
+          toast.error("An unexpected error happened");
         }
       } finally {
         setIsUsersLoading(false);
@@ -97,11 +164,12 @@ const UsersPage = () => {
           setInvitationsError("An unexpected error happened");
         }
       } finally {
+        setIsFetchInvitation(false);
         setIsInvitationLoading(false);
       }
     };
     fetchInvitations();
-  }, []);
+  }, [isFetchInvitation]);
 
   // the definition of user props
   const userColumns = [
@@ -109,6 +177,7 @@ const UsersPage = () => {
     { header: "NAME", accessorKey: "name" },
     { header: "JOIN DATE", accessorKey: "joinDate" },
     { header: "TYPE", accessorKey: "type" },
+    { header: "ACTION", accessorKey: "actions" },
   ];
 
   // the definition of invitation props
@@ -168,11 +237,17 @@ const UsersPage = () => {
             {/* Invitations table */}
             {!isInvitationLoading && !invitationsError && invitations && (
               <div className="flex flex-col justify-center">
-                <h2 className="text-2xl font-bold mb-4">Invitations</h2>
+                <div className="flex items-center justify-between">
+                  <h2 className="text-2xl font-bold mb-4">Invitations</h2>
+                  <UserDialog
+                    onClick={handleInvitationPost}
+                    invitations={invitations}
+                  />
+                </div>
                 <UserTableTemplate
                   columns={invitationColumns}
                   data={invitations}
-                  onDelete={handleDelete}
+                  onDelete={handleInvitationDelete}
                 />
               </div>
             )}
