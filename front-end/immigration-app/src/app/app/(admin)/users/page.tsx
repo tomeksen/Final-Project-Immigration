@@ -11,7 +11,7 @@ import { QUERY_KEYS } from "@/config/query";
 import { FilteredInvitation, InvitationList } from "@/type/Invitation.type";
 import { FilteredUser, UserList } from "@/type/Users.type";
 import { filteredInvitations, filteredUsers } from "@/utils/users";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
@@ -32,8 +32,6 @@ const UsersPage = () => {
 
   // pagination
   // Use query for sort or filter
-  const router = useRouter();
-  const pathname = usePathname();
   const searchParams = useSearchParams();
 
   const itemsPerPage = 4;
