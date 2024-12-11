@@ -1,10 +1,12 @@
 "use client";
 
 import HeaderBreadCrumbs from "@/components/common/HeaderBreadCrumbs";
+import LottieLoading from "@/components/common/LottieLoading";
 import { UserDialog } from "@/components/users/UsersDialog";
 import PaginationTemplate from "@/components/users/UsersPaginationTemplate";
 import { UserTableTemplate } from "@/components/users/UsersTableTemplate";
 import { BASEURL } from "@/config/apiClient";
+import { ERROR_MESSAGES } from "@/config/ErrorMessage";
 import { QUERY_KEYS } from "@/config/query";
 import { FilteredInvitation, InvitationList } from "@/type/Invitation.type";
 import { FilteredUser, UserList } from "@/type/Users.type";
@@ -60,7 +62,7 @@ const UsersPage = () => {
       )
     : [];
 
-  // Delete invitation handler
+  // Delete users handler
   const handleUsersDelete = async (id: string) => {
     try {
       const response = await fetch(`${BASEURL}/users/${id}`, {
@@ -68,7 +70,7 @@ const UsersPage = () => {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to delete the invitation.");
+        throw new Error(ERROR_MESSAGES.USERS.DELETE_FAILED);
       }
 
       // Remove the deleted invitation from state
@@ -80,8 +82,8 @@ const UsersPage = () => {
         setInvitationsError(error.message);
         toast.error(error.message);
       } else {
-        setInvitationsError("An unexpected error happened");
-        toast.error("An unexpected error happened");
+        setInvitationsError(ERROR_MESSAGES.GENERAL.UNEXPECTED);
+        toast.error(ERROR_MESSAGES.GENERAL.UNEXPECTED);
       }
     }
   };
@@ -94,7 +96,7 @@ const UsersPage = () => {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to delete the invitation.");
+        throw new Error(ERROR_MESSAGES.USERS.INVITATION_DELETE_FAILED);
       }
 
       // Remove the deleted invitation from state
@@ -108,15 +110,15 @@ const UsersPage = () => {
         setInvitationsError(error.message);
         toast.error(error.message);
       } else {
-        setInvitationsError("An unexpected error happened");
-        toast.error("An unexpected error happened");
+        setInvitationsError(ERROR_MESSAGES.GENERAL.UNEXPECTED);
+        toast.error(ERROR_MESSAGES.GENERAL.UNEXPECTED);
       }
     }
   };
 
   const handleInvitationPost = async (email: string) => {
     try {
-      if (!email) return toast.error("Please enter a valid email");
+      if (!email) return toast.error(ERROR_MESSAGES.USERS.VALID_EMAIL);
       const response = await fetch(
         `${BASEURL}/invitations/${encodeURIComponent(email)}`,
         {
@@ -125,7 +127,7 @@ const UsersPage = () => {
       );
 
       if (!response.ok) {
-        throw new Error("Failed to send the invitation.");
+        throw new Error(ERROR_MESSAGES.USERS.INVITATION_SEND_FAILED);
       }
 
       setIsFetchInvitation(true);
@@ -135,8 +137,8 @@ const UsersPage = () => {
         setInvitationsError(error.message);
         toast.error(error.message);
       } else {
-        setInvitationsError("An unexpected error happened");
-        toast.error("An unexpected error happened");
+        setInvitationsError(ERROR_MESSAGES.GENERAL.UNEXPECTED);
+        toast.error(ERROR_MESSAGES.GENERAL.UNEXPECTED);
       }
     }
   };
@@ -150,7 +152,8 @@ const UsersPage = () => {
           method: "GET",
         });
 
-        if (!response.ok) throw new Error("Failed to fetch the users data");
+        if (!response.ok)
+          throw new Error(ERROR_MESSAGES.USERS.FETCH_USERS_FAILED);
         const data: UserList = await response.json();
 
         // filter out necessary data and format it
@@ -161,8 +164,8 @@ const UsersPage = () => {
           setUsersError(error.message);
           toast.error(error.message);
         } else {
-          setUsersError("An unexpected error happened");
-          toast.error("An unexpected error happened");
+          setUsersError(ERROR_MESSAGES.GENERAL.UNEXPECTED);
+          toast.error(ERROR_MESSAGES.GENERAL.UNEXPECTED);
         }
       } finally {
         setIsUsersLoading(false);
@@ -180,7 +183,8 @@ const UsersPage = () => {
           method: "GET",
         });
 
-        if (!response.ok) throw new Error("Failed to fetch the users data");
+        if (!response.ok)
+          throw new Error(ERROR_MESSAGES.USERS.FETCH_INVITATIONS_FAILED);
         const data: InvitationList = await response.json();
 
         // filter out necessary data and format it
@@ -190,7 +194,7 @@ const UsersPage = () => {
         if (error instanceof Error) {
           setInvitationsError(error.message);
         } else {
-          setInvitationsError("An unexpected error happened");
+          setInvitationsError(ERROR_MESSAGES.GENERAL.UNEXPECTED);
         }
       } finally {
         setIsFetchInvitation(false);
@@ -225,14 +229,14 @@ const UsersPage = () => {
             {/* User Table section */}
             {/* Loading state */}
             {isUsersLoading && (
-              <div className="flex items-center justify-center">
-                <p>Loading users...</p>
+              <div className="flex items-center justify-center h-[400px]">
+                <LottieLoading />
               </div>
             )}
 
             {/* Error state */}
             {usersError && (
-              <div className="flex items-center justify-center text-red-500">
+              <div className="flex items-center justify-center text-red-500 h-[400px]">
                 <p>Error: {usersError}</p>
               </div>
             )}
@@ -261,14 +265,14 @@ const UsersPage = () => {
             {/* Invitation table */}
             {/* Loading state */}
             {isInvitationLoading && (
-              <div className="flex items-center justify-center">
-                <p>Loading users...</p>
+              <div className="flex items-center justify-center h-[400px]">
+                <LottieLoading />
               </div>
             )}
 
             {/* Error state */}
             {invitationsError && (
-              <div className="flex items-center justify-center text-red-500">
+              <div className="flex items-center justify-center text-red-500 h-[400px]">
                 <p>Error: {usersError}</p>
               </div>
             )}
