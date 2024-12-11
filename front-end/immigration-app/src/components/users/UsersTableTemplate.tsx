@@ -12,6 +12,42 @@ import { User } from "@/type/Users.type";
 import { cn } from "@/lib/utils";
 import { Invitation } from "@/type/Invitation.type";
 
+/**
+ * UserTableTemplate Component
+ *
+ * @param {string} className - Additional CSS classes to style the component.
+ * @param {Column[]} columns - Array of column definitions. Each column contains:
+ *  - `header`: The display name of the column.
+ *  - `accessorKey`: The key to access the data for this column from the `data` array.
+ * @param {User[] | Invitation[] | any[]} data - Array of data to display in the table. Each object should have keys corresponding to `accessorKey` in the `columns`.
+ * @param {Function} [onDelete] - Optional callback function triggered when the delete button is clicked. It receives the `id` of the row to delete.
+ *
+ * @returns {JSX.Element} The rendered table component.
+ *
+ * @example
+ * const columns = [
+ *   { header: "Name", accessorKey: "name" },
+ *   { header: "Email", accessorKey: "email" },
+ *   { header: "Actions", accessorKey: "actions" }
+ * ];
+ *
+ * const data = [
+ *   { id: 1, name: "John Doe", email: "john.doe@example.com" },
+ *   { id: 2, name: "Jane Smith", email: "jane.smith@example.com" }
+ * ];
+ *
+ * const handleDelete = (id) => {
+ *   console.log(`Delete user with ID: ${id}`);
+ * };
+ *
+ * <UserTableTemplate
+ *   className="my-custom-class"
+ *   columns={columns}
+ *   data={data}
+ *   onDelete={handleDelete}
+ * />
+ */
+
 interface Column {
   header: string;
   accessorKey: string;
@@ -24,11 +60,6 @@ interface TableTemplateProps {
   onDelete?: (id: string) => void;
 }
 
-/**
- * @param columns
- * @returns
- */
-
 export function UserTableTemplate({
   className,
   columns,
@@ -38,7 +69,7 @@ export function UserTableTemplate({
   return (
     <div className={cn("space-y-4", className)}>
       <Table>
-        <TableHeader className="bg-[#5E5E5E] text-white">
+        <TableHeader className="bg-primary-gray text-white">
           <TableRow>
             {columns.map((column, index) => (
               <TableHead
