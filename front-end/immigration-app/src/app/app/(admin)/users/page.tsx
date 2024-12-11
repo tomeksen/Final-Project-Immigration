@@ -1,11 +1,14 @@
 "use client";
 
 import { UserDialog } from "@/components/users/UsersDialog";
+import PaginationTemplate from "@/components/users/UsersPaginationTemplate";
 import { UserTableTemplate } from "@/components/users/UsersTableTemplate";
 import { BASEURL } from "@/config/apiClient";
+import { QUERY_KEYS } from "@/config/query";
 import { FilteredInvitation, InvitationList } from "@/type/Invitation.type";
 import { FilteredUser, UserList } from "@/type/Users.type";
 import { filteredInvitations, filteredUsers } from "@/utils/users";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
@@ -23,6 +26,38 @@ const UsersPage = () => {
   const [invitations, setInvitations] = useState<FilteredInvitation[] | null>(
     null
   );
+
+  // pagination
+  // Use query for sort or filter
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  const itemsPerPage = 4;
+  const userTotalPage = Math.ceil(users ? users.length / itemsPerPage : 1);
+  const invitationTotalPage = Math.ceil(
+    invitations ? invitations!.length / itemsPerPage : 1
+  );
+  const userCurrentPage = Number(
+    searchParams.get(QUERY_KEYS.ADMIN.USERS.PAGINATION.USERS) || 1
+  );
+  const invitationCurrentPage = Number(
+    searchParams.get(QUERY_KEYS.ADMIN.USERS.PAGINATION.INVITATIONS) || 1
+  );
+  // Calculate paginated users and invitations
+  const paginatedUsers = users
+    ? users.slice(
+        (userCurrentPage - 1) * itemsPerPage,
+        userCurrentPage * itemsPerPage
+      )
+    : [];
+
+  const paginatedInvitations = invitations
+    ? invitations.slice(
+        (invitationCurrentPage - 1) * itemsPerPage,
+        invitationCurrentPage * itemsPerPage
+      )
+    : [];
 
   // Delete invitation handler
   const handleUsersDelete = async (id: string) => {
@@ -183,11 +218,10 @@ const UsersPage = () => {
 
   return (
     <>
-      <section className="h-screen max-w-screen flex flex-1 flex-col bg-slate-100">
+      <section className="h-screen max-w-screen flex flex-1 flex-col">
         <div className="container mx-auto p-4 w-full h-full">
-          <div className="h-full grid grid-rows-2">
+          <div className=" h-full">
             {/* User Table section */}
-
             {/* Loading state */}
             {isUsersLoading && (
               <div className="flex items-center justify-center">
@@ -203,15 +237,22 @@ const UsersPage = () => {
             )}
 
             {!isUsersLoading && !usersError && users && (
-              <div className="flex flex-col justify-center">
+              <div className="flex flex-col justify-center gap-3">
                 <h2 className="text-2xl font-bold mb-4">Users</h2>
                 {/* filter */}
 
                 {/* UserTable */}
                 <UserTableTemplate
+                  className="h-[350px] overflow-x-auto"
                   columns={userColumns}
                   data={users}
                   onDelete={handleUsersDelete}
+                />
+                {/* pagination */}
+                <PaginationTemplate
+                  queryKey={QUERY_KEYS.ADMIN.USERS.PAGINATION.USERS}
+                  totalPage={userTotalPage || 1}
+                  currentPage={userCurrentPage}
                 />
               </div>
             )}
@@ -233,7 +274,7 @@ const UsersPage = () => {
 
             {/* Invitations table */}
             {!isInvitationLoading && !invitationsError && invitations && (
-              <div className="flex flex-col justify-center">
+              <div className="flex flex-col justify-center gap-3">
                 <div className="flex items-center justify-between">
                   <h2 className="text-2xl font-bold mb-4">Invitations</h2>
                   <UserDialog
@@ -242,9 +283,16 @@ const UsersPage = () => {
                   />
                 </div>
                 <UserTableTemplate
+                  className="h-[350px] overflow-x-auto"
                   columns={invitationColumns}
-                  data={invitations}
+                  data={paginatedInvitations}
                   onDelete={handleInvitationDelete}
+                />
+                {/* pagination */}
+                <PaginationTemplate
+                  queryKey={QUERY_KEYS.ADMIN.USERS.PAGINATION.INVITATIONS}
+                  totalPage={invitationTotalPage || 1}
+                  currentPage={invitationCurrentPage}
                 />
               </div>
             )}
