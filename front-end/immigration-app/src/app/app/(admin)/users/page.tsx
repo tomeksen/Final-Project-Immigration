@@ -3,12 +3,8 @@
 import { UserDialog } from "@/components/users/UsersDialog";
 import { UserTableTemplate } from "@/components/users/UsersTableTemplate";
 import { BASEURL } from "@/config/apiClient";
-import {
-  FilteredInvitation,
-  Invitation,
-  InvitationList,
-} from "@/type/Invitation.type";
-import { FilteredUser, User, UserList } from "@/type/Users.type";
+import { FilteredInvitation, InvitationList } from "@/type/Invitation.type";
+import { FilteredUser, UserList } from "@/type/Users.type";
 import { filteredInvitations, filteredUsers } from "@/utils/users";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
@@ -31,7 +27,7 @@ const UsersPage = () => {
   // Delete invitation handler
   const handleUsersDelete = async (id: string) => {
     try {
-      const response = await fetch(`${BASEURL}/invitations/${id}`, {
+      const response = await fetch(`${BASEURL}/users/${id}`, {
         method: "DELETE",
       });
 
@@ -40,11 +36,9 @@ const UsersPage = () => {
       }
 
       // Remove the deleted invitation from state
-      setInvitations(
-        (prev) => prev?.filter((invitation) => invitation.id !== id) || null
-      );
+      setUsers((prev) => prev?.filter((user) => user.id !== id) || null);
 
-      toast.success("Successfully deleted the invitation");
+      toast.success("Successfully deleted the use");
     } catch (error) {
       if (error instanceof Error) {
         setInvitationsError(error.message);
@@ -58,7 +52,6 @@ const UsersPage = () => {
 
   // Delete invitation handler
   const handleInvitationDelete = async (id: string) => {
-    console.log(`Delete invitation with id: ${id}`);
     try {
       const response = await fetch(`${BASEURL}/invitations/${id}`, {
         method: "DELETE",
@@ -215,7 +208,11 @@ const UsersPage = () => {
                 {/* filter */}
 
                 {/* UserTable */}
-                <UserTableTemplate columns={userColumns} data={users} />
+                <UserTableTemplate
+                  columns={userColumns}
+                  data={users}
+                  onDelete={handleUsersDelete}
+                />
               </div>
             )}
 
