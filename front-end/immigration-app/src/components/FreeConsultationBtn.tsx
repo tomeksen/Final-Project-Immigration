@@ -12,7 +12,7 @@ export default function FreeConsultationBtn() {
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className="bg-primary-red text-white hover:bg-red-700 p-2 sm:text-sm md:py-2 md:px-4 lg:text-base rounded-xl font-semibold"
+            className="bg-primary-red text-white hover:bg-red-700 p-1 text-wrap text-xs md:py-2 lg:px-2 lg:text-base rounded-xl font-semibold"
           >
             Book a free consultation
           </motion.button>
