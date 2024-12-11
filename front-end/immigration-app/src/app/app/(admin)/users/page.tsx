@@ -1,5 +1,6 @@
 "use client";
 
+import HeaderBreadCrumbs from "@/components/common/HeaderBreadCrumbs";
 import { UserDialog } from "@/components/users/UsersDialog";
 import PaginationTemplate from "@/components/users/UsersPaginationTemplate";
 import { UserTableTemplate } from "@/components/users/UsersTableTemplate";
@@ -238,8 +239,8 @@ const UsersPage = () => {
 
             {!isUsersLoading && !usersError && users && (
               <div className="flex flex-col justify-center gap-3">
-                <h2 className="text-2xl font-bold mb-4">Users</h2>
-                {/* filter */}
+                {/* Title */}
+                <HeaderBreadCrumbs rootName="Users" />
 
                 {/* UserTable */}
                 <UserTableTemplate
@@ -274,9 +275,11 @@ const UsersPage = () => {
 
             {/* Invitations table */}
             {!isInvitationLoading && !invitationsError && invitations && (
-              <div className="flex flex-col justify-center gap-3">
+              <div className="flex flex-col justify-center gap-3 mb-3">
                 <div className="flex items-center justify-between">
-                  <h2 className="text-2xl font-bold mb-4">Invitations</h2>
+                  {/* title */}
+                  <HeaderBreadCrumbs rootName="Invitations" />
+                  {/* add button */}
                   <UserDialog
                     onClick={handleInvitationPost}
                     invitations={invitations}
