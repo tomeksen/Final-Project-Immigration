@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import {
   Table,
@@ -9,6 +11,7 @@ import {
 } from "./ui/table";
 import { Badge } from "./ui/badge";
 import { Progress } from "./ui/progress";
+import Link from "next/link";
 
 type Application = {
   id: number;
@@ -42,8 +45,9 @@ export function AppTable({ appProps, appearance, onRowClick }: AppTableProps) {
       </TableHeader>
       <TableBody className="border">
         {appProps.map((app, index) => (
+          // jump to tasks
+          // <Link href={`/applications/${app.id}`} key={app.id}>
           <TableRow
-            key={app.id}
             onClick={() => onRowClick(app)}
             className="cursor-pointer hover:bg-primary-gray"
           >
@@ -72,6 +76,7 @@ export function AppTable({ appProps, appearance, onRowClick }: AppTableProps) {
               </Badge>
             </TableCell>
           </TableRow>
+          // </Link>
         ))}
       </TableBody>
     </Table>

@@ -112,7 +112,13 @@ type TaskManagerProps = {
 };
 
 export function TaskManager({ application, onClose }: TaskManagerProps) {
-  // fetch tasks based on application_id from application?
+  /*
+  1 fetch categories based on application_id
+      const categories = [{id, application_id, name: string, order: number}, {}...]
+  2 fetch tasks based on category_id and pass it to TaskLink
+      const tasks: Task = [{}]
+
+  */
   // ↓change later
   const filteredTasks = tasks.filter(
     (task) => task.category_id === application.id.toString()
