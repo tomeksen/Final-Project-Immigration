@@ -103,7 +103,7 @@ export function UserTableTemplate({
                     <Button
                       onClick={() => onDelete(row.id)}
                       size="default"
-                      className="bg-primary-red"
+                      className="bg-primary-red hover:bg-primary-red/80"
                     >
                       <X className="h-4 w-4" />
                       <span>DELETE</span>
