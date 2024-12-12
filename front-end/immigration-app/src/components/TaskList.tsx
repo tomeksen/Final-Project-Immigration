@@ -34,51 +34,47 @@ type TaskProps = {
   onTaskClick: (task: Task) => void;
 };
 
-
-
 export function TaskList({ tasks, onTaskClick }: TaskProps) {
   return (
-    <div className="w-72">
-      <Table>
-        <TableHeader className="bg-[#5E5E5E] text-primary-white">
-          <TableRow className="">
-            <TableHead className="rounded-t-md">Getting start</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {/* Count is_completed === true, and divide it by tasks.length */}
-          <Progress value={tasks.length} className="w-[100px] " />
+    <Table className="w-72">
+      <TableHeader className="bg-[#5E5E5E] text-primary-white">
+        <TableRow className="">
+          <TableHead className="rounded-t-md">Getting start</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {/* Count is_completed === true, and divide it by tasks.length */}
+        <Progress value={tasks.length} className="w-[100px] " />
 
-          {tasks.map((task) => (
-            <TableRow key={task.id} onClick={() => onTaskClick(task)}>
-              <TableCell className="p-6">
-                <div className="flex items-center leading-none space-x-2">
-                  {task.is_completed === true ? (
-                    <Checkbox checked />
-                  ) : (
-                    <Checkbox />
-                  )}
-                  <Label htmlFor="" className="text-sm leading-none">
-                    {task.title}
-                  </Label>
+        {tasks.map((task) => (
+          <TableRow key={task.id} onClick={() => onTaskClick(task)}>
+            <TableCell className="p-6">
+              <div className="flex items-center leading-none space-x-2">
+                {task.is_completed === true ? (
+                  <Checkbox checked />
+                ) : (
+                  <Checkbox />
+                )}
+                <Label htmlFor="" className="text-sm leading-none">
+                  {task.title}
+                </Label>
+              </div>
+              <div className="flex items-center justify-between  leading-none space-x-2 p-4">
+                <div className="flex items-center justify-center text-[]">
+                  <BiCommentDots className="mr-3" />
+                  <p className="mr-6">1</p>
+                  <GoPaperclip className="mr-3" />
+                  <p className="mr-6">0</p>
                 </div>
-                <div className="flex items-center justify-between  leading-none space-x-2 p-4">
-                  <div className="flex items-center justify-center text-[]">
-                    <BiCommentDots className="mr-3" />
-                    <p className="mr-6">1</p>
-                    <GoPaperclip className="mr-3" />
-                    <p className="mr-6">0</p>
-                  </div>
-                  <Avatar>
-                    <AvatarImage src="https://github.com/shadcn.png" />
-                    <AvatarFallback>CN</AvatarFallback>
-                  </Avatar>
-                </div>
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </div>
+                <Avatar>
+                  <AvatarImage src="https://github.com/shadcn.png" />
+                  <AvatarFallback>CN</AvatarFallback>
+                </Avatar>
+              </div>
+            </TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
   );
 }
