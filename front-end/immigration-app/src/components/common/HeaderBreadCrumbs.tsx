@@ -1,13 +1,29 @@
 import { cn } from "@/lib/utils";
 import { ChevronRight } from "lucide-react";
+import Link from "next/link";
 import React, { FC } from "react";
 type Props = {
   rootName: string;
+  rootHref?: string;
   breadName?: string;
   className?: string;
 };
 
-const HeaderBreadCrumbs: FC<Props> = ({ rootName, breadName, className }) => {
+/**
+ * HeaderBreadCrumbs - A component to display breadcrumb navigation for the page header.
+ *
+ * @param {string} rootName - The name of the root link displayed in the breadcrumbs.
+ * @param {string} [rootHref] - The URL of the root link. If not provided, the root name will not be a link.
+ * @param {string} [breadName] - The name of the current breadcrumb item. This is displayed after the root name.
+ * @param {string} [className] - Additional CSS class names to apply to the container for custom styling.
+ * @returns {JSX.Element} The rendered breadcrumb component.
+ */
+const HeaderBreadCrumbs: FC<Props> = ({
+  rootName,
+  rootHref,
+  breadName,
+  className,
+}) => {
   return (
     <div
       className={cn(
@@ -15,7 +31,8 @@ const HeaderBreadCrumbs: FC<Props> = ({ rootName, breadName, className }) => {
         className
       )}
     >
-      <p>{rootName}</p>
+      {rootHref ? <Link href={rootHref}>{rootName}</Link> : <p>{rootName}</p>}
+
       {breadName && (
         <>
           <ChevronRight className="w-7 h-7" />
