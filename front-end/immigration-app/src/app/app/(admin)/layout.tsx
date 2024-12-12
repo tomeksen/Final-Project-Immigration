@@ -1,3 +1,4 @@
+import DashboardHeader from "@/components/dashboard/header/dashboard-header";
 import { AppSidebar } from "@/components/dashboard/sidebar/AppSideBar";
 
 export default function AdminLayout({
@@ -5,7 +6,13 @@ export default function AdminLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>
-        <AppSidebar />
-        {children}</>;
+  return(<div className="flex min-h-screen w-full">
+  <AppSidebar />
+    <div className="flex flex-col w-full">
+      <DashboardHeader/>
+      <div className="flex-grow">
+        {children}
+        </div>
+      </div>
+  </div>);
 }

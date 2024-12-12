@@ -1,3 +1,4 @@
+import DashboardHeader from "@/components/dashboard/header/dashboard-header";
 import { AppSidebar } from "@/components/dashboard/sidebar/AppSideBar";
 
 export default function SectionsLayout({
@@ -5,7 +6,15 @@ export default function SectionsLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>
+  return (
+        <div className="flex min-h-screen w-full">
         <AppSidebar />
-        {children}</>;
+          <div className="flex flex-col w-full">
+            <DashboardHeader/>
+            <div className="flex-grow">
+              {children}
+              </div>
+            </div>
+        </div>
+        );
 }

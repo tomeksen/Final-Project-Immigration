@@ -9,9 +9,7 @@ import PaymentDialog from "./_components/PaymentDialog";
 const PaymentsPage = () => {
   return (
     <>
-      <section className="h-screen max-w-screen flex flex-col">
-        <h1 className="h-20 text-center">Payment Page</h1>
-
+      <section className=" max-w-screen flex flex-col">
         {/* Main content */}
         <div className="flex flex-1 flex-col gap-4 p-4">
           {/* Layout for xl */}

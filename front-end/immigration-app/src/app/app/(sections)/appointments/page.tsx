@@ -15,7 +15,7 @@ type ActiveTabType = "appointment" | "schedule";
 const AppointmentsPage = () => {
 
   const path = usePathname();
-  const [activeTab, setActiveTab] = useState<ActiveTabType>("appointment");
+  const [activeTab, setActiveTab] = useState<ActiveTabType>("schedule");
   const bookedDays = [
     {
       startDate: new Date(2024, 10, 5),
@@ -35,12 +35,12 @@ const AppointmentsPage = () => {
   ];
   return (
     <>
-      <section className="h-screen max-w-screen container mx-auto flex flex-col p-3">
+      <section className="h-4/5 max-w-screen container mx-auto flex flex-col p-3">
         {/* Header */}
         <HeaderBreadCrumbs
           rootName="Appointment"
           breadName={
-            activeTab === "appointment" ? "Book an Appointment" : "My Schedule"
+            activeTab === "appointment" ? "Book an Appointment" : "My Calendar"
           }
         />
 
@@ -64,7 +64,7 @@ const AppointmentsPage = () => {
             )}
             onClick={() => setActiveTab("schedule")}
           >
-            My Schedule
+            My Calendar
           </Button>
         </div>
 

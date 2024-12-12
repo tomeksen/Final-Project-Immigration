@@ -2,7 +2,6 @@
 import { SignIn } from '@clerk/nextjs'
 import { dark } from '@clerk/themes'
 import { useTheme } from 'next-themes';
-import Image from 'next/image'
 
 export default function Page() {
   const  {theme}= useTheme();

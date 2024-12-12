@@ -31,10 +31,40 @@ import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import bg from "@/assets/logo/Up_Immigration_Logo.png";
+import { useUser } from "@clerk/nextjs";
 
 export function AppSidebar() {
   const pathname = usePathname();
   const t = useTranslations("Sidebar");
+  const user = useUser();
+
+  const contentAdminItems = [
+    {
+      title: t("Content.dashboard"),
+      url: "/home",
+      icon: LayoutDashboard,
+    },
+    {
+      title: t("Content.applications"),
+      url: "/applications",
+      icon: FileEdit,
+    },
+    {
+      title: t("Content.payments"),
+      url: "/payments",
+      icon: DollarSign,
+    },
+    {
+      title: t("Content.appointment"),
+      url: "/appointments",
+      icon: Users,
+    },
+    {
+      title: t("Content.profile"),
+      url: "/users",
+      icon: User,
+    },
+  ];
 
   const contentItems = [
     {
@@ -63,11 +93,6 @@ export function AppSidebar() {
       icon: Users,
     },
     {
-      title: t("Content.inbox"),
-      url: "/inbox",
-      icon: MessageSquare,
-    },
-    {
       title: t("Content.profile"),
       url: "/profile",
       icon: User,
@@ -75,11 +100,6 @@ export function AppSidebar() {
   ];
 
   const footerItems = [
-    {
-      title: t("Footer.settings"),
-      url: "/settings",
-      icon: Settings,
-    },
     {
       title: t("Footer.faq"),
       url: "/faq",
@@ -96,6 +116,8 @@ export function AppSidebar() {
     typeof window !== "undefined" &&
     window.location.hostname.startsWith("dashboard");
 
+  const isAdminUser = user.user?.publicMetadata?.role ? user.user?.publicMetadata?.role === "admin" : false;
+  console.log(isAdminUser);
   return (
     <Sidebar variant="sidebar">
       <SidebarHeader>
@@ -110,7 +132,8 @@ export function AppSidebar() {
           {/* <SidebarGroupLabel>LOGO</SidebarGroupLabel>  unnecessary for now */}
           <SidebarGroupContent>
             <SidebarMenu>
-              {contentItems.map((item) => {
+            {isAdminUser ? (
+                contentAdminItems.map((item) => {
                 const isActive = pathname.includes(item.url);
 
                 return (
@@ -142,7 +165,42 @@ export function AppSidebar() {
                     </SidebarMenuItem>
                   </div>
                 );
-              })}
+              })
+              ) : (
+                contentItems.map((item) => {
+                  const isActive = pathname.includes(item.url);
+  
+                  return (
+                    <div key={item.title}>
+                      <SidebarMenuItem
+                        className={cn(
+                          "relative flex items-center mx-3",
+                          isActive &&
+                            "bg-sidebar-accent hover:bg-sidebar-accent text-sidebar-accent-foreground  font-semibold rounded-md"
+                        )}
+                      >
+                        {isActive && (
+                          <div className="absolute -left-5 top-0 bottom-0 w-2 bg-sidebar-accent  rounded-r-md" />
+                        )}
+                        <SidebarMenuButton asChild>
+                          <Link
+                            href={item.url}
+                            className={cn(
+                              "px-2 py-6 flex items-center gap-2",
+                              isActive
+                                ? "hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+                                : "hover:bg-secondary-lightGray hover:text-primary-black hover:font-bold"
+                            )}
+                          >
+                            <item.icon className="h-4 w-4 font-bold" />
+                            <span>{item.title}</span>
+                          </Link>
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                    </div>
+                  );
+                })
+              )}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>

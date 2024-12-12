@@ -31,7 +31,7 @@ userInvitationRoutes.get('/', async (c) => {
   }
 })
 
-userInvitationRoutes.post('/', async (c) => {
+userInvitationRoutes.post('/:email', async (c) => {
   const clerkClient = c.get('clerk')
   const email = await c.req.param('email')
   try {

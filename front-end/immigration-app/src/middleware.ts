@@ -1,28 +1,34 @@
 import { NextRequest, NextResponse } from "next/server";
 import { clerkMiddleware, ClerkMiddlewareAuth, createRouteMatcher  } from "@clerk/nextjs/server";
-import { RedirectToSignIn } from '@clerk/nextjs'
 
-const isProtectedRoute = createRouteMatcher(['/'])
+const isProtectedRoute = createRouteMatcher(['/']);
 
 export default clerkMiddleware(async (auth: ClerkMiddlewareAuth, req: NextRequest) => {
   let hostname = req.headers
   .get("host")!
   .replace(".localhost:3000", `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`);
   const url = req.nextUrl;
-
   const searchParams = req.nextUrl.searchParams.toString();
-  const path = `${url.pathname}${
-    searchParams.length > 0 ? `?${searchParams}` : ""
-  }`;
+  const path = `${url.pathname}${searchParams.length > 0 ? `?${searchParams}` : ""}`;
 
+
+  const { userId } = await auth();
 
   // Handle dashboard subdomain
   if (hostname === `app.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`) {
-    const newUrl = new URL(`/app${path === "/" ? "" : path}`, req.url);
-    if (!(await auth()).userId && isProtectedRoute(req)) {
+    const newUrl = new URL(`/app${path === "/" ? "/home" : path}`, req.url);
+    if (!userId && isProtectedRoute(req)) {
       return (await auth()).redirectToSignIn();
     }
 
+    return NextResponse.rewrite(newUrl);
+  }
+
+  if (hostname === `dashboard.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`) {
+    const newUrl = new URL(`/app${path === "/" ? "/home" : path}`, req.url);
+    if (!userId && isProtectedRoute(req)) {
+      return (await auth()).redirectToSignIn({returnBackUrl: newUrl.toString()});
+    }
     return NextResponse.rewrite(newUrl);
   }
 
