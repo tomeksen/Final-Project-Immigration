@@ -48,6 +48,7 @@ export function AppTable({ appProps, appearance, onRowClick }: AppTableProps) {
           // jump to tasks
           // <Link href={`/applications/${app.id}`} key={app.id}>
           <TableRow
+            key={app.id}
             onClick={() => onRowClick(app)}
             className="cursor-pointer hover:bg-primary-gray"
           >

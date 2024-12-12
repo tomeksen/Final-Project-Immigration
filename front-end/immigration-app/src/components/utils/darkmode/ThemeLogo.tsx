@@ -17,7 +17,7 @@ export function ThemeLogo() {
         alt="logo"
         width={150}
         height={100}
-        className="object-cover w-28" // Maintains aspect ratio without distortion
+        className="object-cover" // Maintains aspect ratio without distortion
         priority
       />
     </Reveal>
