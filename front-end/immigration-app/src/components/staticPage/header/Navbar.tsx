@@ -6,8 +6,6 @@ import { Reveal } from "@/utils/Reveal";
 import { motion } from "framer-motion";
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -26,23 +24,13 @@ export default function Navbar() {
   return (
     <Reveal>
       <motion.nav
-        className="relative flex-col text-center justify-center"
+        className="flex-col text-center justify-center"
         initial="hidden"
         animate="visible"
         variants={containerVariants}
       >
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden p-2 focus:outline-none"
-          aria-label="Toggle navigation menu"
-        >
-          {isOpen ? <IoCloseSharp /> : <BiMenu />}
-        </button>
-
         <motion.ul
-          className={`${
-            isOpen ? "block" : "hidden"
-          }  md:flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6 font-semibold`}
+          className="md:flex md:flex-row md:space-y-0 md:space-x-6 font-semibold items-center justify-center text-center"
           variants={containerVariants}
         >
           {[
@@ -55,7 +43,7 @@ export default function Navbar() {
           ].map((item, index) => (
             <motion.li
               key={index}
-              className="hover:text-primary-red"
+              className="hover:text-primary-red text-center items-center text-sm lg:text-base"
               variants={itemVariants}
             >
               <Link href={item.href}>{item.label}</Link>
