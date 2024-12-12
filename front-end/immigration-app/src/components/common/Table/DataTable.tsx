@@ -15,20 +15,18 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { cn } from "@/lib/utils";
+import { usePathname, useRouter } from "next/navigation";
 
 type AppTableProps = {
   data: AppDocTableType[];
   appearance?: { baseTheme: any };
-  onRowClick: (application: AppDocTableType) => void;
   className?: string;
 };
 
-export function DataTable({
-  data,
-  appearance,
-  onRowClick,
-  className,
-}: AppTableProps) {
+export function DataTable({ data, appearance, className }: AppTableProps) {
+  const router = useRouter();
+  const pathname = usePathname();
+
   return (
     <Table className={cn(className)}>
       <TableHeader className="bg-primary-gray text-white">
@@ -44,11 +42,9 @@ export function DataTable({
       </TableHeader>
       <TableBody className="border">
         {data.map((d, index) => (
-          // jump to tasks
-          // <Link href={`/applications/${app.id}`} key={app.id}>
           <TableRow
             key={index}
-            onClick={() => onRowClick(d)}
+            onClick={() => router.push(`${pathname}/${d.id}`)}
             className="cursor-pointer hover:bg-primary-gray"
           >
             <TableCell className="last: rounded-bl-md bg-white p-4">
@@ -76,7 +72,6 @@ export function DataTable({
               </Badge>
             </TableCell>
           </TableRow>
-          // </Link>
         ))}
       </TableBody>
     </Table>

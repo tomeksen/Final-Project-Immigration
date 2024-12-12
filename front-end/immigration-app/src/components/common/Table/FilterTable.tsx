@@ -16,7 +16,7 @@ type AppearanceType = {
   baseTheme: any;
 };
 
-type FilterProps = {
+export type FilterProps = {
   sortBy: string;
   visaType: string;
   status: string;
@@ -27,6 +27,19 @@ type FilterProps = {
   appearance?: AppearanceType;
 };
 
+/**
+ * A component for filtering table data based on sorting, visa type, and status.
+ *
+ * @param {string} sortBy - The current selected sorting option.
+ * @param {string} visaType - The current selected visa type.
+ * @param {string} status - The current selected status.
+ * @param {Function} setSortBy - Function to update the sorting option.
+ * @param {Function} setVisaType - Function to update the visa type.
+ * @param {Function} setStatus - Function to update the status.
+ * @param {Function} resetFilters - Function to reset all filters to default values.
+ * @param {AppearanceType} [appearance] - Optional styling object for custom appearance.
+ * @returns {JSX.Element} The rendered filter table component.
+ */
 export default function FilterTable({
   sortBy,
   visaType,
@@ -84,9 +97,9 @@ export default function FilterTable({
       <Button
         variant="ghost"
         onClick={resetFilters}
-        className=" text-red-500 w-[180px]"
+        className=" text-primary-red w-[180px]"
       >
-        <RotateCcw className="mr-2 h-4 w-4 text-red-500" /> Reset Filter
+        <RotateCcw className="mr-2 h-4 w-4 text-primary-red" /> Reset Filter
       </Button>
     </div>
   );
