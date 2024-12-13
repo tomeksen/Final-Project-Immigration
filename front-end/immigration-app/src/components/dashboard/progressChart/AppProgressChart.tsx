@@ -42,6 +42,7 @@ export function AppProgressChart() {
 
           return (
             <ChartContainer
+              key={`chart-container-${index}`} 
               config={chartConfig}
               className="flex flex-col items-center w-[150px] max-h-[200px]"
             >
