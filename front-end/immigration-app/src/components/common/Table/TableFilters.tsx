@@ -7,6 +7,7 @@ import { useTheme } from "next-themes";
 import { DataTable } from "./DataTable";
 import FilterTable from "./FilterTable";
 import HeaderBreadCrumbs from "../HeaderBreadCrumbs";
+import { cn } from "@/lib/utils";
 
 export type AppDocTableType = {
   id: string;
@@ -19,15 +20,17 @@ export type AppDocTableType = {
 };
 
 /**
- *
+ * @param {string} className - className
  * @param {string} title - "Application" | "Documents" display the title on the header
  * @param {AppDocTableType[]} data - An array of data objects to be displayed in the table. Each object represents a row.
  * @returns A React component that includes filtering options and a filtered data table.
  */
 export function TableFilters({
+  className,
   data,
   title,
 }: {
+  className?: string;
   data: AppDocTableType[];
   title: "Application" | "Documents";
 }) {
@@ -42,7 +45,7 @@ export function TableFilters({
     setStatus("");
   };
 
-  const filteredApplications = data
+  const filteredData = data
     .filter((d) => !visaType || d.type === visaType)
     .filter((d) => !status || d.status === status)
     .sort((a, b) => {
@@ -61,7 +64,7 @@ export function TableFilters({
     });
 
   return (
-    <div className="p-4 space-y-4">
+    <div className={cn("p-4 space-y-4", className)}>
       <HeaderBreadCrumbs rootName="Documents" />
       {theme === "dark" ? (
         <FilterTable
@@ -87,12 +90,9 @@ export function TableFilters({
       )}
 
       {theme === "dark" ? (
-        <DataTable
-          data={filteredApplications}
-          appearance={{ baseTheme: dark }}
-        />
+        <DataTable data={filteredData} appearance={{ baseTheme: dark }} />
       ) : (
-        <DataTable data={filteredApplications} />
+        <DataTable data={filteredData} />
       )}
     </div>
   );
