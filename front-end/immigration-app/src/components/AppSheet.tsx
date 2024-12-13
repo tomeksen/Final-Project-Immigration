@@ -18,7 +18,7 @@ import { Checkbox } from "./ui/checkbox";
 
 type Task = {
   id: string;
-  category_id: string;
+  categoryId: string;
   comment_id: string;
   service_connection_id: string;
   title: string;
@@ -35,8 +35,6 @@ type TaskProps = {
   appearance?: { baseTheme: any };
   onClose: () => void;
 };
-
-
 
 export function AppSheet({ task, onClose }: TaskProps) {
   return (
@@ -94,17 +92,20 @@ export function AppSheet({ task, onClose }: TaskProps) {
                   <Label className="font-bold">Notes:</Label>
                   <p className="text-sm">{task.notes}</p>
                 </div>
-              </div>
-              <SheetFooter className="flex justify-center items-center">
-                {/* <SheetClose asChild>
-              <Button type="submit">Save changes</Button>
-            </SheetClose> */}
-                <div className="flex justify-center items-center">
-                  <Label className="font-bold">Attachments:</Label>
-
-                  <Label className="font-bold">Messages:</Label>
+                <div className="space-y-2">
+                  <Label htmlFor="email">Attachments:</Label>
                 </div>
-              </SheetFooter>
+                <div className="space-y-2">
+                  <Label htmlFor="email">Messages:</Label>
+                  <Input id="message" placeholder="Ask a question!" />
+                </div>
+                <Button
+                  className="w-full bg-red-700 hover:bg-red-800"
+                  size="lg"
+                >
+                  Send
+                </Button>
+              </div>
             </>
           )}
         </SheetContent>

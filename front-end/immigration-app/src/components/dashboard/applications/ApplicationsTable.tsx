@@ -11,7 +11,7 @@ import { TaskManager } from "./TaskManager";
 
 export type Application = {
   id: number;
-  user_id: string;
+  userId: string;
   name: string;
   date: string;
   type: string;
@@ -20,10 +20,10 @@ export type Application = {
 };
 
 // fetch data from DB based on user_id
-const applications: Application[] = [
+export const applications: Application[] = [
   {
     id: 1,
-    user_id: "001",
+    userId: "001",
     name: "Maria_CICCC_181",
     date: "04 Apr 2023",
     type: "Student",
@@ -32,7 +32,7 @@ const applications: Application[] = [
   },
   {
     id: 2,
-    user_id: "002",
+    userId: "002",
     name: "Maria_CICCC_UX/UI",
     date: "15 Nov 2023",
     type: "Student",
@@ -41,7 +41,7 @@ const applications: Application[] = [
   },
   {
     id: 3,
-    user_id: "003",
+    userId: "003",
     name: "Maria_CICCC_UX/UI_2",
     date: "08 Jul 2024",
     type: "Student",
@@ -50,7 +50,7 @@ const applications: Application[] = [
   },
   {
     id: 4,
-    user_id: "004",
+    userId: "004",
     name: "Maria_Work Permit",
     date: "09 Jul 2024",
     type: "Work Permit",
@@ -59,7 +59,7 @@ const applications: Application[] = [
   },
   {
     id: 5,
-    user_id: "005",
+    userId: "005",
     name: "Carry_Visitor",
     date: "09 Jul 2024",
     type: "Visitor",
@@ -124,13 +124,13 @@ export function ApplicationsTable() {
         appearance={theme === "dark" ? { baseTheme: dark } : undefined}
       />
 
-    {/* delete below later */}
-      {selectedApplication && (
+      {/* delete below later */}
+      {/* {selectedApplication && (
         <TaskManager
           application={selectedApplication}
           onClose={() => setSelectedApplication(null)}
         />
-      )}
+      )} */}
     </div>
   );
 }
