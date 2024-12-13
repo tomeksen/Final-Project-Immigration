@@ -117,10 +117,6 @@ export function AppSidebar() {
       onClick: () => signOut({ redirectUrl: '/' }),
     },
   ];
-
-  const isDashboardDomain =
-    typeof window !== "undefined" &&
-    window.location.hostname.startsWith("dashboard");
   
   const isAdminUser = user.user?.publicMetadata?.role ? user.user?.publicMetadata?.role === "admin" : false;
   return (

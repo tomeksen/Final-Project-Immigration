@@ -38,7 +38,7 @@ export default function Header() {
           </div>
           <FreeConsultationBtn />
           <Reveal>
-            <Link href="http://app.localhost:3000/">
+            <Link href="http://app.localhost:3000/home">
               <motion.button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
