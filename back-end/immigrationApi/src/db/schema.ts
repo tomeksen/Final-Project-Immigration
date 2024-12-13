@@ -74,7 +74,7 @@ export const applications = sqliteTable('Applications', {
 })
 
 export const applicationTemplate= sqliteTable('ApplicationTemplate',{
-
+  id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
 })
 
 export const applicationCategory= sqliteTable('ApplicationCategory',{
@@ -85,6 +85,7 @@ export const applicationCategory= sqliteTable('ApplicationCategory',{
 })
 
 export const applicationCategoryTemplate= sqliteTable('ApplicationCategoryTemplate',{
+  id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
 
 })
 
@@ -109,7 +110,7 @@ export const applicationTasks = sqliteTable('ApplicationTasks', {
 });
 
 export const applicationTasksTemplate= sqliteTable('ApplicationTasksTemplate', {
-
+  id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
 })
 
 export const taskComments = sqliteTable('TaskComments',{

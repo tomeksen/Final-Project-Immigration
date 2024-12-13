@@ -1,7 +1,7 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "7c930f06-cad3-4255-bdb5-383a0c921a7f",
+  "id": "e92c953b-ce9e-4d01-b13a-db484d89e552",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "ApplicationCategory": {
@@ -51,7 +51,15 @@
     },
     "ApplicationCategoryTemplate": {
       "name": "ApplicationCategoryTemplate",
-      "columns": {},
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": true
+        }
+      },
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {},
@@ -157,7 +165,15 @@
     },
     "ApplicationTasksTemplate": {
       "name": "ApplicationTasksTemplate",
-      "columns": {},
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": true
+        }
+      },
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {},
@@ -166,7 +182,15 @@
     },
     "ApplicationTemplate": {
       "name": "ApplicationTemplate",
-      "columns": {},
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": true
+        }
+      },
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {},

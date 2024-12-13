@@ -6,7 +6,7 @@ CREATE TABLE `ApplicationCategory` (
 );
 --> statement-breakpoint
 CREATE TABLE `ApplicationCategoryTemplate` (
-
+	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE `ApplicationTasks` (
@@ -24,11 +24,11 @@ CREATE TABLE `ApplicationTasks` (
 );
 --> statement-breakpoint
 CREATE TABLE `ApplicationTasksTemplate` (
-
+	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE `ApplicationTemplate` (
-
+	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE `Applications` (
