@@ -10,11 +10,12 @@ import { DesktopCalendar } from "@/components/common/Calendar/DesktopCalendar";
 import SideSchedule from "@/components/common/Calendar/SideSchedule";
 import MobileSideSchedule from "@/components/common/Calendar/MobileSideSchedule";
 import { useUser } from "@clerk/nextjs";
+import AddEventForm from "@/components/dashboard/calendar/addEventForm";
 
-type ActiveTabType = "appointment" | "schedule";
+type ActiveTabType = "appointment" | "schedule" | "addEvent";
 const AppointmentsPage = () => {
   const user = useUser();
-  const isAdminUser = user.user?.publicMetadata.role === "admin"? true : false;
+  const isAdminUser = user.user?.publicMetadata.role === "admin" ? true : false;
   const [activeTab, setActiveTab] = useState<ActiveTabType>("schedule");
   const bookedDays = [
     {
@@ -33,9 +34,14 @@ const AppointmentsPage = () => {
       title: "One-day Event",
     },
   ];
+
+  const handleTabChange = (tab: ActiveTabType) => {
+    setActiveTab(tab);
+  };
+
   return (
     <>
-      <section className="h-full  container mx-auto flex flex-col p-3 w-full">
+      <section className="h-full container mx-auto flex flex-col p-3 w-full">
         {/* Header */}
         <HeaderBreadCrumbs
           rootName="Appointment"
@@ -48,17 +54,17 @@ const AppointmentsPage = () => {
         <div className="flex items-center gap-2 mb-4">
           {!isAdminUser && (
             <Button
-            variant="outline"
-            className={cn(
-              activeTab === "appointment" &&
-                "bg-primary-red hover:bg-primary-red/80 text-white hover:text-white"
-            )}
-            onClick={() => setActiveTab("appointment")}
-          >
-            Book an Appointment
-          </Button>
+              variant="outline"
+              className={cn(
+                activeTab === "appointment" &&
+                  "bg-primary-red hover:bg-primary-red/80 text-white hover:text-white"
+              )}
+              onClick={() => setActiveTab("appointment")}
+            >
+              Book an Appointment
+            </Button>
           )}
-          
+
           <Button
             variant="outline"
             className={cn(
@@ -71,22 +77,25 @@ const AppointmentsPage = () => {
           </Button>
           {isAdminUser && (
             <Button
-            variant="outline"
-            className={cn(
-              activeTab === "appointment" &&
-                "bg-primary-red hover:bg-primary-red/80 text-white hover:text-white"
-            )}
-            onClick={() => setActiveTab("appointment")}
-          >
-            Add Event
-          </Button>
+              variant="outline"
+              className={cn(
+                activeTab === "addEvent" &&
+                  "bg-primary-red hover:bg-primary-red/80 text-white hover:text-white"
+              )}
+              onClick={() => setActiveTab("addEvent")}
+            >
+              Add Event
+            </Button>
           )}
-
         </div>
 
-        {/* Book a Appointment */}
+        {/* Book an Appointment */}
         {activeTab === "appointment" && <BookComp />}
-
+        {activeTab === "addEvent" && (
+          <div className="mt-20">
+            <AddEventForm onFormSubmit={() => handleTabChange("schedule")} />
+          </div>
+        )}
         {/* My Schedule */}
         {activeTab === "schedule" && (
           <div className="flex flex-col">

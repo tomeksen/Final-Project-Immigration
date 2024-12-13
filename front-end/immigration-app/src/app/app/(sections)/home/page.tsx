@@ -1,4 +1,3 @@
-'use client'
 
 import { MobileCalendar } from "@/components/common/Calendar/MobileCalendar";
 import HeaderBreadCrumbs from "@/components/common/HeaderBreadCrumbs";
@@ -11,11 +10,11 @@ import { Button } from "@/components/ui/button";
 import { MessageSquare, Paperclip, Trash2 } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Progress } from "@/components/ui/progress";
-import { useUser } from "@clerk/nextjs";
+import { currentUser } from '@clerk/nextjs/server'
 
-const DashboardHome = () => {
-  const user= useUser();
-  const isAdminUser = user.user?.publicMetadata.role === "admin"? true : false;
+const DashboardHome = async () => {
+  const user = await currentUser();
+  const isAdminUser = user?.publicMetadata.role === "admin"? true : false;
   const bookedDays = [
     {
       startDate: new Date(2024, 10, 5),
