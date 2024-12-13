@@ -46,7 +46,7 @@ export function AppSidebar() {
     },
     {
       title: t("Content.applications"),
-      url: "/applications",
+      url: "/template-manager",
       icon: FileEdit,
     },
     {
