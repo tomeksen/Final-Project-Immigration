@@ -10,8 +10,6 @@ export default clerkMiddleware(async (auth: ClerkMiddlewareAuth, req: NextReques
   const url = req.nextUrl;
   const searchParams = req.nextUrl.searchParams.toString();
   const path = `${url.pathname}${searchParams.length > 0 ? `?${searchParams}` : ""}`;
-
-
   const { userId } = await auth();
 
   // Handle dashboard subdomain

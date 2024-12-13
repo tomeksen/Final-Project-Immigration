@@ -10,7 +10,8 @@
       "documents": "My Documents",
       "appointment": "Appointment",
       "inbox": "Inbox",
-      "profile": "Profile"
+      "profile": "Profile",
+      "users": "Users"
     },
     "Footer": {
       "settings": "Settings",

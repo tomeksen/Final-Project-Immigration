@@ -1,16 +1,18 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+'use client'
 import { Button } from "@/components/ui/button";
 import {
     SignInButton,
     SignedIn,
     SignedOut,
-    UserButton
+    UserButton,
+    useUser,
   } from '@clerk/nextjs'
 
 export default function DashboardHeader() {
+  const user = useUser();
   return (
     <header className="flex items-end justify-end border-b p-1">
-      <div className="">
+        <h1 className="pr-3">Hello {user.user?.firstName}!</h1>
           <SignedOut>
             <SignInButton>
               <Button
@@ -25,7 +27,6 @@ export default function DashboardHeader() {
           <SignedIn>
             <UserButton />
           </SignedIn>
-          </div>
     </header>
   );
 }

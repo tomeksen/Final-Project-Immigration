@@ -31,13 +31,13 @@ import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import bg from "@/assets/logo/Up_Immigration_Logo.png";
-import { useUser } from "@clerk/nextjs";
+import {  useClerk, useUser  } from "@clerk/nextjs";
 
 export function AppSidebar() {
   const pathname = usePathname();
   const t = useTranslations("Sidebar");
   const user = useUser();
-
+  const { signOut } = useClerk()
   const contentAdminItems = [
     {
       title: t("Content.dashboard"),
@@ -60,10 +60,15 @@ export function AppSidebar() {
       icon: Users,
     },
     {
-      title: t("Content.profile"),
+      title: t("Content.users"),
       url: "/users",
       icon: User,
     },
+    {
+      title: "Notifications",
+      url: "/notifications",
+      icon: MessageSquare,
+    }
   ];
 
   const contentItems = [
@@ -107,17 +112,17 @@ export function AppSidebar() {
     },
     {
       title: t("Footer.logout"),
-      url: "/logout",
+      url: "#",
       icon: LogOut,
+      onClick: () => signOut({ redirectUrl: '/' }),
     },
   ];
 
   const isDashboardDomain =
     typeof window !== "undefined" &&
     window.location.hostname.startsWith("dashboard");
-
+  
   const isAdminUser = user.user?.publicMetadata?.role ? user.user?.publicMetadata?.role === "admin" : false;
-  console.log(isAdminUser);
   return (
     <Sidebar variant="sidebar">
       <SidebarHeader>
@@ -226,6 +231,7 @@ export function AppSidebar() {
                       <SidebarMenuButton asChild>
                         <Link
                           href={item.url}
+                          onClick={item.onClick}
                           className={cn(
                             "px-2 py-6",
                             "hover:bg-secondary-lightGray hover:text-primary-black hover:font-bold"
