@@ -4,9 +4,9 @@ import { CategoryManagerTable } from "@/components/dashboard/template-manager/ca
 const TemplateCategoryPage = ({
   params,
 }: {
-  params: { id: string }
+  params: { applicationId: string }
 }) => {
-  const applicationId = params.id;
+  const applicationId = params.applicationId;
   console.log(applicationId);
   return (
     <div>

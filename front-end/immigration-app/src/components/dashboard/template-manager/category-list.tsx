@@ -56,7 +56,7 @@ export function CategoryManagerTable({ CategoryId }: CategoryTableProps) {
     },[selectedCategory]);  
     return (
     <div className="p-4 space-y-4">
-      <HeaderBreadCrumbs rootName={"Applications"}  breadName={CategoryId}/>
+      <HeaderBreadCrumbs rootName={"Applications"} rootHref={`/template-manager`} breadName={CategoryId}/>
 
       <Table>
         <TableHeader className="bg-[#5E5E5E] text-primary-white ">

@@ -14,8 +14,10 @@ import {
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
-export type Application = {
+type Application = {
   id: number;
   user_id: string;
   name: string;
@@ -94,7 +96,9 @@ export function ApplicationsManagerTable() {
     <div className="p-4 space-y-4">
 
       <HeaderBreadCrumbs rootName={"Applications"} />
-
+      <Button  asChild>
+        <Link href="/template-manager/creator">Create New Application</Link>
+      </Button>
       <Table>
       <TableHeader className="bg-[#5E5E5E] text-primary-white ">
         {/* Give it Link */}

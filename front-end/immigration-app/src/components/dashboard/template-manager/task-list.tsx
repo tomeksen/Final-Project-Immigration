@@ -110,7 +110,7 @@ export function TaskManagerTable({ CategoryId }: TaskTableProps) {
   
   return (
     <div className="p-4 space-y-4">
-      <HeaderBreadCrumbs rootName={"Applications"} rootHref={`/template-manager/${CategoryId}`} breadName={CategoryId} />
+      <HeaderBreadCrumbs rootName={`Applications > ${CategoryId}`} rootHref={`/template-manager/${CategoryId}`} breadName={CategoryId} />
 
       <Table>
         <TableHeader className="bg-[#5E5E5E] text-primary-white ">

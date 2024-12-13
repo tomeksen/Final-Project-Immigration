@@ -4,10 +4,9 @@ import { TaskManagerTable } from "@/components/dashboard/template-manager/task-l
 const TemplateTaskPage = ({
   params,
 }: {
-  params: { taskId: string }
+  params: { categoryId: string }
 }) => {
-  const categoryId = params.taskId;
-  console.log(categoryId);
+  const categoryId = params.categoryId;
   return (
     <div>
       <TaskManagerTable CategoryId={categoryId} />
