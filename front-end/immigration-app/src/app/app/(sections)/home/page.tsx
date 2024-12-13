@@ -67,7 +67,7 @@ const DashboardHome = () => {
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="w-full mx-auto pl-14 items-center">
-                  <MobileCalendar  bookedDays={bookedDays} />
+                  <MobileCalendar bookedDays={bookedDays} />
                 </CardContent>
               </Card>
             </div>
