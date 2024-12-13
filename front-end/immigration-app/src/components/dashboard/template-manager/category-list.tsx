@@ -12,6 +12,8 @@ import {
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 type Category = {
   id: string;
@@ -56,8 +58,10 @@ export function CategoryManagerTable({ CategoryId }: CategoryTableProps) {
     },[selectedCategory]);  
     return (
     <div className="p-4 space-y-4">
-      <HeaderBreadCrumbs rootName={"Applications"} rootHref={`/template-manager`} breadName={CategoryId}/>
-
+      <HeaderBreadCrumbs rootName={"Applications"} rootHref={`/template-manager`} breadName={`Category > ${CategoryId}`}/>
+      <Button  asChild>
+        <Link href="/template-manager/creator">Create New Category</Link>
+      </Button>
       <Table>
         <TableHeader className="bg-[#5E5E5E] text-primary-white ">
           {/* Give it Link */}

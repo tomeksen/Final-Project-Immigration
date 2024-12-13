@@ -11,6 +11,8 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 type Task = {
     id: string;
@@ -110,8 +112,10 @@ export function TaskManagerTable({ CategoryId }: TaskTableProps) {
   
   return (
     <div className="p-4 space-y-4">
-      <HeaderBreadCrumbs rootName={`Applications > ${CategoryId}`} rootHref={`/template-manager/${CategoryId}`} breadName={CategoryId} />
-
+      <HeaderBreadCrumbs rootName={`Applications > Category > ${CategoryId}`} rootHref={`/template-manager/${CategoryId}`} breadName={CategoryId} />
+      <Button  asChild>
+        <Link href="/template-manager/creator">Create New Task</Link>
+      </Button>
       <Table>
         <TableHeader className="bg-[#5E5E5E] text-primary-white ">
           {/* Give it Link */}

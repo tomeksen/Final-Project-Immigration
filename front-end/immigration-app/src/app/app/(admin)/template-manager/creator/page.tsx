@@ -1,3 +1,4 @@
+import { CategoryManagerTable } from "@/components/dashboard/template-manager/category-list";
 import { ApplicationManagerForm } from "@/components/dashboard/template-manager/form/applications-form";
 
 type Application = {
@@ -36,6 +37,7 @@ const TemplateApplicationsCreatorPage = () => {
     return (
             <div>
                 <ApplicationManagerForm/>
+                <CategoryManagerTable CategoryId={"1"}/>
             </div>
     )
   };

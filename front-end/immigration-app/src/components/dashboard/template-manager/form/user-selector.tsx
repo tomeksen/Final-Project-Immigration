@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import { Check, ChevronsUpDown } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -17,6 +16,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { useState } from "react";
 
 // This would typically come from an API or database
 const users = [
@@ -32,8 +32,8 @@ export function UserSelector({
 }: {
   onSelect: (value: string) => void;
 }) {
-  const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState("");
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState("");
 
   return (
     <Popover open={open} onOpenChange={setOpen}>

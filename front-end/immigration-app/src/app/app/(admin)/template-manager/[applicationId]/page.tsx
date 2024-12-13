@@ -7,7 +7,6 @@ const TemplateCategoryPage = ({
   params: { applicationId: string }
 }) => {
   const applicationId = params.applicationId;
-  console.log(applicationId);
   return (
     <div>
       <CategoryManagerTable CategoryId={applicationId} />
