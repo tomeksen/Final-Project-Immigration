@@ -9,6 +9,7 @@ import { Reveal } from "@/utils/Reveal";
 import FreeConsultationBtn from "@/components/FreeConsultationBtn";
 import MobileNavbar from "./MobileNavbar";
 import Navbar from "./Navbar";
+import { motion } from "framer-motion";
 
 export default function Header() {
   return (
@@ -30,11 +31,23 @@ export default function Header() {
         </div>
 
         {/* Buttons and Locale/Dark Mode Toggle */}
-        <div className="hidden md:flex items-center gap-1">
-          <div className="flex xs:flex-col">
+        <div className="hidden md:flex  items-center gap-1">
+          <div className="flex xs:flex-col text-center justify-center ">
+          
             <LocaleSwitcher />
           </div>
           <FreeConsultationBtn />
+          <Reveal>
+            <Link href="http://app.localhost:3000/home">
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="bg-primary-black text-white hover:bg-grey-100  pl-3 text-wrap text-xs md:py-2 lg:px-2 lg:text-base rounded-xl font-semibold"
+              >
+                I'm a user
+              </motion.button>
+            </Link>
+          </Reveal> 
         </div>
       </div>
     </header>

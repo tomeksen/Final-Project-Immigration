@@ -10,7 +10,7 @@ export default function AdminLayout({
   <AppSidebar />
     <div className="flex flex-col w-full">
       <DashboardHeader/>
-      <div className="flex-grow">
+      <div className="flex-grow bg-gray-100">
         {children}
         </div>
       </div>

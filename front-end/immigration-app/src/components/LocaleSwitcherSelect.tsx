@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import {useTransition} from 'react';
 import {Locale} from '@/i18n/config';
 import {setUserLocale} from '@/services/locale';
-import { CheckIcon, BookIcon } from 'lucide-react';
+import { CheckIcon, BookIcon, Languages } from 'lucide-react';
 
 type Props = {
   defaultValue: string;
@@ -38,7 +38,7 @@ export default function LocaleSwitcherSelect({
           )}
         >
           <Select.Icon>
-            <BookIcon className="h-6 w-6 text-slate-600 transition-colors group-hover:text-slate-900" />
+            <Languages className="h-6 w-6 text-slate-600 transition-colors group-hover:text-slate-900" />
           </Select.Icon>
         </Select.Trigger>
         <Select.Portal>

@@ -54,6 +54,10 @@ export default function PaymentInvoices() {
     }
   };
 
+  const downloadPDF = () => {
+    window.open('https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf', '_blank');
+  };
+
   return (
     <Card className="w-full h-full">
       <CardHeader>
@@ -86,6 +90,7 @@ export default function PaymentInvoices() {
                   <Button
                     variant="outline"
                     className="text-primary-red hover:text-primary-red hover:primary-red/50"
+                    onClick={downloadPDF}
                   >
                     Label
                     <ArrowRight className="ml-1 h-4 w-4" />

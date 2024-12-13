@@ -11,7 +11,8 @@
       "appointment": "Appointment",
       "inbox": "Inbox",
       "profile": "Profile",
-      "users": "Users"
+      "users": "Users",
+      "calendar": "Calendar"
     },
     "Footer": {
       "settings": "Settings",

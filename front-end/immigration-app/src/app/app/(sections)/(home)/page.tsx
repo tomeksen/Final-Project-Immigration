@@ -1,10 +1,9 @@
-'use client'
 
-const DashboardHome = () => {
+const Dashboard = () => {
     return (
       <>
       </>
     )
   };
   
-export default DashboardHome;
+export default Dashboard;
