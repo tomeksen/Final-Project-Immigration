@@ -63,11 +63,11 @@ const DashboardHome = () => {
                 <CardHeader>
                   <CardTitle>My Schedule</CardTitle>
                   <CardDescription className="mt-3 text-foreground">
-                    You have <span className="text-primary-red">3 pending payments</span>.
+                    You have <span className="text-primary-red">100 pending events</span>.
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="w-full mx-auto pl-14 items-center">
-                  <MobileCalendar className="" bookedDays={bookedDays} />
+                  <MobileCalendar  bookedDays={bookedDays} />
                 </CardContent>
               </Card>
             </div>

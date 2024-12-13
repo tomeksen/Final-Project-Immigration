@@ -95,6 +95,7 @@ export const applicationTasks = sqliteTable('ApplicationTasks', {
   // title of the task
   title: text('title', { length: 256 }).notNull(),
   isComplete: integer('isComplete',{mode:'boolean'}).default(false),
+  isRevised: integer('isRevised',{mode:'boolean'}).default(false),
   dueDate: integer('dueDate',{mode:'timestamp'}),
   // description of the task
   description: text('description', { length: 256 }).notNull(),
