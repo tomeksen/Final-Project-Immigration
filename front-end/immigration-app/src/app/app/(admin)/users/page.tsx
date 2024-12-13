@@ -2,6 +2,8 @@
 
 import HeaderBreadCrumbs from "@/components/common/HeaderBreadCrumbs";
 import LottieLoading from "@/components/common/LottieLoading";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { UserDialog } from "@/components/users/UsersDialog";
 import PaginationTemplate from "@/components/users/UsersPaginationTemplate";
 import { UserTableTemplate } from "@/components/users/UsersTableTemplate";
@@ -11,6 +13,7 @@ import { QUERY_KEYS } from "@/config/query";
 import { FilteredInvitation, InvitationList } from "@/type/Invitation.type";
 import { FilteredUser, UserList } from "@/type/Users.type";
 import { filteredInvitations, filteredUsers } from "@/utils/users";
+import { Plus, User } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
@@ -221,9 +224,9 @@ const UsersPage = () => {
 
   return (
     <>
-      <section className="h-screen max-w-screen flex flex-1 flex-col">
-        <div className="container mx-auto p-4 w-full h-full">
-          <div className=" h-full">
+      <section className="h-full max-w-screen flex flex-1 flex-col bg-gray-100">
+        <div className="container mx-auto p-1 w-full ">
+          <div className="">
             {/* User Table section */}
             {/* Loading state */}
             {isUsersLoading && (
@@ -240,10 +243,17 @@ const UsersPage = () => {
             )}
 
             {!isUsersLoading && !usersError && users && (
-              <div className="flex flex-col justify-center gap-3">
+              <div className="flex flex-col justify-center py-2">
                 {/* Title */}
-                <HeaderBreadCrumbs rootName="Users" />
-
+                <Card>
+                  <CardHeader>
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <HeaderBreadCrumbs rootName="Users" className="py-0"/>
+                      </div>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
                 {/* UserTable */}
                 <UserTableTemplate
                   className="h-[350px] overflow-x-auto"
@@ -257,6 +267,8 @@ const UsersPage = () => {
                   totalPage={userTotalPage || 1}
                   currentPage={userCurrentPage}
                 />
+                </CardContent>
+                </Card>
               </div>
             )}
 
@@ -277,16 +289,23 @@ const UsersPage = () => {
 
             {/* Invitations table */}
             {!isInvitationLoading && !invitationsError && invitations && (
-              <div className="flex flex-col justify-center gap-3 mb-3">
-                <div className="flex items-center justify-between">
+              <div className="flex flex-col justify-center">
                   {/* title */}
-                  <HeaderBreadCrumbs rootName="Invitations" />
+                  <Card>
+                    <CardHeader>
+                      <div className="flex items-center justify-between">
+                        <div>
+                        <HeaderBreadCrumbs rootName="Invitations" />
+                        </div>
+                        <UserDialog
+                                onClick={handleInvitationPost}
+                                invitations={invitations}
+                              />
+                      </div>
+                    </CardHeader>
+                    <CardContent>
                   {/* add button */}
-                  <UserDialog
-                    onClick={handleInvitationPost}
-                    invitations={invitations}
-                  />
-                </div>
+                  
                 <UserTableTemplate
                   className="h-[350px] overflow-x-auto"
                   columns={invitationColumns}
@@ -299,6 +318,8 @@ const UsersPage = () => {
                   totalPage={invitationTotalPage || 1}
                   currentPage={invitationCurrentPage}
                 />
+                </CardContent>
+                </Card>
               </div>
             )}
           </div>
