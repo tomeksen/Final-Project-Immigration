@@ -1,3 +1,4 @@
+import { ApplicationManagerForm } from "@/components/dashboard/template-manager/form/applications-form";
 
 type Application = {
     id: number;
@@ -34,7 +35,7 @@ type Application = {
 const TemplateApplicationsCreatorPage = () => {
     return (
             <div>
-                
+                <ApplicationManagerForm/>
             </div>
     )
   };
