@@ -1,9 +1,12 @@
-const TemplatePage = () => {
+
+import { ApplicationsManagerTable } from "@/components/dashboard/template-manager/applications-list";
+
+const TemplateApplicationsPage = () => {
     return (
-      <>
-            
-      </>
+            <div>
+              <ApplicationsManagerTable />
+            </div>
     )
   };
   
-export default TemplatePage;
+export default TemplateApplicationsPage;
