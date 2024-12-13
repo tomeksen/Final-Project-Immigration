@@ -8,7 +8,7 @@ import { Application } from "./ApplicationsTable";
 
 type Category = {
   id: string;
-  application_id: string;
+  applicationId: string;
   name: string;
   order: number;
 };
@@ -16,14 +16,14 @@ type Category = {
 // fetch data based on application_id
 const categories: Category = {
   id: "",
-  application_id: "",
+  applicationId: "",
   name: "",
   order: 0,
 };
 
 type Task = {
   id: string;
-  category_id: string;
+  categoryId: string;
   comment_id: string;
   service_connection_id: string;
   title: string;
@@ -39,7 +39,7 @@ type Task = {
 const tasks: Task[] = [
   {
     id: "1",
-    category_id: "cat001",
+    categoryId: "cat001",
     comment_id: "com001",
     service_connection_id: "srv001",
     title: "Complete Project Documentation",
@@ -52,7 +52,7 @@ const tasks: Task[] = [
   },
   {
     id: "2",
-    category_id: "cat002",
+    categoryId: "cat002",
     comment_id: "com002",
     service_connection_id: "srv002",
     title: "Design Initial Wireframes",
@@ -65,7 +65,7 @@ const tasks: Task[] = [
   },
   {
     id: "3",
-    category_id: "cat003",
+    categoryId: "cat003",
     comment_id: "com003",
     service_connection_id: "srv003",
     title: "Team Meeting Preparation",
@@ -78,7 +78,7 @@ const tasks: Task[] = [
   },
   {
     id: "4",
-    category_id: "cat001",
+    categoryId: "cat001",
     comment_id: "com004",
     service_connection_id: "srv004",
     title: "Code Review Session",
@@ -92,7 +92,7 @@ const tasks: Task[] = [
   },
   {
     id: "5",
-    category_id: "cat004",
+    categoryId: "cat004",
     comment_id: "com005",
     service_connection_id: "srv005",
     title: "Deploy to Staging Environment",
@@ -107,11 +107,16 @@ const tasks: Task[] = [
 ];
 
 type TaskManagerProps = {
-  application: Application;
+  application: Application; // delete: not need if TaskManager has applicationId
   onClose: () => void;
+  applicationId: string;
 };
 
-export function TaskManager({ application, onClose }: TaskManagerProps) {
+export function TaskManager({
+  application,
+  onClose,
+  applicationId,
+}: TaskManagerProps) {
   /*
   1 fetch categories based on application_id
       const categories = [{id, application_id, name: string, order: number}, {}...]
@@ -121,7 +126,7 @@ export function TaskManager({ application, onClose }: TaskManagerProps) {
   */
   // ↓change later
   const filteredTasks = tasks.filter(
-    (task) => task.category_id === application.id.toString()
+    (task) => task.categoryId === application.id.toString()
   );
 
   const [selectedTask, setSelectedTask] = useState<Task | null>(null);
@@ -132,11 +137,7 @@ export function TaskManager({ application, onClose }: TaskManagerProps) {
 
   return (
     <div className="p-4 space-y-4">
-      {/* pass the application name to breadName? */}
-      <HeaderBreadCrumbs rootName="Applications" breadName={application.name} />
-
-      {/* delete below later */}
-      <p>delete later: jump to application's task page</p>
+      <HeaderBreadCrumbs rootName="Applications" breadName={"Task Details"} />
 
       <TaskList onTaskClick={handleTaskClick} tasks={tasks} />
 

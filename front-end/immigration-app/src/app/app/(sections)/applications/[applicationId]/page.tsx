@@ -1,18 +1,24 @@
+"use client";
 import { TaskManager } from "@/components/dashboard/applications/TaskManager";
-import { AppSidebar } from "@/components/dashboard/sidebar/AppSideBar";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import React from "react";
 
-const TasksPage = () => {
+const TasksPage = ({ params }: { params: { applicationId: string } }) => {
+  const applicationId = params.applicationId;
+
+  // fetch an application that is clicked
+  // pass it to get category and tasks to TaskList component
+
   return (
     <>
       <SidebarProvider>
-        <AppSidebar />
         <div className="p-6">
           <TaskManager
+            applicationId={applicationId}
             application={{
+              // delete: not need application attribute
               id: 0,
-              user_id: "",
+              userId: "",
               name: "",
               date: "",
               type: "",
