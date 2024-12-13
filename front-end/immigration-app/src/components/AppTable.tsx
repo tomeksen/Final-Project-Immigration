@@ -43,37 +43,46 @@ export function AppTable({ appProps, appearance, onRowClick }: AppTableProps) {
     <>
       <Table>
         <TableHeader className="bg-[#5E5E5E] text-primary-white ">
-          {/* Give it Link */}
           <TableRow className="">
-            <TableHead className="rounded-tl-md">Number</TableHead>
-            <TableHead>Name</TableHead>
-            <TableHead>Date</TableHead>
-            <TableHead>Type</TableHead>
-            <TableHead>Progress</TableHead>
-            <TableHead className="rounded-tr-md">Status</TableHead>
+            <TableHead className="rounded-tl-md hidden sm:table-cell">
+              Number
+            </TableHead>
+            <TableHead className="hidden sm:table-cell">Name</TableHead>
+            <TableHead className="hidden sm:table-cell">Date</TableHead>
+            <TableHead className="hidden sm:table-cell">Type</TableHead>
+            <TableHead className="hidden sm:table-cell">Progress</TableHead>
+            <TableHead className="rounded-tr-md hidden sm:table-cell">
+              Status
+            </TableHead>
           </TableRow>
         </TableHeader>
         <TableBody className="border">
           {appProps.map((app, index) => (
-            // jump to tasks
-            // <Link
-            //   href={`/applications/${app.id}`}
-            //   key={app.id}
-            //   className="block"
-            // >
             <TableRow
               key={app.id}
               onClick={() => handleRowClick(app)}
               className="cursor-pointer hover:bg-primary-gray"
             >
-              <TableCell className="last: rounded-bl-md bg-white">
+              <TableCell className="last: rounded-bl-md bg-white hidden sm:table-cell">
                 {index + 1}
               </TableCell>
-              <TableCell className="bg-white">{app.name}</TableCell>
-              <TableCell className="bg-white">{app.date}</TableCell>
-              <TableCell className="bg-white">{app.type}</TableCell>
               <TableCell className="bg-white">
-                <Progress value={app.progress} className="w-[100px] " />
+                {app.name}
+                <TableCell className="block sm:hidden text-primary-gray">
+                  {app.date}
+                </TableCell>
+              </TableCell>
+              <TableCell className="bg-white hidden sm:table-cell">
+                {app.date}
+              </TableCell>
+              <TableCell className="bg-white hidden sm:table-cell">
+                {app.type}
+              </TableCell>
+              <TableCell className="bg-white">
+                <Progress
+                  value={app.progress}
+                  className="w-[100px] hidden sm:table-cell"
+                />
               </TableCell>
               <TableCell className="last: rounded-br-md bg-white">
                 <Badge
@@ -91,7 +100,6 @@ export function AppTable({ appProps, appearance, onRowClick }: AppTableProps) {
                 </Badge>
               </TableCell>
             </TableRow>
-            // </Link>
           ))}
         </TableBody>
       </Table>
