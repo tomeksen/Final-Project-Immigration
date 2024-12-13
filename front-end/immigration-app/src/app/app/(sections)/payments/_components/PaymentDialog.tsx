@@ -15,7 +15,7 @@ export default function PaymentDialog() {
   return (
     <Dialog>
       <DialogTrigger>
-        <Button className="absolute bottom-0 right-0 z-50 bg-primary-red text-white p-2 w-full rounded-none rounded-b-md">
+        <Button className="absolute bottom-0 right-0 z-50 bg-primary-red hover:bg-primary-red/80 text-white p-2 w-full rounded-none rounded-b-md">
           Make Payment
         </Button>
       </DialogTrigger>
