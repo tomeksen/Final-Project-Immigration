@@ -102,32 +102,33 @@ export default function Page({
         //  ⭐️hard-coded
         breadName={documents[Number(id)]?.title || "Document Details"}
       />
-      <FilterTable  />
+      <FilterTable />
 
       <Table className={cn(className)}>
         <TableHeader>
-          <TableRow className="">
+          <TableRow className="text-xs sm:text-base">
             <TableHead className="font-medium">FORM</TableHead>
             <TableHead className="font-medium">DOCUMENT</TableHead>
             <TableHead className="font-medium">DATE</TableHead>
             <TableHead className="font-medium">ADD DOCUMENT</TableHead>
-            <TableHead className="hidden sm:block font-medium">
-              STATUS
-            </TableHead>
+            <TableHead className="font-medium">STATUS</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {documents.map((doc) => (
-            <TableRow key={doc.form} className="hover:bg-gray-50 items-center">
+            <TableRow
+              key={doc.form}
+              className="hover:bg-gray-50 items-center text-sm sm:text-base"
+            >
               <TableCell className="font-medium">{doc.form}</TableCell>
               <TableCell>{doc.document}</TableCell>
               <TableCell>{doc.date}</TableCell>
               <TableCell>
                 {doc.addDocument === "Replace" ? (
-                  <Label className="flex items-center justify-center gap-2 w-4 sm:w-[150px] px-4 py-2 bg-secondary-gray rounded-md hover:bg-secondary-gray/80 text-black cursor-pointer">
+                  <Label className="flex items-center justify-center gap-2 w-8 h-8 lg:w-[150px] bg-secondary-gray rounded-lg hover:bg-secondary-gray/80 text-black cursor-pointer">
                     <RotateCcw className="w-4 h-4" />
-                    <span className="hidden sm:block">Replace</span>
-                    <input
+                    <span className="hidden lg:block">Replace</span>
+                    <Input
                       type="file"
                       accept="image/*"
                       className="hidden"
@@ -135,10 +136,10 @@ export default function Page({
                     />
                   </Label>
                 ) : (
-                  <Label className="flex items-center justify-center gap-2 w-5 sm:w-[150px] px-4 py-2 bg-primary-red rounded-md hover:bg-primary-red/80 text-white cursor-pointer">
+                  <Label className="flex items-center justify-center gap-2 w-8 h-8 lg:w-[150px] p-0 bg-primary-red rounded-lg hover:bg-primary-red/80 text-white cursor-pointer">
                     <Plus className="w-4 h-4" />
-                    <span className="hidden sm:block">Add</span>
-                    <input
+                    <span className="hidden lg:flex">Add</span>
+                    <Input
                       type="file"
                       accept="image/*"
                       className="hidden"
@@ -147,8 +148,8 @@ export default function Page({
                   </Label>
                 )}
               </TableCell>
-              <TableCell className="hidden sm:block">
-                <Checkbox className="data-[state=checked]:border-none data-[state=checked]:bg-secondary-green h-4 w-4" />
+              <TableCell>
+                <Checkbox className="flex items-center justify-center data-[state=checked]:border-none data-[state=checked]:bg-secondary-green h-6 w-6" />
               </TableCell>
             </TableRow>
           ))}
