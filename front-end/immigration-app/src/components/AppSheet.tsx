@@ -18,7 +18,7 @@ import { Checkbox } from "./ui/checkbox";
 
 type Task = {
   id: string;
-  category_id: string;
+  categoryId: string;
   comment_id: string;
   service_connection_id: string;
   title: string;
@@ -35,8 +35,6 @@ type TaskProps = {
   appearance?: { baseTheme: any };
   onClose: () => void;
 };
-
-
 
 export function AppSheet({ task, onClose }: TaskProps) {
   return (
