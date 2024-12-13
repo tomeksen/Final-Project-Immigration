@@ -55,7 +55,7 @@ export function AppSidebar() {
       icon: DollarSign,
     },
     {
-      title: t("Content.appointment"),
+      title: t("Content.calendar"),
       url: "/appointments",
       icon: Users,
     },

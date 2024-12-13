@@ -1,7 +1,6 @@
 "use client";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import BookComp from "./_components/BookComp";
-import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -10,11 +9,12 @@ import HeaderBreadCrumbs from "@/components/common/HeaderBreadCrumbs";
 import { DesktopCalendar } from "@/components/common/Calendar/DesktopCalendar";
 import SideSchedule from "@/components/common/Calendar/SideSchedule";
 import MobileSideSchedule from "@/components/common/Calendar/MobileSideSchedule";
+import { useUser } from "@clerk/nextjs";
 
 type ActiveTabType = "appointment" | "schedule";
 const AppointmentsPage = () => {
-
-  const path = usePathname();
+  const user = useUser();
+  const isAdminUser = user.user?.publicMetadata.role === "admin"? true : false;
   const [activeTab, setActiveTab] = useState<ActiveTabType>("schedule");
   const bookedDays = [
     {
@@ -35,18 +35,19 @@ const AppointmentsPage = () => {
   ];
   return (
     <>
-      <section className="h-4/5 max-w-screen container mx-auto flex flex-col p-3">
+      <section className="h-full  container mx-auto flex flex-col p-3 w-full">
         {/* Header */}
         <HeaderBreadCrumbs
           rootName="Appointment"
           breadName={
-            activeTab === "appointment" ? "Book an Appointment" : "My Calendar"
+            activeTab === "appointment" ? "Book an Appointment" : "My Schedule"
           }
         />
 
         {/* Choose buttons */}
         <div className="flex items-center gap-2 mb-4">
-          <Button
+          {!isAdminUser && (
+            <Button
             variant="outline"
             className={cn(
               activeTab === "appointment" &&
@@ -56,6 +57,8 @@ const AppointmentsPage = () => {
           >
             Book an Appointment
           </Button>
+          )}
+          
           <Button
             variant="outline"
             className={cn(
@@ -64,8 +67,21 @@ const AppointmentsPage = () => {
             )}
             onClick={() => setActiveTab("schedule")}
           >
-            My Calendar
+            My Schedule
           </Button>
+          {isAdminUser && (
+            <Button
+            variant="outline"
+            className={cn(
+              activeTab === "appointment" &&
+                "bg-primary-red hover:bg-primary-red/80 text-white hover:text-white"
+            )}
+            onClick={() => setActiveTab("appointment")}
+          >
+            Add Event
+          </Button>
+          )}
+
         </div>
 
         {/* Book a Appointment */}

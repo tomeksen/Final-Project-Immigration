@@ -1,8 +1,8 @@
+import { AppProgressChart } from "@/components/dashboard/progressChart/AppProgressChart";
 import { DesktopCalendar } from "../../../components/common/Calendar/DesktopCalendar";
 import { MobileCalendar } from "../../../components/common/Calendar/MobileCalendar";
 import SideSchedule from "../../../components/common/Calendar/SideSchedule";
 import AppPaymentSwiper from "../../app/(sections)/payments/_components/paymentSwiper/AppPaymentSwiper";
-import { AppProgressChart } from "./_components/progressChart/AppProgressChart";
 
 const Test1Page = () => {
   const bookedDays = [
