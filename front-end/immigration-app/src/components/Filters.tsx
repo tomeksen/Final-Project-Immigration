@@ -38,8 +38,8 @@ export default function Filters({
 }: FilterProps) {
   return (
     <div className="flex items-center gap-1 bg-white rounded-lg p-2 max-w-4xl mb-4">
-      <h2 className="px-1 w-[180px] text-sm">Filter by</h2>
-      <div className="self-stretch border-l border-gray-300" />
+      <h2 className="px-1 w-[180px] text-sm hidden md:table-cell">Filter by</h2>
+      <div className="self-stretch border-l border-gray-300 hidden md:table-cell" />
 
       <Select value={sortBy} onValueChange={setSortBy}>
         <SelectTrigger className="w-[180px] rounded-none mr-1 pl-4">
@@ -56,7 +56,7 @@ export default function Filters({
       <div className="self-stretch border-l border-gray-300" />
 
       <Select value={visaType} onValueChange={setVisaType}>
-        <SelectTrigger className="w-[180px] rounded-none pl-4">
+        <SelectTrigger className="w-[180px] rounded-none pl-4 hidden md:table-cell">
           <SelectValue placeholder="Visa Type" />
         </SelectTrigger>
         <SelectContent>
@@ -65,7 +65,7 @@ export default function Filters({
           <SelectItem value="Visitor">Visitor</SelectItem>
         </SelectContent>
       </Select>
-      <div className="self-stretch border-l border-gray-300" />
+      <div className="self-stretch border-l border-gray-300 hidden md:table-cell" />
 
       <Select value={status} onValueChange={setStatus}>
         <SelectTrigger className="w-[180px] rounded-none pl-4">
