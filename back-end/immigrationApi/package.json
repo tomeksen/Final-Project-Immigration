@@ -11,7 +11,9 @@
     "@clerk/backend": "^1.15.1",
     "@hono/clerk-auth": "^2.0.0",
     "@hono/zod-openapi": "^0.16.4",
+    "@libsql/client": "^0.14.0",
     "@scalar/hono-api-reference": "^0.5.156",
+    "dotenv": "^16.4.7",
     "drizzle-orm": "^0.36.1",
     "hono": "^4.6.8",
     "zod": "^3.23.8"

@@ -1,14 +1,21 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "e92c953b-ce9e-4d01-b13a-db484d89e552",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "f6eb9414-aa21-47b9-91ba-48ebb467d572",
+  "prevId": "75ddd8c3-a7af-4ed1-9a9d-0d7058f12bc8",
   "tables": {
-    "ApplicationCategory": {
-      "name": "ApplicationCategory",
+    "applicationCategory": {
+      "name": "applicationCategory",
       "columns": {
         "id": {
           "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "applicationId": {
+          "name": "applicationId",
           "type": "integer",
           "primaryKey": false,
           "notNull": false,
@@ -31,12 +38,12 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "ApplicationCategory_id_ApplicationCategory_id_fk": {
-          "name": "ApplicationCategory_id_ApplicationCategory_id_fk",
-          "tableFrom": "ApplicationCategory",
-          "tableTo": "ApplicationCategory",
+        "applicationCategory_applicationId_applications_id_fk": {
+          "name": "applicationCategory_applicationId_applications_id_fk",
+          "tableFrom": "applicationCategory",
+          "tableTo": "applications",
           "columnsFrom": [
-            "id"
+            "applicationId"
           ],
           "columnsTo": [
             "id"
@@ -49,8 +56,8 @@
       "uniqueConstraints": {},
       "checkConstraints": {}
     },
-    "ApplicationCategoryTemplate": {
-      "name": "ApplicationCategoryTemplate",
+    "applicationCategoryTemplate": {
+      "name": "applicationCategoryTemplate",
       "columns": {
         "id": {
           "name": "id",
@@ -66,11 +73,18 @@
       "uniqueConstraints": {},
       "checkConstraints": {}
     },
-    "ApplicationTasks": {
-      "name": "ApplicationTasks",
+    "applicationTasks": {
+      "name": "applicationTasks",
       "columns": {
         "id": {
           "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "categoryId": {
+          "name": "categoryId",
           "type": "integer",
           "primaryKey": false,
           "notNull": false,
@@ -145,12 +159,12 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "ApplicationTasks_id_ApplicationCategory_id_fk": {
-          "name": "ApplicationTasks_id_ApplicationCategory_id_fk",
-          "tableFrom": "ApplicationTasks",
-          "tableTo": "ApplicationCategory",
+        "applicationTasks_categoryId_applicationCategory_id_fk": {
+          "name": "applicationTasks_categoryId_applicationCategory_id_fk",
+          "tableFrom": "applicationTasks",
+          "tableTo": "applicationCategory",
           "columnsFrom": [
-            "id"
+            "categoryId"
           ],
           "columnsTo": [
             "id"
@@ -163,8 +177,8 @@
       "uniqueConstraints": {},
       "checkConstraints": {}
     },
-    "ApplicationTasksTemplate": {
-      "name": "ApplicationTasksTemplate",
+    "applicationTasksTemplate": {
+      "name": "applicationTasksTemplate",
       "columns": {
         "id": {
           "name": "id",
@@ -180,8 +194,8 @@
       "uniqueConstraints": {},
       "checkConstraints": {}
     },
-    "ApplicationTemplate": {
-      "name": "ApplicationTemplate",
+    "applicationTemplate": {
+      "name": "applicationTemplate",
       "columns": {
         "id": {
           "name": "id",
@@ -197,8 +211,8 @@
       "uniqueConstraints": {},
       "checkConstraints": {}
     },
-    "Applications": {
-      "name": "Applications",
+    "applications": {
+      "name": "applications",
       "columns": {
         "id": {
           "name": "id",
@@ -250,8 +264,8 @@
       "uniqueConstraints": {},
       "checkConstraints": {}
     },
-    "Channels": {
-      "name": "Channels",
+    "channels": {
+      "name": "channels",
       "columns": {
         "id": {
           "name": "id",
@@ -274,8 +288,8 @@
       "uniqueConstraints": {},
       "checkConstraints": {}
     },
-    "DocumentType": {
-      "name": "DocumentType",
+    "documentType": {
+      "name": "documentType",
       "columns": {
         "id": {
           "name": "id",
@@ -306,8 +320,8 @@
       "uniqueConstraints": {},
       "checkConstraints": {}
     },
-    "Documents": {
-      "name": "Documents",
+    "documents": {
+      "name": "documents",
       "columns": {
         "id": {
           "name": "id",
@@ -356,10 +370,10 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "Documents_documentTypeId_DocumentType_id_fk": {
-          "name": "Documents_documentTypeId_DocumentType_id_fk",
-          "tableFrom": "Documents",
-          "tableTo": "DocumentType",
+        "documents_documentTypeId_documentType_id_fk": {
+          "name": "documents_documentTypeId_documentType_id_fk",
+          "tableFrom": "documents",
+          "tableTo": "documentType",
           "columnsFrom": [
             "documentTypeId"
           ],
@@ -374,8 +388,8 @@
       "uniqueConstraints": {},
       "checkConstraints": {}
     },
-    "EventType": {
-      "name": "EventType",
+    "eventType": {
+      "name": "eventType",
       "columns": {
         "id": {
           "name": "id",
@@ -405,8 +419,8 @@
       "uniqueConstraints": {},
       "checkConstraints": {}
     },
-    "Messages": {
-      "name": "Messages",
+    "messages": {
+      "name": "messages",
       "columns": {
         "id": {
           "name": "id",
@@ -451,8 +465,8 @@
       "uniqueConstraints": {},
       "checkConstraints": {}
     },
-    "Payments": {
-      "name": "Payments",
+    "payments": {
+      "name": "payments",
       "columns": {
         "id": {
           "name": "id",
@@ -490,8 +504,8 @@
       "uniqueConstraints": {},
       "checkConstraints": {}
     },
-    "Posts": {
-      "name": "Posts",
+    "posts": {
+      "name": "posts",
       "columns": {
         "id": {
           "name": "id",
@@ -536,8 +550,8 @@
       "uniqueConstraints": {},
       "checkConstraints": {}
     },
-    "TaskComments": {
-      "name": "TaskComments",
+    "taskComments": {
+      "name": "taskComments",
       "columns": {
         "id": {
           "name": "id",
@@ -567,8 +581,8 @@
       "uniqueConstraints": {},
       "checkConstraints": {}
     },
-    "UserAddress": {
-      "name": "UserAddress",
+    "userAddress": {
+      "name": "userAddress",
       "columns": {
         "id": {
           "name": "id",
@@ -619,8 +633,8 @@
       "uniqueConstraints": {},
       "checkConstraints": {}
     },
-    "UserChannel": {
-      "name": "UserChannel",
+    "userChannel": {
+      "name": "userChannel",
       "columns": {
         "id": {
           "name": "id",
@@ -650,8 +664,8 @@
       "uniqueConstraints": {},
       "checkConstraints": {}
     },
-    "UserEvents": {
-      "name": "UserEvents",
+    "userEvents": {
+      "name": "userEvents",
       "columns": {
         "id": {
           "name": "id",
@@ -695,8 +709,8 @@
       "uniqueConstraints": {},
       "checkConstraints": {}
     },
-    "Users": {
-      "name": "Users",
+    "users": {
+      "name": "users",
       "columns": {
         "id": {
           "name": "id",
@@ -801,15 +815,15 @@
         }
       },
       "indexes": {
-        "Users_username_unique": {
-          "name": "Users_username_unique",
+        "users_username_unique": {
+          "name": "users_username_unique",
           "columns": [
             "username"
           ],
           "isUnique": true
         },
-        "Users_email_unique": {
-          "name": "Users_email_unique",
+        "users_email_unique": {
+          "name": "users_email_unique",
           "columns": [
             "email"
           ],
@@ -817,10 +831,10 @@
         }
       },
       "foreignKeys": {
-        "Users_addressId_UserAddress_id_fk": {
-          "name": "Users_addressId_UserAddress_id_fk",
-          "tableFrom": "Users",
-          "tableTo": "UserAddress",
+        "users_addressId_userAddress_id_fk": {
+          "name": "users_addressId_userAddress_id_fk",
+          "tableFrom": "users",
+          "tableTo": "userAddress",
           "columnsFrom": [
             "addressId"
           ],

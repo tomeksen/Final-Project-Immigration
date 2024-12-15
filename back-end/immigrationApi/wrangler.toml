@@ -15,9 +15,9 @@ CLERK_SECRET_KEY="sk_test_f6z0wLBN8XOBJOf07h9a951IU0sccOrXSGLWjoJLUX"
 CLERK_WEBHOOK_SECRET="sk_test_f6z0wLBN8XOBJOf07h9a951IU0sccOrXSGLWjoJLUX"
 
 
-[[kv_namespaces]]
-binding = "immigration-app"
-id = "0f7428ded27f46fbb862bff1b6673a9c"
+#[[kv_namespaces]]
+#binding = "immigration-app"
+#id = "0f7428ded27f46fbb862bff1b6673a9c"
 
 # [[r2_buckets]]
 # binding = "MY_BUCKET"
@@ -27,4 +27,4 @@ id = "0f7428ded27f46fbb862bff1b6673a9c"
 binding = "DB"
 database_name = "immigration-app-db"
 database_id = "03d52fa4-bcbd-4a44-ac71-05b1582a8411"
-migrations_dir = "drizzle/migrations"
+migrations_dir = "src/db/migrations"

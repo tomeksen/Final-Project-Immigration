@@ -1,15 +1,15 @@
-CREATE TABLE `ApplicationCategory` (
+CREATE TABLE `applicationCategory` (
 	`id` integer,
 	`categoryName` text(50),
 	`order` integer,
-	FOREIGN KEY (`id`) REFERENCES `ApplicationCategory`(`id`) ON UPDATE no action ON DELETE no action
+	FOREIGN KEY (`id`) REFERENCES `applications`(`id`) ON UPDATE no action ON DELETE no action
 );
 --> statement-breakpoint
-CREATE TABLE `ApplicationCategoryTemplate` (
+CREATE TABLE `applicationCategoryTemplate` (
 	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL
 );
 --> statement-breakpoint
-CREATE TABLE `ApplicationTasks` (
+CREATE TABLE `applicationTasks` (
 	`id` integer,
 	`title` text(256) NOT NULL,
 	`isComplete` integer DEFAULT false,
@@ -20,18 +20,18 @@ CREATE TABLE `ApplicationTasks` (
 	`instructions` text,
 	`notes` text,
 	`timestamp` text DEFAULT CURRENT_TIMESTAMP NOT NULL,
-	FOREIGN KEY (`id`) REFERENCES `ApplicationCategory`(`id`) ON UPDATE no action ON DELETE no action
+	FOREIGN KEY (`id`) REFERENCES `applicationCategory`(`id`) ON UPDATE no action ON DELETE no action
 );
 --> statement-breakpoint
-CREATE TABLE `ApplicationTasksTemplate` (
+CREATE TABLE `applicationTasksTemplate` (
 	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL
 );
 --> statement-breakpoint
-CREATE TABLE `ApplicationTemplate` (
+CREATE TABLE `applicationTemplate` (
 	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL
 );
 --> statement-breakpoint
-CREATE TABLE `Applications` (
+CREATE TABLE `applications` (
 	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,
 	`userId` integer,
 	`applicationName` text(40) NOT NULL,
@@ -40,34 +40,34 @@ CREATE TABLE `Applications` (
 	`applicationStatus` integer
 );
 --> statement-breakpoint
-CREATE TABLE `Channels` (
+CREATE TABLE `channels` (
 	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,
 	`channelName` text(40)
 );
 --> statement-breakpoint
-CREATE TABLE `DocumentType` (
+CREATE TABLE `documentType` (
 	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,
 	`typeName` text(30),
 	`hasExpiration` integer DEFAULT false NOT NULL
 );
 --> statement-breakpoint
-CREATE TABLE `Documents` (
+CREATE TABLE `documents` (
 	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,
 	`documentTypeId` integer,
 	`documentFile` blob,
 	`expirationDate` integer,
 	`createdAt` integer DEFAULT CURRENT_TIMESTAMP NOT NULL,
 	`updatedAt` integer DEFAULT CURRENT_TIMESTAMP NOT NULL,
-	FOREIGN KEY (`documentTypeId`) REFERENCES `DocumentType`(`id`) ON UPDATE no action ON DELETE no action
+	FOREIGN KEY (`documentTypeId`) REFERENCES `documentType`(`id`) ON UPDATE no action ON DELETE no action
 );
 --> statement-breakpoint
-CREATE TABLE `EventType` (
+CREATE TABLE `eventType` (
 	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,
 	`eventName` text,
 	`defaultTimeInHours` numeric
 );
 --> statement-breakpoint
-CREATE TABLE `Messages` (
+CREATE TABLE `messages` (
 	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,
 	`userId` integer,
 	`channelId` integer,
@@ -75,14 +75,14 @@ CREATE TABLE `Messages` (
 	`content` text
 );
 --> statement-breakpoint
-CREATE TABLE `Payments` (
+CREATE TABLE `payments` (
 	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,
 	`amount` text(256) NOT NULL,
 	`paymentDate` text DEFAULT CURRENT_TIMESTAMP NOT NULL,
 	`limitDate` integer NOT NULL
 );
 --> statement-breakpoint
-CREATE TABLE `Posts` (
+CREATE TABLE `posts` (
 	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,
 	`title` text(256) NOT NULL,
 	`content` text(256) NOT NULL,
@@ -90,13 +90,13 @@ CREATE TABLE `Posts` (
 	`timestamp` text DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
 --> statement-breakpoint
-CREATE TABLE `TaskComments` (
+CREATE TABLE `taskComments` (
 	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,
 	`taskId` integer,
 	`commentContent` text(50)
 );
 --> statement-breakpoint
-CREATE TABLE `UserAddress` (
+CREATE TABLE `userAddress` (
 	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,
 	`address` text NOT NULL,
 	`city` text(40),
@@ -105,13 +105,13 @@ CREATE TABLE `UserAddress` (
 	`postalCode` text(30)
 );
 --> statement-breakpoint
-CREATE TABLE `UserChannel` (
+CREATE TABLE `userChannel` (
 	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,
 	`channelId` integer,
 	`userId` integer
 );
 --> statement-breakpoint
-CREATE TABLE `UserEvents` (
+CREATE TABLE `userEvents` (
 	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,
 	`eventId` integer,
 	`userId` integer,
@@ -119,7 +119,7 @@ CREATE TABLE `UserEvents` (
 	`eventDateFinish` integer
 );
 --> statement-breakpoint
-CREATE TABLE `Users` (
+CREATE TABLE `users` (
 	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,
 	`username` text(24) NOT NULL,
 	`password` text(256) NOT NULL,
@@ -134,8 +134,8 @@ CREATE TABLE `Users` (
 	`profileImage` blob,
 	`addressId` integer,
 	`role` text DEFAULT 'guest',
-	FOREIGN KEY (`addressId`) REFERENCES `UserAddress`(`id`) ON UPDATE no action ON DELETE no action
+	FOREIGN KEY (`addressId`) REFERENCES `userAddress`(`id`) ON UPDATE no action ON DELETE no action
 );
 --> statement-breakpoint
-CREATE UNIQUE INDEX `Users_username_unique` ON `Users` (`username`);--> statement-breakpoint
-CREATE UNIQUE INDEX `Users_email_unique` ON `Users` (`email`);
+CREATE UNIQUE INDEX `users_username_unique` ON `users` (`username`);--> statement-breakpoint
+CREATE UNIQUE INDEX `users_email_unique` ON `users` (`email`);

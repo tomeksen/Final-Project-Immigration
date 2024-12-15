@@ -4,7 +4,7 @@ import { sqliteTable, text, integer, customType, blob, foreignKey, numeric, AnyS
 //
 //
 //#region posts
-export const posts = sqliteTable('Posts', {
+export const posts = sqliteTable('posts', {
   id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
   title: text('title', { length: 256 }).notNull(),
   content: text('content', { length: 256 }).notNull(),
@@ -16,7 +16,7 @@ export const posts = sqliteTable('Posts', {
 
 //#endregion
 //#region users
-export const users = sqliteTable('Users', {
+export const users = sqliteTable('users', {
   id: integer().primaryKey({ autoIncrement: true }),
 
   username: text('username', { length: 24 }).notNull().unique(),
@@ -51,7 +51,7 @@ export const users = sqliteTable('Users', {
 
 });
 
-export const userAddress= sqliteTable('UserAddress',{
+export const userAddress= sqliteTable('userAddress',{
   id: integer().primaryKey({ autoIncrement: true }),
   address: text('address').notNull(),
   city: text('city',{length:40}),
@@ -61,7 +61,7 @@ export const userAddress= sqliteTable('UserAddress',{
 })
 //#endregion
 //#region applications
-export const applications = sqliteTable('Applications', {
+export const applications = sqliteTable('applications', {
   id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
   userId: integer('userId', {mode: 'number' }),
   applicationName: text('applicationName',{length: 40})
@@ -73,26 +73,26 @@ export const applications = sqliteTable('Applications', {
   applicationStatus: integer('applicationStatus')
 })
 
-export const applicationTemplate= sqliteTable('ApplicationTemplate',{
+export const applicationTemplate= sqliteTable('applicationTemplate',{
   id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
 })
 
-export const applicationCategory= sqliteTable('ApplicationCategory',{
+export const applicationCategory= sqliteTable('applicationCategory',{
   id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
-  applicationId: int('id').references((): AnySQLiteColumn => applicationCategory.id),
+  applicationId: int('applicationId').references((): AnySQLiteColumn => applications.id),
   categoryName: text('categoryName',{length:50}),
   order: integer('order')
 })
 
-export const applicationCategoryTemplate= sqliteTable('ApplicationCategoryTemplate',{
+export const applicationCategoryTemplate= sqliteTable('applicationCategoryTemplate',{
   id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
 
 })
 
-export const applicationTasks = sqliteTable('ApplicationTasks', {
+export const applicationTasks = sqliteTable('applicationTasks', {
   // id is set on insert, incrementing
   id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
-  categoryId: int('id').references((): AnySQLiteColumn => applicationCategory.id),
+  categoryId: int('categoryId').references((): AnySQLiteColumn => applicationCategory.id),
   // title of the task
   title: text('title', { length: 256 }).notNull(),
   isComplete: integer('isComplete',{mode:'boolean'}).default(false),
@@ -109,18 +109,18 @@ export const applicationTasks = sqliteTable('ApplicationTasks', {
     .notNull(),
 });
 
-export const applicationTasksTemplate= sqliteTable('ApplicationTasksTemplate', {
+export const applicationTasksTemplate= sqliteTable('applicationTasksTemplate', {
   id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
 })
 
-export const taskComments = sqliteTable('TaskComments',{
+export const taskComments = sqliteTable('taskComments',{
   id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
   taskId: integer('taskId',{mode:'number'}),
   commentContent: text('commentContent',{length:50})
 })
 //#endregion
 //#region events
-export const userEvents = sqliteTable('UserEvents',
+export const userEvents = sqliteTable('userEvents',
   {
     id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
     eventId: integer('eventId',{ mode: 'number'}),
@@ -130,14 +130,14 @@ export const userEvents = sqliteTable('UserEvents',
   }
 )
 
-export const eventType = sqliteTable('EventType',{
+export const eventType = sqliteTable('eventType',{
   id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
   eventName: text('eventName'),
   defaultTimeInHours: numeric('defaultTimeInHours')
 })
 //#endregion
 //#region documents
-export const documents = sqliteTable('Documents',{
+export const documents = sqliteTable('documents',{
   id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
   documentTypeId: integer('documentTypeId').references((): AnySQLiteColumn => documentType.id),
   documentFile: blob('documentFile'),
@@ -146,7 +146,7 @@ export const documents = sqliteTable('Documents',{
   updatedAt: integer('updatedAt',{mode:'timestamp'}).default(sql`CURRENT_TIMESTAMP`).notNull()
 })
 
-export const documentType = sqliteTable('DocumentType',{
+export const documentType = sqliteTable('documentType',{
   id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
   typeName: text('typeName',{length: 30}),
   hasExpiration: integer('hasExpiration',{ mode:'boolean'}).default(false).notNull()
@@ -158,7 +158,7 @@ export const documentType = sqliteTable('DocumentType',{
 // })
 //#endregion
 //#region payments
-export const payments = sqliteTable('Payments', {
+export const payments = sqliteTable('payments', {
   // id is set on insert, incrementing
   id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
 
@@ -175,16 +175,18 @@ export const payments = sqliteTable('Payments', {
 });
 //#endregion
 //#region inbox
-export const channels = sqliteTable('Channels',{
+export const channels = sqliteTable('channels',{
   id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
   channelName: text('channelName',{length:40})
 })
-export const userChannel = sqliteTable('UserChannel',{
+
+export const userChannel = sqliteTable('userChannel',{
   id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
   channelId: integer('channelId', { mode: 'number' }),
   userId: integer('userId', { mode: 'number' })
 })
-export const messages = sqliteTable('Messages',{
+
+export const messages = sqliteTable('messages',{
   id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
   userId: integer('userId',{mode:'number'}),
   channelId: integer('channelId',{mode:'number'}),
