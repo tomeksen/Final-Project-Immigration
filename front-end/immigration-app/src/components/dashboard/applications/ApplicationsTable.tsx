@@ -103,8 +103,6 @@ export function ApplicationsTable() {
 
   return (
     <div className="p-4 space-y-4">
-      {/* add header later */}
-
       <HeaderBreadCrumbs rootName={"Applications"} />
 
       <Filters
@@ -123,14 +121,6 @@ export function ApplicationsTable() {
         onRowClick={setSelectedApplication}
         appearance={theme === "dark" ? { baseTheme: dark } : undefined}
       />
-
-      {/* delete below later */}
-      {/* {selectedApplication && (
-        <TaskManager
-          application={selectedApplication}
-          onClose={() => setSelectedApplication(null)}
-        />
-      )} */}
     </div>
   );
 }

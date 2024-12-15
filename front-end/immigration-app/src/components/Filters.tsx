@@ -37,7 +37,7 @@ export default function Filters({
   appearance,
 }: FilterProps) {
   return (
-    <div className="hidden md:flex items-center gap-1 bg-white rounded-lg p-2 max-w-4xl mb-4">
+    <div className="flex items-center gap-1 bg-white rounded-lg p-2 max-w-4xl mb-4">
       <h2 className="px-1 w-[180px] text-sm">Filter by</h2>
       <div className="self-stretch border-l border-gray-300" />
 
