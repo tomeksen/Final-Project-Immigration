@@ -36,15 +36,15 @@ type TaskProps = {
 };
 
 export function TaskList({ tasks, onTaskClick }: TaskProps) {
-  const [activeTaskId, setActiveTaskId] = useState<string | null>(null);
+  // const [activeTaskId, setActiveTaskId] = useState<string | null>(null);
 
-  const toggleTask = (taskId: string) => {
-    if (activeTaskId === taskId) {
-      setActiveTaskId(null);
-    } else {
-      setActiveTaskId(taskId);
-    }
-  };
+  // const toggleTask = (taskId: string) => {
+  //   if (activeTaskId === taskId) {
+  //     setActiveTaskId(null);
+  //   } else {
+  //     setActiveTaskId(taskId);
+  //   }
+  // };
 
   return (
     <>

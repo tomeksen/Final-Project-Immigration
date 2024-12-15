@@ -5,6 +5,7 @@ import HeaderBreadCrumbs from "@/components/common/HeaderBreadCrumbs";
 import { TaskList } from "@/components/TaskList";
 import React, { useState } from "react";
 import { Application } from "./ApplicationsTable";
+import { MobileTaskList } from "@/components/MobileTaskList";
 
 type Category = {
   id: string;
@@ -139,8 +140,12 @@ export function TaskManager({
     <section className="h-full container mx-auto flex flex-col p-3 w-full">
       <HeaderBreadCrumbs rootName="Applications" breadName={"Task Details"} />
 
-      <div className="flex flex-col">
+      <div className=" hidden md:flex flex-col">
         <TaskList onTaskClick={handleTaskClick} tasks={tasks} />
+      </div>
+
+      <div className="flex flex-col">
+        <MobileTaskList onTaskClick={handleTaskClick} tasks={tasks} />
       </div>
 
       {selectedTask && (
