@@ -136,14 +136,16 @@ export function TaskManager({
   };
 
   return (
-    <div className="p-4 space-y-4">
+    <section className="h-full container mx-auto flex flex-col p-3 w-full">
       <HeaderBreadCrumbs rootName="Applications" breadName={"Task Details"} />
 
-      <TaskList onTaskClick={handleTaskClick} tasks={tasks} />
+      <div className="flex flex-col">
+        <TaskList onTaskClick={handleTaskClick} tasks={tasks} />
+      </div>
 
       {selectedTask && (
         <AppSheet task={selectedTask} onClose={() => setSelectedTask(null)} />
       )}
-    </div>
+    </section>
   );
 }

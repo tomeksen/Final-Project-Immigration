@@ -3,9 +3,9 @@ import { ApplicationsTable } from "@/components/dashboard/applications/Applicati
 const ApplicationsPage = () => {
   return (
     <>
-        <div className="w-full">
-          <ApplicationsTable />
-        </div>
+      {/* <section className="h-full container mx-auto flex flex-col p-3 w-full"> */}
+      <ApplicationsTable />
+      {/* </section> */}
     </>
   );
 };

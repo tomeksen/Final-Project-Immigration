@@ -11,26 +11,24 @@ const TasksPage = ({ params }: { params: { applicationId: string } }) => {
 
   return (
     <>
-      <SidebarProvider>
-        <div className="p-6">
-          <TaskManager
-            applicationId={applicationId}
-            application={{
-              // delete: not need application attribute
-              id: 0,
-              userId: "",
-              name: "",
-              date: "",
-              type: "",
-              progress: 0,
-              status: "",
-            }}
-            onClose={function (): void {
-              throw new Error("Function not implemented.");
-            }}
-          />
-        </div>
-      </SidebarProvider>
+      <section className="h-full container mx-auto flex flex-col p-3 w-full">
+        <TaskManager
+          applicationId={applicationId}
+          application={{
+            // delete: not need application attribute
+            id: 0,
+            userId: "",
+            name: "",
+            date: "",
+            type: "",
+            progress: 0,
+            status: "",
+          }}
+          onClose={function (): void {
+            throw new Error("Function not implemented.");
+          }}
+        />
+      </section>
     </>
   );
 };
