@@ -36,6 +36,17 @@ applicationRoutes.post('/', async (c) => {
     }}
 );
 
+applicationRoutes.get('/getApplicationsById/:id', async (c) => {
+  let db = drizzle(c.env.DB);
+  const applicationId = c.req.param("id");
+  try {
+      const result = await db.select().from(applications).where(eq(applications.id , Number(applicationId))).all()
+      return c.json(result);
+    } catch (e: any) {
+      return c.json({ error: e.message });
+    }}
+  );
+  
 applicationRoutes.get('/:userId', async (c) => {
     let db = drizzle(c.env.DB);
     const userId = c.req.param("userId");
