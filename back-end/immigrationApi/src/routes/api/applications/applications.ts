@@ -24,7 +24,7 @@ applicationRoutes.post('/', async (c) => {
   try {
       const result = await db
       .insert(applications).values({
-          userId: Number(userId),
+          userId: userId,
           applicationName: applicationName,
           applicationDate: applicationDate,
           applicationType: applicationType,
@@ -40,7 +40,7 @@ applicationRoutes.get('/:userId', async (c) => {
     let db = drizzle(c.env.DB);
     const userId = c.req.param("userId");
     try {
-        const result = await db.select().from(applications).where(eq(applications.userId , Number(userId))).all()
+        const result = await db.select().from(applications).where(eq(applications.userId , userId)).all()
         return c.json(result);
       } catch (e: any) {
         return c.json({ error: e.message });

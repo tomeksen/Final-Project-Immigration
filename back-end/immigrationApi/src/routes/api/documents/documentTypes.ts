@@ -2,15 +2,15 @@ import { Hono } from 'hono'
 import { Env } from '../../../env';
 import { drizzle } from 'drizzle-orm/d1';
 import { eq, lt, gte, ne } from 'drizzle-orm';
-import { payments } from '../../../db/schema';
+import { documentType } from '../../../db/schema';
 
-export const paymentRoutes = new Hono<{ Bindings: Env }>()
+export const documentTypesRoutes = new Hono<{ Bindings: Env }>()
 
-paymentRoutes.get('/', async (c) => {
+documentTypesRoutes.get('/', async (c) => {
     let db = drizzle(c.env.DB);
     
     try {
-        const result = await db.select().from(payments).all()
+        const result = await db.select().from(documentType).all()
         return c.json(result);
       } catch (e: any) {
         return c.json({ error: e.message });
@@ -18,13 +18,14 @@ paymentRoutes.get('/', async (c) => {
 }
 )
 
-paymentRoutes.post('/', async (c) => {
+documentTypesRoutes.post('/', async (c) => {
   let db = drizzle(c.env.DB);
-  const {amount , paymentDate ,limitDate,title, applicationId,isCompleted} = await c.req.json();
+  const { typeName, hasExpiration} = await c.req.json();
   try {
       const result = await db
-      .insert(payments).values({
-        amount , paymentDate ,limitDate,applicationId,title,isCompleted
+      .insert(documentType).values({
+        typeName,
+        hasExpiration,
       }).returning();
       return c.json(result);
     } catch (e: any) {
@@ -32,15 +33,14 @@ paymentRoutes.post('/', async (c) => {
     }}
 );
 
-paymentRoutes.get('/:paymentId', async (c) => {
+documentTypesRoutes.get('/:documentTypeId', async (c) => {
     let db = drizzle(c.env.DB);
-    const paymentId = c.req.param("paymentId");
+    const documentTypeId = c.req.param("documentTypeId");
     try {
-        const result = await db.select().from(payments).where(eq(payments.id , Number(paymentId))).all()
+        const result = await db.select().from(documentType).where(eq(documentType.id, Number(documentTypeId) )).all()
         return c.json(result);
       } catch (e: any) {
         return c.json({ error: e.message });
       }}
 );
 
-//#endregion

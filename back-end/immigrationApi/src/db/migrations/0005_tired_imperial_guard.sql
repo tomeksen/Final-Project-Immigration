@@ -1,0 +1,1 @@
+ALTER TABLE `taskComments` ADD `isRead` integer DEFAULT false;
