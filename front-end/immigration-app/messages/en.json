@@ -1,6 +1,7 @@
 {
   "HomePage": {
-    "title": "Hello world!"
+    "title": "Hello world!",
+    "startJourneyTitle":"Start your Journey to Canada with us"
   },
   "Sidebar": {
     "Content": {
