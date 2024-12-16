@@ -1,6 +1,8 @@
 {
   "HomePage": {
-    "title": "Bem-vindo ao aplicativo de imigração!"
+    "title": "Bem-vindo ao aplicativo de imigração!",
+    "startJourneyTitle":"Inicie sua jornada para o Canadá conosco"
+
   },
   "Sidebar": {
     "Content": {
