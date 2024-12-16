@@ -3,11 +3,19 @@
     "title": "Bem-vindo ao aplicativo de imigração!",
     "startJourneyTitle": "Inicie sua jornada para o Canadá conosco",
     "journeyParagraph": "Trazemos experiência, compaixão e cuidado para ajudar a navegar pelas complexidades da imigração com confiança.",
-    "consultant": "Nossa consultora",
-    "consultantIntroduction1": "Estou empenhada em ajudar você a realizar seu sonho canadense. Entendo as complexidades do processo de imigração e estou aqui para oferecer o apoio e a orientação que você precisa. Juntos, podemos garantir que sua viagem ao Canadá seja bem-sucedida e gratificante.",
-    "consultantIntroduction2": "Orgulhosamente regulamentada e regularizada junto ao Colégio de Consultores de Imigração e Cidadania, Larissa Castelluber, matrícula R710678.",
-    "verifyICCRC": "Verifique com o ICCRC",
-    "registration": "Registro R710678",
+    "Consultant": {
+      "titleConsultant": "Nossa consultora",
+      "consultantIntroduction1": "Estou empenhada em ajudar você a realizar seu sonho canadense. Entendo as complexidades do processo de imigração e estou aqui para oferecer o apoio e a orientação que você precisa. Juntos, podemos garantir que sua viagem ao Canadá seja bem-sucedida e gratificante.",
+      "consultantIntroduction2": "Orgulhosamente regulamentada e regularizada junto ao Colégio de Consultores de Imigração e Cidadania, Larissa Castelluber, matrícula R710678.",
+      "verifyICCRC": "Verifique com o ICCRC",
+      "registration": "Registro R710678"
+    },
+    "ImmigrationServices": {
+      "titleImmigrationServices": "Serviços de Imigração Canadenses",
+      "imageImmigrate": "Imigração",
+      "imageWork": "Trabalho",
+      "imageStudy": "Estudo"
+    },
     "freeConsultation": "Agende uma consulta gratuita"
   },
   "Sidebar": {

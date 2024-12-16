@@ -3,10 +3,19 @@
     "title": "Hello world!",
     "startJourneyTitle": "Start your Journey to Canada with us",
     "journeyParagraph": "We bring expertise, compassion, and care to support you in navigating the complexities of immigration with confidence.",
-    "consultant": "Our consultant",
-    "consultantIntroduction1": "I'm committed to helping you realize your Canadian dream. I understand the complexities of the immigration process and am here to offer the support and guidance you need. Together, we can ensure your journey to Canada is successful and fulfilling.",
-    "consultantIntroduction2": "Proudly regulated and in good standing with the College of Immigration and Citizenship Consultants, Larissa Castelluber, registration R710678.",
-    "verifyICCRC": "Verify with ICCRC"
+    "Consultant": {
+      "titleConsultant": "Our consultant",
+      "consultantIntroduction1": "I'm committed to helping you realize your Canadian dream. I understand the complexities of the immigration process and am here to offer the support and guidance you need. Together, we can ensure your journey to Canada is successful and fulfilling.",
+      "consultantIntroduction2": "Proudly regulated and in good standing with the College of Immigration and Citizenship Consultants, Larissa Castelluber, registration R710678.",
+      "registration": "Registration R710678",
+      "verifyICCRC": "Verify with ICCRC"
+    },
+    "ImmigrationServices": {
+      "titleImmigrationServices": "Canadian Immigration Services",
+      "imageImmigrate": "Immigrate",
+      "imageWork": "Work",
+      "imageStudy": "Study"
+    }
   },
   "Sidebar": {
     "Content": {

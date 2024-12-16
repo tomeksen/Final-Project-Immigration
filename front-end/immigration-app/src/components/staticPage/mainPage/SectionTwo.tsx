@@ -16,22 +16,22 @@ export default function SectionTwo() {
           {/* text */}
           <div className="flex flex-col md:flex-row gap-4">
             <div className="w-full">
-              <SectionTitle text={t("consultant")} />
+              <SectionTitle text={t("Consultant.titleConsultant")} />
               <h4 className="font-semibold text-xs mb-4">
                 Larissa Castelluber
               </h4>
-              <p>{t("consultantIntroduction1")}</p>
+              <p>{t("Consultant.consultantIntroduction1")}</p>
               <p>
-                {t("consultantIntroduction2")}{" "}
+                {t("Consultant.consultantIntroduction2")}{" "}
                 <a className="underline underline-offset-2 cursor-pointer">
-                  {t("verifyICCRC")}.
+                  {t("Consultant.verifyICCRC")}.
                 </a>
               </p>
               <div className="flex flex-col items-center justify-center mt-10 gap-10 md:flex-row ">
                 <div>
-                  <p>{t("registration")}</p>
+                  <p>{t("Consultant.registration")}</p>
                   <a className="cursor-pointer text-red-500">
-                    {t("verifyICCRC")}
+                    {t("Consultant.verifyICCRC")}
                   </a>
                 </div>
                 <div>
