@@ -3,7 +3,6 @@ import Image from "next/image";
 import bg from "@/assets/bg_bridge.jpeg";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/utils/Reveal";
-import FreeConsultationBtn from "@/components/FreeConsultationBtn";
 import { useTranslations } from "next-intl";
 
 export default function SectionOne() {
@@ -23,19 +22,18 @@ export default function SectionOne() {
 
         <div className="relative z-20 flex flex-col items-start justify-start text-start text-white p-10 sm:pl-10 pt-14 md:ml-5 lg:ml-10">
           <h1 className="text-4xl font-bold max-w-md leading-normal">
-            {t("start.hello")}
+            {t("title")}
           </h1>
 
           <p className="mt-4 font-semibold sm:font-normal sm:max-w-md text-sm">
-            We bring expertise, compassion, and care to support you in
-            navigating the complexities of immigration with confidence.
+            {t("journeyParagraph")}
           </p>
 
           <Button
             variant="default"
             className="mt-4 mb-14 bg-primary-red hover:bg-red-700 text-primary-white-2 px-3 py-1 text-sm font-bold"
           >
-            Book a free consultation
+            {t("freeConsultation")}
           </Button>
         </div>
       </div>
