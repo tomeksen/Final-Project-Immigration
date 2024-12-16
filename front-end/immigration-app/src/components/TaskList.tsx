@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Table,
   TableBody,
@@ -36,9 +36,18 @@ type TaskProps = {
 };
 
 export function TaskList({ tasks, onTaskClick }: TaskProps) {
+  // const [activeTaskId, setActiveTaskId] = useState<string | null>(null);
+
+  // const toggleTask = (taskId: string) => {
+  //   if (activeTaskId === taskId) {
+  //     setActiveTaskId(null);
+  //   } else {
+  //     setActiveTaskId(taskId);
+  //   }
+  // };
+
   return (
     <>
-      {/* <HeaderBreadCrumbs rootName={"Applications"} breadName={`${tasks}`} /> */}
       <Table className="w-72">
         <TableHeader className="bg-[#5E5E5E] text-primary-white">
           <TableRow className="">
@@ -47,7 +56,11 @@ export function TaskList({ tasks, onTaskClick }: TaskProps) {
         </TableHeader>
         <TableBody>
           {/* Count is_completed === true, and divide it by tasks.length */}
-          <Progress value={tasks.length} className="w-[100px] " />
+          <TableRow>
+            <TableCell>
+              <Progress value={tasks.length} className="w-[100px] " />
+            </TableCell>
+          </TableRow>
 
           {tasks.map((task) => (
             <TableRow key={task.id} onClick={() => onTaskClick(task)}>

@@ -3,9 +3,7 @@ import { ApplicationsTable } from "@/components/dashboard/applications/Applicati
 const ApplicationsPage = () => {
   return (
     <>
-        <div className="w-full">
-          <ApplicationsTable />
-        </div>
+      <ApplicationsTable />
     </>
   );
 };
