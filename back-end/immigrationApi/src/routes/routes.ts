@@ -11,6 +11,7 @@ import { documentsRoutes } from './api/documents/documents'
 import { documentTypesRoutes } from './api/documents/documentTypes'
 import { eventsRoutes } from './api/events/events'
 import { eventTypesRoutes } from './api/events/eventTypes'
+import { taskCommentsRoutes } from './api/comments/taskComments'
 
 export const routes = new Hono()
 
@@ -26,4 +27,4 @@ routes.route('/documents', documentsRoutes)
 routes.route('/documentsTypes', documentTypesRoutes)
 routes.route('/events', eventsRoutes)
 routes.route('/eventsTypes', eventTypesRoutes)
-
+routes.route('/taskComments', taskCommentsRoutes)
