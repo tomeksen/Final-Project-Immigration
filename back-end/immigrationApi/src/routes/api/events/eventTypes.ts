@@ -2,15 +2,15 @@ import { Hono } from 'hono'
 import { Env } from '../../../env';
 import { drizzle } from 'drizzle-orm/d1';
 import { eq, lt, gte, ne } from 'drizzle-orm';
-import { payments } from '../../../db/schema';
+import { eventType } from '../../../db/schema';
 
-export const paymentRoutes = new Hono<{ Bindings: Env }>()
+export const eventTypesRoutes = new Hono<{ Bindings: Env }>()
 
-paymentRoutes.get('/', async (c) => {
+eventTypesRoutes.get('/', async (c) => {
     let db = drizzle(c.env.DB);
     
     try {
-        const result = await db.select().from(payments).all()
+        const result = await db.select().from(eventType).all()
         return c.json(result);
       } catch (e: any) {
         return c.json({ error: e.message });
@@ -18,13 +18,14 @@ paymentRoutes.get('/', async (c) => {
 }
 )
 
-paymentRoutes.post('/', async (c) => {
+eventTypesRoutes.post('/', async (c) => {
   let db = drizzle(c.env.DB);
-  const {amount , paymentDate ,limitDate,title, applicationId,isCompleted} = await c.req.json();
+  const { eventName, defaultTimeInHours} = await c.req.json();
   try {
       const result = await db
-      .insert(payments).values({
-        amount , paymentDate ,limitDate,applicationId,title,isCompleted
+      .insert(eventType).values({
+        eventName,
+        defaultTimeInHours
       }).returning();
       return c.json(result);
     } catch (e: any) {
@@ -32,11 +33,11 @@ paymentRoutes.post('/', async (c) => {
     }}
 );
 
-paymentRoutes.get('/:paymentId', async (c) => {
+eventTypesRoutes.get('/:eventTypeId', async (c) => {
     let db = drizzle(c.env.DB);
-    const paymentId = c.req.param("paymentId");
+    const eventTypeId = c.req.param("eventTypeId");
     try {
-        const result = await db.select().from(payments).where(eq(payments.id , Number(paymentId))).all()
+        const result = await db.select().from(eventType).where(eq(eventType.id , Number(eventTypeId))).all()
         return c.json(result);
       } catch (e: any) {
         return c.json({ error: e.message });

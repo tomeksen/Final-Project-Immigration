@@ -5,7 +5,8 @@
     "deploy": "wrangler deploy --minify",
     "test": "vitest",
     "db:generate": "drizzle-kit generate",
-    "db:up": "drizzle-kit up"
+    "db:up": "drizzle-kit up",
+    "db:ready": "bunx wrangler d1 execute immigration-app-db --remote --file=./src/db/migrations/0002_colossal_imperial_guard.sql"
   },
   "dependencies": {
     "@clerk/backend": "^1.15.1",
