@@ -21,32 +21,37 @@ import PaymentDialog from "../PaymentDialog";
 
 type PaymentSwiperProps = {
   swiperType: "sm" | "lg";
+  payments: Payment[];
+};
+type Payment = {
+  id: string;
+  description: string;
+  amount: number;
 };
 
-export default function AppPaymentSwiper({ swiperType }: PaymentSwiperProps) {
+export default function AppPaymentSwiper({
+  swiperType,
+  payments,
+}: PaymentSwiperProps) {
   // Sample payment data
-  type Payment = {
-    id: string;
-    description: string;
-    amount: number;
-  };
-  const payments: Payment[] = [
-    {
-      id: "Maria_CICCC_UX/UI_2",
-      description: "Cuota de inscripción escolar",
-      amount: 150.0,
-    },
-    {
-      id: "Maria_CICCC_UX/UI_3",
-      description: "Cuota mensual",
-      amount: 200.0,
-    },
-    {
-      id: "Maria_CICCC_UX/UI_4",
-      description: "Material escolar",
-      amount: 75.0,
-    },
-  ];
+
+  // const payments: Payment[] = [
+  //   {
+  //     id: "Maria_CICCC_UX/UI_2",
+  //     description: "Cuota de inscripción escolar",
+  //     amount: 150.0,
+  //   },
+  //   {
+  //     id: "Maria_CICCC_UX/UI_3",
+  //     description: "Cuota mensual",
+  //     amount: 200.0,
+  //   },
+  //   {
+  //     id: "Maria_CICCC_UX/UI_4",
+  //     description: "Material escolar",
+  //     amount: 75.0,
+  //   },
+  // ];
 
   const slidesPerView = swiperType === "sm" ? 1 : 3;
 
