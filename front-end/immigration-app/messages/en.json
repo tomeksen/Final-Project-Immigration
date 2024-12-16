@@ -15,6 +15,11 @@
       "imageImmigrate": "Immigrate",
       "imageWork": "Work",
       "imageStudy": "Study"
+    },
+    "Quiz": {
+      "title": "Take the Quiz to find your immigration pathway!",
+      "paragraph": "By taking this quiz, you will discover which immigration pathway best fits your unique situation.",
+      "button": "Start Quiz"
     }
   },
   "Sidebar": {

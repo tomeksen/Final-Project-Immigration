@@ -16,6 +16,11 @@
       "imageWork": "Trabalho",
       "imageStudy": "Estudo"
     },
+    "Quiz": {
+      "title": "Faça o teste para descobrir seu caminho de imigração!",
+      "paragraph": "Ao responder a este teste, você descobrirá qual caminho de imigração melhor se adapta à sua situação específica.",
+      "button": "Começar o Quiz"
+    },
     "freeConsultation": "Agende uma consulta gratuita"
   },
   "Sidebar": {
