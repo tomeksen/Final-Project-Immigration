@@ -176,7 +176,7 @@ export const payments = sqliteTable('payments', {
   paymentDate: text('paymentDate')
     .default(sql`CURRENT_TIMESTAMP`)
     .notNull(),
-  
+  userId: text('userId'),
   limitDate: integer('limitDate', {mode:'timestamp'})
   .notNull(),
 });
