@@ -82,7 +82,7 @@ export default function AppPaymentSwiper({
           <PaymentSwiperButton
             currentIndex={currentIndex}
             maxIndex={
-              swiperType === "sm" ? payments.length - 1 : payments.length - 2
+              swiperType === "sm" ? payments.length - 1 : payments.length - 3
             }
             containerStyles="z-10 w-full gap-2 absolute bottom-[calc(50%_-_22px)] right-0 left-0 flex justify-between"
             btnStyles={cn(
