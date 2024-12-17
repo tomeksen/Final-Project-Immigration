@@ -1,8 +1,6 @@
 "use client";
 
 import { useState } from "react";
-
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -18,7 +16,7 @@ import { Badge } from "@/components/ui/badge";
 import PaymentSwiperButton from "./paymentSwiperButton";
 import { cn } from "@/lib/utils";
 import PaymentDialog from "../PaymentDialog";
-import { Payment, PaymentSwiperType } from "@/type/Payment.type";
+import { PaymentSwiperType } from "@/type/Payment.type";
 
 type PaymentSwiperProps = {
   swiperType: "sm" | "lg";
@@ -29,26 +27,7 @@ export default function AppPaymentSwiper({
   swiperType,
   payments,
 }: PaymentSwiperProps) {
-  // Sample payment data
-
-  // const payments: Payment[] = [
-  //   {
-  //     invoiceId: "Maria_CICCC_UX/UI_2",
-  //     title: "Cuota de inscripción escolar",
-  //     amount: 150.0,
-  //   },
-  //   {
-  //     invoiceId: "Maria_CICCC_UX/UI_3",
-  //     title: "Cuota mensual",
-  //     amount: 200.0,
-  //   },
-  //   {
-  //     invoiceId: "Maria_CICCC_UX/UI_4",
-  //     title: "Material escolar",
-  //     amount: 75.0,
-  //   },
-  // ];
-
+  // decide the number of payment card depending on the size of the screen
   const slidesPerView = swiperType === "sm" ? 1 : 3;
 
   const [currentIndex, setCurrentIndex] = useState(0);
