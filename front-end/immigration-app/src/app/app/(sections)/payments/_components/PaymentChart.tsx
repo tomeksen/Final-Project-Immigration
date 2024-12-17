@@ -20,6 +20,7 @@ import {
 import { useMemo } from "react";
 import { format } from "date-fns";
 import { PaymentChartType, PaymentFiltered } from "@/type/Payment.type";
+import { formatNumber } from "@/utils/formatNumber";
 
 type Props = {
   payments: PaymentFiltered[];
@@ -136,7 +137,7 @@ export function PaymentChart({ payments }: Props) {
                             y={(viewBox.cy || 0) + 24}
                             className="fill-foreground"
                           >
-                            {`CAD ${totalPayment}`}
+                            {`CAD ${formatNumber(totalPayment)}`}
                           </tspan>
                         </text>
                       );

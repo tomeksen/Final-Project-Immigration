@@ -17,6 +17,7 @@ import PaymentSwiperButton from "./paymentSwiperButton";
 import { cn } from "@/lib/utils";
 import PaymentDialog from "../PaymentDialog";
 import { PaymentFiltered, PaymentSwiperType } from "@/type/Payment.type";
+import { formatNumber } from "@/utils/formatNumber";
 
 type PaymentSwiperProps = {
   swiperType: "sm" | "lg";
@@ -69,11 +70,11 @@ export default function AppPaymentSwiper({
                       {payment.title}
                     </div>
                     <div className="text-2xl">
-                      CAD {payment.amount.toFixed(2)}
+                      CAD {formatNumber(payment.amount)}
                     </div>
                   </div>
 
-                  <PaymentDialog />
+                  <PaymentDialog payment={payment} />
                 </Card>
               </SwiperSlide>
             );
