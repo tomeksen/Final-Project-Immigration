@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import quiz from "@/assets/graphic_tasks_girl_pencil.png";
-import { MdOutlineArrowForward } from "react-icons/md";
+import { FaArrowRight } from "react-icons/fa";
 import SectionTitle from "@/components/SectionTitle";
 import { Button } from "@/components/ui/button";
 import Modal from "../Modal";
@@ -32,7 +32,7 @@ export default function SectionFour() {
               className="bg-primary-red w-full absolute bottom-0 h-14 font-bold text-3xl rounded-none rounded-b-lg hover:bg-red-800"
               onClick={openModal}
             >
-              {t("Quiz.button")} <MdOutlineArrowForward size={50} />
+              {t("Quiz.button")} <FaArrowRight size={100} />
             </Button>
 
             {/* modal */}

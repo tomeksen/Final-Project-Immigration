@@ -20,6 +20,14 @@
       "title": "Take the Quiz to find your immigration pathway!",
       "paragraph": "By taking this quiz, you will discover which immigration pathway best fits your unique situation.",
       "button": "Start Quiz"
+    },
+    "WhyUs": {
+      "title": "Why choose us",
+      "cases": "Successful cases",
+      "rate": "Approved rate",
+      "languages": "Languages",
+      "idioms": "English/ Portuguese/ Spanish",
+      "years": "Years of experience"
     }
   },
   "QuizComponent": {

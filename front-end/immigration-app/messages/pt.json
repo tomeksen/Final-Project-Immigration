@@ -21,6 +21,14 @@
       "paragraph": "Ao responder a este teste, você descobrirá qual caminho de imigração melhor se adapta à sua situação específica.",
       "button": "Começar o Quiz"
     },
+    "WhyUs": {
+      "title": "Por que a Up Immigration",
+      "cases": "Casos de sucesso",
+      "rate": "Taxa de aprovação",
+      "languages": "Línguas",
+      "idioms": "Inglês/ Português/ Espanhol",
+      "years": "Anos de experiência"
+    },
     "freeConsultation": "Agende uma consulta gratuita"
   },
   "QuizComponent": {

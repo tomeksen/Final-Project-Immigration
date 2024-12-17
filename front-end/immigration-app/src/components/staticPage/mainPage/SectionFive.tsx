@@ -5,14 +5,16 @@ import { BsTranslate } from "react-icons/bs";
 import { RiBook3Line } from "react-icons/ri";
 import SectionTitle from "@/components/SectionTitle";
 import { Reveal } from "@/utils/Reveal";
+import { useTranslations } from "next-intl";
 
 export default function SectionFive() {
+  const t = useTranslations("HomePage");
   return (
     <Reveal>
       <div className="p-6 md:p-10">
         <Reveal delay={0.3}>
           <div className="p-4 md:p-6 ">
-            <SectionTitle text="Why choose us" />
+            <SectionTitle text={t("WhyUs.title")} />
           </div>
         </Reveal>
         <div className="flex flex-col w-full md:flex-row gap-10 md:gap-20 items-center justify-center">
@@ -29,7 +31,7 @@ export default function SectionFive() {
               </p>
             </Reveal>
             <Reveal delay={0.7}>
-              <p>Successful cases</p>
+              <p>{t("WhyUs.cases")}</p>
             </Reveal>
           </div>
           {/* //!folder */}
@@ -43,7 +45,7 @@ export default function SectionFive() {
               <p className="text-red-600 text-2xl font-bold">98%</p>
             </Reveal>
             <Reveal delay={1}>
-              <p>Approved rate</p>
+              <p>{t("WhyUs.rate")}</p>
             </Reveal>
           </div>
           {/* //!translate */}
@@ -57,10 +59,10 @@ export default function SectionFive() {
               <p className="text-red-600 text-2xl font-bold">3</p>
             </Reveal>
             <Reveal delay={1.3}>
-              <p>Languages</p>
+              <p>{t("WhyUs.languages")}</p>
             </Reveal>
             <Reveal delay={1.4}>
-              <p className="text-xs">English/ Portuguese/ Spanish</p>
+              <p className="text-xs">{t("WhyUs.idioms")}</p>
             </Reveal>
           </div>
           {/* //!book */}
@@ -74,7 +76,7 @@ export default function SectionFive() {
               <p className="text-red-600 text-2xl font-bold">20</p>
             </Reveal>
             <Reveal delay={1.7}>
-              <p>Years of experience</p>
+              <p>{t("WhyUs.years")}</p>
             </Reveal>
           </div>
         </div>

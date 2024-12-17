@@ -12,9 +12,9 @@ export default function SectionThree() {
 
   return (
     <Reveal>
-      <div className="md:flex justify-center p-11 md:ml-5 lg:ml-10">
+      <div className="md:flex justify-center p-6 md:p-10">
         <div className="flex w-full">
-          <div className="flex-col gap-4 justify-center items-center align-middle w-full">
+          <div className="flex-col gap-4 p-4 md:p-6 justify-center items-center align-middle w-full">
             <SectionTitle
               text={t("ImmigrationServices.titleImmigrationServices")}
             />
