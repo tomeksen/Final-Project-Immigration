@@ -1,5 +1,5 @@
 "use client";
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -10,32 +10,27 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { useState } from "react";
+import { PaymentFiltered, PaymentInvoiceType } from "@/type/Payment.type";
+import { ERROR_MESSAGES } from "@/config/ErrorMessage";
+import PaymentError from "./paymentError";
 
 // TODO
 // Separate to Props
 // Invoices, the number of invoices,
 
-export default function PaymentInvoices() {
-  // props ------------------------------------------------------------------------
-  const invoices = [
-    { id: "INV-00301", name: "Maria_CICCC_UX/UI_2", status: "Paid" },
-    { id: "INV-00203", name: "Maria_CICCC_UX/UI", status: "Refunded" },
-    { id: "INV-00202", name: "Maria_CICCC_UX/UI", status: "Paid" },
-    { id: "INV-00201", name: "Maria_CICCC_UX/UI", status: "Paid" },
-    { id: "INV-00106", name: "Maria_CICCC_ESL", status: "Paid" },
-    { id: "INV-00107", name: "Maria_CICCC_ESL", status: "Paid" },
-    { id: "INV-00108", name: "Maria_CICCC_ESL", status: "Paid" },
-    { id: "INV-00109", name: "Maria_CICCC_ESL", status: "Paid" },
-    { id: "INV-00110", name: "Maria_CICCC_ESL", status: "Paid" },
-    { id: "INV-00111", name: "Maria_CICCC_ESL", status: "Paid" },
-    { id: "INV-00112", name: "Maria_CICCC_ESL", status: "Paid" },
-    { id: "INV-00113", name: "Maria_CICCC_ESL", status: "Paid" },
-    { id: "INV-00114", name: "Maria_CICCC_ESL", status: "Paid" },
-  ];
+type Props = {
+  invoices: PaymentFiltered[];
+};
+
+export default function PaymentInvoices({ invoices }: Props) {
+  // filter out the invoice data
+  const newInvoices: PaymentInvoiceType[] = invoices.map((invoice) => ({
+    invoiceId: invoice.invoiceId,
+    invoiceName: invoice.title,
+    status: invoice.isCompleted ? "Paid" : "Refund",
+  }));
 
   const totalInvoices = invoices.length;
-  // ------------------------------------------------------------------------
-
   const itemsPerPage = 7;
   const totalPage = Math.ceil(totalInvoices / itemsPerPage);
   const [invoicePage, setInvoicePage] = useState<number>(1);
@@ -55,8 +50,15 @@ export default function PaymentInvoices() {
   };
 
   const downloadPDF = () => {
-    window.open('https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf', '_blank');
+    window.open(
+      "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      "_blank"
+    );
   };
+
+  if (!invoices || invoices.length === 0) {
+    return <PaymentError title="Invoices" errorTitle="invoice" />;
+  }
 
   return (
     <Card className="w-full h-full">
@@ -69,12 +71,12 @@ export default function PaymentInvoices() {
       <CardContent className="flex flex-col">
         <Table>
           <TableBody>
-            {invoices.slice(startItem - 1, endItem).map((invoice) => (
-              <TableRow key={invoice.id}>
+            {newInvoices.slice(startItem - 1, endItem).map((invoice) => (
+              <TableRow key={invoice.invoiceId}>
                 <TableCell className="font-medium text-primary-gray">
-                  {invoice.id}
+                  {invoice.invoiceId}
                 </TableCell>
-                <TableCell>{invoice.name}</TableCell>
+                <TableCell>{invoice.invoiceName}</TableCell>
                 <TableCell>
                   <span
                     className={
@@ -92,8 +94,8 @@ export default function PaymentInvoices() {
                     className="text-primary-red hover:text-primary-red hover:primary-red/50"
                     onClick={downloadPDF}
                   >
-                    Label
-                    <ArrowRight className="ml-1 h-4 w-4" />
+                    Download
+                    <Download className="ml-1 h-4 w-4" />
                   </Button>
                 </TableCell>
               </TableRow>
