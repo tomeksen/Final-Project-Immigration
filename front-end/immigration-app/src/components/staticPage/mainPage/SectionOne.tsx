@@ -4,8 +4,11 @@ import bg from "@/assets/bg_bridge.jpeg";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/utils/Reveal";
 import FreeConsultationBtn from "@/components/FreeConsultationBtn";
+import { useTranslations } from "next-intl";
 
 export default function SectionOne() {
+  const t = useTranslations("HomePage");
+
   return (
     <Reveal>
       <div className="relative w-full">
@@ -20,7 +23,7 @@ export default function SectionOne() {
 
         <div className="relative z-20 flex flex-col items-start justify-start text-start text-white p-10 sm:pl-10 pt-14 md:ml-5 lg:ml-10">
           <h1 className="text-4xl font-bold max-w-md leading-normal">
-            Start your Journey to Canada with us
+            {t("start.hello")}
           </h1>
 
           <p className="mt-4 font-semibold sm:font-normal sm:max-w-md text-sm">

@@ -43,6 +43,20 @@
       "when": 1734318249848,
       "tag": "0005_tired_imperial_guard",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "6",
+      "when": 1734374808143,
+      "tag": "0006_chemical_nextwave",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "6",
+      "when": 1734376623506,
+      "tag": "0007_acoustic_shard",
+      "breakpoints": true
     }
   ]
 }

@@ -119,7 +119,8 @@ export const taskComments = sqliteTable('taskComments',{
   id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
   taskId: integer('taskId',{mode:'number'}).references((): AnySQLiteColumn => applicationTasks.id),
   isRead: integer('isRead',{mode:'boolean'}).default(false),
-  commentContent: text('commentContent',{length:100})
+  commentContent: text('commentContent',{length:100}),
+  userId:text('userId')
 })
 //#endregion
 //#region events
@@ -175,7 +176,7 @@ export const payments = sqliteTable('payments', {
   paymentDate: text('paymentDate')
     .default(sql`CURRENT_TIMESTAMP`)
     .notNull(),
-  
+  userId: text('userId'),
   limitDate: integer('limitDate', {mode:'timestamp'})
   .notNull(),
 });
