@@ -46,16 +46,19 @@ export default function Filters({
           <SelectValue placeholder="Sort by" />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="date">Date: First to Last</SelectItem>
+          {/* <SelectItem value="date">Date: First to Last</SelectItem>
           <SelectItem value="date-last">Date: Last to First</SelectItem>
           <SelectItem value="progress">Progress: Low to High</SelectItem>
-          <SelectItem value="progress-hl">Progress: Hight to Low</SelectItem>
+          <SelectItem value="progress-hl">Progress: Hight to Low</SelectItem> */}
+          <SelectItem value="Student">Student Visa</SelectItem>
+          <SelectItem value="Work Permit">Work Permit</SelectItem>
+          <SelectItem value="Visitor">Visitor</SelectItem>
           <SelectItem value="name">A-Z</SelectItem>
         </SelectContent>
       </Select>
       <div className="self-stretch border-l border-gray-300" />
 
-      <Select value={visaType} onValueChange={setVisaType}>
+      {/* <Select value={visaType} onValueChange={setVisaType}>
         <SelectTrigger className="w-[180px] rounded-none pl-4 hidden md:table-cell">
           <SelectValue placeholder="Visa Type" />
         </SelectTrigger>
@@ -65,7 +68,7 @@ export default function Filters({
           <SelectItem value="Visitor">Visitor</SelectItem>
         </SelectContent>
       </Select>
-      <div className="self-stretch border-l border-gray-300 hidden md:table-cell" />
+      <div className="self-stretch border-l border-gray-300 hidden md:table-cell" /> */}
 
       <Select value={status} onValueChange={setStatus}>
         <SelectTrigger className="w-[180px] rounded-none pl-4">

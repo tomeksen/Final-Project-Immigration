@@ -14,16 +14,7 @@ import { Progress } from "./ui/progress";
 import Link from "next/link";
 import HeaderBreadCrumbs from "./common/HeaderBreadCrumbs";
 import { useRouter } from "next/navigation";
-
-type Application = {
-  id: number;
-  userId: string;
-  name: string;
-  date: string;
-  type: string;
-  progress: number;
-  status: string;
-};
+import { Application } from "./dashboard/applications/ApplicationsTable";
 
 type AppTableProps = {
   appProps: Application[];
@@ -43,13 +34,13 @@ export function AppTable({ appProps, appearance, onRowClick }: AppTableProps) {
     <Table>
       <TableHeader className="bg-[#5E5E5E] text-primary-white ">
         <TableRow className="">
-          <TableHead className="rounded-tl-md hidden md:table-cell">
+          <TableHead className=" rounded-tl-md hidden md:table-cell">
             Number
           </TableHead>
-          <TableHead className="hidden md:table-cell">Name</TableHead>
-          <TableHead className="hidden md:table-cell">Date</TableHead>
-          <TableHead className="hidden md:table-cell">Type</TableHead>
-          <TableHead className="hidden md:table-cell">Progress</TableHead>
+          <TableHead className=" hidden md:table-cell">Name</TableHead>
+          {/* <TableHead className="hidden md:table-cell">Date</TableHead> */}
+          <TableHead className=" hidden md:table-cell">Type</TableHead>
+          {/* <TableHead className="hidden md:table-cell">Progress</TableHead> */}
           <TableHead className="rounded-tr-md hidden md:table-cell">
             Status
           </TableHead>
@@ -66,37 +57,39 @@ export function AppTable({ appProps, appearance, onRowClick }: AppTableProps) {
               {index + 1}
             </TableCell>
             <TableCell className="bg-white">
-              <p>{app.name}</p>
-              <p className="block lg:hidden text-primary-gray">{app.date}</p>
+              <p>{app.applicationName}</p>
+              {/* <p className="block lg:hidden text-primary-gray">
+                {app.applicationDate}
+              </p> */}
             </TableCell>
+            {/* <TableCell className="bg-white hidden md:table-cell w-1/6">
+              {app.applicationDate}
+            </TableCell> */}
             <TableCell className="bg-white hidden md:table-cell">
-              {app.date}
+              {app.applicationType}
             </TableCell>
-            <TableCell className="bg-white hidden md:table-cell">
-              {app.type}
-            </TableCell>
-            <TableCell className="bg-white">
+            {/* <TableCell className="bg-white">
               <span>
                 <Progress
                   value={app.progress}
                   className="w-[100px] hidden md:table-cell"
                 />
               </span>
-            </TableCell>
+            </TableCell> */}
             <TableCell className="last: rounded-br-md bg-white">
               <span>
                 <Badge
                   variant={
-                    app.status === "Completed"
+                    app.applicationStatus === "Completed"
                       ? "default"
-                      : app.status === "Rejected"
+                      : app.applicationStatus === "Rejected"
                       ? "destructive"
-                      : app.status === "Processing"
+                      : app.applicationStatus === "Processing"
                       ? "secondary"
                       : "outline"
                   }
                 >
-                  {app.status}
+                  {app.applicationStatus}
                 </Badge>
               </span>
             </TableCell>
