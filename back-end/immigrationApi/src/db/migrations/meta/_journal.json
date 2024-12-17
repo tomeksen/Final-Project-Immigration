@@ -57,6 +57,20 @@
       "when": 1734376623506,
       "tag": "0007_acoustic_shard",
       "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "6",
+      "when": 1734463102795,
+      "tag": "0008_milky_puma",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "6",
+      "when": 1734463129756,
+      "tag": "0009_sharp_zuras",
+      "breakpoints": true
     }
   ]
 }

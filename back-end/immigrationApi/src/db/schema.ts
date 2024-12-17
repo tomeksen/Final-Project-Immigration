@@ -143,11 +143,13 @@ export const eventType = sqliteTable('eventType',{
 //#region documents
 export const documents = sqliteTable('documents',{
   id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
+  title: text('title',{length: 256}),
   documentTypeId: integer('documentTypeId').references((): AnySQLiteColumn => documentType.id),
   documentFile: blob('documentFile'),
   applicationTaskId: integer('applicationTask').references((): AnySQLiteColumn => applicationTasks.id),
   userId: text('userId'),
   expirationDate: integer('expirationDate',{mode:'timestamp'}),
+  isChecked: integer('isChecked',{mode:'boolean'}).default(false),
   createdAt: integer('createdAt',{mode:'timestamp'}).default(sql`CURRENT_TIMESTAMP`).notNull(),
   updatedAt: integer('updatedAt',{mode:'timestamp'}).default(sql`CURRENT_TIMESTAMP`).notNull()
 })

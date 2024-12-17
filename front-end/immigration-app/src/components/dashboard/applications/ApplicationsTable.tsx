@@ -73,10 +73,9 @@ export function ApplicationsTable() {
     useState<Application | null>(null);
   const [applications, setApplications] = useState<Application[]>([]);
   const { theme } = useTheme();
-  const { getToken } = useAuth(); //add id? to use clerkId
+  const { getToken, userId } = useAuth(); //add id? to use clerkId
 
   // use clerkId later
-  const userId = "1";
 
   useEffect(() => {
     const fetchApplications = async () => {
