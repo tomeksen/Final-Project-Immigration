@@ -19,35 +19,41 @@ import {
 } from "@/components/ui/chart";
 import { useMemo } from "react";
 import { format } from "date-fns";
+import { PaymentChartType } from "@/type/Payment.type";
 
-export function PaymentChart() {
-  type PaymentType = {
-    id: string;
-    description: string;
-    amount: number;
-  };
+type Props = {
+  payments: PaymentChartType[];
+};
 
-  // ---------------------------------------------------------------------------
-  // will deliver them as props
-  const totalCost = 1000;
-  const payments: PaymentType[] = [
-    {
-      id: "Maria_CICCC_UX/UI_2",
-      description: "Cuota de inscripción escolar",
-      amount: 150.0,
-    },
-    {
-      id: "Maria_CICCC_UX/UI_3",
-      description: "Cuota mensual",
-      amount: 200.0,
-    },
-    {
-      id: "Maria_CICCC_UX/UI_4",
-      description: "Material escolar",
-      amount: 75.0,
-    },
-  ];
-  // ---------------------------------------------------------------------------
+/**
+ * The PaymentChart component takes payment data as input and displays a chart.
+ *
+ * @param {object} props - The properties passed to the component.
+ * @param {PaymentChartType[]} props.payments - An array of payment data. Each item includes a title, amount, completion status, and invoice ID.
+ *
+ * @example
+ * const payments = [
+ *   { title: "Rent", amount: 1200, isCompleted: true, invoiceId: "1" },
+ *   { title: "Electricity", amount: 100, isCompleted: false, invoiceId: "2" }
+ * ];
+ * <PaymentChart payments={payments} />;
+ */
+export function PaymentChart({ payments }: Props) {
+  const totalCost: number = payments.reduce(
+    (acc, cur) => acc + Number(cur.amount),
+    0
+  );
+
+  const totalPayment: number = payments.reduce((acc, cur) => {
+    if (cur.isCompleted) {
+      return acc + Number(cur.amount);
+    }
+    return acc;
+  }, 0);
+
+  const percentage =
+    totalCost > 0 ? Math.floor((totalPayment / totalCost) * 100) : 0;
+  console.log("⭐️", totalCost);
 
   // generate blue colors
   const generateColors = (num: number): string[] => {
@@ -65,7 +71,7 @@ export function PaymentChart() {
 
   const chartData = useMemo(() => {
     return payments.map((payment, index) => ({
-      name: payment.description,
+      name: payment.title,
       value: payment.amount,
       fill: colors[index],
     }));
@@ -75,17 +81,13 @@ export function PaymentChart() {
     const config: ChartConfig = {};
 
     payments.forEach((payment, index) => {
-      config[payment.id] = {
-        label: payment.id,
+      config[payment.invoiceId] = {
+        label: payment.invoiceId,
         color: colors[index],
       };
     });
     return config;
   }, [payments]);
-
-  const totalPayment = useMemo(() => {
-    return chartData.reduce((acc, curr) => acc + curr.value, 0);
-  }, []);
 
   return (
     <Card className="flex flex-col w-full h-full">
@@ -128,7 +130,7 @@ export function PaymentChart() {
                             y={viewBox.cy}
                             className="fill-foreground text-xl font-bold"
                           >
-                            {`${(totalPayment / totalCost) * 100} %`}
+                            {`${percentage} %`}
                           </tspan>
                           <tspan
                             x={viewBox.cx}
@@ -159,7 +161,7 @@ export function PaymentChart() {
                   className="h-4 w-4 rounded-full flex-shrink-0"
                   style={{ background: colors[index] }}
                 ></span>
-                <p className="text-xs flex-wrap">{payment.description}</p>
+                <p className="text-xs flex-wrap">{payment.title}</p>
               </div>
             ))}
           </div>
