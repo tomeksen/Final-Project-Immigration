@@ -12,7 +12,6 @@ import { filteredPayments } from "@/utils/payments";
 const PaymentsPage = async () => {
   const user = await currentUser();
   const isAdminUser = user?.publicMetadata?.role === "admin" ? true : false;
-  console.log("user⭐️", user);
   const userId = user?.id;
   // const userId = "1";
 

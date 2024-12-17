@@ -30,8 +30,6 @@ export default function AppPaymentSwiper({
   swiperType,
   payments,
 }: PaymentSwiperProps) {
-  console.log(payments);
-
   // decide the number of payment card depending on the size of the screen
   const slidesPerView = swiperType === "sm" ? 1 : 3;
 
@@ -46,7 +44,7 @@ export default function AppPaymentSwiper({
   }
 
   return (
-    <Card className="w-full h-fµull">
+    <Card className="w-full h-full">
       <CardHeader>
         <CardTitle>Awaiting Payment</CardTitle>
         <CardDescription className="mt-3 text-foreground">
