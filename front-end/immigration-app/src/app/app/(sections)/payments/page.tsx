@@ -3,9 +3,8 @@ import { PaymentChart } from "./_components/PaymentChart";
 import PaymentSavedCard from "./_components/PaymentSavedCard";
 import PaymentRefundPolicy from "./_components/PaymentRefundPolicty";
 import PaymentInvoices from "./_components/PaymentInvoices";
-import PaymentDialog from "./_components/PaymentDialog";
 import { currentUser } from "@clerk/nextjs/server";
-import { apiClientFetch, BASEURL } from "@/config/apiClient";
+import { apiClientFetch } from "@/config/apiClient";
 import { ERROR_MESSAGES } from "@/config/ErrorMessage";
 import { Application } from "@/type/Application.type";
 import { filteredPayments } from "@/utils/payments";
@@ -13,8 +12,9 @@ import { filteredPayments } from "@/utils/payments";
 const PaymentsPage = async () => {
   const user = await currentUser();
   const isAdminUser = user?.publicMetadata?.role === "admin" ? true : false;
-  // console.log("user⭐️", user);
-  const userId = "1";
+  console.log("user⭐️", user);
+  const userId = user?.id;
+  // const userId = "1";
 
   try {
     // fetch all the payment data

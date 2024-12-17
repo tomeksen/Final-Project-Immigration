@@ -18,6 +18,8 @@ import { cn } from "@/lib/utils";
 import PaymentDialog from "../PaymentDialog";
 import { PaymentFiltered, PaymentSwiperType } from "@/type/Payment.type";
 import { formatNumber } from "@/utils/formatNumber";
+import { ERROR_MESSAGES } from "@/config/ErrorMessage";
+import PaymentError from "../paymentError";
 
 type PaymentSwiperProps = {
   swiperType: "sm" | "lg";
@@ -28,6 +30,8 @@ export default function AppPaymentSwiper({
   swiperType,
   payments,
 }: PaymentSwiperProps) {
+  console.log(payments);
+
   // decide the number of payment card depending on the size of the screen
   const slidesPerView = swiperType === "sm" ? 1 : 3;
 
@@ -37,8 +41,12 @@ export default function AppPaymentSwiper({
     setCurrentIndex(currentIndex);
   };
 
+  if (!payments || payments.length === 0) {
+    return <PaymentError title="Awaiting Payment" errorTitle="payment" />;
+  }
+
   return (
-    <Card className="w-full h-full">
+    <Card className="w-full h-fµull">
       <CardHeader>
         <CardTitle>Awaiting Payment</CardTitle>
         <CardDescription className="mt-3 text-foreground">

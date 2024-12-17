@@ -11,6 +11,8 @@ import {
 } from "@/components/ui/table";
 import { useState } from "react";
 import { PaymentFiltered, PaymentInvoiceType } from "@/type/Payment.type";
+import { ERROR_MESSAGES } from "@/config/ErrorMessage";
+import PaymentError from "./paymentError";
 
 // TODO
 // Separate to Props
@@ -53,6 +55,10 @@ export default function PaymentInvoices({ invoices }: Props) {
       "_blank"
     );
   };
+
+  if (!invoices || invoices.length === 0) {
+    return <PaymentError title="Invoices" errorTitle="invoice" />;
+  }
 
   return (
     <Card className="w-full h-full">

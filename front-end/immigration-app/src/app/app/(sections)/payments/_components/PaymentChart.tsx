@@ -21,6 +21,8 @@ import { useMemo } from "react";
 import { format } from "date-fns";
 import { PaymentChartType, PaymentFiltered } from "@/type/Payment.type";
 import { formatNumber } from "@/utils/formatNumber";
+import { ERROR_MESSAGES } from "@/config/ErrorMessage";
+import PaymentError from "./paymentError";
 
 type Props = {
   payments: PaymentFiltered[];
@@ -88,6 +90,10 @@ export function PaymentChart({ payments }: Props) {
     });
     return config;
   }, [payments]);
+
+  if (!payments || payments.length === 0) {
+    return <PaymentError title="Payment Summary" errorTitle="payment" />;
+  }
 
   return (
     <Card className="flex flex-col w-full h-full">

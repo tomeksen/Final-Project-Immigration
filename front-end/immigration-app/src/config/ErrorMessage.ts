@@ -3,6 +3,8 @@ export const ERROR_MESSAGES = {
     UNEXPECTED: "An unexpected error occurred.",
     SERVER_ERROR: "A server error occurred.",
     NETWORK_ERROR: "Network error. Please check your connection.",
+    NOT_FOUND: (fieldName: string) =>
+      `No ${fieldName} found. Please check back later`,
   },
   USERS: {
     NOT_FOUND: "User not found.",
