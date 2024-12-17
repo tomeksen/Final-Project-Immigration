@@ -43,6 +43,15 @@
         "description5": "One of our experts will submit your application."
       }
     },
+    "Testimonials": {
+      "expressVisa": "Express Entry",
+      "permanentVisa": "Permanent Resident",
+      "LauraDescription": "I had an amazing experience with my visa application. They made the entire process easy and stress-free. The staff's expertise and attention to detail were impressive.",
+      "MariaDescription": "I had an amazing experience with my visa application. They made the entire process easy and stress-free. The staff's expertise and attention to detail were impressive.",
+      "JuanDescription": "I had an amazing experience with my visa application. They made the entire process easy and stress-free. The staff's expertise and attention to detail were impressive.",
+      "GoogleReview": "Explore our Google Reviews for top-rated immigration services.",
+      "ReadButton": "Read more"
+    },
     "freeConsultation": "Book a free consultation"
   },
   "QuizComponent": {

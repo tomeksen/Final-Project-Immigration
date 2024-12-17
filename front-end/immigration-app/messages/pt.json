@@ -43,6 +43,15 @@
         "description5": "Um de nossos especialistas enviará sua inscrição."
       }
     },
+    "Testimonials": {
+      "expressVisa": "Entrada Expressa",
+      "permanentVisa": "Residente Permanente",
+      "LauraDescription": "Tive uma experiência incrível com a minha aplicação de visto. Eles tornaram todo o processo fácil e sem estresse. A expertise e atenção aos detalhes da equipe foram impressionantes.",
+      "MariaDescription": "Tive uma experiência incrível com a minha aplicação de visto. Eles tornaram todo o processo fácil e sem estresse. A expertise e atenção aos detalhes da equipe foram impressionantes.",
+      "JuanDescription": "Tive uma experiência incrível com a minha aplicação de visto. Eles tornaram todo o processo fácil e sem estresse. A expertise e atenção aos detalhes da equipe foram impressionantes.",
+      "GoogleReview": "Explore nossas avaliações no Google para serviços de imigração altamente recomendados.",
+      "ReadButton": "Leia mais"
+    },
     "freeConsultation": "Agende uma consulta gratuita"
   },
   "QuizComponent": {
