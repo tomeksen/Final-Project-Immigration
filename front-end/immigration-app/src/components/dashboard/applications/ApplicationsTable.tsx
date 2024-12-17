@@ -118,16 +118,16 @@ export function ApplicationsTable() {
     .filter((app) => !visaType || app.applicationType === visaType)
     .filter((app) => !status || app.applicationStatus === status)
     .sort((a, b) => {
-      if (sortBy === "date")
-        return (
-          new Date(a.applicationDate).getTime() -
-          new Date(b.applicationDate).getTime()
-        );
-      if (sortBy === "date-last")
-        return (
-          new Date(b.applicationDate).getTime() -
-          new Date(a.applicationDate).getTime()
-        );
+      // if (sortBy === "date")
+      //   return (
+      //     new Date(a.applicationDate).getTime() -
+      //     new Date(b.applicationDate).getTime()
+      //   );
+      // if (sortBy === "date-last")
+      //   return (
+      //     new Date(b.applicationDate).getTime() -
+      //     new Date(a.applicationDate).getTime()
+      //   );
       // if (sortBy === "progress") return a.progress - b.progress;
       // if (sortBy === "progress-hl") return b.progress - a.progress;
       if (sortBy === "name") {
