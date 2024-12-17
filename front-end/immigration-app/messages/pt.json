@@ -23,6 +23,27 @@
     },
     "freeConsultation": "Agende uma consulta gratuita"
   },
+  "QuizComponent": {
+    "titleExpressEntry": "Entrada expressa",
+    "titlePostGraduation": "Autorização de Trabalho Pós-Graduação",
+    "completed": "Quiz concluído!",
+    "step": "Passo",
+    "of": "de",
+    "nextButton": "Próximo",
+    "backButton": "Voltar",
+    "Result": {
+      "default": "Com base nas suas respostas, recomendamos que você agende uma consulta gratuita com nossa equipe para discutir seus objetivos e opções."
+    },
+    "Questions": {
+      "Question1": {
+        "title": "O que você gostaria de fazer no Canadá?",
+        "option1": "Estudar",
+        "option2": "Trabalhar",
+        "option3": "Visitar",
+        "option4": "Imigrar"
+      }
+    }
+  },
   "Sidebar": {
     "Content": {
       "dashboard": "Painel de Controle",

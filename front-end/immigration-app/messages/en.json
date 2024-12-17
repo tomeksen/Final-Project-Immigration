@@ -22,6 +22,27 @@
       "button": "Start Quiz"
     }
   },
+  "QuizComponent": {
+    "titleExpressEntry": "Express Entry",
+    "titlePostGraduation": "Post-Graduation Work Permit",
+    "completed": "Quiz completed!",
+    "step": "Step",
+    "of": "of",
+    "nextButton": "Next",
+    "backButton": "Back",
+    "Result": {
+      "default": "Based on your answers, we recommend you to book a free consultation with our team to discuss your goals and options."
+    },
+    "Questions": {
+      "Question1": {
+        "title": "What would you like to do in Canada?",
+        "option1": "Study",
+        "option2": "Work",
+        "option3": "Visit",
+        "option4": "Immigrate"
+      }
+    }
+  },
   "Sidebar": {
     "Content": {
       "dashboard": "Dashboard",
