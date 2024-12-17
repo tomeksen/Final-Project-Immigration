@@ -23,6 +23,6 @@ export type Task = {
   dueDate: Date;
   description: string;
   steps: { [key: string]: string };
-  instruction: { [key: string]: string };
+  instructions: { [key: string]: string };
   notes: string;
 };

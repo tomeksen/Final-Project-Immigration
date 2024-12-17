@@ -32,6 +32,14 @@ export function AppSheet({ task, onClose }: TaskProps) {
     ));
   };
 
+  const formattedInstruction = (instructions: Record<string, string>) => {
+    return Object.entries(instructions).map(([key, value]) => (
+      <li key={key} className="text-sm">
+        {key}: {value}
+      </li>
+    ));
+  };
+
   return (
     <div className="grid grid-cols-2 gap-2">
       {/* {tasks.map((task) => ( */}
@@ -86,6 +94,9 @@ export function AppSheet({ task, onClose }: TaskProps) {
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="email">Messages:</Label>
+                  <ol className="">
+                    {formattedInstruction(task.instructions)}
+                  </ol>
                   <Input id="message" placeholder="Ask a question!" />
                 </div>
                 <Button
