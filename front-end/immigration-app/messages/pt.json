@@ -1,6 +1,5 @@
 {
   "HomePage": {
-    "title": "Bem-vindo ao aplicativo de imigração!",
     "startJourneyTitle": "Inicie sua jornada para o Canadá conosco",
     "journeyParagraph": "Trazemos experiência, compaixão e cuidado para ajudar a navegar pelas complexidades da imigração com confiança.",
     "Consultant": {
@@ -28,6 +27,21 @@
       "languages": "Línguas",
       "idioms": "Inglês/ Português/ Espanhol",
       "years": "Anos de experiência"
+    },
+    "StartSection": {
+      "title": "Por onde começar",
+      "Steps": {
+        "step1": "Marque uma consulta gratuita de 20 minutos",
+        "description1": "Conte-nos sobre seus objetivos no Canadá e seu perfil.",
+        "step2": "Analise suas opções",
+        "description2": "Forneceremos caminhos possíveis para você e enviaremos um orçamento.",
+        "step3": "Faça o pagamento",
+        "description3": "Você pode pagar por transferência eletrônica em parcelas.",
+        "step4": "Junte os documentos",
+        "description4": "Listaremos os documentos necessários para sua inscrição.",
+        "step5": "Inscreva-se",
+        "description5": "Um de nossos especialistas enviará sua inscrição."
+      }
     },
     "freeConsultation": "Agende uma consulta gratuita"
   },

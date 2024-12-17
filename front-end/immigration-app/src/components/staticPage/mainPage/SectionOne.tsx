@@ -22,7 +22,7 @@ export default function SectionOne() {
 
         <div className="relative z-20 flex flex-col items-start justify-start text-start text-white p-10 sm:pl-10 pt-14 md:ml-5 lg:ml-10">
           <h1 className="text-4xl font-bold max-w-md leading-normal">
-            {t("title")}
+            {t("startJourneyTitle")}
           </h1>
 
           <p className="mt-4 font-semibold sm:font-normal sm:max-w-md text-sm">

@@ -1,6 +1,5 @@
 {
   "HomePage": {
-    "title": "Hello world!",
     "startJourneyTitle": "Start your Journey to Canada with us",
     "journeyParagraph": "We bring expertise, compassion, and care to support you in navigating the complexities of immigration with confidence.",
     "Consultant": {
@@ -28,7 +27,23 @@
       "languages": "Languages",
       "idioms": "English/ Portuguese/ Spanish",
       "years": "Years of experience"
-    }
+    },
+    "StartSection": {
+      "title": "Where to start",
+      "Steps": {
+        "step1": "Book a 20 min free consultation",
+        "description1": "Tell us about your goals in Canada and your profile.",
+        "step2": "Analyze your options",
+        "description2": "We'll provide possible pathways for you and send you a quote.",
+        "step3": "Make your payment",
+        "description3": "You can pay via e-transfer through installment payments.",
+        "step4": "Gather the documents",
+        "description4": "We'll list the documents required for your application.",
+        "step5": "Apply",
+        "description5": "One of our experts will submit your application."
+      }
+    },
+    "freeConsultation": "Book a free consultation"
   },
   "QuizComponent": {
     "titleExpressEntry": "Express Entry",

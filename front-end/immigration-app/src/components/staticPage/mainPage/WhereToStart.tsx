@@ -3,38 +3,37 @@ import React from "react";
 import { CardContent } from "@/components/ui/card";
 import SectionTitle from "@/components/SectionTitle";
 import { Reveal } from "@/utils/Reveal";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import FreeConsultationBtn from "@/components/FreeConsultationBtn";
-import { transform } from "next/dist/build/swc";
-import { Hind } from "next/font/google";
+import { useTranslations } from "next-intl";
 
 export default function WhereToStart() {
+  const t = useTranslations("HomePage");
   const steps = [
     {
       number: 1,
-      title: "Book a 20 min free consultation",
-      description: "Tell us about your goals in Canada and your profile.",
+      title: t("StartSection.Steps.step1"),
+      description: t("StartSection.Steps.description1"),
     },
     {
       number: 2,
-      title: "Analyze your options",
-      description:
-        "We'll provide possible pathways for you and send you a quote.",
+      title: t("StartSection.Steps.step2"),
+      description: t("StartSection.Steps.description2"),
     },
     {
       number: 3,
-      title: "Make your payment",
-      description: "You can pay via e-transfer through installment payments",
+      title: t("StartSection.Steps.step3"),
+      description: t("StartSection.Steps.description3"),
     },
     {
       number: 4,
-      title: "Gather the documents",
-      description: "We'll list the documents required for your application.",
+      title: t("StartSection.Steps.step4"),
+      description: t("StartSection.Steps.description4"),
     },
     {
       number: 5,
-      title: "Apply",
-      description: "One of our experts will submit your application.",
+      title: t("StartSection.Steps.step5"),
+      description: t("StartSection.Steps.description5"),
     },
   ];
 
