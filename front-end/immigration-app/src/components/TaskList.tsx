@@ -14,16 +14,17 @@ import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { BiCommentDots } from "react-icons/bi";
 import { GoPaperclip } from "react-icons/go";
 import HeaderBreadCrumbs from "./common/HeaderBreadCrumbs";
-import { Task } from "@/type/Applications.type";
+import { Category, Task } from "@/type/Applications.type";
 import { getUserImage } from "./dashboard/applications/getUserImage";
 
 type TaskProps = {
   tasks: Task[];
+  categories: Category[];
   appearance?: { baseTheme: any };
   onTaskClick: (task: Task) => void;
 };
 
-export function TaskList({ tasks, onTaskClick }: TaskProps) {
+export function TaskList({ tasks, onTaskClick, categories }: TaskProps) {
   // const [imageUrl, setImageUrl] = useState<string | null>();
 
   // useEffect(() => {
@@ -36,10 +37,11 @@ export function TaskList({ tasks, onTaskClick }: TaskProps) {
 
   return (
     <>
-      <Table className="w-72">
+    { categories.map((category) => (
+      <Table key={category.id} className="w-72">
         <TableHeader className="bg-[#5E5E5E] text-primary-white">
           <TableRow className="">
-            <TableHead className="rounded-t-md">Getting start</TableHead>
+            <TableHead className="rounded-t-md">{category.categoryName}</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -51,6 +53,7 @@ export function TaskList({ tasks, onTaskClick }: TaskProps) {
           </TableRow> */}
 
           {tasks.map((task) => (
+            task.categoryId === category.id && (
             <TableRow key={task.id} onClick={() => onTaskClick(task)}>
               <TableCell className="p-6">
                 <div className="flex items-center leading-none space-x-2">
@@ -85,9 +88,12 @@ export function TaskList({ tasks, onTaskClick }: TaskProps) {
                 </div>
               </TableCell>
             </TableRow>
+            )
           ))}
         </TableBody>
       </Table>
+    ))
+  }
     </>
   );
 }

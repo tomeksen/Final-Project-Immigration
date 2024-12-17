@@ -16,6 +16,7 @@ import { Badge } from "@/components/ui/badge";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { useAuth } from "@clerk/nextjs";
 
 type Application = {
   id: number;
@@ -27,54 +28,6 @@ type Application = {
   status: string;
 };
 
-const applications: Application[] = [
-  {
-    id: 1,
-    user_id: "001",
-    name: "Maria_CICCC_181",
-    date: "04 Apr 2023",
-    type: "Student",
-    progress: 100,
-    status: "Completed",
-  },
-  {
-    id: 2,
-    user_id: "002",
-    name: "Maria_CICCC_UX/UI",
-    date: "15 Nov 2023",
-    type: "Student",
-    progress: 100,
-    status: "Rejected",
-  },
-  {
-    id: 3,
-    user_id: "003",
-    name: "Maria_CICCC_UX/UI_2",
-    date: "08 Jul 2024",
-    type: "Student",
-    progress: 50,
-    status: "Processing",
-  },
-  {
-    id: 4,
-    user_id: "004",
-    name: "Maria_Work Permit",
-    date: "09 Jul 2024",
-    type: "Work Permit",
-    progress: 75,
-    status: "On Hold",
-  },
-  {
-    id: 5,
-    user_id: "005",
-    name: "Carry_Visitor",
-    date: "09 Jul 2024",
-    type: "Visitor",
-    progress: 25,
-    status: "Processing",
-  },
-];
-
 type AppTableProps = {
     appProps: Application[];
     appearance?: { baseTheme: any };
@@ -82,9 +35,40 @@ type AppTableProps = {
   };
 
 export function ApplicationsManagerTable() {
-    const router = useRouter();
-  const [selectedApplication, setSelectedApplication] =
-    useState<Application | null>(null);
+  const router = useRouter();
+  const [applications, setApplications] = useState<Application[]>([]);
+  const [selectedApplication, setSelectedApplication] = useState<Application | null>(null);
+  const { getToken } = useAuth(); //add id? to use clerkId
+
+    
+    useEffect(() => {
+      const fetchApplications = async () => {
+        try {
+          const token = await getToken();
+          const response = await fetch(
+            `https://immigrationapi.tomytrt.workers.dev/api/applications`,
+            {
+              method: "GET",
+              headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+              },
+            }
+          );
+  
+          if (!response.ok) {
+            throw new Error("Failed to fetch applications");
+          }
+  
+          const data = await response.json();
+          setApplications(data);
+        } catch (e: any) {
+          throw new Error("Failed to fetch applications");
+        }
+      };
+  
+      fetchApplications();
+    }, []);
 
     useEffect(() => {
         if(selectedApplication){

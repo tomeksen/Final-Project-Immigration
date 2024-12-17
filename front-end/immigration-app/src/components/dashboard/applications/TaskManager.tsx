@@ -36,6 +36,7 @@ export function TaskManager({ onClose, applicationId }: TaskManagerProps) {
         }
 
         const data = await response.json();
+        await data.sort((a: Category, b: Category) => a.order - b.order);
         setCategories(data);
       } catch (e: any) {
         throw new Error("Failed to fetch applications");
@@ -64,8 +65,8 @@ export function TaskManager({ onClose, applicationId }: TaskManagerProps) {
           if (!response.ok) {
             throw new Error("Failed to fetch applications");
           }
-
           const data: Task[] = await response.json();
+
           tasksData.push(...data);
         }
 
@@ -87,7 +88,7 @@ export function TaskManager({ onClose, applicationId }: TaskManagerProps) {
       <HeaderBreadCrumbs rootName="Applications" breadName={"Task Details"} />
 
       <div className="hidden md:flex flex-col">
-        <TaskList onTaskClick={handleTaskClick} tasks={tasks} />
+        <TaskList onTaskClick={handleTaskClick} tasks={tasks} categories={categories}/>
       </div>
 
       <div className="flex md:hidden flex-col">
