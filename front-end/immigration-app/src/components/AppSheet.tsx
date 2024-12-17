@@ -15,20 +15,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Checkbox } from "./ui/checkbox";
-
-type Task = {
-  id: string;
-  categoryId: string;
-  comment_id: string;
-  service_connection_id: string;
-  title: string;
-  is_completed: boolean;
-  dueDate: Date;
-  description: string;
-  steps: string;
-  instruction: string;
-  notes: string;
-};
+import { Task } from "@/type/Applications.type";
 
 type TaskProps = {
   task: Task | null;
@@ -37,6 +24,14 @@ type TaskProps = {
 };
 
 export function AppSheet({ task, onClose }: TaskProps) {
+  const formattedSteps = (steps: Record<string, string>) => {
+    return Object.entries(steps).map(([key, value]) => (
+      <li key={key} className="text-sm">
+        {key}: {value}
+      </li>
+    ));
+  };
+
   return (
     <div className="grid grid-cols-2 gap-2">
       {/* {tasks.map((task) => ( */}
@@ -54,7 +49,7 @@ export function AppSheet({ task, onClose }: TaskProps) {
               <SheetHeader>
                 <SheetTitle>
                   <div className="flex items-center leading-none space-x-2">
-                    <Checkbox defaultChecked={task.is_completed} />
+                    <Checkbox defaultChecked={task.isCompleted} />
                     <Label htmlFor="" className="text-right">
                       {task.title}
                     </Label>
@@ -80,13 +75,7 @@ export function AppSheet({ task, onClose }: TaskProps) {
                 </div>
                 <div>
                   <Label className="font-bold">Steps:</Label>
-                  <ol>
-                    {task.steps.split("\n").map((step, id) => (
-                      <li className="text-sm" key={id}>
-                        {step}
-                      </li>
-                    ))}
-                  </ol>
+                  <ol>{formattedSteps(task.steps)}</ol>
                 </div>
                 <div className="text-primary-red">
                   <Label className="font-bold">Notes:</Label>
