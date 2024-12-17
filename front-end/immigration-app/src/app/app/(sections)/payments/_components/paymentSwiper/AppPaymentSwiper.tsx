@@ -16,11 +16,11 @@ import { Badge } from "@/components/ui/badge";
 import PaymentSwiperButton from "./paymentSwiperButton";
 import { cn } from "@/lib/utils";
 import PaymentDialog from "../PaymentDialog";
-import { PaymentSwiperType } from "@/type/Payment.type";
+import { PaymentFiltered, PaymentSwiperType } from "@/type/Payment.type";
 
 type PaymentSwiperProps = {
   swiperType: "sm" | "lg";
-  payments: PaymentSwiperType[];
+  payments: PaymentFiltered[];
 };
 
 export default function AppPaymentSwiper({

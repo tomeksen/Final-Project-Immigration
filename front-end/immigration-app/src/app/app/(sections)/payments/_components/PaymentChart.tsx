@@ -19,17 +19,17 @@ import {
 } from "@/components/ui/chart";
 import { useMemo } from "react";
 import { format } from "date-fns";
-import { PaymentChartType } from "@/type/Payment.type";
+import { PaymentChartType, PaymentFiltered } from "@/type/Payment.type";
 
 type Props = {
-  payments: PaymentChartType[];
+  payments: PaymentFiltered[];
 };
 
 /**
  * The PaymentChart component takes payment data as input and displays a chart.
  *
  * @param {object} props - The properties passed to the component.
- * @param {PaymentChartType[]} props.payments - An array of payment data. Each item includes a title, amount, completion status, and invoice ID.
+ * @param {PaymentFiltered[]} props.payments - An array of payment data. Each item includes a title, amount, completion status, and invoice ID.
  *
  * @example
  * const payments = [
@@ -53,7 +53,6 @@ export function PaymentChart({ payments }: Props) {
 
   const percentage =
     totalCost > 0 ? Math.floor((totalPayment / totalCost) * 100) : 0;
-  console.log("⭐️", totalCost);
 
   // generate blue colors
   const generateColors = (num: number): string[] => {

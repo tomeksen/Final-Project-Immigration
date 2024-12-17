@@ -1,12 +1,4 @@
-import { Payment } from "@/type/Payment.type";
-
-type PaymentSwiperType = {
-  invoiceId: string;
-  title: string;
-  amount: number;
-  paymentDate: string;
-  isCompleted: boolean;
-};
+import { Payment, PaymentSwiperType } from "@/type/Payment.type";
 
 type ApplicationIdTitle = {
   applicationId: number;
