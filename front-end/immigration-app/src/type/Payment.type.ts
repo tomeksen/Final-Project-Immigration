@@ -7,3 +7,15 @@ export type Payment = {
   limitDate: string;
   paymentDate: string;
 };
+
+export type PaymentChartType = {
+  invoiceId: string;
+  title: string;
+  amount: number;
+  isCompleted: boolean;
+};
+export type PaymentSwiperType = {
+  invoiceId: string;
+  title: string;
+  amount: number;
+};

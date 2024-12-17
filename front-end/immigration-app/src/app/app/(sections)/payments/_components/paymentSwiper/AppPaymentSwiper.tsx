@@ -18,15 +18,11 @@ import { Badge } from "@/components/ui/badge";
 import PaymentSwiperButton from "./paymentSwiperButton";
 import { cn } from "@/lib/utils";
 import PaymentDialog from "../PaymentDialog";
+import { Payment, PaymentSwiperType } from "@/type/Payment.type";
 
 type PaymentSwiperProps = {
   swiperType: "sm" | "lg";
-  payments: Payment[];
-};
-type Payment = {
-  id: string;
-  description: string;
-  amount: number;
+  payments: PaymentSwiperType[];
 };
 
 export default function AppPaymentSwiper({
@@ -37,18 +33,18 @@ export default function AppPaymentSwiper({
 
   // const payments: Payment[] = [
   //   {
-  //     id: "Maria_CICCC_UX/UI_2",
-  //     description: "Cuota de inscripción escolar",
+  //     invoiceId: "Maria_CICCC_UX/UI_2",
+  //     title: "Cuota de inscripción escolar",
   //     amount: 150.0,
   //   },
   //   {
-  //     id: "Maria_CICCC_UX/UI_3",
-  //     description: "Cuota mensual",
+  //     invoiceId: "Maria_CICCC_UX/UI_3",
+  //     title: "Cuota mensual",
   //     amount: 200.0,
   //   },
   //   {
-  //     id: "Maria_CICCC_UX/UI_4",
-  //     description: "Material escolar",
+  //     invoiceId: "Maria_CICCC_UX/UI_4",
+  //     title: "Material escolar",
   //     amount: 75.0,
   //   },
   // ];
@@ -88,10 +84,10 @@ export default function AppPaymentSwiper({
                       variant="outline"
                       className="mb-2 w-full rounded-full"
                     >
-                      {payment.id}
+                      {payment.invoiceId}
                     </Badge>
                     <div className="text-gray-700 font-thin text-sm mb-2">
-                      {payment.description}
+                      {payment.title}
                     </div>
                     <div className="text-2xl">
                       CAD {payment.amount.toFixed(2)}
