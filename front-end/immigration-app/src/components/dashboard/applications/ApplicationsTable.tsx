@@ -9,61 +9,8 @@ import { AppTable } from "@/components/AppTable";
 import HeaderBreadCrumbs from "@/components/common/HeaderBreadCrumbs";
 import { TaskManager } from "./TaskManager";
 import { useAuth } from "@clerk/nextjs";
-import { Application } from "@/type/Applications.type";
+import { Application } from "@/type/Application.type";
 
-// export type Application = {
-//   id: number;
-//   userId: string;
-//   applicationName: string;
-//   applicationDate: string;
-//   applicationType: string;
-//   applicationStatus: string;
-// };
-
-// // fetch data from DB based on user_id
-// export const applications: Application[] = [
-//   // this is a dummy data
-//   {
-//     id: 1,
-//     userId: "001",
-//     applicationName: "Maria_CICCC_181",
-//     applicationDate: "04 Apr 2023",
-//     applicationType: "Student",
-//     applicationStatus: "Completed",
-//   },
-//   {
-//     id: 2,
-//     userId: "002",
-//     applicationName: "Maria_CICCC_UX/UI",
-//     applicationDate: "15 Nov 2023",
-//     applicationType: "Student",
-//     applicationStatus: "Rejected",
-//   },
-//   {
-//     id: 3,
-//     userId: "003",
-//     applicationName: "Maria_CICCC_UX/UI_2",
-//     applicationDate: "08 Jul 2024",
-//     applicationType: "Student",
-//     applicationStatus: "Processing",
-//   },
-//   {
-//     id: 4,
-//     userId: "004",
-//     applicationName: "Maria_Work Permit",
-//     applicationDate: "09 Jul 2024",
-//     applicationType: "Work Permit",
-//     applicationStatus: "On Hold",
-//   },
-//   {
-//     id: 5,
-//     userId: "005",
-//     applicationName: "Carry_Visitor",
-//     applicationDate: "09 Jul 2024",
-//     applicationType: "Visitor",
-//     applicationStatus: "Processing",
-//   },
-// ];
 
 export function ApplicationsTable() {
   const [sortBy, setSortBy] = useState("");
@@ -74,36 +21,42 @@ export function ApplicationsTable() {
   const [applications, setApplications] = useState<Application[]>([]);
   const { theme } = useTheme();
   const { getToken, userId } = useAuth(); //add id? to use clerkId
+  const [isLoading, setIsLoading] = useState(false);
 
-  // use clerkId later
 
-  useEffect(() => {
-    const fetchApplications = async () => {
-      try {
-        const token = await getToken();
-        const response = await fetch(
-          `https://immigrationapi.tomytrt.workers.dev/api/applications/${userId}`,
-          {
-            method: "GET",
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "Content-Type": "application/json",
-            },
-          }
-        );
-
-        if (!response.ok) {
-          throw new Error("Failed to fetch applications");
+  const fetchApplications = async () => {
+    try {
+      setIsLoading(true);
+      setApplications([]);
+      const token = await getToken();
+      const response = await fetch(
+        `https://immigrationapi.tomytrt.workers.dev/api/applications/${userId}`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
         }
+      );
 
-        const data = await response.json();
-        setApplications(data);
-      } catch (e: any) {
+      if (!response.ok) {
         throw new Error("Failed to fetch applications");
       }
-    };
 
-    fetchApplications();
+      const data = await response.json();
+      setApplications(data);
+    } catch (e: any) {
+      throw new Error("Failed to fetch applications");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (userId) {
+      fetchApplications();
+    }
   }, [userId, getToken]);
 
   const resetFilters = () => {
@@ -138,7 +91,7 @@ export function ApplicationsTable() {
     });
 
   return (
-    <div className="p-4 space-y-4">
+    <div key={userId} className="p-4 space-y-4">
       <HeaderBreadCrumbs rootName={"Applications"} />
 
       <Filters
@@ -151,12 +104,15 @@ export function ApplicationsTable() {
         resetFilters={resetFilters}
         appearance={theme === "dark" ? { baseTheme: dark } : undefined}
       />
-
-      <AppTable
-        appProps={filteredApplications}
-        onRowClick={setSelectedApplication}
-        appearance={theme === "dark" ? { baseTheme: dark } : undefined}
-      />
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <AppTable
+          appProps={filteredApplications}
+          onRowClick={setSelectedApplication}
+          appearance={theme === "dark" ? { baseTheme: dark } : undefined}
+        />
+      )}
     </div>
   );
 }
