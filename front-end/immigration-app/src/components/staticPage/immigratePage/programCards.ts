@@ -10,64 +10,75 @@ import atlantic from "@/assets/all_options_pics/atlantic_immigration.jpeg";
 import northern from "@/assets/all_options_pics/northern_immigration.jpeg";
 
 type Program = {
+  id: number;
   title: string;
   description: string;
+  link: string;
   imageSrc: string | StaticImageData;
 };
 
-export const programCards: Program[] = [
+export const programCards = (t: (key: string) => string): Program[] => [
   {
-    title: "Express Entry",
-    description:
-      "Canada's fastest and most popular way to gain permanent residency. It is an immigration system designed to streamline applications, with all required documents typically processed within six months or less. By submitting a profile, candidates are ranked based on their qualifications and invited to apply for permanent residency.",
+    id: 1,
+    title: t("ImmigrationPrograms.expressEntry.title"),
+    description: t("ImmigrationPrograms.expressEntry.description"),
+    link: "expressEntry",
     imageSrc: expressEntry,
   },
   {
-    title: "Provincial Nominee Programs - PNP",
-    description:
-      "For Canadian provinces and territories to nominate individuals for permanent residency based on their specific economic needs. Each region has its own unique streams targeting students, business people, skilled workers, and semi-skilled workers. By aligning your skills and experience with a province's needs, you can receive a nomination that boosts your chances of obtaining permanent residency.",
+    id: 2,
+    title: t("ImmigrationPrograms.provincialNominee.title"),
+    description: t("ImmigrationPrograms.provincialNominee.description"),
+    link: "provincialNominee",
     imageSrc: provincial,
   },
   {
-    title: "Family Sponsorship",
-    description:
-      "For Canadian citizens and permanent residents to reunite with their loved ones by sponsoring them for permanent residency. This program includes options for sponsoring spouses, common-law partners, dependent children, parents, and grandparents. By supporting family reunification, the program helps build stronger, more connected communities in Canada.",
+    id: 3,
+    title: t("ImmigrationPrograms.familySponsorship.title"),
+    description: t("ImmigrationPrograms.familySponsorship.description"),
+    link: "familySponsor",
     imageSrc: family,
   },
   {
-    title: "Caregiver Programs",
-    description:
-      "For workers who provide support to our children, seniors, and others requiring care. For this reason, Canada manages a range of programs to assist caregivers with finding work and obtaining permanent residency through programs such as the Interim Pathway for Caregivers, Home Child Care Provider Pilot and Home Support Worker Pilot.",
+    id: 4,
+    title: t("ImmigrationPrograms.caregiverPrograms.title"),
+    description: t("ImmigrationPrograms.caregiverPrograms.description"),
+    link: "caregiver",
     imageSrc: caregiver,
   },
   {
-    title: "Start-Up Visa Program",
-    description:
-      "For innovative entrepreneurs to establish their businesses in Canada and gain permanent residency. This program is designed for individuals with a viable business idea that has the support of a designated organization, such as a venture capital fund, angel investor group, or business incubator. By fostering innovation and entrepreneurship, the Start-Up Visa Program helps drive economic growth and create jobs in Canada.",
+    id: 5,
+    title: t("ImmigrationPrograms.startUpVisa.title"),
+    description: t("ImmigrationPrograms.startUpVisa.description"),
+    link: "startUpVisa",
     imageSrc: startUp,
   },
   {
-    title: "Self-Employed Program",
-    description:
-      "For individuals with relevant experience in cultural or athletic activities to gain permanent residency in Canada. This program is ideal for those who have demonstrated their ability to be self-employed in fields such as music, writing, visual arts, or professional athletics. By contributing their unique talents, self-employed individuals help enrich Canada’s cultural and athletic landscape.",
+    id: 6,
+    title: t("ImmigrationPrograms.selfEmployed.title"),
+    description: t("ImmigrationPrograms.selfEmployed.description"),
+    link: "selfEmployed",
     imageSrc: selfEmployed,
   },
   {
-    title: "Humanitarian and Compassionate - H&C",
-    description:
-      "For individuals with relevant experience in cultural or athletic activities to gain permanent residency in Canada. This program is ideal for those who have demonstrated their ability to be self-employed in fields such as music, writing, visual arts, or professional athletics. By contributing their unique talents, self-employed individuals help enrich Canada’s cultural and athletic landscape.",
+    id: 7,
+    title: t("ImmigrationPrograms.humanitarian.title"),
+    description: t("ImmigrationPrograms.humanitarian.description"),
+    link: "humanitarianCompassionate",
     imageSrc: humanitarian,
   },
   {
-    title: "Atlantic Immigration Program - AIP",
-    description:
-      "For skilled foreign workers and international graduates to build a new life in one of Canada's vibrant Atlantic provinces: New Brunswick, Nova Scotia, Newfoundland and Labrador, and Prince Edward Island. This program makes it easier for newcomers to settle and contribute to the growth of these welcoming communities.",
+    id: 8,
+    title: t("ImmigrationPrograms.atlanticProgram.title"),
+    description: t("ImmigrationPrograms.atlanticProgram.description"),
+    link: "atlanticImmigration",
     imageSrc: atlantic,
   },
   {
-    title: "Northern Immigration Program - RNIP",
-    description:
-      "For skilled workers to settle in smaller communities across Canada. This program aims to support the economic development of rural and northern regions by attracting newcomers who can fill local labor market gaps. Participating communities, including those in Ontario, Western Canada, and the three territories, provide a welcoming environment for newcomers looking to build a new life.",
+    id: 9,
+    title: t("ImmigrationPrograms.northernProgram.title"),
+    description: t("ImmigrationPrograms.northernProgram.description"),
+    link: "northernImmigration",
     imageSrc: northern,
   },
 ];

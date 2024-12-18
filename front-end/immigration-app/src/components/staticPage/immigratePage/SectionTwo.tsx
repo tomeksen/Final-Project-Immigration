@@ -11,6 +11,7 @@ import { useTranslations } from "next-intl";
 
 export default function SectionTwo() {
   const t = useTranslations("Immigration");
+  const programs = programCards(t);
 
   const fadeInVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -87,7 +88,7 @@ export default function SectionTwo() {
         initial="hidden"
         animate="visible"
       >
-        {programCards.map((program, index) => (
+        {programs.map((program, index) => (
           <motion.div
             key={program.title}
             className="bg-white rounded-lg shadow-lg p-4 hover:shadow-xl transition-shadow max-w-sm mx-auto"
