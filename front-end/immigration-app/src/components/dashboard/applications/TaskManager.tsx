@@ -5,7 +5,7 @@ import HeaderBreadCrumbs from "@/components/common/HeaderBreadCrumbs";
 import { TaskList } from "@/components/TaskList";
 import React, { useEffect, useState } from "react";
 import { MobileTaskList } from "@/components/MobileTaskList";
-import { Category, Task } from "@/type/Applications.type";
+import { Category, Task, TaskComment } from "@/type/Application.type";
 
 type TaskManagerProps = {
   onClose: () => void;
@@ -16,8 +16,8 @@ export function TaskManager({ onClose, applicationId }: TaskManagerProps) {
   const [categories, setCategories] = useState<Category[]>([]);
   const [tasks, setTasks] = useState<Task[]>([]);
   const [selectedTask, setSelectedTask] = useState<Task | null>(null);
+  const [comments, setComments] = useState<Record<number, TaskComment[]>>({});
 
-  // 1 fetch categories based on application_id
   useEffect(() => {
     const fetchCategory = async () => {
       try {
@@ -46,13 +46,14 @@ export function TaskManager({ onClose, applicationId }: TaskManagerProps) {
     fetchCategory();
   }, [applicationId]);
 
-  // 2 fetch tasks based on category_id and pass it to TaskLink
   useEffect(() => {
-    const fetchTasks = async () => {
+    const fetchTasksAndComments = async () => {
       try {
         const tasksData: Task[] = [];
+        const commentsData: Record<number, TaskComment[]> = {};
+
         for (const category of categories) {
-          const response = await fetch(
+          const taskResponse = await fetch(
             `https://immigrationapi.tomytrt.workers.dev/api/tasks/${category.id}`,
             {
               method: "GET",
@@ -62,21 +63,41 @@ export function TaskManager({ onClose, applicationId }: TaskManagerProps) {
             }
           );
 
-          if (!response.ok) {
+          if (!taskResponse.ok) {
             throw new Error("Failed to fetch applications");
           }
-          const data: Task[] = await response.json();
+          const data: Task[] = await taskResponse.json();
 
           tasksData.push(...data);
+
+          for (const task of tasksData) {
+            const commentResponse = await fetch(
+              `https://immigrationapi.tomytrt.workers.dev/api/taskComments/${task.id}`,
+              {
+                method: "GET",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              }
+            );
+
+            if (commentResponse.ok) {
+              const comments: TaskComment[] = await commentResponse.json();
+              commentsData[task.id] = comments;
+            } else {
+              commentsData[task.id] = [];
+            }
+          }
         }
 
         setTasks(tasksData);
+        setComments(commentsData);
       } catch (error) {
-        throw new Error("Failed to fetch applications");
+        throw new Error("Failed to fetch tasks and comments:");
       }
     };
 
-    fetchTasks();
+    fetchTasksAndComments();
   }, [categories]);
 
   const handleTaskClick = (task: Task) => {
@@ -88,15 +109,29 @@ export function TaskManager({ onClose, applicationId }: TaskManagerProps) {
       <HeaderBreadCrumbs rootName="Applications" breadName={"Task Details"} />
 
       <div className="hidden md:flex flex-col">
-        <TaskList onTaskClick={handleTaskClick} tasks={tasks} categories={categories}/>
+        <TaskList
+          onTaskClick={handleTaskClick}
+          tasks={tasks}
+          categories={categories}
+          comments={comments}
+        />
       </div>
 
       <div className="flex md:hidden flex-col">
-        <MobileTaskList onTaskClick={handleTaskClick} tasks={tasks} />
+        <MobileTaskList
+          onTaskClick={handleTaskClick}
+          tasks={tasks}
+          categories={categories}
+          comments={comments}
+        />
       </div>
 
       {selectedTask && (
-        <AppSheet task={selectedTask} onClose={() => setSelectedTask(null)} />
+        <AppSheet
+          task={selectedTask}
+          comments={comments[selectedTask.id]}
+          onClose={() => setSelectedTask(null)}
+        />
       )}
     </section>
   );

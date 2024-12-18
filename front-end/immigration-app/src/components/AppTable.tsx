@@ -14,7 +14,7 @@ import { Progress } from "./ui/progress";
 import Link from "next/link";
 import HeaderBreadCrumbs from "./common/HeaderBreadCrumbs";
 import { useRouter } from "next/navigation";
-import { Application } from "./dashboard/applications/ApplicationsTable";
+import { Application } from "@/type/Application.type";
 
 type AppTableProps = {
   appProps: Application[];

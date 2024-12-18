@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -15,15 +15,19 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Checkbox } from "./ui/checkbox";
-import { Task } from "@/type/Applications.type";
+import { Task, TaskComment } from "@/type/Application.type";
+import { useAuth } from "@clerk/nextjs";
 
 type TaskProps = {
   task: Task | null;
   appearance?: { baseTheme: any };
+  comments: TaskComment[];
   onClose: () => void;
 };
 
-export function AppSheet({ task, onClose }: TaskProps) {
+export function AppSheet({ task, comments, onClose }: TaskProps) {
+  const { userId } = useAuth();
+
   const formattedSteps = (steps: Record<string, string>) => {
     return Object.entries(steps).map(([key, value]) => (
       <li key={key} className="text-sm">
@@ -32,25 +36,13 @@ export function AppSheet({ task, onClose }: TaskProps) {
     ));
   };
 
-  const formattedInstruction = (instructions: Record<string, string>) => {
-    return Object.entries(instructions).map(([key, value]) => (
-      <li key={key} className="text-sm">
-        {key}: {value}
-      </li>
-    ));
-  };
-
   return (
     <div className="grid grid-cols-2 gap-2">
-      {/* {tasks.map((task) => ( */}
       <Sheet
         open={!!task}
         onOpenChange={(open) => !open && onClose()}
         key={"task.id"}
       >
-        {/* <SheetTrigger asChild>
-          <Button variant="outline">{task.title}</Button>
-        </SheetTrigger> */}
         <SheetContent side={"right"}>
           {task && (
             <>
@@ -63,12 +55,6 @@ export function AppSheet({ task, onClose }: TaskProps) {
                     </Label>
                   </div>
                 </SheetTitle>
-                {/* <div>
-              <Label>Task Description:</Label>
-              <SheetDescription className="text-black">
-                Prepare and submit comprehensive project documentation.
-              </SheetDescription>
-            </div> */}
               </SheetHeader>
               <div className="grid gap-4 py-4">
                 <div>
@@ -94,9 +80,21 @@ export function AppSheet({ task, onClose }: TaskProps) {
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="email">Messages:</Label>
-                  <ol className="">
-                    {formattedInstruction(task.instructions)}
-                  </ol>
+                  <ul className="bg-secondary-lightGray rounded-md h-52">
+                    {comments.map((comment) => (
+                      <li
+                        key={comment.id}
+                        className={`text-sm p-2 rounded-lg ${
+                          comment.userId === userId
+                            ? "self-end text-right"
+                            : " self-start text-left"
+                        }`}
+                      >
+                        {comment.commentContent}
+                      </li>
+                    ))}
+                  </ul>
+
                   <Input id="message" placeholder="Ask a question!" />
                 </div>
                 <Button
@@ -110,7 +108,6 @@ export function AppSheet({ task, onClose }: TaskProps) {
           )}
         </SheetContent>
       </Sheet>
-      {/* ))} */}
     </div>
   );
 }
