@@ -71,8 +71,8 @@ export default function PaymentInvoices({ invoices }: Props) {
       <CardContent className="flex flex-col">
         <Table>
           <TableBody>
-            {newInvoices.slice(startItem - 1, endItem).map((invoice) => (
-              <TableRow key={invoice.invoiceId}>
+            {newInvoices.slice(startItem - 1, endItem).map((invoice, idx) => (
+              <TableRow key={idx}>
                 <TableCell className="font-medium text-primary-gray">
                   {invoice.invoiceId}
                 </TableCell>
