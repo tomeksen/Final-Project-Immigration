@@ -131,6 +131,31 @@
       }
     }
   },
+  "FAQ": {
+    "title": "Immigration Frequent Questions",
+    "questions": {
+      "question1": {
+        "title": "What is a Canada Immigration Visa?",
+        "answer": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium molestias omnis veritatis maxime porro quo inventore unde quasi deleniti quibusdam rem ratione sit quidem, enim, necessitatibus consequuntur sapiente modi optio?"
+      },
+      "question2": {
+        "title": "What is the difference between Work Permit and Canada Immigration?",
+        "answer": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium molestias omnis veritatis maxime porro quo inventore unde quasi deleniti quibusdam rem ratione sit quidem, enim, necessitatibus consequuntur sapiente modi optio?"
+      },
+      "question3": {
+        "title": "Can I apply for Permanent Residence status and Temporary status at the same time?",
+        "answer": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium molestias omnis veritatis maxime porro quo inventore unde quasi deleniti quibusdam rem ratione sit quidem, enim, necessitatibus consequuntur sapiente modi optio?"
+      },
+      "question4": {
+        "title": "Is my current immigration status relevant for Canadian immigration purposes?",
+        "answer": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium molestias omnis veritatis maxime porro quo inventore unde quasi deleniti quibusdam rem ratione sit quidem, enim, necessitatibus consequuntur sapiente modi optio?"
+      },
+      "question5": {
+        "title": "Is there any benefit to use an attorney for immigration to Canada?",
+        "answer": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium molestias omnis veritatis maxime porro quo inventore unde quasi deleniti quibusdam rem ratione sit quidem, enim, necessitatibus consequuntur sapiente modi optio?"
+      }
+    }
+  },
   "Sidebar": {
     "Content": {
       "dashboard": "Dashboard",

@@ -9,8 +9,12 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 export default function ImmigrationFAQ() {
+  const t = useTranslations("FAQ");
+  const faqs = FAQ(t);
+
   const fadeInVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: (i: number) => ({
@@ -34,13 +38,13 @@ export default function ImmigrationFAQ() {
     >
       {/* Title */}
       <motion.div variants={fadeInVariants} custom={0} className="mb-8">
-        <SectionTitle text="Immigration Frequent Questions" />
+        <SectionTitle text={t("title")} />
       </motion.div>
 
       {/* Accordion */}
       <motion.div className="w-full" variants={fadeInVariants} custom={1}>
         <Accordion type="single" collapsible className="w-full">
-          {FAQ.map((question, index) => (
+          {faqs.map((question, index) => (
             <motion.div
               key={question.id}
               variants={accordionVariants}

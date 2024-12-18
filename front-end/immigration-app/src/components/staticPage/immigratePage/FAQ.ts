@@ -4,37 +4,30 @@ type FAQ = {
   description: string;
 };
 
-export const FAQ: FAQ[] = [
+export const FAQ = (t: (key: string) => string): FAQ[] => [
   {
     id: "1",
-    title: "What is a Canada Immigration Visa?",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium molestias omnis veritatis maxime porro quo inventore unde quasi deleniti quibusdam rem ratione sit quidem, enim, necessitatibus consequuntur sapiente modi optio?",
+    title: t("questions.question1.title"),
+    description: t("questions.question1.answer"),
   },
   {
     id: "2",
-    title: "What is the difference between Work Permit and Canada Immigration?",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium molestias omnis veritatis maxime porro quo inventore unde quasi deleniti quibusdam rem ratione sit quidem, enim, necessitatibus consequuntur sapiente modi optio?",
+    title: t("questions.question2.title"),
+    description: t("questions.question2.answer"),
   },
   {
     id: "3",
-    title:
-      "Can I apply for Permanent Residence status and Temporary status at the same time?",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium molestias omnis veritatis maxime porro quo inventore unde quasi deleniti quibusdam rem ratione sit quidem, enim, necessitatibus consequuntur sapiente modi optio?",
+    title: t("questions.question3.title"),
+    description: t("questions.question3.answer"),
   },
   {
     id: "4",
-    title:
-      "Is my current immigration status relevant for Canadian immigration purposes?",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium molestias omnis veritatis maxime porro quo inventore unde quasi deleniti quibusdam rem ratione sit quidem, enim, necessitatibus consequuntur sapiente modi optio?",
+    title: t("questions.question4.title"),
+    description: t("questions.question4.answer"),
   },
   {
     id: "5",
-    title: "Is there any benefit to use an attorney for immigration to Canada?",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium molestias omnis veritatis maxime porro quo inventore unde quasi deleniti quibusdam rem ratione sit quidem, enim, necessitatibus consequuntur sapiente modi optio?",
+    title: t("questions.question5.title"),
+    description: t("questions.question5.answer"),
   },
 ];
