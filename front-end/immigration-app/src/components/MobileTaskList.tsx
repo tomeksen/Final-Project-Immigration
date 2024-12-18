@@ -33,10 +33,28 @@ export function MobileTaskList({
   comments,
 }: TaskProps) {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [expandedCategories, setExpandedCategories] = useState<
+    Record<number, boolean>
+  >({});
   // const [imageUrl, setImageUrl] = useState<string | null>();
 
-  const handleToggle = () => {
-    setIsExpanded((prev) => !prev);
+  useEffect(() => {
+    const initialState: Record<number, boolean> = {};
+    categories.forEach((category, index) => {
+      initialState[category.id] = index === 0;
+    });
+    setExpandedCategories(initialState);
+  }, [categories]);
+
+  // const handleToggle = () => {
+  //   setIsExpanded((prev) => !prev);
+  // };
+
+  const handleToggle = (categoryId: number) => {
+    setExpandedCategories((prev) => ({
+      ...prev,
+      [categoryId]: !prev[categoryId],
+    }));
   };
 
   // useEffect(() => {
@@ -57,7 +75,8 @@ export function MobileTaskList({
                 className={`rounded-md cursor-pointer p-2 text-center ${
                   isExpanded ? "bg-gray-700" : ""
                 }`}
-                onClick={handleToggle}
+                // onClick={handleToggle}
+                onClick={() => handleToggle(category.id)}
               >
                 <div className="flex justify-between px-4">
                   <p>{category.categoryName}</p>
@@ -66,7 +85,7 @@ export function MobileTaskList({
               </TableHead>
             </TableRow>
           </TableHeader>
-          {isExpanded && (
+          {expandedCategories[category.id] && (
             <TableBody>
               {/* Count is_completed === true, and divide it by tasks.length */}
               {/* <TableRow>
