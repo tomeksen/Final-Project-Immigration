@@ -84,7 +84,7 @@ export function TaskManager({ onClose, applicationId }: TaskManagerProps) {
   };
 
   return (
-    <section className="h-full container mx-auto flex flex-col p-3 w-full">
+    <section className="h-full container flex flex-col p-4 w-full">
       <HeaderBreadCrumbs rootName="Applications" breadName={"Task Details"} />
 
       <div className="hidden md:flex flex-col">

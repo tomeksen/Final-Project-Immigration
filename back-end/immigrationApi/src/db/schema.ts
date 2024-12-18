@@ -66,9 +66,7 @@ export const applications = sqliteTable('applications', {
   userId: text('userId'),
   applicationName: text('applicationName',{length: 40})
   .notNull(),
-  applicationDate: integer('applicationDate',{mode: 'timestamp'})
-  .default(sql`CURRENT_TIMESTAMP`)
-  .notNull(),
+  applicationDate: text().default(sql`(CURRENT_DATE)`),
   applicationType: text('applicationType',{length:40}),
   applicationStatus: integer('applicationStatus')
 })

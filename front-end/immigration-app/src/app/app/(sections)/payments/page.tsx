@@ -8,6 +8,7 @@ import { apiClientFetch } from "@/config/apiClient";
 import { ERROR_MESSAGES } from "@/config/ErrorMessage";
 import { Application } from "@/type/Application.type";
 import { filteredPayments } from "@/utils/payments";
+import { PaymentManagerTable } from "@/components/dashboard/payments/payment-list";
 
 const PaymentsPage = async () => {
   const user = await currentUser();
@@ -29,7 +30,12 @@ const PaymentsPage = async () => {
     }));
 
     const newPayments = filteredPayments(payments, applicationIds);
-
+    let completedPayments = [];
+    let paymentsData = [];
+    if(isAdminUser) {
+      paymentsData = await apiClientFetch(`payments`); 
+      completedPayments = await apiClientFetch(`payments/getCompletedPayment`);
+    }
     /** example
  * [
     {
@@ -45,9 +51,10 @@ const PaymentsPage = async () => {
       <div className="h-full bg-gray-100">
         {isAdminUser ? (
           <div className="h-full">
+            <PaymentManagerTable payments={paymentsData}/>
             <div className=" flex flex-1 flex-col gap-4 p-4">
               {/* TODO MAKE A REAL SUMMARY*/}
-              <PaymentInvoices invoices={newPayments} />
+              <PaymentInvoices invoices={completedPayments} />
             </div>
             <div className="rounded-xl w-1/4 p-4 h-1/3">
               <PaymentChart payments={newPayments} />

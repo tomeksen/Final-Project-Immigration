@@ -1,20 +1,20 @@
-import { CategoryManagerTable } from "@/components/dashboard/template-manager/category-list";
-import { Category } from "@/type/Applications.type";
+
+import { Payment } from "@/type/Payment.type";
 import { auth } from "@clerk/nextjs/server";
 
-const TemplateCategoryPage = async ({
+const PaymentByIdPage = async ({
   params,
 }: {
-  params: Promise<{ applicationId: string }>
+  params: Promise<{ paymentId: string }>
 }) => {
-  const applicationId = (await params).applicationId;
+  const paymentId = (await params).paymentId;
   const { getToken } = await auth();
   
-    const fetchCategories = async () => {
+    const fetchPaymentById = async () => {
       try {
         const token = await getToken();
         const response = await fetch(
-          `https://immigrationapi.tomytrt.workers.dev/api/categories/${applicationId}`,
+          `https://immigrationapi.tomytrt.workers.dev/api/payments/${paymentId}`,
           {
             method: "GET",
             headers: {
@@ -35,12 +35,12 @@ const TemplateCategoryPage = async ({
       }
     };
 
-      const CategoryList : Category[] = await fetchCategories();
+      const PaymentList : Payment[] = await fetchPaymentById();
   return (
     <div>
-      <CategoryManagerTable applicationId={applicationId} categories={CategoryList} />
+     
     </div>
   );
 };
 
-export default TemplateCategoryPage;
+export default PaymentByIdPage;

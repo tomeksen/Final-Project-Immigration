@@ -1,7 +1,7 @@
 import { Hono } from 'hono'
 import { Env } from '../../../env';
 import { drizzle } from 'drizzle-orm/d1';
-import { eq, lt, gte, ne } from 'drizzle-orm';
+import { eq, lt, gte, ne, asc,desc } from 'drizzle-orm';
 import { applications, payments } from '../../../db/schema';
 import { getAuth } from '@hono/clerk-auth';
 
@@ -11,7 +11,7 @@ paymentRoutes.get('/', async (c) => {
     let db = drizzle(c.env.DB);
     
     try {
-        const result = await db.select().from(payments).all()
+        const result = await db.select().from(payments).orderBy(desc(payments.applicationId)).all()
         return c.json(result);
       } catch (e: any) {
         return c.json({ error: e.message });
@@ -21,7 +21,7 @@ paymentRoutes.get('/', async (c) => {
 
 paymentRoutes.post('/', async (c) => {
   let db = drizzle(c.env.DB);
-  const {amount , paymentDate ,limitDate,title, applicationId,isCompleted} = await c.req.json();
+  const {amount , paymentDate ,limitDate, title, applicationId,isCompleted} = await c.req.json();
   try {
       const result = await db
       .insert(payments).values({
@@ -49,6 +49,16 @@ paymentRoutes.get('/getPaymentUser/:userId', async (c) => {
   const userId = c.req.param("userId");
   try {
       const result = await db.select().from(payments).where(eq(payments.userId , userId)).all()
+      return c.json(result);
+    } catch (e: any) {
+      return c.json({ error: e.message });
+    }}
+);
+
+paymentRoutes.get('/getCompletedPayment', async (c) => {
+  let db = drizzle(c.env.DB);
+  try {
+      const result = await db.select().from(payments).where(eq(payments.isCompleted , true)).all()
       return c.json(result);
     } catch (e: any) {
       return c.json({ error: e.message });

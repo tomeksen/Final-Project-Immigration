@@ -1,43 +1,32 @@
-import { CategoryManagerTable } from "@/components/dashboard/template-manager/category-list";
+'use client'
+
 import { ApplicationManagerForm } from "@/components/dashboard/template-manager/form/applications-form";
+import { CategoryManagerForm } from "@/components/dashboard/template-manager/form/category-form";
+import { TaskManagerForm } from "@/components/dashboard/template-manager/form/task-form";
+import { Category, Task, Application } from "@/type/Applications.type";
+import { useEffect, useState } from "react";
 
-type Application = {
-    id: number;
-    user_id: string;
-    name: string;
-    date: string;
-    type: string;
-    progress: number;
-    status: string;
-  };
-
-  type Category = {
-    id: string;
-    application_id: string;
-    name: string;
-    order: number;
-    status: string;
-  };
-
-   type Task = {
-    id: string;
-    category_id: string;
-    comment_id: string;
-    service_connection_id: string;
-    title: string;
-    is_completed: boolean;
-    dueDate: Date;
-    description: string;
-    steps: string;
-    instruction: string;
-    notes: string;
-  };
+const steps = [
+  { id: 1, name: 'Application' },
+  { id: 2, name: 'Category' },
+  { id: 3, name: 'Task' },
+]
 
 const TemplateApplicationsCreatorPage = () => {
+  const [currentStep, setCurrentStep] = useState(1)
+  const [applications, setApplication] = useState<Application | null>(null)
+  const [categories, setCategories] = useState<Category[]>([])
+  const [tasks, setTasks] = useState<Task[]>([])
+  const submitApplication = (application: Application) => {
+    setApplication(application)
+    setCurrentStep(2)
+  }
+
     return (
             <div>
-                <ApplicationManagerForm/>
-                <CategoryManagerTable CategoryId={"1"}/>
+              { currentStep === 1 && <ApplicationManagerForm addApplication={submitApplication} application={applications}/>}
+              { currentStep === 2 && <CategoryManagerForm />}
+              { currentStep === 3 && <TaskManagerForm />}
             </div>
     )
   };

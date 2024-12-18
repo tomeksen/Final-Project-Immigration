@@ -1,8 +1,8 @@
 export type Application = {
-  id: number;
+  id?: number;
   userId: string;
   applicationName: string;
-  applicationDate: string;
+  applicationDate: Date;
   applicationType: string;
   applicationStatus: string;
 };

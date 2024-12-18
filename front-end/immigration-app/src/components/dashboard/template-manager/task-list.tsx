@@ -14,66 +14,19 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useAuth } from "@clerk/nextjs";
+import { Task } from "@/type/Applications.type";
 
-type Task = {
-    id: string;
-    category_id: string;
-    comment_id: string;
-    service_connection_id: string;
-    title: string;
-    is_completed: boolean;
-    dueDate: Date;
-    description: string;
-    steps: string;
-    instruction: string;
-    notes: string;
-  };
   
 type TaskTableProps = {
+  taskList: Task[];
   CategoryId: string;
-  appearance?: { baseTheme: any };
-  onRowClick?: (task: Task) => void;
 };
 
-export function TaskManagerTable({ CategoryId }: TaskTableProps) {
+export function TaskManagerTable({ CategoryId, taskList }: TaskTableProps) {
   const [selectedTask, setSelectedTask] = useState<Task | null>(
     null
   );
-  const [tasks, setTasks] = useState<Task[]>([]);
-  const [selectedCategory, setSelectedCategory] = useState<Task | null>(
-    null
-    );
 
-  useEffect(() => {
-      const fetchApplications = async () => {
-        try {
-          const { getToken } = useAuth();
-          const token = await getToken();
-          const response = await fetch(
-            `https://immigrationapi.tomytrt.workers.dev/api/tasks/${CategoryId}`,
-            {
-              method: "GET",
-              headers: {
-                Authorization: `Bearer ${token}`,
-                "Content-Type": "application/json",
-              },
-            }
-          );
-  
-          if (!response.ok) {
-            throw new Error("Failed to fetch applications");
-          }
-  
-          const data = await response.json();
-          
-          setTasks(data);
-        } catch (e: any) {
-          throw new Error("Failed to fetch applications");
-        }
-      };
-  
-      fetchApplications();
-    }, []);
   return (
     <div className="p-4 space-y-4">
       <HeaderBreadCrumbs rootName={`Applications > Category > ${CategoryId}`} rootHref={`/template-manager/${CategoryId}`} breadName={CategoryId} />
@@ -86,12 +39,12 @@ export function TaskManagerTable({ CategoryId }: TaskTableProps) {
           <TableRow className="">
             <TableHead className="rounded-tl-md">Number</TableHead>
             <TableHead>title</TableHead>
-            <TableHead>Due Date</TableHead>
+            <TableHead>Description</TableHead>
             <TableHead className="rounded-tr-md">Status</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody className="border">
-          {tasks.map((task, index) => (
+          {taskList.map((task, index) => (
             // jump to tasks
             // <Link href={`/applications/${app.id}`} key={app.id}>
             <TableRow
@@ -103,17 +56,17 @@ export function TaskManagerTable({ CategoryId }: TaskTableProps) {
                 {task.id}
               </TableCell>
               <TableCell className="bg-white">{task.title}</TableCell>
-              <TableCell className="bg-white">{task.dueDate.toString()}</TableCell>
+              <TableCell className="bg-white">{task.description}</TableCell>
 
               <TableCell className="last: rounded-br-md bg-white">
                 <Badge
                   variant={
-                    task.is_completed === true
+                    task.isCompleted === true
                       ? "default"
                       : "destructive"
                   }
                 >
-                  {task.is_completed === true ? "Completed" : "Processing"}
+                  {task.isCompleted === true ? "Completed" : "Processing"}
                 </Badge>
               </TableCell>
             </TableRow>

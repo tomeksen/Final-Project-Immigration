@@ -1,54 +1,28 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
 import { dark } from "@clerk/themes";
 import { useTheme } from "next-themes";
 import Filters from "@/components/Filters";
 import { AppTable } from "@/components/AppTable";
 import HeaderBreadCrumbs from "@/components/common/HeaderBreadCrumbs";
-import { useAuth } from "@clerk/nextjs";
 import { Application } from "@/type/Applications.type";
 
-export function ApplicationsTable() {
+type ApplicationsTableProps = {
+  applications?: Application[];
+};
+
+export function ApplicationsTable({applications}: ApplicationsTableProps) {
   const [sortBy, setSortBy] = useState("");
   const [visaType, setVisaType] = useState("");
   const [status, setStatus] = useState("");
   const [selectedApplication, setSelectedApplication] =
     useState<Application | null>(null);
-  const [applications, setApplications] = useState<Application[]>([]);
   const { theme } = useTheme();
-  const { getToken, userId } = useAuth(); 
 
-
-  useEffect(() => {
-    const fetchApplications = async () => {
-      try {
-        const token = await getToken();
-        const response = await fetch(
-          `https://immigrationapi.tomytrt.workers.dev/api/applications/${userId}`,
-          {
-            method: "GET",
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "Content-Type": "application/json",
-            },
-          }
-        );
-
-        if (!response.ok) {
-          throw new Error("Failed to fetch applications");
-        }
-
-        const data = await response.json();
-        setApplications(data);
-      } catch (e: any) {
-        throw new Error("Failed to fetch applications");
-      }
-    };
-
-    fetchApplications();
-  }, [userId, getToken]);
+  if (!applications) { 
+    applications = [];
+  }
 
   const resetFilters = () => {
     setSortBy("");

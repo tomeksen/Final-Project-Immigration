@@ -1,15 +1,20 @@
-import { ApplicationsTable } from "@/components/dashboard/applications/ApplicationsTable";
-import { Application } from "@/type/Applications.type";
+import { TaskManagerTable } from "@/components/dashboard/template-manager/task-list";
+import { Task } from "@/type/Applications.type";
 import { auth } from "@clerk/nextjs/server";
 
-const ApplicationsPage =  async () => {
-  const { userId, getToken } = await auth();
+const TemplateTaskPage = async ({
+  params,
+}: {
+  params: Promise<{ taskId: string }>
+}) => {
+  const taskId = (await params).taskId;
+    const {  getToken } = await auth();
 
-  const fetchApplications = async () => {
+  const fetchTaskById = async () => {
     try {
       const token = await getToken();
       const response = await fetch(
-        `https://immigrationapi.tomytrt.workers.dev/api/applications/${userId}`,
+        `https://immigrationapi.tomytrt.workers.dev/api/tasks/getTasksById/${taskId}`,
         {
           method: "GET",
           headers: {
@@ -29,13 +34,13 @@ const ApplicationsPage =  async () => {
       throw new Error("Failed to fetch applications");
     }
   };
-
-  const applicationList : Application[] = await fetchApplications();
+    const TaskList : Task[] = await fetchTaskById();
+  
   return (
-    <>
-      <ApplicationsTable applications={applicationList}/>
-    </>
+    <div>
+      
+    </div>
   );
 };
 
-export default ApplicationsPage;
+export default TemplateTaskPage;

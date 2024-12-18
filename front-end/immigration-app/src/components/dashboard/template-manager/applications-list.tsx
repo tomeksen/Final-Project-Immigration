@@ -11,65 +11,23 @@ import {
     TableHeader,
     TableRow,
   } from "@/components/ui/table";
-import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { useAuth } from "@clerk/nextjs";
+import { Application } from "@/type/Applications.type";
 
-type Application = {
-  id: number;
-  user_id: string;
-  applicationName: string;
-  applicationDate: string;
-  applicationType: string;
-  progress: number;
-  applicationStatus: string;
-};
 
 type AppTableProps = {
-    appProps: Application[];
-    appearance?: { baseTheme: any };
-    onRowClick: (application: Application) => void;
+    applications?: Application[];
   };
 
-export function ApplicationsManagerTable() {
+export function ApplicationsManagerTable({applications}: AppTableProps) {
   const router = useRouter();
-  const [applications, setApplications] = useState<Application[]>([]);
   const [selectedApplication, setSelectedApplication] = useState<Application | null>(null);
-  const { getToken } = useAuth(); //add id? to use clerkId
-
-    
-    useEffect(() => {
-      const fetchApplications = async () => {
-        try {
-          const token = await getToken();
-          const response = await fetch(
-            `https://immigrationapi.tomytrt.workers.dev/api/applications`,
-            {
-              method: "GET",
-              headers: {
-                Authorization: `Bearer ${token}`,
-                "Content-Type": "application/json",
-              },
-            }
-          );
-  
-          if (!response.ok) {
-            throw new Error("Failed to fetch applications");
-          }
-  
-          const data = await response.json();
-          console.log(data);
-          setApplications(data);
-        } catch (e: any) {
-          throw new Error("Failed to fetch applications");
-        }
-      };
-  
-      fetchApplications();
-    }, []);
+  if (!applications) { 
+    applications = [];
+  }
 
     useEffect(() => {
         if(selectedApplication){
@@ -84,6 +42,12 @@ export function ApplicationsManagerTable() {
       <Button  asChild>
         <Link href="/template-manager/creator">Create New Application</Link>
       </Button>
+      <Button variant="outline" className="mx-3" asChild>
+        <Link href="/template-manager/category">Manage Categories</Link>
+      </Button>
+      <Button variant="outline" asChild>
+        <Link href="/template-manager/tasks">Manage Tasks</Link>
+      </Button>
       <Table>
       <TableHeader className="bg-[#5E5E5E] text-primary-white ">
         {/* Give it Link */}
@@ -92,7 +56,6 @@ export function ApplicationsManagerTable() {
           <TableHead>Name</TableHead>
           <TableHead>Date</TableHead>
           <TableHead>Type</TableHead>
-          <TableHead>Progress</TableHead>
           <TableHead className="rounded-tr-md">Status</TableHead>
         </TableRow>
       </TableHeader>
@@ -111,9 +74,6 @@ export function ApplicationsManagerTable() {
             <TableCell className="bg-white">{app.applicationName}</TableCell>
             <TableCell className="bg-white">{app.applicationDate}</TableCell>
             <TableCell className="bg-white">{app.applicationType}</TableCell>
-            <TableCell className="bg-white">
-              <Progress value={app.progress} className="w-[100px] " />
-            </TableCell>
             <TableCell className="last: rounded-br-md bg-white">
               <Badge
                 variant={

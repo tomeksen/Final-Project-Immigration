@@ -10,71 +10,31 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Badge } from "@/components/ui/badge";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { useAuth } from "@clerk/nextjs";
-
-type Category = {
-  id: string;
-  application_id: string;
-  categoryName: string;
-  order: number;
-};
+import { Category } from "@/type/Applications.type";
 
 type CategoryTableProps = {
-  CategoryId: string;
-  appearance?: { baseTheme: any };
-  onRowClick?: (category: Category) => void;
+  categories: Category[];
+  applicationId: string;
 };
 
-export function CategoryManagerTable({ CategoryId }: CategoryTableProps) {
+export function CategoryManagerTable({ categories,applicationId }: CategoryTableProps) {
     const router = useRouter();
-    const [categories, setCategories] = useState<Category[]>([]);
     const [selectedCategory, setSelectedCategory] = useState<Category | null>(
       null
-      );
-
-  useEffect(() => {
-    const fetchApplications = async () => {
-      const { getToken } = useAuth();
-      try {
-        const token = await getToken();
-        const response = await fetch(
-          `https://immigrationapi.tomytrt.workers.dev/api/categories/${CategoryId}`,
-          {
-            method: "GET",
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "Content-Type": "application/json",
-            },
-          }
-        );
-
-        if (!response.ok) {
-          throw new Error("Failed to fetch applications");
-        }
-
-        const data = await response.json();
-        console.log(data);
-        setCategories(data);
-      } catch (e: any) {
-        throw new Error("Failed to fetch applications");
-      }
-    };
-
-    fetchApplications();
-  }, []);
+      );  
 
     useEffect(() => {
         if(selectedCategory){
-            router.push(`/template-manager/${CategoryId}/${selectedCategory.id}`);
+            router.push(`/template-manager/${applicationId}/${selectedCategory.id}`);
         }
     },[selectedCategory]);  
+
     return (
     <div className="p-4 space-y-4">
-      <HeaderBreadCrumbs rootName={"Applications"} rootHref={`/template-manager`} breadName={`Category > ${CategoryId}`}/>
+      <HeaderBreadCrumbs rootName={"Applications"} rootHref={`/template-manager`} breadName={`Category > ${applicationId}`}/>
       <Button  asChild>
         <Link href="/template-manager/creator">Create New Category</Link>
       </Button>
