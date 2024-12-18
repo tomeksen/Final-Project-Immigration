@@ -1,12 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { dark } from "@clerk/themes";
 import { useTheme } from "next-themes";
 import Filters from "@/components/Filters";
 import { AppTable } from "@/components/AppTable";
 import HeaderBreadCrumbs from "@/components/common/HeaderBreadCrumbs";
 import { Application } from "@/type/Applications.type";
+import { TaskManager } from "./TaskManager";
+import { useAuth } from "@clerk/nextjs";
 
 type ApplicationsTableProps = {
   applications?: Application[];
@@ -70,11 +72,13 @@ export function ApplicationsTable({applications}: ApplicationsTableProps) {
         appearance={theme === "dark" ? { baseTheme: dark } : undefined}
       />
 
-      <AppTable
-        appProps={filteredApplications}
-        onRowClick={setSelectedApplication}
-        appearance={theme === "dark" ? { baseTheme: dark } : undefined}
-      />
+      <Suspense fallback={<div>Loading...</div>} >
+        <AppTable
+          appProps={filteredApplications}
+          onRowClick={setSelectedApplication}
+          appearance={theme === "dark" ? { baseTheme: dark } : undefined}
+        />
+        </Suspense>
     </div>
   );
 }
