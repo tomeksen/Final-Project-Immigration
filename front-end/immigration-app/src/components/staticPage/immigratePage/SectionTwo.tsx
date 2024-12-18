@@ -1,15 +1,17 @@
 "use client";
 import React from "react";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
-import { immigrationOptions } from "./immigrationOptions";
 import { programCards } from "./programCards";
 import Image from "next/image";
 import Link from "next/link";
 import SectionTitle from "@/components/SectionTitle";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 export default function SectionTwo() {
+  const t = useTranslations("Immigration");
+
   const fadeInVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: (i: number) => ({
@@ -18,6 +20,7 @@ export default function SectionTwo() {
       transition: { delay: i * 0.2, duration: 0.6, ease: "easeOut" },
     }),
   };
+
   const fadeInUpVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: (i: number) => ({
@@ -26,6 +29,24 @@ export default function SectionTwo() {
       transition: { delay: i * 0.2, duration: 0.6, ease: "easeOut" },
     }),
   };
+
+  // Generate immigrationOptions dynamically with translations
+  const immigrationOptions = [
+    { id: 1, title: t("DiscoverOptions.option1"), link: "expressEntry" },
+    { id: 2, title: t("DiscoverOptions.option2"), link: "provincialNominee" },
+    { id: 3, title: t("DiscoverOptions.option3"), link: "familySponsor" },
+    { id: 4, title: t("DiscoverOptions.option4"), link: "caregiver" },
+    { id: 5, title: t("DiscoverOptions.option5"), link: "startUpVisa" },
+    { id: 6, title: t("DiscoverOptions.option6"), link: "selfEmployed" },
+    {
+      id: 7,
+      title: t("DiscoverOptions.option7"),
+      link: "humanitarianCompassionate",
+    },
+    { id: 8, title: t("DiscoverOptions.option8"), link: "atlanticImmigration" },
+    { id: 9, title: t("DiscoverOptions.option9"), link: "northernImmigration" },
+  ];
+
   return (
     <motion.div
       className="px-4 sm:px-8 lg:px-16 pb-10"
@@ -35,8 +56,9 @@ export default function SectionTwo() {
     >
       {/* Title */}
       <motion.div variants={fadeInVariants} custom={0} className="mb-8">
-        <SectionTitle text="Discover all your options" />
+        <SectionTitle text={t("DiscoverOptions.title")} />
       </motion.div>
+
       {/* Filter Buttons */}
       <motion.div
         className="flex flex-wrap gap-2 justify-center sm:justify-start mb-8"
@@ -50,7 +72,6 @@ export default function SectionTwo() {
             custom={index}
           >
             <Button
-              key={option.id}
               variant="outline"
               className="px-4 py-2 text-gray-800 bg-gray-100 hover:bg-gray-200 rounded-full text-sm"
             >

@@ -88,7 +88,20 @@
     "Footer": {
       "settings": "Configurações",
       "faq": "Perguntas Frequentes",
-      "logout": "Sair"
+      "logout": "Sair",
+      "Services": {
+        "title": "Serviços",
+        "immigrate": "Imigrar",
+        "work": "Trabalhar",
+        "study": "Estudar",
+        "sponsor": "Patrocinar"
+      },
+      "Company": {
+        "title": "Empresa",
+        "about": "Sobre",
+        "contact": "Contato",
+        "copyRight": "© Up Immigration Consulting. Todos os direitos reservados"
+      }
     }
   },
   "LocaleSwitcher": {

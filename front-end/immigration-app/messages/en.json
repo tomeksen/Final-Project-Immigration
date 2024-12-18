@@ -75,6 +75,24 @@
       }
     }
   },
+  "Immigration": {
+    "sectionTitle": "Do you want to immigrate to Canada?",
+    "sectionParagraph": "Canada is a top destination for individuals and families seeking new opportunities. With over 80 immigration programs available, including options for skilled workers, Labour Market Impact Assessments (LMIA), Provincial Nominee Programs (PNP), and family reunification, there are numerous pathways to becoming a permanent resident.",
+    "sectionParagraph2": "Our team at Up Immigration is here to guide you through the process, helping you find the program that best suits your needs for a successful transition to your new life in Canada. Contact us today to start your journey to Canada with confidence.",
+    "sectionButton": "Book a consultation",
+    "DiscoverOptions": {
+      "title": "Discover all your options",
+      "option1": "Express Entry",
+      "option2": "Provincial Nominee",
+      "option3": "Family Sponsor",
+      "option4": "Caregiver",
+      "option5": "Start-Up Visa",
+      "option6": "Self-Employed",
+      "option7": "Humanitarian & Compassionate",
+      "option8": "Atlantic Immigration",
+      "option9": "Northern Immigration"
+    }
+  },
   "Sidebar": {
     "Content": {
       "dashboard": "Dashboard",
@@ -90,7 +108,20 @@
     "Footer": {
       "settings": "Settings",
       "faq": "FAQ",
-      "logout": "Logout"
+      "logout": "Logout",
+      "Services": {
+        "title": "Services",
+        "immigrate": "Immigrate",
+        "work": "Work",
+        "study": "Study",
+        "sponsor": "Sponsor"
+      },
+      "Company": {
+        "title": "Company",
+        "about": "About",
+        "contact": "Contact",
+        "copyRight": "© Up Immigration Consulting. All Rights Reserved"
+      }
     }
   },
   "LocaleSwitcher": {

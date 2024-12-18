@@ -6,8 +6,10 @@ import { CiFacebook } from "react-icons/ci";
 import { RiLinkedinBoxLine } from "react-icons/ri";
 import Services from "./Services";
 import Company from "./Company";
+import { useTranslations } from "next-intl";
 
 export default function Footer() {
+  const t = useTranslations("Sidebar");
   return (
     <footer className="bg-primary-red py-8 px-4 md:px-10 text-white">
       <div className="container mx-auto items-center flex flex-col justify-between gap-8 sm:flex-col md:flex-row">
@@ -52,7 +54,7 @@ export default function Footer() {
 
       {/* Footer Copyright */}
       <div className="flex justify-end mt-6 md:mt-8 text-center text-sm">
-        <p>© Up Immigration Consulting. All Rights Reserved</p>
+        <p>{t("Company.copyRight")}</p>
       </div>
     </footer>
   );
