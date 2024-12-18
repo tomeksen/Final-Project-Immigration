@@ -12,7 +12,6 @@ import { PaymentManagerTable } from "@/components/dashboard/payments/payment-lis
 import { apiServerFetch } from "@/config/apiServer";
 import { Suspense } from "react";
 import LottieLoading from "@/components/common/LottieLoading";
-import { apiClientFetch } from "@/config/apiClient";
 
 const PaymentsPage = async () => {
   const user = await currentUser();

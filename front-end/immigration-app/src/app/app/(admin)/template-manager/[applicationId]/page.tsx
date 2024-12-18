@@ -38,7 +38,6 @@ const TemplateCategoryPage = async ({
       const CategoryList : Category[] = await fetchCategories();
   return (
     <div>
-      <CategoryManagerTable applicationId={applicationId} categories={CategoryList} />
     </div>
   );
 };
