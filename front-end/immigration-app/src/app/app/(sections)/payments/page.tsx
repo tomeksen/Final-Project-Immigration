@@ -14,7 +14,6 @@ const PaymentsPage = async () => {
   const isAdminUser = user?.publicMetadata?.role === "admin" ? true : false;
   const userId = user?.id;
   // const userId = "1";
-
   try {
     // fetch all the payment data
     const payments = await apiClientFetch(

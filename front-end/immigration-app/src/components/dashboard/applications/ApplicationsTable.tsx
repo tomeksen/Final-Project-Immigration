@@ -7,63 +7,8 @@ import { useTheme } from "next-themes";
 import Filters from "@/components/Filters";
 import { AppTable } from "@/components/AppTable";
 import HeaderBreadCrumbs from "@/components/common/HeaderBreadCrumbs";
-import { TaskManager } from "./TaskManager";
 import { useAuth } from "@clerk/nextjs";
 import { Application } from "@/type/Applications.type";
-
-// export type Application = {
-//   id: number;
-//   userId: string;
-//   applicationName: string;
-//   applicationDate: string;
-//   applicationType: string;
-//   applicationStatus: string;
-// };
-
-// // fetch data from DB based on user_id
-// export const applications: Application[] = [
-//   // this is a dummy data
-//   {
-//     id: 1,
-//     userId: "001",
-//     applicationName: "Maria_CICCC_181",
-//     applicationDate: "04 Apr 2023",
-//     applicationType: "Student",
-//     applicationStatus: "Completed",
-//   },
-//   {
-//     id: 2,
-//     userId: "002",
-//     applicationName: "Maria_CICCC_UX/UI",
-//     applicationDate: "15 Nov 2023",
-//     applicationType: "Student",
-//     applicationStatus: "Rejected",
-//   },
-//   {
-//     id: 3,
-//     userId: "003",
-//     applicationName: "Maria_CICCC_UX/UI_2",
-//     applicationDate: "08 Jul 2024",
-//     applicationType: "Student",
-//     applicationStatus: "Processing",
-//   },
-//   {
-//     id: 4,
-//     userId: "004",
-//     applicationName: "Maria_Work Permit",
-//     applicationDate: "09 Jul 2024",
-//     applicationType: "Work Permit",
-//     applicationStatus: "On Hold",
-//   },
-//   {
-//     id: 5,
-//     userId: "005",
-//     applicationName: "Carry_Visitor",
-//     applicationDate: "09 Jul 2024",
-//     applicationType: "Visitor",
-//     applicationStatus: "Processing",
-//   },
-// ];
 
 export function ApplicationsTable() {
   const [sortBy, setSortBy] = useState("");
@@ -73,9 +18,8 @@ export function ApplicationsTable() {
     useState<Application | null>(null);
   const [applications, setApplications] = useState<Application[]>([]);
   const { theme } = useTheme();
-  const { getToken, userId } = useAuth(); //add id? to use clerkId
+  const { getToken, userId } = useAuth(); 
 
-  // use clerkId later
 
   useEffect(() => {
     const fetchApplications = async () => {

@@ -21,11 +21,11 @@ import { useAuth } from "@clerk/nextjs";
 type Application = {
   id: number;
   user_id: string;
-  name: string;
-  date: string;
-  type: string;
+  applicationName: string;
+  applicationDate: string;
+  applicationType: string;
   progress: number;
-  status: string;
+  applicationStatus: string;
 };
 
 type AppTableProps = {
@@ -61,6 +61,7 @@ export function ApplicationsManagerTable() {
           }
   
           const data = await response.json();
+          console.log(data);
           setApplications(data);
         } catch (e: any) {
           throw new Error("Failed to fetch applications");
@@ -107,25 +108,25 @@ export function ApplicationsManagerTable() {
             <TableCell className="last: rounded-bl-md bg-white">
               {index + 1}
             </TableCell>
-            <TableCell className="bg-white">{app.name}</TableCell>
-            <TableCell className="bg-white">{app.date}</TableCell>
-            <TableCell className="bg-white">{app.type}</TableCell>
+            <TableCell className="bg-white">{app.applicationName}</TableCell>
+            <TableCell className="bg-white">{app.applicationDate}</TableCell>
+            <TableCell className="bg-white">{app.applicationType}</TableCell>
             <TableCell className="bg-white">
               <Progress value={app.progress} className="w-[100px] " />
             </TableCell>
             <TableCell className="last: rounded-br-md bg-white">
               <Badge
                 variant={
-                  app.status === "Completed"
+                  app.applicationStatus === "Completed"
                     ? "default"
-                    : app.status === "Rejected"
+                    : app.applicationStatus === "Rejected"
                     ? "destructive"
-                    : app.status === "Processing"
+                    : app.applicationStatus === "Processing"
                     ? "secondary"
                     : "outline"
                 }
               >
-                {app.status}
+                {app.applicationStatus}
               </Badge>
             </TableCell>
           </TableRow>
