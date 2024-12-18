@@ -1,63 +1,30 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
+import { Suspense, useEffect, useState } from "react";
 import { dark } from "@clerk/themes";
 import { useTheme } from "next-themes";
 import Filters from "@/components/Filters";
 import { AppTable } from "@/components/AppTable";
 import HeaderBreadCrumbs from "@/components/common/HeaderBreadCrumbs";
+import { Application } from "@/type/Applications.type";
 import { TaskManager } from "./TaskManager";
 import { useAuth } from "@clerk/nextjs";
-import { Application } from "@/type/Application.type";
 
+type ApplicationsTableProps = {
+  applications?: Application[];
+};
 
-export function ApplicationsTable() {
+export function ApplicationsTable({applications}: ApplicationsTableProps) {
   const [sortBy, setSortBy] = useState("");
   const [visaType, setVisaType] = useState("");
   const [status, setStatus] = useState("");
   const [selectedApplication, setSelectedApplication] =
     useState<Application | null>(null);
-  const [applications, setApplications] = useState<Application[]>([]);
   const { theme } = useTheme();
-  const { getToken, userId } = useAuth(); //add id? to use clerkId
-  const [isLoading, setIsLoading] = useState(false);
 
-
-  const fetchApplications = async () => {
-    try {
-      setIsLoading(true);
-      setApplications([]);
-      const token = await getToken();
-      const response = await fetch(
-        `https://immigrationapi.tomytrt.workers.dev/api/applications/${userId}`,
-        {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error("Failed to fetch applications");
-      }
-
-      const data = await response.json();
-      setApplications(data);
-    } catch (e: any) {
-      throw new Error("Failed to fetch applications");
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    if (userId) {
-      fetchApplications();
-    }
-  }, [userId, getToken]);
+  if (!applications) { 
+    applications = [];
+  }
 
   const resetFilters = () => {
     setSortBy("");
@@ -91,7 +58,7 @@ export function ApplicationsTable() {
     });
 
   return (
-    <div key={userId} className="p-4 space-y-4">
+    <div className="p-4 space-y-4">
       <HeaderBreadCrumbs rootName={"Applications"} />
 
       <Filters
@@ -104,15 +71,14 @@ export function ApplicationsTable() {
         resetFilters={resetFilters}
         appearance={theme === "dark" ? { baseTheme: dark } : undefined}
       />
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : (
+
+      <Suspense fallback={<div>Loading...</div>} >
         <AppTable
           appProps={filteredApplications}
           onRowClick={setSelectedApplication}
           appearance={theme === "dark" ? { baseTheme: dark } : undefined}
         />
-      )}
+        </Suspense>
     </div>
   );
 }

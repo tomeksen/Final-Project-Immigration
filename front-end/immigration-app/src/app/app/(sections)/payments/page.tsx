@@ -8,6 +8,7 @@ import { currentUser } from "@clerk/nextjs/server";
 import { ERROR_MESSAGES } from "@/config/ErrorMessage";
 import { Application } from "@/type/Application.type";
 import { filteredPayments } from "@/utils/payments";
+import { PaymentManagerTable } from "@/components/dashboard/payments/payment-list";
 import { apiServerFetch } from "@/config/apiServer";
 import { Suspense } from "react";
 import LottieLoading from "@/components/common/LottieLoading";
@@ -17,7 +18,6 @@ const PaymentsPage = async () => {
   const isAdminUser = user?.publicMetadata?.role === "admin" ? true : false;
   const userId = user?.id;
   // const userId = "1";
-
   try {
     // fetch all the payment data
     const payments = await apiServerFetch(
@@ -33,7 +33,12 @@ const PaymentsPage = async () => {
     }));
 
     const newPayments = filteredPayments(payments, applicationIds);
-
+    let completedPayments = [];
+    let paymentsData = [];
+    if(isAdminUser) {
+      paymentsData = await apiServerFetch(`payments`); 
+      completedPayments = await apiServerFetch(`payments/getCompletedPayment`);
+    }
     /** example
  * [
     {
@@ -50,9 +55,10 @@ const PaymentsPage = async () => {
         <div className="h-full bg-gray-100">
           {isAdminUser ? (
             <div className="h-full">
+                <PaymentManagerTable payments={paymentsData}/>
               <div className=" flex flex-1 flex-col gap-4 p-4">
-                {/* TODO MAKE A REAL SUMMARY*/}
-                <PaymentInvoices invoices={newPayments} />
+              {/* TODO MAKE A REAL SUMMARY*/}
+                <PaymentInvoices invoices={completedPayments} />
               </div>
               <div className="rounded-xl w-1/4 p-4 h-1/3">
                 <PaymentChart payments={newPayments} />

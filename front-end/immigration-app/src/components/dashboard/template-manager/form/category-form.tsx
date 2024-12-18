@@ -1,17 +1,11 @@
 'use client'
 
-type Category = {
-    id: string;
-    application_id: string;
-    name: string;
-    order: number;
-    status: string;
-  };
-  
+import { Category } from "@/type/Applications.type";
+
 export function CategoryManagerForm() {
   return (
     <div>
-
+      
     </div>
   );
 }

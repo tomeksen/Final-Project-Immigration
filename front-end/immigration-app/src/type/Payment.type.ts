@@ -7,6 +7,7 @@ export type Payment = {
   limitDate: string;
   paymentDate: string;
 };
+
 export type PaymentFiltered = {
   invoiceId: string;
   title: string;

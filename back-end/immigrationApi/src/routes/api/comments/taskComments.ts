@@ -19,13 +19,14 @@ taskCommentsRoutes.get('/', async (c) => {
 
 taskCommentsRoutes.post('/', async (c) => {
   let db = drizzle(c.env.DB);
-  const { isRead, taskId, commentContent} = await c.req.json();
+  const { isRead, taskId, commentContent,userId} = await c.req.json();
   try {
       const result = await db
       .insert(taskComments).values({
         taskId: Number(taskId),
         isRead,
-        commentContent
+        commentContent,
+        userId
       }).returning();
       return c.json(result);
     } catch (e: any) {
