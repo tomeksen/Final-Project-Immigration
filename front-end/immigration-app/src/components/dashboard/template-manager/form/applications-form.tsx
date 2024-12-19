@@ -69,29 +69,7 @@ export function ApplicationManagerForm({ application,addApplication }: applicati
   async function onSubmit(values: z.infer<typeof formSchema>) {
     addApplication(values);
     return;
-    try {
-      const response = await fetch(
-        `https://immigrationapi.tomytrt.workers.dev/api/applications`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(values),
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error("Failed to create application");
-      }
-
-      const result = await response.json();
-      toast.success("Application created successfully!");
-      form.reset(); 
-    } catch (e: any) {
-      toast.error("Failed to create application");
-      console.error("Failed to create application", e);
-    } 
+    
   }
 
   return (

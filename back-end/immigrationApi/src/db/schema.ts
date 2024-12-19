@@ -176,9 +176,7 @@ export const payments = sqliteTable('payments', {
   applicationId: integer('applicationId').references((): AnySQLiteColumn => applications.id),
   isCompleted: integer('isCompleted',{mode:'boolean'}).default(false),
   // timestamp is set on insert
-  paymentDate: text('paymentDate')
-    .default(sql`CURRENT_TIMESTAMP`)
-    .notNull(),
+  paymentDate: text('paymentDate'),
   userId: text('userId'),
   limitDate: text().default(sql`(CURRENT_DATE)`)
   .notNull(),

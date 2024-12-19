@@ -28,7 +28,7 @@ export function UserSelector({ onSelect }: UserSelectorProps) {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("");
   const [users, setUsers] = useState<any>([]);
-  
+
   useEffect(() => {
       const fetchUsers = async() => {
         try {
