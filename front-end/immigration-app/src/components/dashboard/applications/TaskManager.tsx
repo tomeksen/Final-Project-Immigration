@@ -5,7 +5,7 @@ import HeaderBreadCrumbs from "@/components/common/HeaderBreadCrumbs";
 import { TaskList } from "@/components/TaskList";
 import React, { useEffect, useState } from "react";
 import { MobileTaskList } from "@/components/MobileTaskList";
-import { Category, Task, TaskComment } from "@/type/Application.type";
+import { Category, Task, TaskComment } from "@/type/Applications.type";
 
 type TaskManagerProps = {
   onClose: () => void;
@@ -83,9 +83,13 @@ export function TaskManager({ onClose, applicationId }: TaskManagerProps) {
 
             if (commentResponse.ok) {
               const comments: TaskComment[] = await commentResponse.json();
-              commentsData[task.id] = comments;
+              if (task.id !== undefined) {
+                commentsData[task.id] = comments;
+              }
             } else {
-              commentsData[task.id] = [];
+              if (task.id !== undefined) {
+                commentsData[task.id] = [];
+              }
             }
           }
         }
@@ -129,7 +133,7 @@ export function TaskManager({ onClose, applicationId }: TaskManagerProps) {
       {selectedTask && (
         <AppSheet
           task={selectedTask}
-          comments={comments[selectedTask.id]}
+          comments={selectedTask.id !== undefined ? comments[selectedTask.id] : []}
           onClose={() => setSelectedTask(null)}
         />
       )}

@@ -24,17 +24,7 @@ const Test1Page = () => {
   ];
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex h-full w-full gap-4 p-4 mx-auto">
-        <AppProgressChart />
-        <AppPaymentSwiper swiperType="sm" />
-      </div>
-      <MobileCalendar bookedDays={bookedDays} />
-      <div>
-        <div className="container mx-auto gap-2 flex items-stretch">
-          <SideSchedule />
-          <DesktopCalendar bookedDays={bookedDays} />
-        </div>
-      </div>
+
     </div>
   );
 };

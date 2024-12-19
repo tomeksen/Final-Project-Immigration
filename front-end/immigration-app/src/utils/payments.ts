@@ -25,7 +25,7 @@ export const filteredPayments = (
       applicationIdMap.get(payment.applicationId) || "Unknown Application",
     title: payment.title,
     amount: Number(payment.amount),
-    paymentDate: payment.paymentDate,
+    paymentDate: payment.paymentDate || "",
     isCompleted: payment.isCompleted,
   }));
 };

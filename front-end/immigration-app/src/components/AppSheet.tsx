@@ -15,7 +15,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Checkbox } from "./ui/checkbox";
-import { Task, TaskComment } from "@/type/Application.type";
+import { Task, TaskComment } from "@/type/Applications.type";
 import { useAuth } from "@clerk/nextjs";
 
 type TaskProps = {

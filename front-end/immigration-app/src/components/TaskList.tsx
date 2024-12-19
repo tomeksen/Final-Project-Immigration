@@ -15,7 +15,7 @@ import { BiCommentDots } from "react-icons/bi";
 import { GoPaperclip } from "react-icons/go";
 import HeaderBreadCrumbs from "./common/HeaderBreadCrumbs";
 import { getUserImage } from "./dashboard/applications/getUserImage";
-import { Category, Task, TaskComment } from "@/type/Application.type";
+import { Category, Task, TaskComment } from "@/type/Applications.type";
 import { useAuth } from "@clerk/nextjs";
 
 type TaskProps = {
@@ -71,7 +71,7 @@ export function TaskList({
                           <div className="flex items-center justify-center text-[]">
                             <BiCommentDots className="mr-3" />
                             <p className="mr-6">
-                              {comments[task.id]?.length || 0}
+                              {task.id !== undefined ? comments[task.id]?.length || 0 : 0}
                             </p>
                             <GoPaperclip className="mr-3" />
                             <p className="mr-6">0</p>

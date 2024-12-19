@@ -28,7 +28,7 @@ export type Task = {
 };
 
 export type TaskComment = {
-  id: number;
+  id?: number;
   taskId: number;
   isRead: boolean;
   commentContent: string;

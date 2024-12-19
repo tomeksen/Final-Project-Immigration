@@ -6,7 +6,7 @@ import PaymentInvoices from "./_components/PaymentInvoices";
 import { currentUser } from "@clerk/nextjs/server";
 
 import { ERROR_MESSAGES } from "@/config/ErrorMessage";
-import { Application } from "@/type/Application.type";
+import { Application } from "@/type/Applications.type";
 import { filteredPayments } from "@/utils/payments";
 import { PaymentManagerTable } from "@/components/dashboard/payments/payment-list";
 import { apiServerFetch } from "@/config/apiServer";

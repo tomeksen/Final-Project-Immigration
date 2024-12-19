@@ -11,10 +11,15 @@ import { MessageSquare, Paperclip, Trash2 } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Progress } from "@/components/ui/progress";
 import { useUser } from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
 
 const DashboardHome = () => {
+  const router = useRouter();
   const user = useUser();
   const isAdminUser = user?.user?.publicMetadata.role === "admin"? true : false;
+  if(isAdminUser){
+    router.push("/template-manager");
+  }
   const bookedDays = [
     {
       startDate: new Date(2024, 10, 5),
@@ -102,7 +107,7 @@ const DashboardHome = () => {
               <AppProgressChart/>
             </div>
             <div className="rounded-xl bg-muted/50 xl:col-span-1 xl:grid-rows-1 max-h-[350px]">
-              <AppPaymentSwiper swiperType="sm"/>
+              <AppPaymentSwiper swiperType="sm" payments={[]}/>
             </div>
             {/* Row 2 */}
             <div className="rounded-xl bg-muted/50 xl:col-span-1 xl:row-span-1 mt-[-80px] h-full">
