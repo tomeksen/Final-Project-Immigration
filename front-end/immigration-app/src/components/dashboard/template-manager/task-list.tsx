@@ -13,25 +13,33 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { useAuth } from "@clerk/nextjs";
 import { Task } from "@/type/Applications.type";
+import { useRouter } from "next/navigation";
 
   
 type TaskTableProps = {
   taskList: Task[];
-  CategoryId: string;
+  categoryId: string;
+  applicationId: string;
 };
 
-export function TaskManagerTable({ CategoryId, taskList }: TaskTableProps) {
+export function TaskManagerTable({ categoryId, taskList , applicationId}: TaskTableProps) {
+  const router = useRouter();
   const [selectedTask, setSelectedTask] = useState<Task | null>(
     null
   );
 
+  useEffect(() => {
+    if(selectedTask){
+        router.push(`/template-manager/${applicationId}/${categoryId}/${selectedTask.id}`);
+    }
+},[selectedTask]);  
+
   return (
     <div className="p-4 space-y-4">
-      <HeaderBreadCrumbs rootName={`Applications > Category > ${CategoryId}`} rootHref={`/template-manager/${CategoryId}`} breadName={CategoryId} />
+      <HeaderBreadCrumbs rootName={`Applications > ${categoryId} > Category`} rootHref={`/template-manager/${categoryId}`} breadName={`${categoryId}`} />
       <Button  asChild>
-        <Link href="/template-manager/creator">Create New Task</Link>
+        <Link href={`/template-manager/task/${categoryId}`}>Create New Task</Link>
       </Button>
       <Table>
         <TableHeader className="bg-[#5E5E5E] text-primary-white ">

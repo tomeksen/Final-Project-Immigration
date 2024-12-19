@@ -30,13 +30,13 @@ export function CategoryManagerTable({ categories,applicationId }: CategoryTable
         if(selectedCategory){
             router.push(`/template-manager/${applicationId}/${selectedCategory.id}`);
         }
-    },[selectedCategory]);  
+    },[selectedCategory]);
 
     return (
     <div className="p-4 space-y-4">
       <HeaderBreadCrumbs rootName={"Applications"} rootHref={`/template-manager`} breadName={`Category > ${applicationId}`}/>
       <Button  asChild>
-        <Link href="/template-manager/creator">Create New Category</Link>
+        <Link href={`/template-manager/category/${applicationId}`}>Create New Category</Link>
       </Button>
       <Table>
         <TableHeader className="bg-[#5E5E5E] text-primary-white ">

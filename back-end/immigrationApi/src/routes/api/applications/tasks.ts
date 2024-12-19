@@ -17,6 +17,42 @@ taskRoutes.get("/", async (c) => {
   }
 });
 
+taskRoutes.put("/:applicationTaskId", async (c) => {
+  let db = drizzle(c.env.DB);
+  const applicationTaskId = c.req.param("applicationTaskId");
+  const {
+    title,
+    isComplete,
+    isRevised,
+    dueDate,
+    description,
+    steps,
+    instructions,
+    notes,
+    timestamp,
+  } = await c.req.json();
+  try {
+    const result = await db
+      .update(applicationTasks)
+      .set({
+        title,
+        isComplete,
+        isRevised,
+        dueDate,
+        description,
+        steps,
+        instructions,
+        notes,
+        timestamp,
+      })
+      .where(eq(applicationTasks.id, Number(applicationTaskId)))
+      .returning();
+    return c.json(result);
+  } catch (e: any) {
+    return c.json({ error: e.message });
+  }
+});
+
 taskRoutes.post("/", async (c) => {
   let db = drizzle(c.env.DB);
   const {

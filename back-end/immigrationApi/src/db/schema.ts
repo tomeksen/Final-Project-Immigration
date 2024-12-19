@@ -95,7 +95,7 @@ export const applicationTasks = sqliteTable('applicationTasks', {
   title: text('title', { length: 256 }).notNull(),
   isComplete: integer('isComplete',{mode:'boolean'}).default(false),
   isRevised: integer('isRevised',{mode:'boolean'}).default(false),
-  dueDate: integer('dueDate',{mode:'timestamp'}),
+  dueDate: text().default(sql`(CURRENT_DATE)`),
   // description of the task
   description: text('description', { length: 256 }).notNull(),
   steps: text('steps',{mode:'json'}),
@@ -127,8 +127,8 @@ export const userEvents = sqliteTable('userEvents',
     id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
     eventTypeId: integer('eventId',{ mode: 'number'}).references((): AnySQLiteColumn => eventType.id),
     userId: text('userId'),
-    eventDateStart: integer('eventDateStart',{ mode:'timestamp' }),
-    eventDateFinish: integer('eventDateFinish',{ mode:'timestamp' })
+    eventDateStart: text().default(sql`(CURRENT_DATE)`),
+    eventDateFinish: text().default(sql`(CURRENT_DATE)`),
   }
 )
 
@@ -177,7 +177,7 @@ export const payments = sqliteTable('payments', {
     .default(sql`CURRENT_TIMESTAMP`)
     .notNull(),
   userId: text('userId'),
-  limitDate: integer('limitDate', {mode:'timestamp'})
+  limitDate: text().default(sql`(CURRENT_DATE)`)
   .notNull(),
 });
 //#endregion

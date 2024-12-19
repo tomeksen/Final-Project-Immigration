@@ -25,7 +25,7 @@ const TemplateApplicationsCreatorPage = () => {
     return (
             <div>
               { currentStep === 1 && <ApplicationManagerForm addApplication={submitApplication} application={applications}/>}
-              { currentStep === 2 && <CategoryManagerForm />}
+              { currentStep === 2 && <CategoryManagerForm applicationId="1"/>}
               { currentStep === 3 && <TaskManagerForm />}
             </div>
     )
