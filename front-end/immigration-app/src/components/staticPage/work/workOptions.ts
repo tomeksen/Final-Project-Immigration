@@ -3,30 +3,30 @@ type Options = {
   title: string;
   link: string;
 };
-export const workOptions: Options[] = [
+export const workOptions = (t: (key: string) => string): Options[] => [
   {
     id: 1,
-    title: "Work Permit/Extensions",
+    title: t("option1.title"),
     link: "work-permit",
   },
   {
     id: 2,
-    title: "Open Work Permit",
+    title: t("option2.title"),
     link: "open-work-permit",
   },
   {
     id: 3,
-    title: "Post-Graduation Work Permit (PGWP)",
+    title: t("option3.title"),
     link: "PGWP",
   },
   {
     id: 4,
-    title: "Labour Market Impact Assessment (LMIA)",
+    title: t("option4.title"),
     link: "LMIA",
   },
   {
     id: 5,
-    title: "Spousal Partner Open Work Permit (SOWP)",
+    title: t("option5.title"),
     link: "SOWP",
   },
 ];

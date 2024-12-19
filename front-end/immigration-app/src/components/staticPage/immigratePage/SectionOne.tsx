@@ -7,6 +7,7 @@ import { useTranslations } from "next-intl";
 
 export default function SectionOne() {
   const t = useTranslations("Immigration");
+
   const fadeInVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: (i: number) => ({

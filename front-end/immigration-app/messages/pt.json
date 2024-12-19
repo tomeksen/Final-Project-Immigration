@@ -75,6 +75,127 @@
       }
     }
   },
+  "Immigration": {
+    "sectionTitle": "Você quer imigrar para o Canadá?",
+    "sectionParagraph": "O Canadá é um dos principais destinos para indivíduos e famílias que buscam novas oportunidades. Com mais de 80 programas de imigração disponíveis, incluindo opções para trabalhadores qualificados, Avaliação de Impacto no Mercado de Trabalho (LMIA), Programas de Nomeação Provincial (PNP) e reunificação familiar, existem inúmeros caminhos para se tornar residente permanente.",
+    "sectionParagraph2": "Nossa equipe na Up Immigration está aqui para orientá-lo durante o processo, ajudando a encontrar o programa que melhor atenda às suas necessidades para uma transição bem-sucedida para sua nova vida no Canadá. Entre em contato conosco hoje para começar sua jornada rumo ao Canadá com confiança.",
+    "sectionButton": "Agendar uma consulta",
+    "DiscoverOptions": {
+      "title": "Descubra todas as suas opções",
+      "option1": "Entrada expressa",
+      "option2": "Nomeação Provincial",
+      "option3": "Patrocínio Familiar",
+      "option4": "Cuidador",
+      "option5": "Visto para Start-Up",
+      "option6": "Trabalhador Autônomo",
+      "option7": "Humanitário e Compassivo",
+      "option8": "Imigração do Atlântico",
+      "option9": "Imigração para o Norte"
+    },
+    "ImmigrationPrograms": {
+      "expressEntry": {
+        "title": "Entrada expressa",
+        "description": "A maneira mais rápida e popular do Canadá para obter residência permanente. É um sistema de imigração projetado para agilizar as aplicações, com todos os documentos necessários geralmente processados em seis meses ou menos. Ao enviar um perfil, os candidatos são classificados com base em suas qualificações e convidados a solicitar residência permanente."
+      },
+      "provincialNominee": {
+        "title": "Programas de Nomeação Provincial - PNP",
+        "description": "Para cidadãos canadenses e residentes permanentes reunirem-se com seus entes queridos patrocinando-os para residência permanente. Este programa inclui opções para patrocinar cônjuges, parceiros em união estável, filhos dependentes, pais e avós. Ao apoiar a reunificação familiar, o programa ajuda a construir comunidades mais fortes e conectadas no Canadá."
+      },
+      "familySponsorship": {
+        "title": "Patrocínio Familiar",
+        "description": "Para cidadãos canadenses e residentes permanentes reunirem-se com seus entes queridos patrocinando-os para residência permanente. Este programa inclui opções para patrocinar cônjuges, parceiros em união estável, filhos dependentes, pais e avós. Ao apoiar a reunificação familiar, o programa ajuda a construir comunidades mais fortes e conectadas no Canadá."
+      },
+      "caregiverPrograms": {
+        "title": "Programas para Cuidadores",
+        "description": "Para trabalhadores que fornecem suporte a nossas crianças, idosos e outros que necessitam de cuidados. Por esse motivo, o Canadá gerencia uma série de programas para ajudar cuidadores a encontrar trabalho e obter residência permanente, como o Caminho Intermediário para Cuidadores, o Piloto para Provedor de Cuidados Infantis em Casa e o Piloto para Trabalhadores de Apoio em Casa."
+      },
+      "startUpVisa": {
+        "title": "Programa de Visto para Start-Up",
+        "description": "Para empreendedores inovadores estabelecerem seus negócios no Canadá e obterem residência permanente. Este programa é destinado a indivíduos com uma ideia de negócio viável que tenha o apoio de uma organização designada, como um fundo de capital de risco, grupo de investidores anjo ou incubadora de empresas. Ao promover a inovação e o empreendedorismo, o Programa de Visto para Start-Up ajuda a impulsionar o crescimento econômico e criar empregos no Canadá."
+      },
+      "selfEmployed": {
+        "title": "Programa para Trabalhadores Autônomos",
+        "description": "Para indivíduos com experiência relevante em atividades culturais ou esportivas obterem residência permanente no Canadá. Este programa é ideal para aqueles que demonstraram sua capacidade de trabalhar de forma autônoma em áreas como música, escrita, artes visuais ou atletismo profissional. Ao contribuir com seus talentos únicos, os trabalhadores autônomos ajudam a enriquecer o cenário cultural e esportivo do Canadá."
+      },
+      "humanitarian": {
+        "title": "Humanitário e Compassivo - H&C",
+        "description": "Para indivíduos com experiência relevante em atividades culturais ou esportivas obterem residência permanente no Canadá. Este programa é ideal para aqueles que demonstraram sua capacidade de trabalhar de forma autônoma em áreas como música, escrita, artes visuais ou atletismo profissional. Ao contribuir com seus talentos únicos, os trabalhadores autônomos ajudam a enriquecer o cenário cultural e esportivo do Canadá."
+      },
+      "atlanticProgram": {
+        "title": "Programa de Imigração do Atlântico - AIP",
+        "description": "Para trabalhadores estrangeiros qualificados e graduados internacionais construírem uma nova vida em uma das vibrantes províncias do Atlântico do Canadá: New Brunswick, Nova Escócia, Terra Nova e Labrador, e Ilha do Príncipe Eduardo. Este programa facilita a instalação de novos moradores e a contribuição para o crescimento dessas comunidades acolhedoras."
+      },
+      "northernProgram": {
+        "title": "Programa de Imigração para o Norte - RNIP",
+        "description": "Para trabalhadores qualificados se estabelecerem em comunidades menores em todo o Canadá. Este programa visa apoiar o desenvolvimento econômico de regiões rurais e do norte, atraindo recém-chegados que podem preencher lacunas no mercado de trabalho local. As comunidades participantes, incluindo aquelas em Ontário, Canadá Ocidental e os três territórios, oferecem um ambiente acolhedor para os recém-chegados que desejam construir uma nova vida."
+      }
+    }
+  },
+  "FAQ": {
+    "title": "Immigration Frequent Questions",
+    "questions": {
+      "question1": {
+        "title": "O que é um visto de imigração para o Canadá?",
+        "answer": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium molestias omnis veritatis maxime porro quo inventore unde quasi deleniti quibusdam rem ratione sit quidem, enim, necessitatibus consequuntur sapiente modi optio?"
+      },
+      "question2": {
+        "title": "Qual é a diferença entre Permissão de Trabalho e Imigração para o Canadá?",
+        "answer": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium molestias omnis veritatis maxime porro quo inventore unde quasi deleniti quibusdam rem ratione sit quidem, enim, necessitatibus consequuntur sapiente modi optio?"
+      },
+      "question3": {
+        "title": "Posso solicitar o status de Residência Permanente e o status Temporário ao mesmo tempo?",
+        "answer": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium molestias omnis veritatis maxime porro quo inventore unde quasi deleniti quibusdam rem ratione sit quidem, enim, necessitatibus consequuntur sapiente modi optio?"
+      },
+      "question4": {
+        "title": "Meu status de imigração atual é relevante para fins de imigração canadense?",
+        "answer": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium molestias omnis veritatis maxime porro quo inventore unde quasi deleniti quibusdam rem ratione sit quidem, enim, necessitatibus consequuntur sapiente modi optio?"
+      },
+      "question5": {
+        "title": "Há algum benefício em contratar um advogado para imigração para o Canadá?",
+        "answer": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium molestias omnis veritatis maxime porro quo inventore unde quasi deleniti quibusdam rem ratione sit quidem, enim, necessitatibus consequuntur sapiente modi optio?"
+      }
+    }
+  },
+  "Work": {
+    "title": "Descubra todas as suas opções",
+    "option1": {
+      "title": "Permissão de Trabalho/Extensões"
+    },
+    "option2": {
+      "title": "Permissão de Trabalho Aberta"
+    },
+    "option3": {
+      "title": "Permissão de Trabalho Pós-Graduação (PGWP)"
+    },
+    "option4": {
+      "title": "Avaliação de Impacto no Mercado de Trabalho (LMIA)"
+    },
+    "option5": {
+      "title": "Permissão de Trabalho Aberta para Cônjuges/Parceiros (SOWP)"
+    },
+    "Cards": {
+      "card1": {
+        "title": "Permissão de Trabalho/Extensões",
+        "description": "Empregadores canadenses podem contratar trabalhadores estrangeiros temporários quando não encontrarem candidatos adequados entre os residentes canadenses (residentes permanentes ou cidadãos). Os empregadores que desejam contratar trabalhadores estrangeiros devem solicitar um documento chamado Avaliação de Impacto no Mercado de Trabalho (LMIA) se atenderem aos critérios de elegibilidade. Uma LMIA positiva demonstra a necessidade de um trabalhador estrangeiro para preencher a posição."
+      },
+      "card2": {
+        "title": "Permissão de Trabalho Aberta",
+        "description": "Documento emitido no Canadá que permite a certos estrangeiros trabalharem para qualquer empresa canadense. Para ser elegível, você deve ser cônjuge de um estudante internacional matriculado em período integral em um college (principalmente público) ou universidade canadense, ou ser cônjuge de uma pessoa com status de trabalhador com oferta de emprego no NOC 0, A ou B. Você também pode obter uma permissão de trabalho aberta se fizer parte de um programa do International Experience Canada que regularmente oferece striptease, dança erótica, serviços de acompanhante ou massagens eróticas."
+      },
+      "card3": {
+        "title": "Permissão de Trabalho Pós-Graduação (PGWP)",
+        "description": "Para indivíduos com experiência relevante em atividades culturais ou atléticas que desejam obter residência permanente no Canadá. Este programa é ideal para aqueles que demonstraram sua capacidade de trabalhar por conta própria em áreas como música, escrita, artes visuais ou atletismo profissional. Ao contribuir com seus talentos únicos, os trabalhadores autônomos ajudam a enriquecer o cenário cultural e atlético do Canadá."
+      },
+      "card4": {
+        "title": "Avaliação de Impacto no Mercado de Trabalho (LMIA)",
+        "description": "Para trabalhadores estrangeiros qualificados e graduados internacionais que desejam construir uma nova vida em uma das vibrantes províncias atlânticas do Canadá: New Brunswick, Nova Scotia, Newfoundland and Labrador, e Prince Edward Island. Este programa facilita a instalação de novos residentes e sua contribuição para o crescimento dessas comunidades acolhedoras."
+      },
+      "card5": {
+        "title": "Permissão de Trabalho Aberta para Cônjuges/Parceiros (SOWP)",
+        "description": "Cônjuge, parceiro de união estável ou parceiro conjugal que vive no Canadá e está sendo patrocinado para residência permanente, além de um filho dependente acompanhante do requerente principal."
+      }
+    }
+  },
   "Sidebar": {
     "Content": {
       "dashboard": "Painel de Controle",
@@ -83,7 +204,9 @@
       "documents": "Meus Documentos",
       "appointment": "Compromisso",
       "inbox": "Caixa de Entrada",
-      "profile": "Perfil"
+      "profile": "Perfil",
+      "users": "Usuários",
+      "calendar": "Calendário"
     },
     "Footer": {
       "settings": "Configurações",
