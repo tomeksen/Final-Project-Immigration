@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import HeaderBreadCrumbs from "@/components/common/HeaderBreadCrumbs";
 import {
   Table,
@@ -13,108 +13,33 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { Task } from "@/type/Applications.type";
+import { useRouter } from "next/navigation";
 
-type Task = {
-    id: string;
-    category_id: string;
-    comment_id: string;
-    service_connection_id: string;
-    title: string;
-    is_completed: boolean;
-    dueDate: Date;
-    description: string;
-    steps: string;
-    instruction: string;
-    notes: string;
-  };
   
-  // fetch data based on category_id
-  const tasks: Task[] = [
-    {
-      id: "1",
-      category_id: "cat001",
-      comment_id: "com001",
-      service_connection_id: "srv001",
-      title: "Complete Project Documentation",
-      is_completed: false,
-      dueDate: new Date("2024-11-10"),
-      description: "Prepare and submit comprehensive project documentation.",
-      steps: "1. Outline structure\n2. Add key details\n3. Review",
-      instruction: "Ensure the document covers all project requirements.",
-      notes: "Check previous project templates for reference.",
-    },
-    {
-      id: "2",
-      category_id: "cat002",
-      comment_id: "com002",
-      service_connection_id: "srv002",
-      title: "Design Initial Wireframes",
-      is_completed: true,
-      dueDate: new Date("2024-10-15"),
-      description: "Create wireframes for the new app interface.",
-      steps: "1. Sketch ideas\n2. Design with tool\n3. Get feedback",
-      instruction: "Focus on user experience and simplicity.",
-      notes: "Consider mobile-first design approach.",
-    },
-    {
-      id: "3",
-      category_id: "cat003",
-      comment_id: "com003",
-      service_connection_id: "srv003",
-      title: "Team Meeting Preparation",
-      is_completed: false,
-      dueDate: new Date("2024-11-05"),
-      description: "Prepare for the upcoming project status meeting.",
-      steps: "1. Gather updates\n2. Create agenda\n3. Share agenda",
-      instruction: "Highlight key milestones and challenges.",
-      notes: "Include time for Q&A and feedback.",
-    },
-    {
-      id: "4",
-      category_id: "cat001",
-      comment_id: "com004",
-      service_connection_id: "srv004",
-      title: "Code Review Session",
-      is_completed: false,
-      dueDate: new Date("2024-11-08"),
-      description:
-        "Conduct a detailed review of the codebase for the new feature.",
-      steps: "1. Allocate reviewers\n2. Review code\n3. Document feedback",
-      instruction: "Ensure to cover best practices and performance.",
-      notes: "Check for security vulnerabilities.",
-    },
-    {
-      id: "5",
-      category_id: "cat004",
-      comment_id: "com005",
-      service_connection_id: "srv005",
-      title: "Deploy to Staging Environment",
-      is_completed: true,
-      dueDate: new Date("2024-10-20"),
-      description:
-        "Deploy the latest build to the staging environment for testing.",
-      steps: "1. Verify code integrity\n2. Deploy\n3. Run initial tests",
-      instruction: "Coordinate with the QA team after deployment.",
-      notes: "Ensure backups are taken before deployment.",
-    },
-  ];
-
 type TaskTableProps = {
-  CategoryId: string;
-  appearance?: { baseTheme: any };
-  onRowClick?: (task: Task) => void;
+  taskList: Task[];
+  categoryId: string;
+  applicationId: string;
 };
 
-export function TaskManagerTable({ CategoryId }: TaskTableProps) {
+export function TaskManagerTable({ categoryId, taskList , applicationId}: TaskTableProps) {
+  const router = useRouter();
   const [selectedTask, setSelectedTask] = useState<Task | null>(
     null
   );
-  
+
+  useEffect(() => {
+    if(selectedTask){
+        router.push(`/template-manager/${applicationId}/${categoryId}/${selectedTask.id}`);
+    }
+},[selectedTask]);  
+
   return (
     <div className="p-4 space-y-4">
-      <HeaderBreadCrumbs rootName={`Applications > Category > ${CategoryId}`} rootHref={`/template-manager/${CategoryId}`} breadName={CategoryId} />
+      <HeaderBreadCrumbs rootName={`Applications > ${categoryId} > Category`} rootHref={`/template-manager/${applicationId}`} breadName={`${categoryId}`} />
       <Button  asChild>
-        <Link href="/template-manager/creator">Create New Task</Link>
+        <Link href={`/template-manager/task/${categoryId}`}>Create New Task</Link>
       </Button>
       <Table>
         <TableHeader className="bg-[#5E5E5E] text-primary-white ">
@@ -122,12 +47,12 @@ export function TaskManagerTable({ CategoryId }: TaskTableProps) {
           <TableRow className="">
             <TableHead className="rounded-tl-md">Number</TableHead>
             <TableHead>title</TableHead>
-            <TableHead>Due Date</TableHead>
+            <TableHead>Description</TableHead>
             <TableHead className="rounded-tr-md">Status</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody className="border">
-          {tasks.map((task, index) => (
+          {taskList.map((task, index) => (
             // jump to tasks
             // <Link href={`/applications/${app.id}`} key={app.id}>
             <TableRow
@@ -139,17 +64,17 @@ export function TaskManagerTable({ CategoryId }: TaskTableProps) {
                 {task.id}
               </TableCell>
               <TableCell className="bg-white">{task.title}</TableCell>
-              <TableCell className="bg-white">{task.dueDate.toString()}</TableCell>
+              <TableCell className="bg-white">{task.description}</TableCell>
 
               <TableCell className="last: rounded-br-md bg-white">
                 <Badge
                   variant={
-                    task.is_completed === true
+                    task.isCompleted === true
                       ? "default"
                       : "destructive"
                   }
                 >
-                  {task.is_completed === true ? "Completed" : "Processing"}
+                  {task.isCompleted === true ? "Completed" : "Processing"}
                 </Badge>
               </TableCell>
             </TableRow>

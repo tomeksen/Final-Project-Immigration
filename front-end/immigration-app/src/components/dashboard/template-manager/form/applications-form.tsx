@@ -29,50 +29,47 @@ import { Calendar } from "@/components/ui/calendar"
 import { cn } from "@/lib/utils"
 import { format } from "date-fns"
 import { UserSelector } from "./user-selector"
+import { toast } from "sonner";
+import { Application } from "@/type/Applications.type"
 
-
-type Application = {
-    id: number;
-    user_id: string;
-    name: string;
-    date: string;
-    type: string;
-    progress: number;
-    status: string;
-  };
-  
   const formSchema = z.object({
-    user_id: z.string({
+    userId: z.string({
       required_error: "Please select a user.",
     }),
-    name: z.string().min(2, {
+    applicationName: z.string().min(2, {
       message: "Name must be at least 2 characters.",
     }),
-    type: z.string({
+    applicationType: z.string({
       required_error: "Please select an application type.",
     }),
-    status: z.string({
+    applicationStatus: z.string({
       required_error: "Please select a status.",
     }),
-    date: z.date({
+    applicationDate: z.date({
       required_error: "Please select a date.",
     }),
   })
-
-export function ApplicationManagerForm() {
+ 
+  type applicationFormProps = {
+    application: Application | null;
+    addApplication: (application: Application) => void;
+  };
+export function ApplicationManagerForm({ application,addApplication }: applicationFormProps) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      user_id: "",
-      name: "",
-      type: "",
-      status: "pending",
-      date: new Date(),
+      userId: application?.userId? application.userId : "",
+      applicationName: application?.applicationName? application.applicationName : "",
+      applicationDate: application?.applicationDate? application.applicationDate : new Date(),
+      applicationType: application?.applicationType? application.applicationType : "visa",
+      applicationStatus: application?.applicationStatus? application.applicationStatus : "pending",
     },
   })
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values)
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    addApplication(values);
+    return;
+    
   }
 
   return (
@@ -86,13 +83,11 @@ export function ApplicationManagerForm() {
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
             <FormField
               control={form.control}
-              name="user_id"
+              name="userId"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>User</FormLabel>
-                  <FormControl>
-                    <UserSelector onSelect={field.onChange}/>
-                  </FormControl>
+                  <UserSelector onSelect={field.onChange}/>
                   <FormDescription>
                     Select the user for this application.
                   </FormDescription>
@@ -102,7 +97,7 @@ export function ApplicationManagerForm() {
             />
             <FormField
               control={form.control}
-              name="name"
+              name="applicationName"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Application Name</FormLabel>
@@ -119,7 +114,7 @@ export function ApplicationManagerForm() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FormField
                 control={form.control}
-                name="type"
+                name="applicationType"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Type</FormLabel>
@@ -144,7 +139,7 @@ export function ApplicationManagerForm() {
               />
               <FormField
                 control={form.control}
-                name="status"
+                name="applicationStatus"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Status</FormLabel>
@@ -170,7 +165,7 @@ export function ApplicationManagerForm() {
             </div>
             <FormField
               control={form.control}
-              name="date"
+              name="applicationDate"
               render={({ field }) => (
                 <FormItem className="flex flex-col">
                   <FormLabel>Date</FormLabel>
@@ -199,7 +194,7 @@ export function ApplicationManagerForm() {
                         selected={field.value}
                         onSelect={field.onChange}
                         disabled={(date) =>
-                          date > new Date() || date < new Date("1900-01-01")
+                          date < new Date() && date >= new Date() || date < new Date("1900-01-01")
                         }
                         initialFocus
                       />
@@ -216,8 +211,7 @@ export function ApplicationManagerForm() {
         </Form>
       </CardContent>
       <CardFooter className="gap-3">
-        <Button type="submit" className="w-full " onClick={form.handleSubmit(onSubmit)}>Submit Application</Button>
-        <Button type="submit" variant={"outline"} className="w-full" onClick={() => console.log('save template')}>Save Template</Button>
+        <Button type="submit" className="w-full " onClick={form.handleSubmit(onSubmit)}>Next Step</Button>
       </CardFooter>
     </Card>
   )

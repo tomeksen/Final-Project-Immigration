@@ -10,57 +10,33 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Badge } from "@/components/ui/badge";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-
-type Category = {
-  id: string;
-  application_id: string;
-  name: string;
-  order: number;
-  status: string;
-};
-
-const categories: Category[] = [
-  {
-    id: "1",
-    application_id: "1",
-    name: "Beginning",
-    order: 1,
-    status: "Completed",
-  },
-  {
-    id: "2",
-    application_id: "1",
-    name: "Second",
-    order: 2,
-    status: "Processing",
-  },
-];
+import { Category } from "@/type/Applications.type";
 
 type CategoryTableProps = {
-  CategoryId: string;
-  appearance?: { baseTheme: any };
-  onRowClick?: (category: Category) => void;
+  categories: Category[];
+  applicationId: string;
 };
 
-export function CategoryManagerTable({ CategoryId }: CategoryTableProps) {
+export function CategoryManagerTable({ categories,applicationId }: CategoryTableProps) {
     const router = useRouter();
-  const [selectedCategory, setSelectedCategory] = useState<Category | null>(
-    null
-  );
+    const [selectedCategory, setSelectedCategory] = useState<Category | null>(
+      null
+      );  
+
     useEffect(() => {
         if(selectedCategory){
-            router.push(`/template-manager/${CategoryId}/${selectedCategory.id}`);
+            router.push(`/template-manager/${applicationId}/${selectedCategory.id}`);
         }
-    },[selectedCategory]);  
+    },[selectedCategory]);
+
     return (
     <div className="p-4 space-y-4">
-      <HeaderBreadCrumbs rootName={"Applications"} rootHref={`/template-manager`} breadName={`Category > ${CategoryId}`}/>
+      <HeaderBreadCrumbs rootName={"Applications"} rootHref={`/template-manager`} breadName={`Category > ${applicationId}`}/>
       <Button  asChild>
-        <Link href="/template-manager/creator">Create New Category</Link>
+        <Link href={`/template-manager/category/${applicationId}`}>Create New Category</Link>
       </Button>
       <Table>
         <TableHeader className="bg-[#5E5E5E] text-primary-white ">
@@ -69,7 +45,6 @@ export function CategoryManagerTable({ CategoryId }: CategoryTableProps) {
             <TableHead className="rounded-tl-md">Number</TableHead>
             <TableHead>title</TableHead>
             <TableHead>Order</TableHead>
-            <TableHead className="rounded-tr-md">Status</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody className="border">
@@ -84,24 +59,9 @@ export function CategoryManagerTable({ CategoryId }: CategoryTableProps) {
               <TableCell className="last: rounded-bl-md bg-white">
                 {category.id}
               </TableCell>
-              <TableCell className="bg-white">{category.name}</TableCell>
+              <TableCell className="bg-white">{category.categoryName}</TableCell>
               <TableCell className="bg-white">{category.order}</TableCell>
 
-              <TableCell className="last: rounded-br-md bg-white">
-                <Badge
-                  variant={
-                    category.status === "Completed"
-                      ? "default"
-                      : category.status === "Rejected"
-                      ? "destructive"
-                      : category.status === "Processing"
-                      ? "secondary"
-                      : "outline"
-                  }
-                >
-                  {category.status}
-                </Badge>
-              </TableCell>
             </TableRow>
             // </Link>
           ))}

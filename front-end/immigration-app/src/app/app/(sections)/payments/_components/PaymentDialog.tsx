@@ -1,23 +1,31 @@
-
 import { File } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { PaymentFiltered } from "@/type/Payment.type";
+import { formatNumber } from "@/utils/formatNumber";
 
-export default function PaymentDialog() {
+export default function PaymentDialog({
+  payment,
+}: {
+  payment: PaymentFiltered;
+}) {
   return (
     <Dialog>
-      <DialogTrigger asChild>
-        <Button className="absolute bottom-0 right-0 z-50 bg-primary-red text-white p-2 w-full rounded-none rounded-b-md">
-          Make Payment
-        </Button>
+      <DialogTrigger className="absolute bottom-0 right-0 z-50 bg-primary-red hover:bg-primary-red/80 text-white p-2 w-full rounded-none rounded-b-md">
+        Make Payment
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[700px]">
+      <DialogContent className="sm:max-w-[800px]">
         <div className="grid gap-6 md:grid-cols-11">
           {/* Payment Method */}
           <div className="md:col-span-5 space-y-6">
@@ -97,18 +105,20 @@ export default function PaymentDialog() {
                     <TableCell>
                       <div className="flex items-center gap-2">
                         <Badge className="w-full rounded-full bg-primary-gray px-2 text-white">
-                          CICCC_UX/UI_2
+                          {payment.invoiceId}
                         </Badge>
-                        <span>School Enrollment Fee</span>
+                        <span>{payment.title}</span>
                         <span className="text-muted-foreground">(x1)</span>
                       </div>
                     </TableCell>
-                    <TableCell className="text-right">150.00</TableCell>
+                    <TableCell className="text-right">
+                      {formatNumber(payment.amount)}
+                    </TableCell>
                   </TableRow>
                   <TableRow className="flex items-center justify-between">
                     <TableCell className="font-medium">Total:</TableCell>
                     <TableCell className="text-right text-lg font-bold text-primary-red">
-                      CAD 150.00
+                      {`CAD ${formatNumber(payment.amount)}`}
                     </TableCell>
                   </TableRow>
                 </TableBody>

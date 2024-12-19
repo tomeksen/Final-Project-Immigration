@@ -1,15 +1,44 @@
-'use client'
 import { CategoryManagerTable } from "@/components/dashboard/template-manager/category-list";
+import { Category } from "@/type/Applications.type";
+import { auth } from "@clerk/nextjs/server";
 
-const TemplateCategoryPage = ({
+const TemplateCategoryPage = async ({
   params,
 }: {
-  params: { applicationId: string }
+  params: Promise<{ applicationId: string }>
 }) => {
-  const applicationId = params.applicationId;
+  const applicationId = (await params).applicationId;
+  const { getToken } = await auth();
+  
+    const fetchCategories = async () => {
+      try {
+        const token = await getToken();
+        const response = await fetch(
+          `https://immigrationapi.tomytrt.workers.dev/api/categories/${applicationId}`,
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch applications");
+        }
+
+        const data = await response.json();
+        return data;
+      } catch (e: any) {
+        throw new Error("Failed to fetch applications");
+      }
+    };
+
+      const CategoryList : Category[] = await fetchCategories();
   return (
     <div>
-      <CategoryManagerTable CategoryId={applicationId} />
+      <CategoryManagerTable categories={CategoryList} applicationId={applicationId} />
     </div>
   );
 };

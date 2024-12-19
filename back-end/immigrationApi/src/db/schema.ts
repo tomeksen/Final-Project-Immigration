@@ -66,9 +66,7 @@ export const applications = sqliteTable('applications', {
   userId: text('userId'),
   applicationName: text('applicationName',{length: 40})
   .notNull(),
-  applicationDate: integer('applicationDate',{mode: 'timestamp'})
-  .default(sql`CURRENT_TIMESTAMP`)
-  .notNull(),
+  applicationDate: text().default(sql`(CURRENT_DATE)`),
   applicationType: text('applicationType',{length:40}),
   applicationStatus: integer('applicationStatus')
 })
@@ -97,7 +95,7 @@ export const applicationTasks = sqliteTable('applicationTasks', {
   title: text('title', { length: 256 }).notNull(),
   isComplete: integer('isComplete',{mode:'boolean'}).default(false),
   isRevised: integer('isRevised',{mode:'boolean'}).default(false),
-  dueDate: integer('dueDate',{mode:'timestamp'}),
+  dueDate: text().default(sql`(CURRENT_DATE)`),
   // description of the task
   description: text('description', { length: 256 }).notNull(),
   steps: text('steps',{mode:'json'}),
@@ -127,10 +125,13 @@ export const taskComments = sqliteTable('taskComments',{
 export const userEvents = sqliteTable('userEvents',
   {
     id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
-    eventTypeId: integer('eventId',{ mode: 'number'}).references((): AnySQLiteColumn => eventType.id),
+    eventTypeId: integer('eventId',{ mode: 'number'}).references((): AnySQLiteColumn => eventType.id).default(1),
     userId: text('userId'),
-    eventDateStart: integer('eventDateStart',{ mode:'timestamp' }),
-    eventDateFinish: integer('eventDateFinish',{ mode:'timestamp' })
+    title: text('title',{length: 256}),
+    isOnline: integer('isOnline',{mode:'boolean'}).default(false),
+    meetingCode: text('meetingCode',{length: 256}),
+    eventDateStart: text().default(sql`(CURRENT_TIMESTAMP)`),
+    eventDateFinish: text().default(sql`(CURRENT_TIMESTAMP)`),
   }
 )
 
@@ -143,11 +144,13 @@ export const eventType = sqliteTable('eventType',{
 //#region documents
 export const documents = sqliteTable('documents',{
   id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
+  title: text('title',{length: 256}),
   documentTypeId: integer('documentTypeId').references((): AnySQLiteColumn => documentType.id),
   documentFile: blob('documentFile'),
   applicationTaskId: integer('applicationTask').references((): AnySQLiteColumn => applicationTasks.id),
   userId: text('userId'),
   expirationDate: integer('expirationDate',{mode:'timestamp'}),
+  isChecked: integer('isChecked',{mode:'boolean'}).default(false),
   createdAt: integer('createdAt',{mode:'timestamp'}).default(sql`CURRENT_TIMESTAMP`).notNull(),
   updatedAt: integer('updatedAt',{mode:'timestamp'}).default(sql`CURRENT_TIMESTAMP`).notNull()
 })
@@ -173,11 +176,9 @@ export const payments = sqliteTable('payments', {
   applicationId: integer('applicationId').references((): AnySQLiteColumn => applications.id),
   isCompleted: integer('isCompleted',{mode:'boolean'}).default(false),
   // timestamp is set on insert
-  paymentDate: text('paymentDate')
-    .default(sql`CURRENT_TIMESTAMP`)
-    .notNull(),
-  
-  limitDate: integer('limitDate', {mode:'timestamp'})
+  paymentDate: text('paymentDate'),
+  userId: text('userId'),
+  limitDate: text().default(sql`(CURRENT_DATE)`)
   .notNull(),
 });
 //#endregion

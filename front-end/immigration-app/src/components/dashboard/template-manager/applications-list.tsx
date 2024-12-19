@@ -11,80 +11,23 @@ import {
     TableHeader,
     TableRow,
   } from "@/components/ui/table";
-import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { Application } from "@/type/Applications.type";
 
-type Application = {
-  id: number;
-  user_id: string;
-  name: string;
-  date: string;
-  type: string;
-  progress: number;
-  status: string;
-};
-
-const applications: Application[] = [
-  {
-    id: 1,
-    user_id: "001",
-    name: "Maria_CICCC_181",
-    date: "04 Apr 2023",
-    type: "Student",
-    progress: 100,
-    status: "Completed",
-  },
-  {
-    id: 2,
-    user_id: "002",
-    name: "Maria_CICCC_UX/UI",
-    date: "15 Nov 2023",
-    type: "Student",
-    progress: 100,
-    status: "Rejected",
-  },
-  {
-    id: 3,
-    user_id: "003",
-    name: "Maria_CICCC_UX/UI_2",
-    date: "08 Jul 2024",
-    type: "Student",
-    progress: 50,
-    status: "Processing",
-  },
-  {
-    id: 4,
-    user_id: "004",
-    name: "Maria_Work Permit",
-    date: "09 Jul 2024",
-    type: "Work Permit",
-    progress: 75,
-    status: "On Hold",
-  },
-  {
-    id: 5,
-    user_id: "005",
-    name: "Carry_Visitor",
-    date: "09 Jul 2024",
-    type: "Visitor",
-    progress: 25,
-    status: "Processing",
-  },
-];
 
 type AppTableProps = {
-    appProps: Application[];
-    appearance?: { baseTheme: any };
-    onRowClick: (application: Application) => void;
+    applications?: Application[];
   };
 
-export function ApplicationsManagerTable() {
-    const router = useRouter();
-  const [selectedApplication, setSelectedApplication] =
-    useState<Application | null>(null);
+export function ApplicationsManagerTable({applications}: AppTableProps) {
+  const router = useRouter();
+  const [selectedApplication, setSelectedApplication] = useState<Application | null>(null);
+  if (!applications) { 
+    applications = [];
+  }
 
     useEffect(() => {
         if(selectedApplication){
@@ -107,7 +50,6 @@ export function ApplicationsManagerTable() {
           <TableHead>Name</TableHead>
           <TableHead>Date</TableHead>
           <TableHead>Type</TableHead>
-          <TableHead>Progress</TableHead>
           <TableHead className="rounded-tr-md">Status</TableHead>
         </TableRow>
       </TableHeader>
@@ -123,25 +65,22 @@ export function ApplicationsManagerTable() {
             <TableCell className="last: rounded-bl-md bg-white">
               {index + 1}
             </TableCell>
-            <TableCell className="bg-white">{app.name}</TableCell>
-            <TableCell className="bg-white">{app.date}</TableCell>
-            <TableCell className="bg-white">{app.type}</TableCell>
-            <TableCell className="bg-white">
-              <Progress value={app.progress} className="w-[100px] " />
-            </TableCell>
+            <TableCell className="bg-white">{app.applicationName}</TableCell>
+            <TableCell className="bg-white">{app.applicationDate.toString()}</TableCell>
+            <TableCell className="bg-white">{app.applicationType}</TableCell>
             <TableCell className="last: rounded-br-md bg-white">
               <Badge
                 variant={
-                  app.status === "Completed"
+                  app.applicationStatus === "Completed"
                     ? "default"
-                    : app.status === "Rejected"
+                    : app.applicationStatus === "Rejected"
                     ? "destructive"
-                    : app.status === "Processing"
+                    : app.applicationStatus === "Processing"
                     ? "secondary"
                     : "outline"
                 }
               >
-                {app.status}
+                {app.applicationStatus}
               </Badge>
             </TableCell>
           </TableRow>

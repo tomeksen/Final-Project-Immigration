@@ -1,8 +1,6 @@
 "use client";
 
 import { useState } from "react";
-
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -18,36 +16,21 @@ import { Badge } from "@/components/ui/badge";
 import PaymentSwiperButton from "./paymentSwiperButton";
 import { cn } from "@/lib/utils";
 import PaymentDialog from "../PaymentDialog";
+import { PaymentFiltered, PaymentSwiperType } from "@/type/Payment.type";
+import { formatNumber } from "@/utils/formatNumber";
+import { ERROR_MESSAGES } from "@/config/ErrorMessage";
+import PaymentError from "../paymentError";
 
 type PaymentSwiperProps = {
   swiperType: "sm" | "lg";
+  payments: PaymentFiltered[];
 };
 
-export default function AppPaymentSwiper({ swiperType }: PaymentSwiperProps) {
-  // Sample payment data
-  type Payment = {
-    id: string;
-    description: string;
-    amount: number;
-  };
-  const payments: Payment[] = [
-    {
-      id: "Maria_CICCC_UX/UI_2",
-      description: "Cuota de inscripción escolar",
-      amount: 150.0,
-    },
-    {
-      id: "Maria_CICCC_UX/UI_3",
-      description: "Cuota mensual",
-      amount: 200.0,
-    },
-    {
-      id: "Maria_CICCC_UX/UI_4",
-      description: "Material escolar",
-      amount: 75.0,
-    },
-  ];
-
+export default function AppPaymentSwiper({
+  swiperType,
+  payments,
+}: PaymentSwiperProps) {
+  // decide the number of payment card depending on the size of the screen
   const slidesPerView = swiperType === "sm" ? 1 : 3;
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -55,6 +38,10 @@ export default function AppPaymentSwiper({ swiperType }: PaymentSwiperProps) {
     const currentIndex = swiper.activeIndex;
     setCurrentIndex(currentIndex);
   };
+
+  if (!payments || payments.length === 0) {
+    return <PaymentError title="Awaiting Payment" errorTitle="payment" />;
+  }
 
   return (
     <Card className="w-full h-full">
@@ -83,17 +70,17 @@ export default function AppPaymentSwiper({ swiperType }: PaymentSwiperProps) {
                       variant="outline"
                       className="mb-2 w-full rounded-full"
                     >
-                      {payment.id}
+                      {payment.invoiceId}
                     </Badge>
                     <div className="text-gray-700 font-thin text-sm mb-2">
-                      {payment.description}
+                      {payment.title}
                     </div>
                     <div className="text-2xl">
-                      CAD {payment.amount.toFixed(2)}
+                      CAD {formatNumber(payment.amount)}
                     </div>
                   </div>
 
-                  <PaymentDialog />
+                  <PaymentDialog payment={payment} />
                 </Card>
               </SwiperSlide>
             );
@@ -101,7 +88,7 @@ export default function AppPaymentSwiper({ swiperType }: PaymentSwiperProps) {
           <PaymentSwiperButton
             currentIndex={currentIndex}
             maxIndex={
-              swiperType === "sm" ? payments.length - 1 : payments.length - 2
+              swiperType === "sm" ? payments.length - 1 : payments.length - 3
             }
             containerStyles="z-10 w-full gap-2 absolute bottom-[calc(50%_-_22px)] right-0 left-0 flex justify-between"
             btnStyles={cn(

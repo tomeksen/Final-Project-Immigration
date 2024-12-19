@@ -50,6 +50,69 @@
       "when": 1734374808143,
       "tag": "0006_chemical_nextwave",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "6",
+      "when": 1734376623506,
+      "tag": "0007_acoustic_shard",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "6",
+      "when": 1734463102795,
+      "tag": "0008_milky_puma",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "6",
+      "when": 1734463129756,
+      "tag": "0009_sharp_zuras",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "6",
+      "when": 1734510057243,
+      "tag": "0010_youthful_bedlam",
+      "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "6",
+      "when": 1734577030233,
+      "tag": "0011_nostalgic_paladin",
+      "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "6",
+      "when": 1734577120889,
+      "tag": "0012_parallel_famine",
+      "breakpoints": true
+    },
+    {
+      "idx": 13,
+      "version": "6",
+      "when": 1734577964116,
+      "tag": "0013_young_edwin_jarvis",
+      "breakpoints": true
+    },
+    {
+      "idx": 14,
+      "version": "6",
+      "when": 1734578914297,
+      "tag": "0014_volatile_gideon",
+      "breakpoints": true
+    },
+    {
+      "idx": 15,
+      "version": "6",
+      "when": 1734593526660,
+      "tag": "0015_plain_cable",
+      "breakpoints": true
     }
   ]
 }

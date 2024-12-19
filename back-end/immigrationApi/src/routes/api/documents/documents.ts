@@ -23,6 +23,8 @@ documentsRoutes.post('/', async (c) => {
     documentFile,
     userId,
     applicationTaskId,
+    isChecked,
+    title,
     expirationDate} = await c.req.json();
   try {
       const result = await db
@@ -31,8 +33,21 @@ documentsRoutes.post('/', async (c) => {
         documentFile,
         userId,
         applicationTaskId,
-        expirationDate
+        expirationDate,
+        title,
+        isChecked
       }).returning();
+      return c.json(result);
+    } catch (e: any) {
+      return c.json({ error: e.message });
+    }}
+);
+
+documentsRoutes.get('/documentByUserId/:userId', async (c) => {
+  let db = drizzle(c.env.DB);
+  const userId = c.req.param("userId");
+  try {
+      const result = await db.select().from(documents).where(eq(documents.userId, userId )).all()
       return c.json(result);
     } catch (e: any) {
       return c.json({ error: e.message });

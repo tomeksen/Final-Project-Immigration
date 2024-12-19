@@ -8,8 +8,8 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return <ClerkProvider>
-    <SidebarProvider>
-      {children}
-    </SidebarProvider>
+      <SidebarProvider>
+        {children}
+      </SidebarProvider>
     </ClerkProvider>;
 }
