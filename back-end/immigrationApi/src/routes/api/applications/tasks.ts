@@ -16,6 +16,7 @@ taskRoutes.get("/", async (c) => {
     return c.json({ error: e.message });
   }
 });
+
 taskRoutes.put("/:applicationTaskId", async (c) => {
   let db = drizzle(c.env.DB);
   const applicationTaskId = c.req.param("applicationTaskId");

@@ -1,5 +1,5 @@
 'use client'
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { CalendarIcon, Plus, Trash2, ArrowLeft } from 'lucide-react'
@@ -39,15 +39,17 @@ const taskSchema = z.object({
   notes: z.string(),
 })
 
-type CategoryTableProps = {
+type TaskFormProps = {
   categoryId?: string;
   applicationId?: string;
+  taskId?: string;
 };
 
-export function TaskManagerForm({categoryId, applicationId}: CategoryTableProps) {
+export function TaskManagerForm({ categoryId, applicationId, taskId }: TaskFormProps) {
   const router = useRouter();
   const [steps, setSteps] = useState<string[]>(["step1"])
   const [instructions, setInstructions] = useState<string[]>(["instruction1"])
+  const [isLoading, setIsLoading] = useState(true);
 
   const form = useForm<z.infer<typeof taskSchema>>({
     resolver: zodResolver(taskSchema),
@@ -64,34 +66,81 @@ export function TaskManagerForm({categoryId, applicationId}: CategoryTableProps)
     },
   })
 
-  const addTask = async (values: Task) => {
-    try {
-        const response = await fetch(
-          `https://immigrationapi.tomytrt.workers.dev/api/tasks`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(values),
+  useEffect(() => {
+    if (taskId) {
+      const fetchTask = async () => {
+        try {
+          const response = await fetch(
+            `https://immigrationapi.tomytrt.workers.dev/api/tasks/getByApplicationTaskId/${taskId}`,
+            {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
+
+          if (!response.ok) {
+            throw new Error("Failed to fetch task");
           }
-        );
-  
-        if (!response.ok) {
-          throw new Error("Failed to create application");
+
+          const data = await response.json();
+          console.log(data);
+          form.reset({
+            categoryId: data[0].categoryId,
+            title: data[0].title,
+            isCompleted: data[0].isCompleted,
+            isRevised: data[0].isRevised,
+            dueDate: new Date(data[0]?.dueDate ? data[0].dueDate : new Date()),
+            description: data[0].description,
+            steps: data[0].steps,
+            instructions: data[0].instructions,
+            notes: data[0].notes,
+          });
+          setSteps(Object.keys(data[0].steps));
+          setInstructions(Object.keys(data[0].instructions));
+          setIsLoading(false);
+        } catch (e: any) {
+          toast.error("Failed to fetch task");
+          console.error("Failed to fetch task", e);
         }
-        const result = await response.json();
-        toast.success("Application created successfully!");
-      } catch (e: any) {
-        toast.error("Failed to create application");
-        console.error("Failed to create application", e);
-      } 
+      };
+
+      fetchTask();
+    } else {
+      setIsLoading(false);
+    }
+  }, [taskId, form]);
+
+  const addOrUpdateTask = async (values: Task) => {
+    try {
+      const response = await fetch(
+        `https://immigrationapi.tomytrt.workers.dev/api/tasks${taskId ? `/${taskId}` : ''}`,
+        {
+          method: taskId ? "PUT" : "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(values),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`Failed to ${taskId ? 'update' : 'create'} task`);
+      }
+
+      const result = await response.json();
+      console.log(result);
+      toast.success(`Task ${taskId ? 'updated' : 'created'} successfully!`);
+      router.back();
+    } catch (e: any) {
+      toast.error(`Failed to ${taskId ? 'update' : 'create'} task`);
+      console.error(`Failed to ${taskId ? 'update' : 'create'} task`, e);
+    }
   };
 
-
   function onSubmit(values: z.infer<typeof taskSchema>) {
-    addTask(values);
-    router.back();
+    addOrUpdateTask(values);
   }
 
   const addStep = () => {
@@ -134,8 +183,8 @@ export function TaskManagerForm({categoryId, applicationId}: CategoryTableProps)
       </Button>
       <Card className="w-full max-w-2xl mx-auto my-6">
       <CardHeader>
-        <CardTitle>New Task</CardTitle>
-        <CardDescription>Fill out the form below to create a new task.</CardDescription>
+        <CardTitle>{taskId ? 'Edit' : 'New'} Task</CardTitle>
+        <CardDescription>Fill out the form below to {taskId ? 'edit' : 'create'} a task.</CardDescription>
       </CardHeader>
       <CardContent>
         <Form {...form}>
@@ -349,7 +398,7 @@ export function TaskManagerForm({categoryId, applicationId}: CategoryTableProps)
               />
             </div>
 
-            <Button type="submit" className="w-full">Create Task</Button>
+            <Button type="submit" className="w-full">{taskId ? 'Update' : 'Create'} Task</Button>
           </form>
         </Form>
       </CardContent>

@@ -78,6 +78,20 @@
       "when": 1734510057243,
       "tag": "0010_youthful_bedlam",
       "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "6",
+      "when": 1734577030233,
+      "tag": "0011_nostalgic_paladin",
+      "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "6",
+      "when": 1734577120889,
+      "tag": "0012_parallel_famine",
+      "breakpoints": true
     }
   ]
 }

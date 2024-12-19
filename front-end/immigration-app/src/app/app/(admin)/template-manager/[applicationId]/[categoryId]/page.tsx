@@ -5,9 +5,10 @@ import { auth } from "@clerk/nextjs/server";
 const TemplateTaskPage = async ({
   params,
 }: {
-  params: Promise<{ categoryId: string }>
+  params: Promise<{ categoryId: string, applicationId: string }>;
 }) => {
   const categoryId = (await params).categoryId;
+  const applicationId = (await params).applicationId;
     const {  getToken } = await auth();
 
   const fetchTasks = async () => {
@@ -38,7 +39,7 @@ const TemplateTaskPage = async ({
   
   return (
     <div>
-      <TaskManagerTable CategoryId={categoryId} taskList={TaskList}/>
+      <TaskManagerTable categoryId={categoryId} taskList={TaskList} applicationId={applicationId}/>
     </div>
   );
 };

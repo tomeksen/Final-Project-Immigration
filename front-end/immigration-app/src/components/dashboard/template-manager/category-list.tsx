@@ -30,7 +30,7 @@ export function CategoryManagerTable({ categories,applicationId }: CategoryTable
         if(selectedCategory){
             router.push(`/template-manager/${applicationId}/${selectedCategory.id}`);
         }
-    },[selectedCategory]);  
+    },[selectedCategory]);
 
     return (
     <div className="p-4 space-y-4">
