@@ -2,15 +2,14 @@
 
 import { ApplicationManagerForm } from "@/components/dashboard/template-manager/form/applications-form";
 import { CategoryCreatorManagerForm } from "@/components/dashboard/template-manager/creator/category-creator-form";
-import { CategoryTable } from "@/components/dashboard/template-manager/creator/category-table";
-import { TaskManagerForm } from "@/components/dashboard/template-manager/form/task-form";
 import { Category, Task, Application } from "@/type/Applications.type";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { TaskCreatorManagerTable } from "@/components/dashboard/template-manager/creator/task-table";
 import { TaskCreatorManagerForm } from "@/components/dashboard/template-manager/creator/task-creator-form";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { CategoryTable } from "@/components/dashboard/template-manager/creator/category-table";
 
 const steps = [
   { id: 1, name: 'Application' },
@@ -33,12 +32,20 @@ const TemplateApplicationsCreatorPage = () => {
 
   const submitCategory = (category: Category) => {
     setCategories([...categories, category])
+  }
 
+  const deleteCategory = (categoryId: number) => {
+    setCategories(categories.filter(category => category.id !== categoryId))
   }
 
   const submitTask = (task: Task) => {
     setTasks([...tasks, task])
     setFilteredTasks([...tasks, task])
+  }
+
+  const deleteTask = (taskId: number) => {
+    setTasks(tasks.filter(task => task.id !== taskId))
+    setFilteredTasks(filteredTasks.filter(task => task.id !== taskId))
   }
 
   const moveToTaskForm = (category: Category) => {
@@ -126,19 +133,20 @@ const TemplateApplicationsCreatorPage = () => {
       return;
     }
     const application = await pushApplication(applications)
-    console.log(application)
+    console.log(application)  
     categories.forEach(async (category) => {
+      category.applicationId = application[0]?.id
       let categoryId = await pushCategories(category)
       console.log(categoryId)
       tasks.map(async (task) => {
         if (task.categoryId === category.order) {
-          task.categoryId = categoryId.id
+          task.categoryId = categoryId[0].id
           const taskList = await pushTasks(task)
           console.log(taskList)
         }
       })
     })
-    router.push(`/applications/${application[0]?.id}`)
+    router.push(`/template-manager/${application[0]?.id}`)
 
   }
   
@@ -157,7 +165,7 @@ const TemplateApplicationsCreatorPage = () => {
           <div className="w-1/2">
             <Button className="mr-3" onClick={() => setCurrentStep(1)}>Back</Button>
             <Button onClick={() => submitCompleteApplication()}>Submit Application</Button>
-            <CategoryTable categories={categories} onSelectCategory={moveToTaskForm}/>
+            <CategoryTable categories={categories} onSelectCategory={moveToTaskForm} onDeleteCategory={deleteCategory}/>
           </div>
           <div className="w-1/2">
             <CategoryCreatorManagerForm applicationId={applications?.id?.toString() || "1"} addCategory={submitCategory} />
@@ -170,7 +178,7 @@ const TemplateApplicationsCreatorPage = () => {
             <Button className="mr-3" onClick={() => setCurrentStep(2)}>Back</Button>
             <Button className="mr-9" onClick={() => setCurrentStep(1)}>Back to Application</Button>
             <Button variant={"outline"} onClick={() => submitCompleteApplication()}>Submit Application</Button>
-            <TaskCreatorManagerTable taskList={filteredTasks} />
+            <TaskCreatorManagerTable taskList={filteredTasks} onDeleteTask={deleteTask} />
           </div>
           <div className="w-1/2">
             <TaskCreatorManagerForm categoryId={selectedCategory?.order?.toString() || "1"} addTask={submitTask} />

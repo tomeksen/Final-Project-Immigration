@@ -1,14 +1,17 @@
 'use client'
 import { Category } from "@/type/Applications.type";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Button } from "@/components/ui/button";
+import { Trash2 } from 'lucide-react';
 import { useState } from "react";
 
 type CategoryTableProps = {
   categories: Category[];
   onSelectCategory: (category: Category) => void;
+  onDeleteCategory: (categoryId: number) => void;
 };
 
-export function CategoryTable({ categories, onSelectCategory }: CategoryTableProps) {
+export function CategoryTable({ categories, onSelectCategory, onDeleteCategory }: CategoryTableProps) {
   const [selectedCategory, setSelectedCategory] = useState<Category | null>(null);
 
   const handleRowClick = (category: Category) => {
@@ -17,11 +20,12 @@ export function CategoryTable({ categories, onSelectCategory }: CategoryTablePro
   };
 
   return (
-    <Table className=" mt-10">
+    <Table className="mt-10">
       <TableHeader className="bg-[#5E5E5E] text-primary-white">
         <TableRow>
           <TableHead>Category Name</TableHead>
           <TableHead>Order</TableHead>
+          <TableHead>Actions</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody className="border">
@@ -33,6 +37,11 @@ export function CategoryTable({ categories, onSelectCategory }: CategoryTablePro
           >
             <TableCell className="bg-white">{category.categoryName}</TableCell>
             <TableCell className="bg-white">{category.order}</TableCell>
+            <TableCell className="bg-white">
+              <Button variant="outline" size="icon" onClick={(e) => { e.stopPropagation(); onDeleteCategory(category.id!); }}>
+                <Trash2 className="h-4 w-4" />
+              </Button>
+            </TableCell>
           </TableRow>
         ))}
       </TableBody>
