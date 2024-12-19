@@ -144,7 +144,6 @@ export default function Page() {
   return (
     <div className="w-full p-4 container mx-auto flex flex-col gap-4">
       <HeaderBreadCrumbs rootHref="/documents" rootName="Documents" />
-      <FilterTable />
 
       <Table className={cn("bg-white rounded-md")}>
         <TableHeader>

@@ -16,7 +16,7 @@ import { GoPaperclip } from "react-icons/go";
 import { IoIosArrowDown } from "react-icons/io";
 import { currentUser } from "@clerk/nextjs/server";
 import { getUserImage } from "./dashboard/applications/getUserImage";
-import { Category, Task, TaskComment } from "@/type/Application.type";
+import { Category, Task, TaskComment } from "@/type/Applications.type";
 
 type TaskProps = {
   tasks: Task[];
@@ -41,7 +41,9 @@ export function MobileTaskList({
   useEffect(() => {
     const initialState: Record<number, boolean> = {};
     categories.forEach((category, index) => {
-      initialState[category.id] = index === 0;
+      if (category.id !== undefined) {
+        initialState[category.id] = index === 0;
+      }
     });
     setExpandedCategories(initialState);
   }, [categories]);
@@ -76,7 +78,7 @@ export function MobileTaskList({
                   isExpanded ? "bg-gray-700" : ""
                 }`}
                 // onClick={handleToggle}
-                onClick={() => handleToggle(category.id)}
+                onClick={() => category.id !== undefined && handleToggle(category.id)}
               >
                 <div className="flex justify-between px-4">
                   <p>{category.categoryName}</p>
@@ -85,7 +87,7 @@ export function MobileTaskList({
               </TableHead>
             </TableRow>
           </TableHeader>
-          {expandedCategories[category.id] && (
+          {category.id !== undefined && expandedCategories[category.id] && (
             <TableBody>
               {/* Count is_completed === true, and divide it by tasks.length */}
               {/* <TableRow>
@@ -113,7 +115,7 @@ export function MobileTaskList({
                           <div className="flex items-center justify-center text-[]">
                             <BiCommentDots className="mr-3" />
                             <p className="mr-6">
-                              {comments[task.id]?.length || 0}
+                              {task.id !== undefined ? comments[task.id]?.length || 0 : 0}
                             </p>
                             <GoPaperclip className="mr-3" />
                             <p className="mr-6">0</p>

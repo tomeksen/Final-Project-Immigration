@@ -26,3 +26,11 @@ export type Task = {
   instructions: { [key: string]: string };
   notes: string;
 };
+
+export type TaskComment = {
+  id: number;
+  taskId: number;
+  isRead: boolean;
+  commentContent: string;
+  userId: string;
+};
