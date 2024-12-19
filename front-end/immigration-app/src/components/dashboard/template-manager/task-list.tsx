@@ -13,7 +13,6 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { useAuth } from "@clerk/nextjs";
 import { Task } from "@/type/Applications.type";
 
   
@@ -29,9 +28,9 @@ export function TaskManagerTable({ CategoryId, taskList }: TaskTableProps) {
 
   return (
     <div className="p-4 space-y-4">
-      <HeaderBreadCrumbs rootName={`Applications > Category > ${CategoryId}`} rootHref={`/template-manager/${CategoryId}`} breadName={CategoryId} />
+      <HeaderBreadCrumbs rootName={`Applications > ${CategoryId} > Category`} rootHref={`/template-manager/${CategoryId}`} breadName={`${CategoryId}`} />
       <Button  asChild>
-        <Link href="/template-manager/creator">Create New Task</Link>
+        <Link href={`/template-manager/task/${CategoryId}`}>Create New Task</Link>
       </Button>
       <Table>
         <TableHeader className="bg-[#5E5E5E] text-primary-white ">

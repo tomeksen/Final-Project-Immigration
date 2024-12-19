@@ -8,18 +8,18 @@ export type Application = {
 };
 
 export type Category = {
-  id: number;
+  id?: number;
   applicationId: number;
   categoryName: string;
   order: number;
 };
 
 export type Task = {
-  id: number;
+  id?: number;
   categoryId: number;
   title: string;
-  isCompleted: boolean;
-  isRevised: boolean;
+  isCompleted?: boolean;
+  isRevised?: boolean;
   dueDate: Date;
   description: string;
   steps: { [key: string]: string };

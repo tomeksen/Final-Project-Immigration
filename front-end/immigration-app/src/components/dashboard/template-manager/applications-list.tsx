@@ -72,7 +72,7 @@ export function ApplicationsManagerTable({applications}: AppTableProps) {
               {index + 1}
             </TableCell>
             <TableCell className="bg-white">{app.applicationName}</TableCell>
-            <TableCell className="bg-white">{app.applicationDate}</TableCell>
+            <TableCell className="bg-white">{app.applicationDate.toString()}</TableCell>
             <TableCell className="bg-white">{app.applicationType}</TableCell>
             <TableCell className="last: rounded-br-md bg-white">
               <Badge

@@ -36,7 +36,7 @@ export function CategoryManagerTable({ categories,applicationId }: CategoryTable
     <div className="p-4 space-y-4">
       <HeaderBreadCrumbs rootName={"Applications"} rootHref={`/template-manager`} breadName={`Category > ${applicationId}`}/>
       <Button  asChild>
-        <Link href="/template-manager/creator">Create New Category</Link>
+        <Link href={`/template-manager/category/${applicationId}`}>Create New Category</Link>
       </Button>
       <Table>
         <TableHeader className="bg-[#5E5E5E] text-primary-white ">
