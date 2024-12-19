@@ -1,11 +1,12 @@
 export type Payment = {
-  id: number;
+  id?: number;
   title: string;
   amount: string;
   applicationId: number;
   isCompleted: boolean;
   limitDate: string;
-  paymentDate: string;
+  paymentDate?: string;
+  userId: string;
 };
 
 export type PaymentFiltered = {

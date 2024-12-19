@@ -19,9 +19,23 @@ paymentRoutes.get('/', async (c) => {
 }
 )
 
+paymentRoutes.put('/:paymentId', async (c) => {
+  let db = drizzle(c.env.DB);
+  const paymentId = c.req.param("paymentId");
+  const {amount , paymentDate ,limitDate, title, applicationId, isCompleted} = await c.req.json();
+  try {
+      const result = await db.update(payments).set({
+        amount , paymentDate ,limitDate,applicationId,title,isCompleted
+      }).where(eq(payments.id , Number(paymentId))).returning();
+      return c.json(result);
+    } catch (e: any) {
+      return c.json({ error: e.message });
+    }}
+);
+
 paymentRoutes.post('/', async (c) => {
   let db = drizzle(c.env.DB);
-  const {amount , paymentDate ,limitDate, title, applicationId,isCompleted} = await c.req.json();
+  const {amount , paymentDate ,limitDate, title, applicationId, isCompleted} = await c.req.json();
   try {
       const result = await db
       .insert(payments).values({

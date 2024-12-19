@@ -37,7 +37,7 @@ export function TaskManagerTable({ categoryId, taskList , applicationId}: TaskTa
 
   return (
     <div className="p-4 space-y-4">
-      <HeaderBreadCrumbs rootName={`Applications > ${categoryId} > Category`} rootHref={`/template-manager/${categoryId}`} breadName={`${categoryId}`} />
+      <HeaderBreadCrumbs rootName={`Applications > ${categoryId} > Category`} rootHref={`/template-manager/${applicationId}`} breadName={`${categoryId}`} />
       <Button  asChild>
         <Link href={`/template-manager/task/${categoryId}`}>Create New Task</Link>
       </Button>

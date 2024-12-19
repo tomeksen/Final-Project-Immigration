@@ -42,12 +42,6 @@ export function ApplicationsManagerTable({applications}: AppTableProps) {
       <Button  asChild>
         <Link href="/template-manager/creator">Create New Application</Link>
       </Button>
-      <Button variant="outline" className="mx-3" asChild>
-        <Link href="/template-manager/category">Manage Categories</Link>
-      </Button>
-      <Button variant="outline" asChild>
-        <Link href="/template-manager/tasks">Manage Tasks</Link>
-      </Button>
       <Table>
       <TableHeader className="bg-[#5E5E5E] text-primary-white ">
         {/* Give it Link */}

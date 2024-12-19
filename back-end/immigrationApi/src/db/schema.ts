@@ -125,10 +125,13 @@ export const taskComments = sqliteTable('taskComments',{
 export const userEvents = sqliteTable('userEvents',
   {
     id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
-    eventTypeId: integer('eventId',{ mode: 'number'}).references((): AnySQLiteColumn => eventType.id),
+    eventTypeId: integer('eventId',{ mode: 'number'}).references((): AnySQLiteColumn => eventType.id).default(1),
     userId: text('userId'),
-    eventDateStart: text().default(sql`(CURRENT_DATE)`),
-    eventDateFinish: text().default(sql`(CURRENT_DATE)`),
+    title: text('title',{length: 256}),
+    isOnline: integer('isOnline',{mode:'boolean'}).default(false),
+    meetingCode: text('meetingCode',{length: 256}),
+    eventDateStart: text().default(sql`(CURRENT_TIMESTAMP)`),
+    eventDateFinish: text().default(sql`(CURRENT_TIMESTAMP)`),
   }
 )
 
@@ -173,9 +176,7 @@ export const payments = sqliteTable('payments', {
   applicationId: integer('applicationId').references((): AnySQLiteColumn => applications.id),
   isCompleted: integer('isCompleted',{mode:'boolean'}).default(false),
   // timestamp is set on insert
-  paymentDate: text('paymentDate')
-    .default(sql`CURRENT_TIMESTAMP`)
-    .notNull(),
+  paymentDate: text('paymentDate'),
   userId: text('userId'),
   limitDate: text().default(sql`(CURRENT_DATE)`)
   .notNull(),
