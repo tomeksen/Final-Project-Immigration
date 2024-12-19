@@ -10,6 +10,7 @@ import SectionTitle from "@/components/SectionTitle";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Reveal } from "@/utils/Reveal";
+import { useTranslations } from "next-intl";
 
 type TestimonialType = {
   name: string;
@@ -20,30 +21,28 @@ type TestimonialType = {
 };
 
 export default function Testimonials() {
+  const t = useTranslations("HomePage");
   const testimonials: TestimonialType[] = [
     {
       name: "Laura Ribeiro",
-      visa: "Express Entry",
+      visa: t("Testimonials.expressVisa"),
       flag: "🇧🇷",
       img: Lauta,
-      description:
-        "“I had an amazing experience with my visa application. They made the entire process easy and stress-free. The staff's expertise and attention to detail were impressive.”",
+      description: t("Testimonials.LauraDescription"),
     },
     {
       name: "Maria Torres",
-      visa: "Express Entry",
+      visa: t("Testimonials.expressVisa"),
       flag: "🇨🇴",
       img: Maria,
-      description:
-        "“I had an amazing experience with my visa application. They made the entire process easy and stress-free. The staff's expertise and attention to detail were impressive.”",
+      description: t("Testimonials.MariaDescription"),
     },
     {
       name: "Juan Sanchez",
-      visa: "Permanent Resident",
+      visa: t("Testimonials.permanentVisa"),
       flag: "🇲🇽",
       img: Juan,
-      description:
-        "“I had an amazing experience with my visa application. They made the entire process easy and stress-free. The staff's expertise and attention to detail were impressive.”",
+      description: t("Testimonials.JuanDescription"),
     },
   ];
 
@@ -82,7 +81,7 @@ export default function Testimonials() {
               alt={testimonial.name}
               className="w-full h-36 object-cover object-top"
             />
-            <div className="p-4 text-center">
+            <div className="p-4 text-justify">
               <div className="flex justify-between items-center mb-2">
                 <div>
                   <p className="font-bold text-lg">{testimonial.name}</p>
@@ -90,7 +89,7 @@ export default function Testimonials() {
                 </div>
                 <div className="text-2xl">{testimonial.flag}</div>
               </div>
-              <p className="text-gray-700">{testimonial.description}</p>
+              <p className="text-gray-700">"{testimonial.description}"</p>
             </div>
           </motion.div>
         ))}
@@ -114,15 +113,13 @@ export default function Testimonials() {
           />
           <p className="text-4xl font-bold text-blue-500 sm:hidden">5.0</p>
         </div>
-        <p className="mb-4">
-          Explore our Google Reviews for top-rated immigration services.
-        </p>
+        <p className="mb-4">{t("Testimonials.GoogleReview")}</p>
 
         <Button
           size="lg"
           className="bg-primary-red hover:bg-red-800 text-white font-bold text-lg"
         >
-          Read more
+          {t("Testimonials.ReadButton")}
         </Button>
       </motion.div>
     </motion.div>

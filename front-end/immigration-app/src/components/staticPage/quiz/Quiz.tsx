@@ -8,12 +8,14 @@ import FreeConsultationBtn from "@/components/FreeConsultationBtn";
 import QuizResult from "./QuizResult";
 import passport from "@/assets/bg_passport.jpeg";
 import gradStudents from "@/assets/bg_grad_students.jpeg";
+import { useTranslations } from "next-intl";
 
 export default function Quiz({ onClose }: { onClose: () => void }) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<string[]>([]);
   const [isQuizComplete, setIsQuizComplete] = useState(false);
   const [result, setResult] = useState<React.ReactNode>("");
+  const t = useTranslations("QuizComponent");
 
   const currentQuestion = quizQuestions[currentQuestionIndex];
 
@@ -49,7 +51,7 @@ export default function Quiz({ onClose }: { onClose: () => void }) {
         resultComponent = (
           <div className="text-center">
             <QuizResult
-              title="Express Entry"
+              title={t("titleExpressEntry")}
               image={passport}
               alt="Passports"
             />
@@ -61,7 +63,7 @@ export default function Quiz({ onClose }: { onClose: () => void }) {
         resultComponent = (
           <div>
             <QuizResult
-              title="Post-Graduation Work Permit"
+              title={t("titlePostGraduation")}
               image={gradStudents}
               alt="Passports"
             />
@@ -72,10 +74,7 @@ export default function Quiz({ onClose }: { onClose: () => void }) {
       default:
         resultComponent = (
           <div>
-            <p className="flex justify-normal">
-              Based on your answers, we recommend you to book a free
-              consultation with our team to discuss your goals and options.
-            </p>
+            <p className="flex justify-normal">{t("Result.default")}</p>
             <FreeConsultationBtn />
           </div>
         );
@@ -96,7 +95,7 @@ export default function Quiz({ onClose }: { onClose: () => void }) {
 
       {isQuizComplete ? (
         <div>
-          <h2 className="text-lg font-semibold">Quiz complete!</h2>
+          <h2 className="text-lg font-semibold">{t("completed")}</h2>
           <p>{result}</p>
         </div>
       ) : (
@@ -104,7 +103,8 @@ export default function Quiz({ onClose }: { onClose: () => void }) {
           {/* Step Indicator */}
           <div className="flex flex-col mb-4">
             <div className="text-gray-500 text-sm">
-              Step {currentQuestionIndex + 1} of {quizQuestions.length}
+              {t("step")} {currentQuestionIndex + 1} {t("of")}{" "}
+              {quizQuestions.length}
             </div>
             <div className="flex items-center justify-between w-full p-2 relative">
               {/* Timeline line */}

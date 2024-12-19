@@ -7,8 +7,14 @@ import Image from "next/image";
 import SectionTitle from "@/components/SectionTitle";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 export default function DiscoverOptions() {
+  const t = useTranslations("Work");
+  // work options or work options cards?
+  const works = workOptions(t);
+  const workCards = workOptionsCards(t);
+
   const fadeInVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: (i: number) => ({
@@ -27,7 +33,7 @@ export default function DiscoverOptions() {
         animate="visible"
         viewport={{ once: true }}
       >
-        {workOptions.map((option, index) => (
+        {works.map((option, index) => (
           <motion.div
             key={option.id}
             className="inline-block"
@@ -52,7 +58,7 @@ export default function DiscoverOptions() {
         whileInView="visible"
         viewport={{ once: true }}
       >
-        {workOptionsCards.map((permit, index) => (
+        {workCards.map((permit, index) => (
           <motion.div
             key={permit.id}
             className="bg-white rounded-lg shadow-lg p-4 hover:shadow-xl transition-shadow max-w-sm mx-auto"

@@ -1,7 +1,200 @@
 {
   "HomePage": {
-    "title": "Hello world!",
-    "startJourneyTitle":"Start your Journey to Canada with us"
+    "startJourneyTitle": "Start your Journey to Canada with us",
+    "journeyParagraph": "We bring expertise, compassion, and care to support you in navigating the complexities of immigration with confidence.",
+    "Consultant": {
+      "titleConsultant": "Our consultant",
+      "consultantIntroduction1": "I'm committed to helping you realize your Canadian dream. I understand the complexities of the immigration process and am here to offer the support and guidance you need. Together, we can ensure your journey to Canada is successful and fulfilling.",
+      "consultantIntroduction2": "Proudly regulated and in good standing with the College of Immigration and Citizenship Consultants, Larissa Castelluber, registration R710678.",
+      "registration": "Registration R710678",
+      "verifyICCRC": "Verify with ICCRC"
+    },
+    "ImmigrationServices": {
+      "titleImmigrationServices": "Canadian Immigration Services",
+      "imageImmigrate": "Immigrate",
+      "imageWork": "Work",
+      "imageStudy": "Study"
+    },
+    "Quiz": {
+      "title": "Take the Quiz to find your immigration pathway!",
+      "paragraph": "By taking this quiz, you will discover which immigration pathway best fits your unique situation.",
+      "button": "Start Quiz"
+    },
+    "WhyUs": {
+      "title": "Why choose us",
+      "cases": "Successful cases",
+      "rate": "Approved rate",
+      "languages": "Languages",
+      "idioms": "English/ Portuguese/ Spanish",
+      "years": "Years of experience"
+    },
+    "StartSection": {
+      "title": "Where to start",
+      "Steps": {
+        "step1": "Book a 20 min free consultation",
+        "description1": "Tell us about your goals in Canada and your profile.",
+        "step2": "Analyze your options",
+        "description2": "We'll provide possible pathways for you and send you a quote.",
+        "step3": "Make your payment",
+        "description3": "You can pay via e-transfer through installment payments.",
+        "step4": "Gather the documents",
+        "description4": "We'll list the documents required for your application.",
+        "step5": "Apply",
+        "description5": "One of our experts will submit your application."
+      }
+    },
+    "Testimonials": {
+      "expressVisa": "Express Entry",
+      "permanentVisa": "Permanent Resident",
+      "LauraDescription": "I had an amazing experience with my visa application. They made the entire process easy and stress-free. The staff's expertise and attention to detail were impressive.",
+      "MariaDescription": "I had an amazing experience with my visa application. They made the entire process easy and stress-free. The staff's expertise and attention to detail were impressive.",
+      "JuanDescription": "I had an amazing experience with my visa application. They made the entire process easy and stress-free. The staff's expertise and attention to detail were impressive.",
+      "GoogleReview": "Explore our Google Reviews for top-rated immigration services.",
+      "ReadButton": "Read more"
+    },
+    "freeConsultation": "Book a free consultation"
+  },
+  "QuizComponent": {
+    "titleExpressEntry": "Express Entry",
+    "titlePostGraduation": "Post-Graduation Work Permit",
+    "completed": "Quiz completed!",
+    "step": "Step",
+    "of": "of",
+    "nextButton": "Next",
+    "backButton": "Back",
+    "Result": {
+      "default": "Based on your answers, we recommend you to book a free consultation with our team to discuss your goals and options."
+    },
+    "Questions": {
+      "Question1": {
+        "title": "What would you like to do in Canada?",
+        "option1": "Study",
+        "option2": "Work",
+        "option3": "Visit",
+        "option4": "Immigrate"
+      }
+    }
+  },
+  "Immigration": {
+    "sectionTitle": "Do you want to immigrate to Canada?",
+    "sectionParagraph": "Canada is a top destination for individuals and families seeking new opportunities. With over 80 immigration programs available, including options for skilled workers, Labour Market Impact Assessments (LMIA), Provincial Nominee Programs (PNP), and family reunification, there are numerous pathways to becoming a permanent resident.",
+    "sectionParagraph2": "Our team at Up Immigration is here to guide you through the process, helping you find the program that best suits your needs for a successful transition to your new life in Canada. Contact us today to start your journey to Canada with confidence.",
+    "sectionButton": "Book a consultation",
+    "DiscoverOptions": {
+      "title": "Discover all your options",
+      "option1": "Express Entry",
+      "option2": "Provincial Nominee",
+      "option3": "Family Sponsor",
+      "option4": "Caregiver",
+      "option5": "Start-Up Visa",
+      "option6": "Self-Employed",
+      "option7": "Humanitarian & Compassionate",
+      "option8": "Atlantic Immigration",
+      "option9": "Northern Immigration"
+    },
+    "ImmigrationPrograms": {
+      "expressEntry": {
+        "title": "Express Entry",
+        "description": "Canada's fastest and most popular way to gain permanent residency. It is an immigration system designed to streamline applications, with all required documents typically processed within six months or less. By submitting a profile, candidates are ranked based on their qualifications and invited to apply for permanent residency."
+      },
+      "provincialNominee": {
+        "title": "Provincial Nominee Programs - PNP",
+        "description": "For Canadian citizens and permanent residents to reunite with their loved ones by sponsoring them for permanent residency. This program includes options for sponsoring spouses, common-law partners, dependent children, parents, and grandparents. By supporting family reunification, the program helps build stronger, more connected communities in Canada."
+      },
+      "familySponsorship": {
+        "title": "Family Sponsorship",
+        "description": "For Canadian citizens and permanent residents to reunite with their loved ones by sponsoring them for permanent residency. This program includes options for sponsoring spouses, common-law partners, dependent children, parents, and grandparents. By supporting family reunification, the program helps build stronger, more connected communities in Canada."
+      },
+      "caregiverPrograms": {
+        "title": "Caregiver Programs",
+        "description": "For workers who provide support to our children, seniors, and others requiring care. For this reason, Canada manages a range of programs to assist caregivers with finding work and obtaining permanent residency through programs such as the Interim Pathway for Caregivers, Home Child Care Provider Pilot and Home Support Worker Pilot."
+      },
+      "startUpVisa": {
+        "title": "Start-Up Visa Program",
+        "description": "For innovative entrepreneurs to establish their businesses in Canada and gain permanent residency. This program is designed for individuals with a viable business idea that has the support of a designated organization, such as a venture capital fund, angel investor group, or business incubator. By fostering innovation and entrepreneurship, the Start-Up Visa Program helps drive economic growth and create jobs in Canada."
+      },
+      "selfEmployed": {
+        "title": "Self-Employed Program",
+        "description": "For individuals with relevant experience in cultural or athletic activities to gain permanent residency in Canada. This program is ideal for those who have demonstrated their ability to be self-employed in fields such as music, writing, visual arts, or professional athletics. By contributing their unique talents, self-employed individuals help enrich Canada’s cultural and athletic landscape."
+      },
+      "humanitarian": {
+        "title": "Humanitarian and Compassionate - H&C",
+        "description": "For individuals with relevant experience in cultural or athletic activities to gain permanent residency in Canada. This program is ideal for those who have demonstrated their ability to be self-employed in fields such as music, writing, visual arts, or professional athletics. By contributing their unique talents, self-employed individuals help enrich Canada’s cultural and athletic landscape."
+      },
+      "atlanticProgram": {
+        "title": "Atlantic Immigration Program - AIP",
+        "description": "For skilled foreign workers and international graduates to build a new life in one of Canada's vibrant Atlantic provinces: New Brunswick, Nova Scotia, Newfoundland and Labrador, and Prince Edward Island. This program makes it easier for newcomers to settle and contribute to the growth of these welcoming communities."
+      },
+      "northernProgram": {
+        "title": "Northern Immigration Program - RNIP",
+        "description": "For skilled workers to settle in smaller communities across Canada. This program aims to support the economic development of rural and northern regions by attracting newcomers who can fill local labor market gaps. Participating communities, including those in Ontario, Western Canada, and the three territories, provide a welcoming environment for newcomers looking to build a new life."
+      }
+    }
+  },
+  "FAQ": {
+    "title": "Immigration Frequent Questions",
+    "questions": {
+      "question1": {
+        "title": "What is a Canada Immigration Visa?",
+        "answer": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium molestias omnis veritatis maxime porro quo inventore unde quasi deleniti quibusdam rem ratione sit quidem, enim, necessitatibus consequuntur sapiente modi optio?"
+      },
+      "question2": {
+        "title": "What is the difference between Work Permit and Canada Immigration?",
+        "answer": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium molestias omnis veritatis maxime porro quo inventore unde quasi deleniti quibusdam rem ratione sit quidem, enim, necessitatibus consequuntur sapiente modi optio?"
+      },
+      "question3": {
+        "title": "Can I apply for Permanent Residence status and Temporary status at the same time?",
+        "answer": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium molestias omnis veritatis maxime porro quo inventore unde quasi deleniti quibusdam rem ratione sit quidem, enim, necessitatibus consequuntur sapiente modi optio?"
+      },
+      "question4": {
+        "title": "Is my current immigration status relevant for Canadian immigration purposes?",
+        "answer": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium molestias omnis veritatis maxime porro quo inventore unde quasi deleniti quibusdam rem ratione sit quidem, enim, necessitatibus consequuntur sapiente modi optio?"
+      },
+      "question5": {
+        "title": "Is there any benefit to use an attorney for immigration to Canada?",
+        "answer": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium molestias omnis veritatis maxime porro quo inventore unde quasi deleniti quibusdam rem ratione sit quidem, enim, necessitatibus consequuntur sapiente modi optio?"
+      }
+    }
+  },
+  "Work": {
+    "title": "Discover all you options",
+    "option1": {
+      "title": "Work Permit/Extensions"
+    },
+    "option2": {
+      "title": "Open Work Permit"
+    },
+    "option3": {
+      "title": "Post-Graduation Work Permit (PGWP)"
+    },
+    "option4": {
+      "title": "Labour Market Impact Assessment (LMIA)"
+    },
+    "option5": {
+      "title": "Spousal Partner Open Work Permit (SOWP)"
+    },
+    "Cards": {
+      "card1": {
+        "title": "Work Permit/Extensions",
+        "description": "Canadian employers may hire temporary foreign workers when suitable candidates can't be found among Canadian residents (permanent residents or citizens). Employers seeking to hire foreign workers must apply for a document called a Labour Market Impact Assessment (LMIA) if they meet the eligibility criteria. A positive LMIA demonstrates the need for a foreign worker to fill the position."
+      },
+      "card2": {
+        "title": "Open Work Permit",
+        "description": "Document issued within Canada that allows certain foreigners to work for any Canadian company. To be eligible you must be the spouse of an international student enrolled full-time at a Canadian college (mostly public) or university, or be the spouse of a person who has worker status with job offer at NOC 0, A or B. You can also obtain an open work permit, if you are part of a International Experience Canada program regularly offers striptease, erotic dance, escort services or erotic massages."
+      },
+      "card3": {
+        "title": "Post-Graduation Work Permit (PGWP)",
+        "description": "For individuals with relevant experience in cultural or athletic activities to gain permanent residency in Canada. This program is ideal for those who have demonstrated their ability to be self-employed in fields such as music, writing, visual arts, or professional athletics. By contributing their unique talents, self-employed individuals help enrich Canada’s cultural and athletic landscape."
+      },
+      "card4": {
+        "title": "Labour Market Impact Assessment (LMIA)",
+        "description": "For skilled foreign workers and international graduates to build a new life in one of Canada's vibrant Atlantic provinces: New Brunswick, Nova Scotia, Newfoundland and Labrador, and Prince Edward Island. This program makes it easier for newcomers to settle and contribute to the growth of these welcoming communities."
+      },
+      "card5": {
+        "title": "Spousal/Common-Law Partner Open Work Permit (SOWP)",
+        "description": "Spouse, common-law partner or conjugal partner living in Canada who’s being sponsored for permanent residence an accompanying dependent child of the principal applicant."
+      }
+    }
   },
   "Sidebar": {
     "Content": {
@@ -18,10 +211,22 @@
     "Footer": {
       "settings": "Settings",
       "faq": "FAQ",
-      "logout": "Logout"
+      "logout": "Logout",
+      "Services": {
+        "title": "Services",
+        "immigrate": "Immigrate",
+        "work": "Work",
+        "study": "Study",
+        "sponsor": "Sponsor"
+      },
+      "Company": {
+        "title": "Company",
+        "about": "About",
+        "contact": "Contact",
+        "copyRight": "© Up Immigration Consulting. All Rights Reserved"
+      }
     }
   },
-
   "LocaleSwitcher": {
     "en": "English",
     "es": "Spanish",

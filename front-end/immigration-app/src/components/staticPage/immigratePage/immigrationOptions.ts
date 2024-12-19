@@ -3,6 +3,7 @@ type Options = {
   title: string;
   link: string;
 };
+
 export const immigrationOptions: Options[] = [
   {
     id: 1,
