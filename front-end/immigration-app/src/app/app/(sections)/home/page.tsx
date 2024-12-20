@@ -53,7 +53,8 @@ const DashboardHome = () => {
     const fetchPaymentData = async () => {
       const token = await getToken();
       if (!token) {
-        return <div>asdf</div>;
+        console.log(ERROR_MESSAGES.GENERAL.UNEXPECTED);
+        return;
       }
 
       try {
@@ -99,9 +100,9 @@ const DashboardHome = () => {
   if (isLoading) {
     return <LottieLoading />;
   }
-  if (errorPayment) {
-    return <ErrorMessage title="Dashboard" errorMessage={errorPayment} />;
-  }
+  // if (errorPayment) {
+  //   return <ErrorMessage title="Dashboard" errorMessage={errorPayment} />;
+  // }
 
   const bookedDays = [
     {
