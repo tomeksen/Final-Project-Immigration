@@ -1,7 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { EventFiltered } from "@/type/Appointment.type";
+import { formatToCustomDate } from "@/utils/formatDate";
 
 const events = [
   {
@@ -27,7 +28,11 @@ const events = [
   },
 ];
 
-export default function SideSchedule() {
+type Props = {
+  events: EventFiltered[];
+};
+
+export default function SideSchedule({ events }: Props) {
   return (
     <Card className="flex flex-col items-center overflow-y-scroll max-w-[300px] flex-1">
       <CardHeader>
@@ -43,20 +48,13 @@ export default function SideSchedule() {
                 {event.title}
               </div>
               <div className="text-sm text-muted-foreground">
-                {event.startDate}
+                {formatToCustomDate(event.startDate)}
               </div>
               <div className="text-sm text-muted-foreground">
                 {event.location}
               </div>
               <div className="text-sm text-muted-foreground">
                 {event.details}
-              </div>
-              <div className="flex gap-1">
-                {event.avatars.map((src, i) => (
-                  <Avatar key={i} className="h-6 w-6">
-                    <AvatarImage src={src} alt="Avatar" />
-                  </Avatar>
-                ))}
               </div>
               <Separator className="mx-auto w-[250px] mb-2" />
             </div>

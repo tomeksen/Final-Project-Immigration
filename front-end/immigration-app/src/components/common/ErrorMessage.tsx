@@ -9,7 +9,7 @@ import React from "react";
  * @param errorMessage - The specific error message to display.
  * @returns A React component containing the error message.
  */
-const PaymentError = ({
+const ErrorMessage = ({
   title,
   errorMessage,
 }: {
@@ -28,4 +28,4 @@ const PaymentError = ({
   );
 };
 
-export default PaymentError;
+export default ErrorMessage;

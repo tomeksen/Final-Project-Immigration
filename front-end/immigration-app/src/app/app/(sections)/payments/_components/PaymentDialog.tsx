@@ -125,7 +125,7 @@ export default function PaymentDialog({
               </Table>
             </div>
             <Button className="w-full bg-primary-red hover:bg-primary-red/80">
-              Label
+              Pay CAD {formatNumber(payment.amount)}
             </Button>
             <p className="text-center text-muted-foreground text-xs">
               Your personal data will be used to process your order, support
