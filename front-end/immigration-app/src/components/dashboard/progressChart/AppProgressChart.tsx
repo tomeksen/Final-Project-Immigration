@@ -11,10 +11,10 @@ import { ChartConfig, ChartContainer } from "@/components/ui/chart";
 
 // TODO: Add the actual data from the backend
 const chartData = [
-  { item: "Getting Started", progress: 50 },
-  { item: "School Admission", progress: 20 },
-  { item: "Visa Application", progress: 75 },
-  { item: "Pre-Departure", progress: 50 },
+  { item: "Getting Started", progress: 100 },
+  { item: "School Admission", progress: 50 },
+  { item: "Visa Application", progress: 20 },
+  { item: "Pre-Departure", progress: 0 },
 ];
 
 // Don't need to change chart colors
@@ -42,7 +42,7 @@ export function AppProgressChart() {
 
           return (
             <ChartContainer
-              key={`chart-container-${index}`} 
+              key={`chart-container-${index}`}
               config={chartConfig}
               className="flex flex-col items-center w-[150px] max-h-[200px]"
             >
