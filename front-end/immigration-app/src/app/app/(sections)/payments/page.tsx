@@ -60,9 +60,7 @@ const PaymentsPage = async () => {
               {/* TODO MAKE A REAL SUMMARY*/}
                 <PaymentInvoices invoices={completedPayments} />
               </div>
-              <div className="rounded-xl w-1/4 p-4 h-1/3">
-                <PaymentChart payments={newPayments} />
-              </div>
+   
             </div>
           ) : (
             <div>
