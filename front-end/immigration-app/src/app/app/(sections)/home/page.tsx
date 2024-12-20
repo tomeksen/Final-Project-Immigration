@@ -151,13 +151,6 @@ const DashboardHome = () => {
                     <Card className="w-full h-full">
                       <CardHeader>
                         <CardTitle>My Schedule</CardTitle>
-                        <CardDescription className="mt-3 text-foreground">
-                          You have{" "}
-                          <span className="text-primary-red">
-                            100 pending events
-                          </span>
-                          .
-                        </CardDescription>
                       </CardHeader>
                       <CardContent className="w-full mx-auto pl-14 items-center">
                         <MobileCalendar bookedDays={bookedDays} />
@@ -318,19 +311,12 @@ const DashboardHome = () => {
                       </CardContent>
                     </Card>
                   </div>
-                  <div className="rounded-xl bg-muted/50 xl:col-span-1 mt-[-80px]">
+                  <div className="rounded-xl bg-muted/50 xl:col-span-">
                     <Card className="w-full h-full">
                       <CardHeader>
                         <CardTitle>My Schedule</CardTitle>
-                        <CardDescription className="mt-3 text-foreground">
-                          You have{" "}
-                          <span className="text-primary-red">
-                            3 pending payments
-                          </span>
-                          .
-                        </CardDescription>
                       </CardHeader>
-                      <CardContent className="w-full mx-auto pl-14 items-center">
+                      <CardContent className="w-full mx-auto pl-20 items-center">
                         <MobileCalendar className="" bookedDays={bookedDays} />
                       </CardContent>
                     </Card>
