@@ -167,7 +167,9 @@ export function PaymentChart({ payments }: Props) {
                   className="h-4 w-4 rounded-full flex-shrink-0"
                   style={{ background: colors[index] }}
                 ></span>
-                <p className="text-xs flex-wrap">{payment.title}</p>
+                <p className="max-w-full text-xs flex-wrap break-words">
+                  {payment.title}
+                </p>
               </div>
             ))}
           </div>

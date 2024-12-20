@@ -56,12 +56,10 @@ export default function Page() {
     return {
       form: matchingTitle ? matchingTitle.title : "No title",
       document: document.title || "",
-      date: document.updatedAt || "",
+      date: document.updatedAt || "2024-12-20",
       addDocument: document.isChecked === 0 ? "Replace" : "Add",
     };
   };
-
-  console.log(userId);
 
   useEffect(() => {
     if (!userId) {

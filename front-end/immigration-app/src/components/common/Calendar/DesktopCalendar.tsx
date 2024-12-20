@@ -7,13 +7,10 @@ import { DayPicker } from "react-day-picker";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-type BookDaysType = {
-  startDate: Date;
-  endDate: Date;
-  title: string;
-}[];
+import { EventFiltered } from "@/type/appointment.type";
+
 export type CalendarProps = React.ComponentProps<typeof DayPicker> & {
-  bookedDays: BookDaysType;
+  bookedDays: EventFiltered[];
 };
 // TODO:
 // there is more than two events on the same day or more than one day long
@@ -44,6 +41,21 @@ function DesktopCalendar({
   //     title: "One-day Event",
   //   },
   // ];
+  const isDate = (value: unknown): value is Date => {
+    return value instanceof Date && !isNaN(value.getTime());
+  };
+  console.log("🇪🇸", bookedDays);
+  React.useEffect(() => {
+    bookedDays.forEach((book) => console.log(isDate(book.startDate)));
+  }, []);
+  // bookedDays.forEach((book) => {
+  //   console.log(
+  //     "🚀",
+  //     book.startDate.getFullYear(),
+  //     book.startDate.getMonth(),
+  //     book.startDate.getDate()
+  //   );
+  // });
 
   return (
     <Card className="flex-1 w-full flex justify-center">
@@ -80,10 +92,13 @@ function DesktopCalendar({
           IconLeft: ({ ...props }) => <ChevronLeftIcon className="h-4 w-4" />,
           IconRight: ({ ...props }) => <ChevronRightIcon className="h-4 w-4" />,
           Day(props) {
-            const eventsForDate = bookedDays.filter(
-              (event) =>
+            const eventsForDate = bookedDays.filter((event) => {
+              console.log("eventForDate⭐️");
+
+              return (
                 props.date >= event.startDate && props.date <= event.endDate
-            );
+              );
+            });
 
             function isSameDate(date1: Date, date2: Date): boolean {
               return (
@@ -111,11 +126,13 @@ function DesktopCalendar({
                         key={index}
                         className="flex items-center bg-primary-red/10 w-full h-6"
                       >
+                        <p>{`${props.date.getMonth()} ${event.startDate.getMonth()}`}</p>
                         {/* if the event is the first day, show a line */}
                         {isSameDate(event.startDate, props.date) && (
                           <span className="w-1 h-full bg-primary-red"></span>
                         )}
 
+                        <p>{isSameDate(event.startDate, props.date)}</p>
                         <span className="text-xs py-1 text-primary-red flex-1">
                           {isSameDate(event.startDate, props.date)
                             ? event.title
