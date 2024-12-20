@@ -50,39 +50,30 @@ const DashboardHome = () => {
   }
 
   useEffect(() => {
-    const fetchPaymentData = async () => {
-      const token = await getToken();
-      if (!token) {
-        console.log(ERROR_MESSAGES.GENERAL.UNEXPECTED);
-        return;
-      }
+    if (!userId || !getToken) return;
 
+    const fetchPaymentData = async () => {
       try {
         setIsLoading(true);
         setErrorPayment(null);
-        const payments = await apiClientFetch(
-          `payments/getPaymentsByUser/${userId}`,
-          token
-        );
-        const applications = await apiClientFetch(
-          `applications/${userId}`,
-          token
-        );
+
+        const token = await getToken();
+        if (!token) {
+          setErrorPayment(ERROR_MESSAGES.GENERAL.UNEXPECTED);
+          return;
+        }
+
+        const [payments, applications] = await Promise.all([
+          apiClientFetch(`payments/getPaymentsByUser/${userId}`, token),
+          apiClientFetch(`applications/${userId}`, token),
+        ]);
+
         const applicationIds = applications.map((app: Application) => ({
           applicationId: app.id,
           title: app.applicationName,
         }));
 
         const newPayments = filteredPayments(payments, applicationIds);
-        // let completedPayments = [];
-        // let paymentsData = [];
-        // if (isAdminUser) {
-        //   paymentsData = await apiClientFetch(`payments`, token);
-        //   completedPayments = await apiClientFetch(
-        //     `payments/getCompletedPayment`,
-        //     token
-        //   );
-        // }
         setPayments(newPayments);
       } catch (error) {
         if (error instanceof Error) {
@@ -94,6 +85,7 @@ const DashboardHome = () => {
         setIsLoading(false);
       }
     };
+
     fetchPaymentData();
   }, [userId, getToken]);
 
@@ -103,6 +95,8 @@ const DashboardHome = () => {
   // if (errorPayment) {
   //   return <ErrorMessage title="Dashboard" errorMessage={errorPayment} />;
   // }
+
+  console.log("⭐️", payments);
 
   const bookedDays = [
     {
@@ -280,6 +274,7 @@ const DashboardHome = () => {
                             },
                             {
                               text: "Actions needed: Rename documents",
+
                               date: "05/06/24",
                             },
                             {
